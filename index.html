@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<!DOCTYPE
+    
+ html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -494,6 +496,7 @@
 <div class="day-tabs" id="day-tabs" style="display:none;">
     <button class="day-tab active" onclick="switchDay('día1')">Día 1 &mdash; Lunes 16 Marzo</button>
     <button class="day-tab" onclick="switchDay('día2')">Día 2 &mdash; Martes 17 Marzo</button>
+    <button class="day-tab" onclick="switchDay('día3')">Día 3 &mdash; Miércoles 18 Marzo</button>
 </div>
 
 <!-- Mobile menu -->
@@ -540,9 +543,10 @@
                         </div>
                     </td>
                     <td>
-                        <div class="cal-cell">
+                        <div class="cal-cell clickable" onclick="showTalk('charla03-1')">
                             <div class="cal-title">Virtual Art Department</div>
                             <div class="cal-speaker">Diego &mdash; Acid Drops (120min)</div>
+                            <span class="cal-badge">Ver informe</span>
                         </div>
                     </td>
                     <td>
@@ -578,9 +582,10 @@
                         </div>
                     </td>
                     <td>
-                        <div class="cal-cell">
+                        <div class="cal-cell clickable" onclick="showTalk('charla03-2')">
                             <div class="cal-title">Dir. de fotografía en VP</div>
                             <div class="cal-speaker">Mario Montero (DOP) (120min)</div>
+                            <span class="cal-badge">Ver informe</span>
                         </div>
                     </td>
                     <td>
@@ -684,6 +689,17 @@
             <button class="talk-btn" onclick="showTalk('charla02-3')">
                 VP sobre Volumenes LED (Netflix)
                 <span class="speaker">Supervisores VFX &mdash; Netflix</span>
+            </button>
+        </div>
+        <div class="sidebar-section" id="sidebar-día3">
+            <h3>Día 3 &mdash; Miércoles 18</h3>
+            <button class="talk-btn" onclick="showTalk('charla03-1')">
+                VAD y Pipeline Técnico
+                <span class="speaker">Diego &mdash; Acid Drops</span>
+            </button>
+            <button class="talk-btn" onclick="showTalk('charla03-2')">
+                Dirección de Fotografía en VP
+                <span class="speaker">Mario Montero &mdash; DOP</span>
             </button>
         </div>
     </aside>
@@ -2671,6 +2687,679 @@
     <a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>
 </div>
 
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CHARLA 03-1: Diego / Acid Drops - Virtual Art Department -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="talk-content" id="charla03-1">
+<div class="talk-header">
+        <h2 class="talk-title">Charla 03-1: Virtual Art Department (VAD) y Pipeline Técnico</h2>
+        <div class="talk-meta">
+            <strong>Ponente:</strong> Diego &mdash; Acid Drops<br>
+            <strong>Fecha:</strong> Miércoles 18 de marzo de 2026
+        </div>
+      </div>
+      
+<div class="section-nav">
+    <div class="section-nav-title">Contenidos</div>
+    <ul>
+        <li><a href="#c31-resumen">Resumen Ejecutivo</a></li>
+        <li><a href="#c31-vad">El VAD: Virtual Art Department</a></li>
+        <li><a href="#c31-perfiles">Perfiles Profesionales del VAD</a></li>
+        <li><a href="#c31-tipologias">Tipologías de Entornos Virtuales</a></li>
+        <li><a href="#c31-rendimiento">Equilibrio entre Calidad Visual y Rendimiento</a></li>
+        <li><a href="#c31-iluminacion">Iluminación Bakeada vs. Dinámica (Lumen)</a></li>
+        <li><a href="#c31-shaders">Shaders, Texturas Virtuales y Transparencias</a></li>
+        <li><a href="#c31-pcg">Generación Procedural de Vegetación (PCG y Voxelización)</a></li>
+        <li><a href="#c31-nanite">Nanite, LODs y Gestión de Geometría</a></li>
+        <li><a href="#c31-tracking">Tracking de Cámara: Retracker, Mo-Sys y HTC Vive</a></li>
+        <li><a href="#c31-calibracion">Calibración de Lentes y Protocolo FreeD</a></li>
+        <li><a href="#c31-frustum">Inner Frustum, Outer Frustum y Proyección LED</a></li>
+        <li><a href="#c31-infraestructura">Infraestructura LED: GenLock, nDisplay y Multi-Nodo</a></li>
+        <li><a href="#c31-perforce">Control de Versiones: Perforce y Switchboard</a></li>
+        <li><a href="#c31-nomenclatura">Nomenclaturas, Templates y Gestión de Assets</a></li>
+        <li><a href="#c31-croma">Croma en Contexto de Producción Virtual</a></li>
+        <li><a href="#c31-ar">Elementos AR y Set Extension</a></li>
+        <li><a href="#c31-driving">Driving Plates y Escenarios Procedurales</a></li>
+        <li><a href="#c31-color">Calibración de Color y Pantallas LED</a></li>
+        <li><a href="#c31-experiencias">Experiencias de Producción</a></li>
+        <li><a href="#c31-glosario">Glosario Técnico</a></li>
+    </ul>
+</div>
+
+<div class="executive-summary" id="c31-resumen">
+    <h3 class="section-title" style="border:none;padding:0;margin:0 0 12px 0;">Resumen Ejecutivo</h3>
+    <p>Diego, de la empresa <b>Acid Drops</b>, presenta una charla eminentemente técnica y práctica sobre el funcionamiento del <b>Virtual Art Department (VAD)</b>, la creación de entornos virtuales, la optimización de rendimiento en Unreal Engine y la gestión integral de proyectos de producción virtual. Acid Drops se dedica a la dirección técnica, la creación de entornos 3D y la integración en estudios, asesorando desde la instalación de volúmenes LED hasta la operación en set. La charla abarca desde la composición del equipo humano del VAD (4-7 personas con perfiles de supervisión VP, dirección técnica, modelado, texturizado, iluminación y efectos en tiempo real) hasta los detalles más granulares de la infraestructura: sistemas de tracking (Retracker, Mo-Sys, HTC Vive), calibración de lentes mediante protocolo FreeD, sincronización GenLock, renderizado multi-nodo con nDisplay, control de versiones con Perforce y optimizaciones clave como iluminación bakeada, texturas virtuales, generación procedural de vegetación con PCG y voxelización. Diego incluye una demostración en vivo del sistema completo funcionando con Switchboard y realiza una defensa contundente de la preproducción como fase donde deben tomarse las decisiones críticas.</p>
+</div>
+
+<h3 class="section-title" id="c31-vad">El VAD: Virtual Art Department</h3>
+<p>El VAD es el equipo responsable de hacer posible todo lo que se ve dentro de las pantallas LED y los entornos virtuales de una producción. Diego explica que, aunque inicialmente Acid Drops era solo un departamento artístico dedicado a la infoarquitectura, la realidad del mercado les obligó a cubrir perfiles técnicos adicionales: infraestructura, pantallas, tracking y cámaras. Sin ese conocimiento transversal, resulta imposible llevar a cabo una producción virtual completa.</p>
+<ul class="content-list">
+    <li><b>Origen en infoarquitectura:</b> Acid Drops proviene del mundo de la imagen fija, vídeo y aplicaciones de VR para arquitectura. Parte del equipo son arquitectos de formación, lo que les dio una base sólida en modelado de entornos y espacios.</li>
+    <li><b>Migración al cine y televisión:</b> Progresivamente fueron migrando hacia la creación de escenarios para cine, televisión, publicidad y eventos en directo.</li>
+    <li><b>Asesoría a estudios:</b> Han encontrado un nicho de negocio asesorando a estudios que quieren meterse en producción virtual, evaluando sus necesidades, espacio, tiros de cámara y presupuesto disponible.</li>
+    <li><b>Doble vertiente:</b> Con Doctora House hacen la parte de publicidad; con otras empresas cubren cine y broadcast.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia Profesional: El Nicho de la Consultoría VP</div>
+    <p>Diego describe cómo Acid Drops ha identificado un nicho de negocio rentable en la <b>asesoría técnica a estudios</b> que quieren incorporar producción virtual. El rango económico varía enormemente según las necesidades del espacio, los tiros de cámara posibles y el tipo de producción, por lo que cada caso requiere un análisis personalizado antes de recomendar una inversión.</p>
+</div>
+
+<h3 class="section-title" id="c31-perfiles">Perfiles Profesionales del VAD</h3>
+<p>El equipo del VAD suele oscilar entre <b>4 y 7 personas</b>, dependiendo de la plataforma y la producción. Algunas productoras exigen un número mínimo de profesionales en el VAD como condición para adjudicar el proyecto.</p>
+<ul class="content-list">
+    <li><b>VP Supervisor:</b> Persona con conocimiento general tanto de la parte artística (generación de entornos) como de la parte técnica (infraestructura, cámaras, LEDs, tracking). Es el perfil que conecta todos los departamentos.</li>
+    <li><b>Director técnico:</b> Centrado en la infraestructura: redes, resoluciones y refrescos de pantallas, sincronización de nodos y que todo el sistema funcione correctamente.</li>
+    <li><b>Modeladores y texturizadores:</b> Crean los assets 3D del escenario virtual con las especificaciones de calidad y rendimiento necesarias.</li>
+    <li><b>Artistas de iluminación:</b> Trabajan la iluminación virtual en coordinación estrecha con el director de fotografía.</li>
+    <li><b>Artistas de efectos en tiempo real:</b> Especializados en sistemas de partículas y efectos que funcionen a 60 fps sin reventar la GPU. No es lo mismo que hacer VFX tradicional.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Realidad del Mercado: Perfiles que se Solapan</div>
+    <p>Diego reconoce que en la práctica, el equipo del VAD acaba cubriendo funciones que no le corresponden estrictamente. Hay proyectos donde llegas y los perfiles técnicos ya están cubiertos por el estudio o la productora, pero <b>en otros no hay nada montado</b> y tienes que tener un conocimiento base para ponerlo en marcha, saber diagnosticar problemas y saber a quién llamar en cada momento.</p>
+</div>
+
+<h3 class="section-title" id="c31-tipologias">Tipologías de Entornos Virtuales</h3>
+<p>Diego clasifica los entornos virtuales según varios ejes que determinan las decisiones técnicas y artísticas del proyecto:</p>
+<ul class="content-list">
+    <li><b>Interiores vs. exteriores:</b> Los interiores presentan problemas de iluminación porque la luz rebota mucho y el motor no tiene capacidad de procesamiento infinita; las zonas de sombra tienden a irse a negro. Los exteriores (4 km &times; 4 km con vegetación) suponen un reto de rendimiento por la cantidad de geometría.</li>
+    <li><b>Interactivos vs. estáticos:</b> Los interactivos requieren programación para lanzar eventos en tiempo real (rótulos 3D, animaciones activadas por consola MIDI o Steam Deck). Los estáticos pueden tener mayor carga visual al no necesitar interactividad.</li>
+    <li><b>Full 3D:</b> Libertad total de movimiento de cámara sin limitación de tracking. Es la opción más costosa en rendimiento pero la más flexible.</li>
+    <li><b>Plates (planos con paralaje):</b> Imágenes en capas que dan sensación de profundidad. Muy rápidos de producir pero no se pueden re-iluminar y los movimientos extremos de cámara revelan el truco.</li>
+    <li><b>Gaussian Splatting:</b> Funciona similar a la fotogrametría en la toma de datos. Ofrece más rango de movimiento que los plates pero tampoco permite re-iluminación fiable. Diego recomienda capturar múltiples condiciones de luz (mañana y atardecer por separado) en lugar de intentar re-iluminar por software.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Opinión Técnica: Re-iluminar Gaussian Splatting</div>
+    <p>Diego es contundente: re-iluminar un Gaussian Splat a día de hoy es <b>ciencia ficción en términos prácticos</b>. Existen soluciones en el mercado que intentan crear una malla simplificada para calcular rebotes de iluminación y reflejos, pero el resultado visual no convence. Su recomendación es capturar las fotografías en las condiciones de luz que se necesiten y montarlos como escenarios independientes.</p>
+</div>
+
+<h3 class="section-title" id="c31-rendimiento">Equilibrio entre Calidad Visual y Rendimiento</h3>
+<p>Para que un entorno mantenga el equilibrio entre calidad visual y rendimiento en tiempo real (mínimo 55-60 fps), Diego identifica <b>cuatro factores clave</b>:</p>
+<ul class="content-list">
+    <li><b>Modularidad:</b> Utilizar objetos repetidos combinados creativamente para que no se note la repetición. El 80-90% de los objetos deberían ser modulares, con decals y efectos para romper la repetición. Menos materiales únicos significa mejor rendimiento.</li>
+    <li><b>Iluminación bakeada:</b> Imprimir la iluminación y los reflejos en texturas. Se calcula una vez, se almacena en la GPU y deja de calcularse frame a frame, ahorrando un 30-40% de rendimiento.</li>
+    <li><b>Shaders sencillos:</b> Preferir cuatro o cinco shaders específicos por tipología de objeto en lugar de uno universal que calcule nodos innecesarios en cada frame.</li>
+    <li><b>Control de vértices y objetos:</b> El número de actores (objetos) en la escena es lo que más condiciona el rendimiento. Es mejor tener pocos actores con muchos materiales que muchos actores con un solo material.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Principio fundamental:</b> En Unreal Engine, el rendimiento de la GPU es finito. Cada decisión técnica implica elegir en qué se invierte ese presupuesto de procesamiento. Si ahorras en iluminación mediante baking, puedes gastar ese margen en VFX o en mayor complejidad visual donde realmente importa.</p>
+</div>
+
+<h3 class="section-title" id="c31-iluminacion">Iluminación Bakeada vs. Dinámica (Lumen)</h3>
+<p>Diego explica en detalle la tensión entre los dos sistemas de iluminación disponibles en Unreal Engine 5:</p>
+<ul class="content-list">
+    <li><b>Lumen (iluminación dinámica):</b> Es la punta de lanza de Unreal Engine 5, viene activado por defecto. Calcula rebotes de iluminación y reflejos frame a frame. Produce resultados excelentes pero consume mucho rendimiento.</li>
+    <li><b>Iluminación bakeada:</b> En UE5 viene deshabilitada por defecto y hay que activarla manualmente. Consiste en calcular la iluminación una vez e imprimirla en texturas (lightmaps). Epic lo considera &laquo;el pasado&raquo;, pero en producción virtual sigue siendo fundamental.</li>
+    <li><b>Flujo de trabajo recomendado:</b> Hacer toda la preproducción con iluminación dinámica hasta que el director de fotografía dé el visto bueno. Una vez cerrada la iluminación, pasar a bakeado para liberar rendimiento.</li>
+    <li><b>Lightmap Density:</b> Modo de visualización en Unreal que muestra mediante colores qué elementos tienen más o menos resolución de lightmap. La zona central (donde transcurre la acción) debe tener más resolución; las zonas lejanas pueden tener menos.</li>
+    <li><b>Problema del bakeado:</b> Si la resolución del lightmap es insuficiente, las sombras muestran píxeles y aliasing. Hay que distribuir la resolución estratégicamente.</li>
+    <li><b>Esferas de reflejo (Reflection Capture Spheres):</b> En lugar de calcular reflejos dinámicos constantemente, se distribuyen esferas por la escena que capturan una imagen 360&deg; estática en cada punto. Es un reflejo estático (no refleja objetos en movimiento), pero ahorra rendimiento enorme.</li>
+    <li><b>Planar Reflections:</b> Sistema heredado de UE4 que permite reflejos dinámicos en superficies planas como suelos. Se usa selectivamente en los elementos más susceptibles de recibir reflejos dinámicos.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Detalle Técnico: El Coste de los Reflejos</div>
+    <p>Diego describe los reflejos como un truco de trilero: las esferas de reflejo capturan la escena estáticamente, por lo que si pasa un avión, no se va a reflejar. Pero el ahorro de rendimiento justifica el engaño. Para los suelos, donde los reflejos son más evidentes, se puede usar un <b>Planar Reflection</b> que sí es dinámico, pero solo en esa superficie concreta.</p>
+</div>
+
+<h3 class="section-title" id="c31-shaders">Shaders, Texturas Virtuales y Transparencias</h3>
+<p>Los materiales y shaders son otro factor crítico de rendimiento que Diego aborda con detalle práctico:</p>
+<ul class="content-list">
+    <li><b>Complejidad de shaders:</b> Se calculan frame a frame. Unreal tiene un modo de visualización (Shader Complexity) que muestra mediante una escala de color (verde a blanco pasando por rojo) lo costoso que es cada material.</li>
+    <li><b>Transparencias:</b> Los elementos transparentes son los que más consumen en tiempo real. Un píxel transparente obliga a renderizar dos veces: la superficie y lo que hay detrás. Superponer múltiples capas de vidrio o agua revienta el rendimiento.</li>
+    <li><b>Vidrios y láminas de agua:</b> Son los dos elementos que más penalizan. Hay que hacer un uso comedido y evitar superponerlos.</li>
+    <li><b>Texturas virtuales (Virtual Textures):</b> Sistema que, en lugar de cargar la textura entera, la divide en trocitos y carga solo las zonas visibles. Reduce enormemente el consumo en escenarios con superficies grandes, pero puede generar artefactos de flickering cuando la cámara se mueve rápido.</li>
+    <li><b>Overdraw:</b> Efecto de renderizar el mismo píxel múltiples veces por capas superpuestas. Los modos de visualización de Unreal muestran esto como un mapa de calor.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Regla práctica:</b> Siempre que se usen texturas muy grandes o superficies extensas, activar las texturas virtuales. El pequeño coste en artefactos ocasionales compensa ampliamente la ganancia de rendimiento, especialmente cuando se añade vegetación encima que disimula cualquier imperfección.</p>
+</div>
+
+<h3 class="section-title" id="c31-pcg">Generación Procedural de Vegetación (PCG y Voxelización)</h3>
+<p>Uno de los avances técnicos más importantes que Diego destaca es el sistema de generación procedural de vegetación, que ha supuesto un antes y un después para Acid Drops:</p>
+<ul class="content-list">
+    <li><b>PCG (Procedural Content Generation):</b> Sistema de Unreal Engine basado en nodos que permite generar distribuciones de árboles, rocas y vegetación sobre splines (abiertas o cerradas). Una vez montado, es totalmente flexible: mover la spline desplaza toda la masa vegetal, cambiar su forma la adapta, y un camino intermedio hace desaparecer la vegetación automáticamente.</li>
+    <li><b>Antes del PCG (Foliage Tool):</b> Se pintaba manualmente con un pincel. Funcional pero lento y poco flexible.</li>
+    <li><b>Voxelización de vegetación:</b> Innovación clave de Epic Games. Las hojas de los árboles ya no usan texturas con opacidad (que generaban overdraw masivo con millones de árboles) sino que son geometría maciza. A cierta distancia de la cámara, los árboles se transforman en vóxeles (píxeles tridimensionales, cubitos) que a distancia resultan indistinguibles de la geometría real.</li>
+    <li><b>Mallas esqueléticas para vegetación:</b> Los árboles ya no son mallas estáticas con movimiento de viento por shader, sino mallas con huesos que se mueven con animación esquelética. El sistema de voxelización maneja millones de huesos eficientemente.</li>
+    <li><b>Resultado de rendimiento:</b> Con texturas virtuales, PCG y voxelización, Acid Drops consigue 60 fps con una RTX 5070 (gama buena pero no la más alta) en escenarios exteriores de gran extensión.</li>
+    <li><b>Distancia de voxelización configurable:</b> Se puede establecer a qué distancia de la cámara comienza la voxelización, ajustándolo según el plano para que la geometría cercana sea siempre pura.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Aplicación Comercial: Driving Plates Procedurales</div>
+    <p>Acid Drops ha descubierto que una de las formas más rentables de amortizar un estudio LED es la producción de <b>driving plates</b> (fondos para escenas de vehículos). Con los escenarios procedurales, pueden renderizar cámaras 360&deg; o 180&deg; por carreteras virtuales y ofrecerlas en múltiples condiciones: día, noche, lluvia, nieve, atardecer, otoño, invierno, verano. Todo está parametrizado y cambiarlo es cuestión de un clic.</p>
+</div>
+
+<h3 class="section-title" id="c31-nanite">Nanite, LODs y Gestión de Geometría</h3>
+<p>Diego presenta su posición sobre los sistemas de gestión de geometría, reconociendo que difiere de la tendencia general:</p>
+<ul class="content-list">
+    <li><b>Nanite:</b> Sistema de gestión de geometría de Unreal Engine que divide la malla en clusters que cambian de tamaño según la distancia a cámara. Permite usar geometría de millones de polígonos sin que estén todos en memoria simultáneamente.</li>
+    <li><b>Artefactos de Nanite:</b> El cambio dinámico de clusters puede generar pop-ups visuales, similares a los antiguos LODs pero más sutiles.</li>
+    <li><b>LODs (Levels of Detail):</b> Sistema clásico ya en desuso general, sustituido por Nanite. Pasaba de una resolución a otra con saltos visibles.</li>
+    <li><b>Filosofía de Diego (vieja escuela):</b> Prefiere optimizar manualmente y usar baking de detalle en texturas (normal maps, occlusion maps). Si toda la información de detalle de la malla de alta resolución se transfiere a mapas de la malla de baja resolución, el resultado es más ligero de renderizar. Nanite se reserva para objetos que realmente lo necesitan (una estatua en primer plano, por ejemplo).</li>
+    <li><b>Prerequisito de calidad:</b> Todo este sistema exige ser buen artista 3D: los objetos deben tener un buen UV unwrap. Si la geometría está mal desplegada, al bakear la iluminación aparecen zonas negras donde el motor no sabe cómo pintar la luz.</li>
+</ul>
+
+<h3 class="section-title" id="c31-tracking">Tracking de Cámara: Retracker, Mo-Sys y HTC Vive</h3>
+<p>Diego realiza una comparativa práctica de los sistemas de tracking disponibles en el mercado, con énfasis en las soluciones que usa Acid Drops:</p>
+<ul class="content-list">
+    <li><b>Retracker (Blix + Fix):</b> Sistema económico (~5.000&euro;) que Acid Drops utiliza habitualmente. Consta de dos partes: Blix (posición y rotación mediante cámaras estéreo que detectan puntos en el espacio) y Fix (información de lente). Funciona a 500 fps de tracking. Requiere una constelación de marcadores en el espacio para la referencia.</li>
+    <li><b>Mo-Sys:</b> Sistema de gama profesional utilizado en estudios grandes. Tiene su propio software y genera la información completa (posición, rotación y lente) por un solo puerto FreeD, simplificando la integración.</li>
+    <li><b>HTC Vive:</b> Sistema que funciona al revés: cámaras (base stations) alrededor de la cámara que detectan su posición y rotación. Coste similar (~5.000&euro;). Campo de visión de 30 grados.</li>
+    <li><b>Sistemas profesionales de gama alta:</b> Entre 25.000 y 100.000&euro;. La diferencia principal con los económicos es la precisión, el drifting (deriva) y que sacan toda la información por un solo puerto.</li>
+    <li><b>Problema del Retracker:</b> Depende de las condiciones de iluminación para detectar los puntos de la constelación. Si bajan las condiciones de luz, puede perder el tracking. Los sistemas caros reconocen puntos del propio espacio sin necesidad de constelación.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Demostración en Vivo: Tracking con Retracker</div>
+    <p>Diego realiza una demostración en directo con el escenario del ático de los Beatles, mostrando cómo funciona el tracking completo: la cámara estéreo en blanco y negro recoge posición y rotación, los motores Tilta Nano 2 controlan foco y zoom, y todo se combina dentro de Unreal Engine. Muestra el software propio de Retracker donde se ve que está generando <b>500 frames por segundo</b> de datos de posición (porque no está bloqueado al framerate del sistema) y la confianza del tracking basada en el número de puntos detectados.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Consejo Práctico: Portabilidad del Sistema</div>
+    <p>Acid Drops no tiene estudio propio, van de estudio en estudio. Por eso necesitan un sistema que se plante y funcione rápidamente. El Retracker cumple esa función pero requiere un tiempo de calibración. Cuando llegas a un estudio profesional bien montado, ya tienen su propio sistema de tracking instalado. Donde más útil resulta un sistema portátil es <b>en estudios de croma</b>, donde no suele haber infraestructura de tracking.</p>
+</div>
+
+<h3 class="section-title" id="c31-calibracion">Calibración de Lentes y Protocolo FreeD</h3>
+<p>La calibración de lentes es uno de los procesos más importantes y, según Diego, el que <b>nunca quieren pagar las productoras</b>:</p>
+<ul class="content-list">
+    <li><b>Protocolo FreeD:</b> Estándar de comunicación para datos de tracking. Acid Drops recibe la información por dos puertos independientes: el 40.000 para posición y rotación, y el 38.800 para datos de lente. Dentro de Unreal se combinan en una sola cámara virtual.</li>
+    <li><b>Curva de foco:</b> Los valores de lente llegan normalizados (de 0 a 1). El artista debe remapear estos valores a distancias reales: 0 = punto de foco más cercano (por ejemplo, 46 cm), 1 = distancia máxima (por ejemplo, 25 m). Entre medias, se toman varios puntos para generar una curva precisa.</li>
+    <li><b>Curva de zoom:</b> Mismo proceso que el foco pero para la distancia focal. Las lentes zoom son más complicadas de calibrar que las fijas porque requieren dos curvas simultáneas.</li>
+    <li><b>Distorsión de lente:</b> La calibración también define la distorsión óptica para que la imagen de Unreal se distorsione igual que la imagen que entra por la lente física.</li>
+    <li><b>Iris:</b> Se puede registrar también como un tercer valor, pero requiere un motor adicional. Un truco es reasignar el motor de zoom para controlar el iris en ópticas fijas.</li>
+    <li><b>Punto nodal:</b> Punto donde se forma la imagen dentro de la lente. Es crucial encontrarlo con precisión porque la cámara virtual en Unreal debe posicionarse exactamente en ese punto. El software de Retracker tiene un sistema con checker para calcular este punto (por ejemplo: 17 cm en X, 2 cm en Y, 0.5 cm en Z respecto al eje del tracker).</li>
+    <li><b>Base de datos de lentes:</b> Con el tiempo hay que ir construyendo un archivo de calibraciones por cada óptica para no repetir el proceso cada vez.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Frustración Profesional: La Calibración que Nadie Quiere Pagar</div>
+    <p>Diego lo dice abiertamente: <b>la calibración de color, lentes y tracking nunca se la quieren pagar</b>. Cada cambio de lente requiere una nueva calibración (o recuperar una previamente almacenada). Las lentes zoom son significativamente más costosas de calibrar que las fijas. Sin embargo, sin esta calibración, todo lo demás falla: el paralaje no coincide, el foco virtual no se corresponde con el físico y la distorsión rompe la integración.</p>
+</div>
+
+<h3 class="section-title" id="c31-frustum">Inner Frustum, Outer Frustum y Proyección LED</h3>
+<p>Diego explica los conceptos fundamentales de cómo Unreal Engine proyecta la imagen sobre la pantalla LED:</p>
+<ul class="content-list">
+    <li><b>Inner Frustum:</b> La porción de la pantalla LED que ve la cámara en su encuadre actual. Se renderiza a máxima calidad y se actualiza con el tracking en tiempo real.</li>
+    <li><b>Outer Frustum:</b> Todo lo que la cámara no ve directamente pero que sigue iluminando la escena y los actores. Se renderiza a menor calidad o con contenido estático.</li>
+    <li><b>Proyección y deformación:</b> Unreal Engine proyecta el contenido virtual sobre la geometría de la pantalla LED como una proyección de fachada. Si la pantalla es curva, el frame se deforma para que, visto a través de la cámara, parezca correcto. La deformación puede ser extrema cuando la cámara está muy cerca o en ángulos pronunciados.</li>
+    <li><b>Datos necesarios:</b> Para que la proyección funcione, Unreal necesita saber la resolución máxima de la pantalla LED y sus dimensiones físicas exactas.</li>
+</ul>
+
+<h3 class="section-title" id="c31-infraestructura">Infraestructura LED: GenLock, nDisplay y Multi-Nodo</h3>
+<p>La parte más técnica de la charla aborda la infraestructura necesaria para un volumen LED profesional:</p>
+<ul class="content-list">
+    <li><b>GenLock (generador de sincronismo):</b> Dispositivo que genera una señal de sincronización maestra a la que se conectan todos los elementos: la controladora LED (por SDI/BNC), la cámara (para sincronizar el obturador) y Unreal Engine (para generar frames al mismo ritmo). Todo debe funcionar al mismo framerate (25, 30 o 60 fps).</li>
+    <li><b>Controladora LED:</b> Hardware al que se conecta el nodo de renderizado por HDMI. A efectos del sistema operativo, el LED es una pantalla más de Windows. Se configura con la resolución máxima y el framerate deseado.</li>
+    <li><b>nDisplay:</b> Sistema nativo de Unreal Engine para lanzar contenido a múltiples pantallas. Cada pantalla (cada &laquo;4K&raquo;) requiere un nodo de renderizado independiente.</li>
+    <li><b>Configuración multi-nodo:</b> Para pantallas grandes (por ejemplo, 30 m &times; 8 m como la de Netflix) se necesitan múltiples nodos. Netflix tenía aproximadamente 6 nodos: 4 para la parte central con más potencia y los laterales con menos.</li>
+    <li><b>Máquina master:</b> Un ordenador adicional que no renderiza directamente sino que permite hacer modificaciones en el proyecto. Los cambios se sincronizan automáticamente a todos los nodos mediante Perforce.</li>
+    <li><b>Tarjetas gráficas profesionales:</b> Para configuraciones multi-nodo se requieren NVIDIA Quadro (A5000, A6000) en lugar de gráficas de consumo. Son las únicas que NVIDIA permite sincronizar mediante tarjetas Quadro Sync que reciben la señal de GenLock.</li>
+    <li><b>NVIDIA Mosaic:</b> Aplicación que hace que múltiples pantallas funcionen como una sola pantalla de Windows, necesaria para la sincronización visual.</li>
+    <li><b>Cuatro sincronías necesarias:</b> LED, cámara, nodos de Unreal y sistema de tracking. Todos deben funcionar al mismo pulso.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia Real: Multi-Nodo en Portugal</div>
+    <p>Diego cuenta que tuvieron que montar un sistema multi-nodo en Portugal con un LED de 25 metros por 6-7 metros. El principal problema fue la <b>sincronización de shaders</b>: aunque todo estaba perfecto a nivel de datos, los shaders no se compilaban en el mismo instante exacto en todos los nodos, provocando que las nubes se cortaran al pasar de una pantalla a otra. Estos problemas requieren muchas pruebas y tiempo de preproducción que habitualmente no se concede.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Realidad vs. Expectativa: Cada Estudio es Diferente</div>
+    <p>Diego advierte que <b>cada setup es diferente y cada estudio presenta sus propias particularidades</b>. Las productoras quieren que llegues, enchufes y funcione todo, pero cambiar un solo elemento puede desestabilizar todo el sistema. Pasar de un solo nodo a cuatro nodos es un cambio radical que complejiza enormemente la infraestructura.</p>
+</div>
+
+<h3 class="section-title" id="c31-perforce">Control de Versiones: Perforce y Switchboard</h3>
+<p>El control de versiones es un tema al que Diego dedica una atención especial por su criticidad en producción virtual:</p>
+<ul class="content-list">
+    <li><b>Necesidad básica:</b> Incluso trabajando en solitario, un control de versiones proporciona un histórico de cambios para poder revertir errores. Cuando hay 7 artistas en un proyecto, es imprescindible para evitar duplicaciones y conflictos.</li>
+    <li><b>Perforce:</b> El único sistema de control de versiones integrado nativamente con nDisplay y Switchboard de Unreal Engine. Requiere montar un servidor físico en una máquina local, lo cual es complejo pero necesario para producción virtual profesional.</li>
+    <li><b>Ventaja exclusiva de Perforce:</b> Cuando está sincronizado con Switchboard, cualquier cambio en el master se actualiza automáticamente en todos los nodos sin necesidad de hacer push/pull manual. Es como una sesión multijugador de videojuego.</li>
+    <li><b>Switchboard:</b> Aplicación de Unreal Engine que gestiona el lanzamiento de nDisplay y la sincronización con Perforce. Muestra la versión actual del proyecto y permite sincronizar todos los nodos.</li>
+    <li><b>Alternativa para equipos pequeños &mdash; Anchorpoint (Diversión):</b> Sistema de control de versiones en la nube para hasta 5 usuarios, sin necesidad de montar servidor. Ofrece 100 GB de almacenamiento. Proyectos de Unreal suelen pesar entre 8-50 GB. Ideal para quienes empiezan.</li>
+    <li><b>Soluciones por encima de Unreal:</b> Disguise, Pixotope, Brainstorm (Aximmetry) ofrecen estas funcionalidades ya integradas, pero con menos flexibilidad que el Unreal nativo.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Red dedicada obligatoria:</b> Diego insiste en que la red del estudio debe ser exclusiva para el sistema de producción virtual. No puede haber tráfico de oficina (correos, WhatsApp) en la misma red. Se necesita un switch específico con los puertos controlados. La mayoría de problemas en producción se deben a que <b>la red no está controlada</b>.</p>
+</div>
+
+<h3 class="section-title" id="c31-nomenclatura">Nomenclaturas, Templates y Gestión de Assets</h3>
+<p>La organización del proyecto es un tema que Diego aborda con pragmatismo:</p>
+<ul class="content-list">
+    <li><b>Nomenclatura de assets:</b> Todos los elementos (texturas, geometrías, niveles) deben seguir un sistema de nombres consistente. Ejemplo: <code>T_NombreObjeto_C</code> para textura de color. Permite buscar <code>_C</code> y encontrar todas las texturas de color del proyecto. Epic tiene su propia documentación de nomenclaturas recomendadas, pero en la práctica cada estudio tiene la suya.</li>
+    <li><b>Purgado y migración de proyectos:</b> Unreal tiene una funcionalidad llamada Migrate que permite extraer un nivel con todas sus dependencias a un proyecto vacío. Esto limpia todo el material no utilizado (assets de FAB descargados y no usados, texturas sobrantes, geometrías descartadas).</li>
+    <li><b>Almacenamiento por duplicado:</b> Acid Drops guarda sus proyectos en un NAS físico y en Drive en la nube. El NAS hace copias de seguridad periódicas de Drive.</li>
+    <li><b>Template propio de Acid Drops:</b> Han creado un template personalizado de Unreal Engine con todos los plugins necesarios ya activados (BlackMagic SDI, protocolo FreeD, Switchboard, nDisplay), más sus plugins propios. Incluye las configuraciones de pantallas LED de los estudios con los que trabajan habitualmente (García, Doctora House, Portugal). Acelera enormemente el arranque de nuevos proyectos y la incorporación de personal nuevo.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Innovación Interna: Plugins Propios y Consolas MIDI</div>
+    <p>Iván, compañero de Diego en Acid Drops, se ha especializado en <b>Blueprints</b> (el sistema de programación visual de Unreal) y ha desarrollado plugins que permiten controlar parámetros de la escena mediante consolas MIDI: faders para el giro del sol, ruedecillas para la velocidad de una animación, botones para lanzar eventos. Son muy baratos en rendimiento y aportan enorme flexibilidad en set. Para programación compleja recurren a programadores de C++ (el lenguaje nativo de Unreal), aunque son escasos.</p>
+</div>
+
+<h3 class="section-title" id="c31-croma">Croma en Contexto de Producción Virtual</h3>
+<p>Diego explica cómo el croma se integra dentro del ecosistema de producción virtual como herramienta complementaria al LED:</p>
+<ul class="content-list">
+    <li><b>Composición en tiempo real:</b> Dentro de Unreal Engine se puede hacer una composición de capas: fondo virtual + imagen de cámara (plate) + recorte por software + elementos digitales por delante. Esto se denomina composición en tiempo real.</li>
+    <li><b>Inner Frustum verde:</b> Se puede configurar el inner frustum del LED para que sea verde (croma), manteniendo el outer frustum con contenido virtual que genera luz y reflejos sobre los actores. La ventaja es que combinas la iluminación ambiental del LED con la capacidad de recorte del croma.</li>
+    <li><b>Limitaciones del croma LED:</b> El verde generado por el LED no es tan puro como un buen ciclorama de croma dedicado, y puede tener reflejos del contenido circundante. Pero tiene la ventaja de incluir marcadores de tracking traqueados para facilitar el match-moving posterior.</li>
+    <li><b>Croma en tiempo real bien hecho:</b> Requiere iluminación muy uniforme (&laquo;planita, planita, planita&raquo;) para que el software recorte limpiamente. Las sombras en el suelo son problemáticas porque el croma se oscurece y el keyer pierde información.</li>
+    <li><b>Previsualización casi píxel final:</b> Un buen croma en VP permite ver el resultado casi definitivo en rodaje, reduciendo la postproducción significativamente.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Referencia: Óscar Olarte y Croma en Tiempo Real</div>
+    <p>Diego menciona a <b>Óscar Olarte</b> como referente en croma espectacular con composición en tiempo real. Su equipo usa <b>Mo-Sys</b> como sistema de tracking con su propio software, haciendo el keying en directo y sacando pases separados (fondo, composición, mate). El resultado permite hacer prácticamente una edición y montaje el mismo día del rodaje.</p>
+</div>
+
+<h3 class="section-title" id="c31-ar">Elementos AR y Set Extension</h3>
+<p>Diego describe dos técnicas adicionales que complementan el volumen LED:</p>
+<ul class="content-list">
+    <li><b>Elementos AR (Realidad Aumentada):</b> Objetos virtuales que se renderizan por delante de todo (LED + actores). Solo se ven en el monitor de la cámara, están trackeados y responden al foco, zoom e iris. Se usan principalmente en broadcast: títulos flotantes, gráficos 3D delante de la mesa del presentador. En cine tiene menos uso porque la integración fotorrealista es más evidente.</li>
+    <li><b>Set Extension:</b> Cuando la cámara desafora (sale del área del LED), la zona fuera de la pantalla se rellena con contenido digital renderizado en Unreal. Requiere un mate preciso (LED en negro, resto en blanco) y una <b>segunda calibración de color</b> para igualar la parte digital con la parte física del LED, usando cartas de color.</li>
+    <li><b>Brainstorm y AR:</b> Brainstorm ha sido pionero en AR para televisión. Tenía su propio motor de render pero ha tenido que integrar Unreal Engine porque se veía inferior visualmente. Su rotuladora sigue siendo superior a cualquier solución nativa de Unreal.</li>
+    <li><b>Otras soluciones: Aximmetrix, Pixotope, Zero Density:</b> Alternativas comerciales para broadcast con AR integrado, generalmente caras y orientadas a grandes cadenas de televisión.</li>
+</ul>
+
+<h3 class="section-title" id="c31-driving">Driving Plates y Escenarios Procedurales</h3>
+<p>La producción de driving plates es una de las aplicaciones más rentables que Diego identifica para amortizar un estudio LED:</p>
+<ul class="content-list">
+    <li><b>Renderizado offline de plates:</b> No es necesario ejecutar el escenario en tiempo real para driving plates. Se renderiza una cámara 360&deg; o 180&deg; recorriendo una carretera virtual y el estudio simplemente proyecta el vídeo resultante.</li>
+    <li><b>Parametrización total:</b> Gracias a los escenarios procedurales, se pueden generar versiones del mismo recorrido en múltiples condiciones: día, noche, lluvia, nieve, atardecer, cualquier estación del año. Cambiar de una condición a otra es prácticamente un clic.</li>
+    <li><b>Rentabilidad para estudios:</b> Los estudios LED son caros de mantener y necesitan amortizarse rápidamente. Los driving plates son una fuente de ingresos constante porque la demanda de escenas de vehículos es muy alta en publicidad y ficción.</li>
+    <li><b>Precaución con reflejos:</b> Si los tótems laterales y el techo del LED tienen resolución menor que la pantalla principal, pueden verse los píxeles en los reflejos del coche. Lo ideal es que todo tenga resolución similar.</li>
+</ul>
+
+<h3 class="section-title" id="c31-color">Calibración de Color y Pantallas LED</h3>
+<p>Diego aborda las particularidades de la gestión del brillo y color en las pantallas LED:</p>
+<ul class="content-list">
+    <li><b>Brillo al 100%:</b> Las pantallas LED deben funcionar al máximo brillo porque el 80% de la iluminación de la escena proviene del LED. Bajar el brillo compromete la iluminación de los actores.</li>
+    <li><b>Control de exposición por cámara:</b> Los stops de luz se controlan desde los parámetros de la cámara (apertura de diafragma), no desde la pantalla. Si no hay motor de iris físico, el valor se fija en el proyecto.</li>
+    <li><b>Luz exterior que rebota:</b> Hay que tener cuidado de que las luces físicas adicionales no reboten contra el LED, porque lavan la imagen de la pantalla.</li>
+    <li><b>Calibración con cartas de color:</b> Imprescindible para igualar la respuesta de color entre la pantalla LED y la cámara, especialmente cuando se combinan zonas LED con set extension digital.</li>
+</ul>
+
+<h3 class="section-title" id="c31-experiencias">Experiencias de Producción</h3>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso: Producción en Portugal &mdash; LED de 25 m &times; 7 m</div>
+    <p>Acid Drops tuvo que montar por primera vez un sistema completo multi-nodo con Perforce y Switchboard para un LED de grandes dimensiones en Portugal. El proyecto les obligó a aprender y dominar todo el flujo de infraestructura profesional, desde las tarjetas Quadro Sync hasta la sincronización de shaders entre nodos.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso: Doctora House &mdash; Publicidad y Eventos</div>
+    <p>Acid Drops trabaja regularmente con Doctora House para la parte de publicidad, donde los tótems laterales y el techo tenían resolución mucho menor que el LED principal. Esto puede ser un problema para driving plates si los reflejos del coche capturan los píxeles del techo.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso: CIFP José Luis Garci &mdash; Setup Educativo</div>
+    <p>Diego realiza la demostración en directo en el propio centro educativo, con una pantalla de un solo 4K y un solo nodo. Explica que este es el setup más sencillo y el más habitual: un solo nodo conectado directamente a la controladora LED por HDMI. El template propio de Acid Drops ya incluye la configuración de esta pantalla específica.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Filosofía: La Preproducción como Inversión</div>
+    <p>Diego defiende que la producción virtual funciona mucho mejor cuando se invierte adecuadamente en preproducción, pero el problema comercial es que <b>no puedes venderle al cliente que el 60% del tiempo se va a preproducción y que luego la producción cueste lo mismo</b>. Cambiar la mentalidad de la industria, donde las decisiones siempre se tomaban cuando ya no había ni tiempo ni dinero, sigue siendo el mayor reto cultural.</p>
+</div>
+
+<h3 class="section-title" id="c31-glosario">Glosario Técnico</h3>
+<table class="glossary-table">
+    <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+    <tbody>
+        <tr><td><b>VAD</b></td><td>Virtual Art Department. Equipo encargado de crear los entornos virtuales, gestionar la infraestructura técnica y operar el sistema en set durante la producción.</td></tr>
+        <tr><td><b>Retracker</b></td><td>Sistema de tracking de cámara económico (~5.000&euro;) compuesto por Blix (posición/rotación mediante cámaras estéreo) y Fix (datos de lente). Funciona por detección de puntos en una constelación de marcadores.</td></tr>
+        <tr><td><b>Mo-Sys</b></td><td>Sistema de tracking profesional de gama alta que integra posición, rotación y datos de lente en un solo flujo FreeD. Utilizado en estudios de broadcast y producciones de alto presupuesto.</td></tr>
+        <tr><td><b>FreeD</b></td><td>Protocolo estándar de comunicación para datos de tracking de cámara (posición, rotación, información de lente). Transmite por red IP a puertos específicos (típicamente 40.000 para posición y 38.800 para lente).</td></tr>
+        <tr><td><b>Punto Nodal</b></td><td>Punto exacto dentro de la lente donde se forma la imagen. La cámara virtual en Unreal Engine debe posicionarse en este punto para que la perspectiva coincida. Se calibra con un checker pattern.</td></tr>
+        <tr><td><b>GenLock</b></td><td>Generador de sincronismo que produce una señal maestra a la que se sincronizan todos los elementos del sistema: LED, cámara, nodos de render y tracking. Garantiza que todos operan al mismo framerate.</td></tr>
+        <tr><td><b>nDisplay</b></td><td>Sistema nativo de Unreal Engine para renderizar contenido en múltiples pantallas sincronizadas. Cada pantalla requiere un nodo de renderizado independiente.</td></tr>
+        <tr><td><b>Switchboard</b></td><td>Aplicación de Unreal Engine que gestiona el lanzamiento de nDisplay y la sincronización con Perforce. Permite controlar todos los nodos desde una interfaz centralizada.</td></tr>
+        <tr><td><b>Perforce</b></td><td>Sistema de control de versiones con acuerdo exclusivo con Epic Games para la integración con Switchboard/nDisplay. Permite sincronización automática de cambios en tiempo real entre todos los nodos.</td></tr>
+        <tr><td><b>Inner Frustum</b></td><td>Porción de la pantalla LED que coincide con el encuadre actual de la cámara. Se renderiza a máxima calidad y se actualiza en tiempo real con el tracking.</td></tr>
+        <tr><td><b>Outer Frustum</b></td><td>Zona de la pantalla LED fuera del encuadre de la cámara. Proporciona iluminación ambiental y reflejos sobre los actores y el decorado físico.</td></tr>
+        <tr><td><b>Lumen</b></td><td>Sistema de iluminación global dinámica de Unreal Engine 5 que calcula rebotes de luz y reflejos frame a frame. Produce resultados fotorrealistas pero consume mucho rendimiento.</td></tr>
+        <tr><td><b>Iluminación Bakeada</b></td><td>Técnica de pre-calcular la iluminación e imprimirla en texturas (lightmaps). Reduce entre un 30-40% el consumo de GPU pero no permite cambios dinámicos de luz posteriores.</td></tr>
+        <tr><td><b>Nanite</b></td><td>Sistema de gestión de geometría de UE5 que divide mallas en clusters que cambian de resolución según la distancia a cámara. Permite usar geometría de millones de polígonos sin cargar todo en memoria.</td></tr>
+        <tr><td><b>Texturas Virtuales</b></td><td>Sistema que divide texturas grandes en tiles y carga solo las zonas visibles en cada momento. Reduce drásticamente el consumo de memoria de textura en escenarios extensos.</td></tr>
+        <tr><td><b>PCG</b></td><td>Procedural Content Generation. Sistema de nodos de Unreal Engine para generar distribuciones de vegetación, rocas y elementos sobre splines de forma procedural y totalmente flexible.</td></tr>
+        <tr><td><b>Voxelización</b></td><td>Técnica de Epic Games que convierte árboles lejanos en vóxeles (cubitos 3D) para eliminar el overdraw de hojas con transparencia. Reduce drásticamente el coste de renderizado de vegetación masiva.</td></tr>
+        <tr><td><b>Overdraw</b></td><td>Efecto de renderizar el mismo píxel múltiples veces por capas superpuestas (especialmente transparencias). Se visualiza en Unreal como un mapa de calor.</td></tr>
+        <tr><td><b>Shader Complexity</b></td><td>Modo de visualización de Unreal que muestra el coste de cada material en escala de color (verde = barato, rojo = caro, blanco = muy caro). Las transparencias aparecen en blanco.</td></tr>
+        <tr><td><b>Lightmap Density</b></td><td>Modo de visualización que muestra la resolución de los lightmaps mediante colores. Permite distribuir la resolución de iluminación bakeada estratégicamente.</td></tr>
+        <tr><td><b>Blueprint</b></td><td>Sistema de programación visual de Unreal Engine basado en nodos, accesible para artistas sin conocimientos de C++. Permite programar interactividad, controles MIDI y lógica de eventos.</td></tr>
+        <tr><td><b>Quadro Sync</b></td><td>Tarjeta adicional de NVIDIA para gráficas profesionales (Quadro/A-series) que permite sincronizar el renderizado de múltiples GPUs al mismo frame mediante señal de GenLock.</td></tr>
+        <tr><td><b>NVIDIA Mosaic</b></td><td>Funcionalidad de NVIDIA que permite que múltiples pantallas físicas funcionen como una sola pantalla lógica de Windows, necesaria para configuraciones multi-nodo.</td></tr>
+        <tr><td><b>Driving Plate</b></td><td>Vídeo 360&deg; o 180&deg; pre-renderizado de un recorrido por una carretera virtual, proyectado en un LED para escenas de vehículos. Se puede parametrizar para diferentes condiciones atmosféricas y horarias.</td></tr>
+        <tr><td><b>Set Extension</b></td><td>Técnica que rellena con contenido digital las zonas donde la cámara desafora más allá del LED. Requiere mate y calibración de color independiente.</td></tr>
+        <tr><td><b>Reflection Capture Sphere</b></td><td>Esferas distribuidas por la escena que capturan una imagen 360&deg; estática en su posición. Los objetos reflectantes usan esa información como reflejo, ahorrando el cálculo dinámico frame a frame.</td></tr>
+        <tr><td><b>Planar Reflection</b></td><td>Sistema de reflejo dinámico aplicado a superficies planas (típicamente suelos). Más costoso que las esferas pero produce reflejos en tiempo real.</td></tr>
+        <tr><td><b>Tilta Nano 2</b></td><td>Sistema de motores de foco y zoom compacto que transmite información por USB. Se conecta a un adaptador USB-C a Lemo para alimentar los encoders de lente en el sistema de tracking.</td></tr>
+        <tr><td><b>Migrate</b></td><td>Funcionalidad de Unreal Engine que extrae un nivel con todas sus dependencias a un proyecto vacío, eliminando assets no utilizados y limpiando el proyecto.</td></tr>
+        <tr><td><b>Gaussian Splatting</b></td><td>Técnica de representación 3D basada en esferas gaussianas que permite capturar entornos reales con mayor rango de movimiento que los plates, pero sin posibilidad fiable de re-iluminación.</td></tr>
+        <tr><td><b>AR (Realidad Aumentada en VP)</b></td><td>Elementos virtuales renderizados por delante de la imagen de cámara (delante del LED y los actores), trackeados en tiempo real. Usado principalmente en broadcast para rótulos y gráficos 3D.</td></tr>
+    </tbody>
+</table>
+
+<a href="#c31-top" class="back-top">&uarr; Volver al inicio de la charla</a>&nbsp;&nbsp;<a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>
+
+      
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CHARLA 03-2: Mario Montero - Dir. Fotografia en VP -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="talk-content" id="charla03-2">
+<div class="talk-header">
+        <h2 class="talk-title">Charla 03-2: Dirección de Fotografía en Producción Virtual</h2>
+        <div class="talk-meta">
+            <strong>Ponente:</strong> Mario Montero &mdash; Director de Fotografía<br>
+            <strong>Fecha:</strong> Miércoles 18 de marzo de 2026
+        </div>
+      </div>
+      
+<div class="section-nav">
+    <div class="section-nav-title">Contenidos</div>
+    <ul>
+        <li><a href="#c32-resumen">Resumen Ejecutivo</a></li>
+        <li><a href="#c32-parenostre">Caso de Estudio: &ldquo;Pare Nostre&rdquo; &mdash; Primera Pel&iacute;cula 100% VP en Espa&ntilde;a</a></li>
+        <li><a href="#c32-led-vs-croma">LED vs. Croma: Criterios de Decisi&oacute;n</a></li>
+        <li><a href="#c32-emanacion">El Problema de la Emanaci&oacute;n de Luz del LED</a></li>
+        <li><a href="#c32-optica">Calibraci&oacute;n de &Oacute;pticas y Lentes</a></li>
+        <li><a href="#c32-foco">Foco y Pantallas LED: El Problema de la Visibilidad de P&iacute;xeles</a></li>
+        <li><a href="#c32-profundidad">Profundidad de Campo y Control de Diafragma</a></li>
+        <li><a href="#c32-skylight">Concepto de Skylight y Dise&ntilde;o Lum&iacute;nico Narrativo</a></li>
+        <li><a href="#c32-croma-temp">T&eacute;cnica de Variaci&oacute;n de Temperatura de Color en Croma</a></li>
+        <li><a href="#c32-reflejos">Reflejos en Producci&oacute;n Virtual</a></li>
+        <li><a href="#c32-totems">T&oacute;tems e Iluminaci&oacute;n Din&aacute;mica Multip&iacute;xel</a></li>
+        <li><a href="#c32-plates">Plates vs. 3D vs. LED: Enfoques de Producci&oacute;n</a></li>
+        <li><a href="#c32-interior-exterior">Interior vs. Exterior: Observaciones Pr&aacute;cticas</a></li>
+        <li><a href="#c32-camaras">C&aacute;maras, &Oacute;pticas y Equipamiento</a></li>
+        <li><a href="#c32-workflow">Flujo de Trabajo del Director de Fotograf&iacute;a en VP</a></li>
+        <li><a href="#c32-alcaine">Mentor&iacute;a de Jos&eacute; Luis Alcaine y Filosof&iacute;a Fotogr&aacute;fica</a></li>
+        <li><a href="#c32-granvia">Proyecto Futuro: Gran V&iacute;a A&ntilde;os 40</a></li>
+        <li><a href="#c32-glosario">Glosario de T&eacute;rminos</a></li>
+    </ul>
+</div>
+
+<div class="executive-summary" id="c32-resumen">
+    <h3 class="section-title" style="border:none;padding:0;margin:0 0 12px 0;">Resumen Ejecutivo</h3>
+    <p>Mario Montero, Director de Fotograf&iacute;a, comparte su experiencia en <b>&ldquo;Pare Nostre&rdquo;</b>, la primera pel&iacute;cula rodada al 100% en producci&oacute;n virtual en Espa&ntilde;a (y posiblemente en Europa), dirigida por Manuel (Manel) Huerga y producida por Mediapro. La charla pivota sobre las decisiones cr&iacute;ticas del DOP cuando trabaja con pantallas LED y croma simult&aacute;neamente: cu&aacute;ndo elegir cada tecnolog&iacute;a, c&oacute;mo la emanaci&oacute;n de luz del LED condiciona los interiores, por qu&eacute; no se debe hacer foco directo sobre las pantallas, y c&oacute;mo el diafragma y la elecci&oacute;n de &oacute;pticas afectan a la integraci&oacute;n del fondo virtual. Montero detalla tambi&eacute;n t&eacute;cnicas innovadoras como la variaci&oacute;n de temperatura de color del croma verde, el uso de t&oacute;tems, la iluminaci&oacute;n multip&iacute;xel din&aacute;mica, y su filosof&iacute;a heredada del maestro Jos&eacute; Luis Alcaine: la observaci&oacute;n diaria de la luz real como fundamento de toda cinematograf&iacute;a. La sesi&oacute;n ofrece una visi&oacute;n extremadamente pr&aacute;ctica y honesta, incluyendo los errores y limitaciones encontradas durante el rodaje.</p>
+</div>
+
+<h3 class="section-title" id="c32-parenostre">Caso de Estudio: &ldquo;Pare Nostre&rdquo; &mdash; Primera Pel&iacute;cula 100% VP en Espa&ntilde;a</h3>
+<p>&ldquo;Pare Nostre&rdquo; narra el esc&aacute;ndalo pol&iacute;tico de Jordi Pujol en Catalu&ntilde;a. Dirigida por Manel Huerga y producida por Mediapro, se rod&oacute; &iacute;ntegramente en producci&oacute;n virtual &mdash; con <b>pantalla LED y croma verde disponibles simult&aacute;neamente</b> en el mismo estudio de Mediapro en Barcelona. La historia transcurre aproximadamente en un d&iacute;a con flashbacks, ambientada principalmente en el interior de la casa de Pujol, con secuencias de coches, exteriores de pueblo y un funeral.</p>
+<ul class="content-list">
+    <li><b>Duraci&oacute;n del rodaje:</b> Aproximadamente 5 semanas (casi 4 y algo), frente a lo que hubiera sido un rodaje considerablemente m&aacute;s largo en producci&oacute;n tradicional.</li>
+    <li><b>Preiluminaci&oacute;n virtual:</b> Mario pas&oacute; un mes y medio iluminando todos los decorados virtuales en Unreal Engine antes del rodaje principal.</li>
+    <li><b>Un solo decorado f&iacute;sico:</b> Solo se construy&oacute; f&iacute;sicamente el pasillo/vest&iacute;bulo. Todo lo dem&aacute;s era virtual. Los elementos f&iacute;sicos se limitaban a lo que los actores tocaban: mesa, sof&aacute;, sillas, televisi&oacute;n, cama, l&aacute;mparas.</li>
+    <li><b>Suelos verdes:</b> Todos los suelos en los sets de croma eran verdes y se reemplazaron en postproducci&oacute;n, un proceso que result&oacute; enormemente complejo.</li>
+    <li><b>Metodolog&iacute;a dual:</b> Se saltaba constantemente entre LED y croma seg&uacute;n lo que funcionaba mejor para cada secuencia. Las secuencias de coches se hicieron en LED; los interiores de la casa principalmente en croma.</li>
+    <li><b>Desbordamiento de presupuesto:</b> Los costes de limpieza de croma y composici&oacute;n en VFX se dispararon respecto a las estimaciones iniciales, especialmente en las primeras fases cuando el equipo a&uacute;n estaba aprendiendo.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: El Despacho de Jordi Pujol &mdash; Dise&ntilde;o Lum&iacute;nico Narrativo</div>
+    <p>Mario dise&ntilde;&oacute; la casa virtual con intenci&oacute;n narrativa: orient&oacute; el edificio para que el <b>despacho de Pujol mirara al norte</b> (sin sol directo), creando una atm&oacute;sfera fr&iacute;a y austera que representaba los oscuros manejos pol&iacute;ticos. Las zonas de estar miraban al sur, con luz m&aacute;s c&aacute;lida y luminosa. La transici&oacute;n temporal (del d&iacute;a a la noche) se planific&oacute; secuencia por secuencia, como un reloj, para que la progresi&oacute;n de la luz contara la historia.</p>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: Secuencias de Coches &mdash; La Gran Eficiencia del LED</div>
+    <p>Las secuencias de coches fueron donde el LED brill&oacute; con diferencia. En <b>un solo d&iacute;a</b>, Mario rod&oacute; aproximadamente cinco situaciones distintas de coches en Barcelona: taxi nocturno, conducci&oacute;n diurna por Paseo de Gracia, y m&aacute;s. Cambiaba de d&iacute;a a noche en cuesti&oacute;n de cuatro minutos. En localizaci&oacute;n real, esto habr&iacute;a requerido una semana completa como m&iacute;nimo. Los reflejos naturales del LED en los cristales del coche eran impresionantes y se capturaban directamente en c&aacute;mara.</p>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: La Secuencia de Tortura &mdash; Croma al Extremo</div>
+    <p>La escena de interrogatorio/tortura se rod&oacute; <b>completamente en croma verde</b>, incluyendo el suelo sobre el que el actor estaba tumbado. Mario utiliz&oacute; diafragma m&aacute;ximo abierto para aislar al sujeto, con iluminaci&oacute;n fluorescente fr&iacute;a que generaba un tono cl&iacute;nico y opresivo. Intencionadamente permiti&oacute; un toque de spill verde en las sombras para a&ntilde;adir a la atm&oacute;sfera enfermiza de la escena.</p>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: La Deconstrucci&oacute;n Final &mdash; Revelar la Mentira</div>
+    <p>El final de la pel&iacute;cula fue una decisi&oacute;n art&iacute;stica de Manel Huerga: <b>deconstruir literalmente el set</b>, revelando el estudio detr&aacute;s de la producci&oacute;n virtual. El croma verde se pint&oacute; de negro para que durante la revelaci&oacute;n no se viera el verde. El personaje sale de su mundo ficticio y el espectador ve el plat&oacute; real donde se rod&oacute;, en una jugada narrativa reminiscente de &ldquo;The Matrix&rdquo;.</p>
+</div>
+
+<h3 class="section-title" id="c32-led-vs-croma">LED vs. Croma: Criterios de Decisi&oacute;n</h3>
+<p>La gran lecci&oacute;n pr&aacute;ctica de &ldquo;Pare Nostre&rdquo; fue definir <b>cu&aacute;ndo usar cada tecnolog&iacute;a</b>. Mario lleg&oacute; a conclusiones claras despu&eacute;s de la experiencia:</p>
+<ul class="content-list">
+    <li><b>LED funciona bien para:</b> Secuencias de coches (reflejos naturales en cristales, cambio r&aacute;pido de escenarios), ciertos paisajes en penumbra que no emanan excesiva luz, y situaciones donde la iluminaci&oacute;n ambiental del LED beneficia la escena.</li>
+    <li><b>Croma funciona mejor para:</b> Interiores de casas y habitaciones, donde el DOP necesita control total de la situaci&oacute;n lum&iacute;nica. Un espacio de 4&times;5 metros con pantalla LED no resulta cre&iacute;ble.</li>
+    <li><b>El problema fundamental del LED en interiores:</b> La pantalla emana luz de forma incontrolable. Si colocas a una persona al lado, esa luz &ldquo;mala&rdquo; cae sobre ella sin que el DOP pueda gestionarla.</li>
+    <li><b>Ventaja del 3D sobre plates en LED:</b> Con entornos 3D en tiempo real, Mario pod&iacute;a cambiar condiciones de luz (nublar el sol, cambiar su posici&oacute;n) en dos minutos. Con plates pregrabados, los cambios eran imposibles.</li>
+    <li><b>Coste:</b> LED con plates es m&aacute;s econ&oacute;mico que LED con 3D en tiempo real, porque la creaci&oacute;n de entornos 3D requiere una inversi&oacute;n enorme.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Caso: El Exterior del Pueblo con Pedraforca &mdash; Lo que No Funcion&oacute;</div>
+    <p>Mario relata con honestidad una secuencia que <b>no le convenci&oacute;</b>: un exterior de pueblo con la monta&ntilde;a de Pedraforca al fondo, rodado en LED con plates. El resultado &ldquo;cantaba&rdquo; (se ve&iacute;a falso) debido a la insuficiente distancia entre la fuente de luz y el sujeto (la ley del cuadrado inverso hac&iacute;a que la ca&iacute;da de luz fuera poco realista), desajustes de temperatura de color, y la dificultad general de empatar la luz artificial del cine con la luz natural exterior. Mario habr&iacute;a preferido rodarlo en croma con 3D virtual en Unreal Engine. Sugiere que para esa toma, un Gaussian Splatting del paisaje real habr&iacute;a funcionado mejor.</p>
+</div>
+
+<h3 class="section-title" id="c32-emanacion">El Problema de la Emanaci&oacute;n de Luz del LED</h3>
+<p>Uno de los temas recurrentes de la charla: las pantallas LED <b>emiten luz constantemente</b>, lo cual es simult&aacute;neamente su mayor ventaja (reflejos naturales, iluminaci&oacute;n ambiental integrada) y su mayor limitaci&oacute;n (p&eacute;rdida de control lum&iacute;nico para el DOP).</p>
+<ul class="content-list">
+    <li><b>Beneficio:</b> En secuencias de coches, la luz emanada genera reflejos naturales en cristales, carrocer&iacute;a y piel de los actores &mdash; algo extremadamente dif&iacute;cil de replicar en composici&oacute;n sobre croma.</li>
+    <li><b>Problema:</b> En interiores peque&ntilde;os, la emanaci&oacute;n destruye el control lum&iacute;nico del DOP. No se puede iluminar selectivamente cuando la pantalla ba&ntilde;a todo el set con su luz.</li>
+    <li><b>Temperatura de color:</b> Al inicio del proyecto, la temperatura de color de las pantallas LED era dif&iacute;cil de ajustar con precisi&oacute;n. Mario nota que esto ha mejorado significativamente en los &uacute;ltimos a&ntilde;os.</li>
+    <li><b>Ley del cuadrado inverso:</b> La luz real del sol no tiene ca&iacute;da perceptible porque la fuente est&aacute; infinitamente lejos. La luz del LED, a pocos metros del sujeto, tiene una ca&iacute;da muy marcada, lo que delata la artificialidad especialmente en simulaci&oacute;n de exteriores.</li>
+</ul>
+
+<h3 class="section-title" id="c32-optica">Calibraci&oacute;n de &Oacute;pticas y Lentes</h3>
+<p>Cada lente requiere su propia <b>calibraci&oacute;n espec&iacute;fica</b> (lo que se denomina &ldquo;liberado de &oacute;ptica&rdquo;) para que la perspectiva y la profundidad de campo del mundo virtual coincidan con las del mundo f&iacute;sico:</p>
+<ul class="content-list">
+    <li><b>Perspectiva variable:</b> Al cambiar la &oacute;ptica en el decorado virtual, la perspectiva del fondo virtual cambiaba en consonancia, emparejando el comportamiento f&iacute;sico de la lente real.</li>
+    <li><b>Profundidad de campo:</b> Cambiar el diafragma afectaba visiblemente la profundidad percibida del fondo virtual. Mario encontr&oacute; esto impresionante y lo utiliz&oacute; como herramienta narrativa.</li>
+    <li><b>Focales utilizadas:</b> 18 mm para planos generales de establecimientos, 40 mm como focal principal de trabajo, 50 mm, y 12 mm para un plano subjetivo espec&iacute;fico. Angulares (focales cortas) para interiores de coches.</li>
+</ul>
+
+<h3 class="section-title" id="c32-foco">Foco y Pantallas LED: El Problema de la Visibilidad de P&iacute;xeles</h3>
+<p>Una de las reglas m&aacute;s cr&iacute;ticas que Mario comparte, reforzada por una conversaci&oacute;n con Paco de Netflix Vancouver: <b>nunca hacer foco directo sobre la pantalla LED</b>.</p>
+<ul class="content-list">
+    <li><b>La regla del trasfoco:</b> Cuando un director pide un rack focus (trasfoco) del actor al fondo, Mario lo ejecuta de forma r&aacute;pida pero deteni&eacute;ndose justo antes del punto donde los p&iacute;xeles se hacen visibles. El fondo queda &ldquo;casi&rdquo; en foco, pero no del todo.</li>
+    <li><b>Moir&eacute; y artefactos:</b> Si se lleva el foco demasiado n&iacute;tido a la pantalla, aparecen patrones de moir&eacute; y se ven las imperfecciones de la matriz de p&iacute;xeles del LED.</li>
+    <li><b>Ventaja del 3D virtual:</b> En contraste, cuando se trabaja con croma y 3D renderizado en Unreal, <b>s&iacute;</b> se puede hacer un trasfoco completo hasta el fondo porque el fondo es una imagen renderizada, no una superficie f&iacute;sica de p&iacute;xeles.</li>
+    <li><b>Gesti&oacute;n del diafragma:</b> Abrir el diafragma ayuda a suavizar el moir&eacute;, pero limita las opciones creativas del DOP cuando necesitar&iacute;a mayor profundidad de campo.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Consejo de Producci&oacute;n: La Regla de Paco de Netflix</div>
+    <p>Mario cita una conversaci&oacute;n con <b>Paco, de las operaciones de Netflix en Vancouver</b>, quien reafirm&oacute; categ&oacute;ricamente la regla de no hacer foco en las pantallas LED. Esta limitaci&oacute;n t&eacute;cnica tiene implicaciones directas en la planificaci&oacute;n de secuencias: cualquier plano que requiera trasfoco completo al fondo debe considerarse para rodaje en croma con 3D, no en LED.</p>
+</div>
+
+<h3 class="section-title" id="c32-profundidad">Profundidad de Campo y Control de Diafragma</h3>
+<p>Mario utiliza la profundidad de campo como <b>herramienta narrativa fundamental</b>, no solo t&eacute;cnica:</p>
+<ul class="content-list">
+    <li><b>Diafragma habitual:</b> Trabaja frecuentemente alrededor de f/4, buscando un equilibrio entre aislamiento del sujeto y contexto visual del entorno.</li>
+    <li><b>M&aacute;xima apertura narrativa:</b> En la escena de tortura, utiliz&oacute; la m&aacute;xima apertura para aislar completamente al sujeto, creando una calidad on&iacute;rica y claustrofóbica.</li>
+    <li><b>Interacci&oacute;n con el fondo virtual:</b> Descubri&oacute; que al cambiar el diafragma, la profundidad percibida del fondo virtual variaba de forma convincente, a&ntilde;adiendo una capa de realismo que le entusiasm&oacute;.</li>
+    <li><b>Limitaciones:</b> En algunos casos, la respuesta de profundidad de campo del fondo virtual no emparejaba perfectamente con la f&iacute;sica real de la lente, creando peque&ntilde;as inconsistencias visibles para un ojo entrenado.</li>
+</ul>
+
+<h3 class="section-title" id="c32-skylight">Concepto de Skylight y Dise&ntilde;o Lum&iacute;nico Narrativo</h3>
+<p>El <b>skylight</b> &mdash; luz amplia del cielo que entra por una ventana &mdash; es uno de los conceptos lum&iacute;nicos centrales del trabajo de Mario Montero:</p>
+<ul class="content-list">
+    <li><b>Definici&oacute;n pr&aacute;ctica:</b> Una combinaci&oacute;n de luz ambiente amplia del cielo m&aacute;s un complemento de sol directo. Es la base de la iluminaci&oacute;n natural de interiores.</li>
+    <li><b>Aplicaci&oacute;n en VP:</b> En el set de croma, Mario pod&iacute;a colocar un aparato de luz f&iacute;sico fuera del set y hacer que el sol &ldquo;entrara&rdquo; por la ventana virtual. La ventaja: como no hab&iacute;a paredes f&iacute;sicas que recortaran la luz, ten&iacute;a libertad total para iluminar sin preocuparse por spills o light spears.</li>
+    <li><b>Dise&ntilde;o narrativo:</b> Para el despacho de Pujol, dise&ntilde;&oacute; una luz norte fr&iacute;a (sin sol directo) que transmitiera austeridad. Para las zonas de estar, luz sur c&aacute;lida con sol directo. La transici&oacute;n d&iacute;a-noche se planific&oacute; secuencia a secuencia.</li>
+    <li><b>Secuencia nocturna:</b> Para una escena de dormitorio nocturno, la luz ven&iacute;a desde abajo (nivel de calle), creando una calidad inquietante inspirada en el estilo de Tobe Hooper. El personaje mira hacia abajo a la calle, y la luz sube desde ah&iacute;.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: Recuerdos y Escenas de Ensue&ntilde;o</div>
+    <p>Para las escenas de memoria/flashback donde el personaje se encuentra con su yo m&aacute;s joven, Mario utiliz&oacute; un <b>proyector incandescente de 10K</b> para crear un flare c&aacute;lido y envolvente que evocara la calidad on&iacute;rica del recuerdo. Manten&iacute;a alrededor de un 10% de fuentes incandescentes en su equipo precisamente para estos momentos que requer&iacute;an el espectro continuo y la calidad natural del tungsteno.</p>
+</div>
+
+<h3 class="section-title" id="c32-croma-temp">T&eacute;cnica de Variaci&oacute;n de Temperatura de Color en Croma</h3>
+<p>Un descubrimiento personal de Mario que comparti&oacute; como una de las t&eacute;cnicas m&aacute;s &uacute;tiles del rodaje:</p>
+<ul class="content-list">
+    <li><b>T&eacute;cnica:</b> En lugar de controlar &uacute;nicamente la intensidad de la iluminaci&oacute;n del croma verde, <b>variaba la temperatura de color</b> de los LEDs que iluminaban la tela verde, oscilando entre 3200 K y 5000 K.</li>
+    <li><b>Motivo:</b> Dependiendo de las condiciones de luz ambiente de cada secuencia (c&aacute;lida, fr&iacute;a, mixta), ajustar la temperatura del croma mejoraba dr&aacute;sticamente la calidad de la extracci&oacute;n de key en postproducci&oacute;n.</li>
+    <li><b>Delegaci&oacute;n eficiente:</b> Los operadores de VFX controlaban la iluminaci&oacute;n del croma desde su mesa por DMX, gestionando tanto intensidad como temperatura. Esto <b>liberaba a Mario</b> para concentrarse exclusivamente en la iluminaci&oacute;n narrativa y art&iacute;stica de la escena.</li>
+    <li><b>Resultado:</b> El equipo de croma encontr&oacute; que los resultados de keying eran significativamente superiores con esta t&eacute;cnica frente al m&eacute;todo tradicional de intensidad &uacute;nica.</li>
+</ul>
+
+<h3 class="section-title" id="c32-reflejos">Reflejos en Producci&oacute;n Virtual</h3>
+<p>Los reflejos son uno de los grandes retos y, al mismo tiempo, una de las grandes ventajas de la producci&oacute;n virtual:</p>
+<ul class="content-list">
+    <li><b>Reflejos naturales del LED:</b> Mario descubri&oacute; con entusiasmo que los entornos virtuales se reflejaban correctamente en superficies f&iacute;sicas: cristales, espejos, metales. La ley de reflexi&oacute;n (&aacute;ngulo de incidencia = &aacute;ngulo de reflexi&oacute;n) funcionaba naturalmente.</li>
+    <li><b>Gafas de los actores:</b> En croma, las gafas reflejaban el verde, lo cual result&oacute; &uacute;til porque el equipo de VFX pod&iacute;a extraer el verde y sustituirlo por el reflejo del entorno virtual.</li>
+    <li><b>Superficies brillantes en croma:</b> En otra producci&oacute;n, se us&oacute; una superficie de croma <b>barnizada (brillante)</b> en lugar de mate para capturar reflejos especulares reales de los actores que luego se compositar&iacute;an en el set virtual (una escena de ba&ntilde;o con azulejos).</li>
+    <li><b>Ley del billar:</b> Mario utiliza la met&aacute;fora de las bolas de billar para explicar c&oacute;mo los reflejos obedecen a las mismas leyes f&iacute;sicas tanto en superficies reales como ante pantallas LED.</li>
+</ul>
+
+<h3 class="section-title" id="c32-totems">T&oacute;tems e Iluminaci&oacute;n Din&aacute;mica Multip&iacute;xel</h3>
+<p>Dos conceptos de iluminaci&oacute;n avanzada que Mario distingue con precisi&oacute;n:</p>
+
+<h4 class="subsection-title">T&oacute;tems: Pantallas de V&iacute;deo como Fuentes de Luz</h4>
+<ul class="content-list">
+    <li><b>Definici&oacute;n:</b> Pantallas de v&iacute;deo utilizadas no como fondo sino como fuentes de luz pr&aacute;cticas para generar reflejos y volumen lum&iacute;nico sobre actores y decorado.</li>
+    <li><b>Problema de calidad:</b> Los t&oacute;tems est&aacute;n dise&ntilde;ados para emitir v&iacute;deo, <b>no para iluminar</b>. Sus m&eacute;tricas de calidad de luz (CRI, TLCI, SSI) son deficientes comparadas con instrumentos de iluminaci&oacute;n dedicados.</li>
+    <li><b>Uso apropiado:</b> Funcionan bien para generar reflejos ambientales (farolas que pasan en escenas de coche, cambios de color de sem&aacute;foros), pero no como iluminaci&oacute;n principal.</li>
+</ul>
+
+<h4 class="subsection-title">Iluminaci&oacute;n Multip&iacute;xel Din&aacute;mica</h4>
+<ul class="content-list">
+    <li><b>Concepto:</b> Paneles LED dise&ntilde;ados espec&iacute;ficamente como <b>proyectores de iluminaci&oacute;n</b>, no como pantallas de v&iacute;deo. Cada p&iacute;xel se controla individualmente por DMX.</li>
+    <li><b>Apariencia:</b> A simple vista no se ve una imagen resuelta (solo manchas de color), pero cada p&iacute;xel act&uacute;a como un canal de iluminaci&oacute;n independiente.</li>
+    <li><b>Conversi&oacute;n de se&ntilde;al:</b> La se&ntilde;al de v&iacute;deo se convierte a datos DMX que controlan el panel multip&iacute;xel. El panel reproduce la informaci&oacute;n de color y movimiento del v&iacute;deo pero como <b>luz de calidad</b> (buen SSI, CRI), no como imagen visible.</li>
+    <li><b>Limitaci&oacute;n:</b> No sirven para generar reflejos (se ver&iacute;an borrosos), pero son excelentes para iluminaci&oacute;n ambiental din&aacute;mica (simular pasear por la Gran V&iacute;a con luces de calle cambiantes).</li>
+    <li><b>Movimiento f&iacute;sico de la luz:</b> Mario destaca una distinci&oacute;n importante: no es lo mismo una fuente fija que se enciende y apaga cuando el sujeto pasa por debajo (como una farola) que una fuente cuya luz se mueve f&iacute;sicamente dentro del aparato. El camino f&iacute;sico del movimiento de la luz importa para el realismo.</li>
+</ul>
+
+<h3 class="section-title" id="c32-plates">Plates vs. 3D vs. LED: Enfoques de Producci&oacute;n</h3>
+<p>Mario distingue tres enfoques distintos utilizados en &ldquo;Pare Nostre&rdquo;:</p>
+<ul class="content-list">
+    <li><b>LED con plates pregrabados:</b> Fondos filmados previamente reproducidos en la pantalla LED. M&aacute;s econ&oacute;mico, pero sin posibilidad de modificar condiciones de luz en tiempo real. Usado principalmente para secuencias de coches.</li>
+    <li><b>LED con 3D en tiempo real:</b> Entornos creados en Unreal Engine reproducidos en la pantalla LED. M&aacute;s caro y complejo, pero permite cambios din&aacute;micos (posici&oacute;n del sol, nubes, hora del d&iacute;a). Algunos paisajes se hicieron as&iacute;.</li>
+    <li><b>Croma con 3D virtual:</b> Fondo verde f&iacute;sico, entorno 3D renderizado en Unreal visible en el monitor del DOP durante el rodaje y composited en postproducci&oacute;n. Ofrece m&aacute;xima flexibilidad y control lum&iacute;nico. Fue el enfoque principal para interiores de la casa.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: Cambiar el Sol en Dos Minutos</div>
+    <p>Una de las ventajas que m&aacute;s entusiasm&oacute; a Mario del trabajo con 3D en tiempo real en Unreal: pod&iacute;a pedir que se <b>nublara el cielo</b> o cambiar la posici&oacute;n del sol, y en dos minutos lo ten&iacute;a. Para un DOP acostumbrado a esperar horas por las condiciones de luz adecuadas en exteriores, esta capacidad result&oacute; reveladora.</p>
+</div>
+
+<h3 class="section-title" id="c32-interior-exterior">Interior vs. Exterior: Observaciones Pr&aacute;cticas</h3>
+<p>Una de las conclusiones contraintuitivas del rodaje:</p>
+<ul class="content-list">
+    <li><b>Los interiores funcionan mejor en VP que los exteriores:</b> Aunque parece contradictorio (para qu&eacute; construir un interior virtualmente?), los interiores tienen gradientes de iluminaci&oacute;n y paletas de color m&aacute;s simples y controlables.</li>
+    <li><b>Los exteriores son m&aacute;s dif&iacute;ciles:</b> Tienen vida natural, movimiento, complejidad atmosf&eacute;rica, y una luz que es extremadamente dif&iacute;cil de empatar con la iluminaci&oacute;n artificial del cine.</li>
+    <li><b>La pantalla LED en interiores peque&ntilde;os no funciona:</b> Espec&iacute;ficamente, un espacio de 4&times;5 metros con pantalla LED es inviable por la emanaci&oacute;n de luz incontrolable.</li>
+    <li><b>Paisajes en penumbra:</b> Ciertos paisajes que estaban en penumbra s&iacute; funcionaron en LED porque al no emanar luz excesiva, el DOP pod&iacute;a complementar con sus propias fuentes usando las pantallas como apoyo de iluminaci&oacute;n ambiental.</li>
+</ul>
+
+<h3 class="section-title" id="c32-camaras">C&aacute;maras, &Oacute;pticas y Equipamiento</h3>
+
+<h4 class="subsection-title">ARRI Alexa 35</h4>
+<ul class="content-list">
+    <li><b>C&aacute;mara principal de &ldquo;Pare Nostre&rdquo;.</b> Mario la eligi&oacute; espec&iacute;ficamente por su formato Super 35 (no gran formato), que le daba las caracter&iacute;sticas de profundidad de campo que buscaba.</li>
+    <li><b>Calidad de imagen:</b> Elogia su imagen org&aacute;nica, la reproducci&oacute;n de tonos de piel y la gradaci&oacute;n tonal del sensor. La describe como &ldquo;m&aacute;s org&aacute;nica, me recuerda m&aacute;s al cine&rdquo;.</li>
+    <li><b>Filosof&iacute;a de exposici&oacute;n:</b> Mario expone org&aacute;nicamente en c&aacute;mara en lugar de depender de plugins de postproducci&oacute;n. Instruy&oacute; al equipo 3D para que renderizara los entornos virtuales tal como &eacute;l los expondr&iacute;a realmente.</li>
+</ul>
+
+<h4 class="subsection-title">ARRI Alexa Cl&aacute;sica (Comparaci&oacute;n)</h4>
+<ul class="content-list">
+    <li><b>Curva sensitom&eacute;trica variable:</b> En la Alexa original, cambiar el ISO modificaba la curva de contraste. A 800 ISO la curva se suavizaba (ideal para situaciones de alto contraste); a ISOs bajos (250-400) las sombras ganaban contraste. Mario usaba esto creativamente.</li>
+</ul>
+
+<h4 class="subsection-title">Sony Venice (Comparaci&oacute;n)</h4>
+<ul class="content-list">
+    <li><b>Curva sensitom&eacute;trica constante:</b> A diferencia de la Alexa, la Venice mantiene la misma curva de contraste independientemente del ISO (500 o 3200). Los cambios de ISO no alteran el contraste.</li>
+    <li><b>Venice 2:</b> Mario est&aacute; actualmente probando la Venice 2, trabajando a 3200 ISO base e incluso subexponiendo a 2500 ISO para ganar un tercio de stop de margen de manipulaci&oacute;n.</li>
+</ul>
+
+<h4 class="subsection-title">&Oacute;pticas Cooke</h4>
+<ul class="content-list">
+    <li>Elogiadas por su <b>bokeh org&aacute;nico</b> y su caracter&iacute;stico renderizado de las zonas desenfocadas.</li>
+    <li>Focales utilizadas: 12 mm (subjetivo especial), 18 mm (generales), 40 mm (focal principal de trabajo), 50 mm.</li>
+</ul>
+
+<h4 class="subsection-title">Equipamiento de Iluminaci&oacute;n</h4>
+<ul class="content-list">
+    <li><b>Paneles LED:</b> Utilizados extensivamente tanto para iluminaci&oacute;n del set como del croma. Temperatura de color variable entre 3200 K y 5000 K.</li>
+    <li><b>Incandescentes:</b> Mario manten&iacute;a un 10% de fuentes incandescentes para escenas espec&iacute;ficas. Incluye un proyector de 10K para la escena de recuerdos.</li>
+    <li><b>Fresneles:</b> Referenciados tanto en la producci&oacute;n como en la an&eacute;cdota de Alcaine (650 vatios, 27 configuraciones distintas).</li>
+    <li><b>Fluorescentes:</b> Usados en la secuencia de tortura para crear tono cl&iacute;nico y fr&iacute;o.</li>
+    <li><b>Panel multip&iacute;xel LED:</b> Reci&eacute;n adquirido, convierte se&ntilde;al de v&iacute;deo en salida DMX multip&iacute;xel. RGB, cada p&iacute;xel direccionable individualmente. Planificado para la pr&oacute;xima producci&oacute;n.</li>
+    <li><b>Marcos de difusi&oacute;n (palios):</b> Usados para iluminaci&oacute;n clave, especialmente con skylight.</li>
+</ul>
+
+<h3 class="section-title" id="c32-workflow">Flujo de Trabajo del Director de Fotograf&iacute;a en VP</h3>
+
+<h4 class="subsection-title">Preproducci&oacute;n (1,5 Meses Antes del Rodaje)</h4>
+<ul class="content-list">
+    <li><b>Lectura del gui&oacute;n:</b> M&uacute;ltiples lecturas con gui&oacute;n f&iacute;sico, marcando secuencias de d&iacute;a/noche con c&oacute;digos de color (azul para noche).</li>
+    <li><b>Visualizaci&oacute;n mental:</b> Planificaci&oacute;n del arco emocional/psicol&oacute;gico de la luz a lo largo de toda la pel&iacute;cula.</li>
+    <li><b>Dise&ntilde;o de espacios virtuales:</b> Colaboraci&oacute;n con el equipo 3D/VP: orientaci&oacute;n del edificio virtual, colocaci&oacute;n de ventanas, &aacute;ngulos de entrada de luz.</li>
+    <li><b>Preiluminaci&oacute;n en Unreal:</b> Mario dirig&iacute;a a los operadores de Unreal sin tocar &eacute;l mismo el software. Lo compara con el proceso del colorista: da instrucciones y el operador ejecuta.</li>
+    <li><b>Codificaci&oacute;n:</b> Todo se codific&oacute; para referencia de postproducci&oacute;n.</li>
+</ul>
+
+<h4 class="subsection-title">Rodaje en Croma</h4>
+<ul class="content-list">
+    <li><b>Set con m&iacute;nimos f&iacute;sicos:</b> Solo elementos que los actores tocan. Suelo marcado con cinta indicando posiciones de paredes.</li>
+    <li><b>Visi&oacute;n en c&aacute;mara:</b> Mario opera personalmente la c&aacute;mara, viendo el compositing en tiempo real por el visor. El director ve el composite en su monitor.</li>
+    <li><b>Iluminaci&oacute;n narrativa:</b> Mario se ocupa de la luz art&iacute;stica; los operadores de VFX gestionan la iluminaci&oacute;n del croma por DMX.</li>
+    <li><b>Canal alfa:</b> La c&aacute;mara captura con canales alfa para composici&oacute;n por capas. El editor recibe el metraje compuesto y monta con los fondos virtuales visibles.</li>
+</ul>
+
+<h4 class="subsection-title">Rodaje en LED con Plates</h4>
+<ul class="content-list">
+    <li><b>Plates o entornos 3D en la pantalla.</b> Para coches: reproducci&oacute;n de plates de calles de Barcelona; el cambio de escena tarda unos 4 minutos.</li>
+    <li><b>Reflejos capturados en c&aacute;mara:</b> Reflejos naturales del LED en cristales, carrocer&iacute;a y superficies del actor.</li>
+</ul>
+
+<h3 class="section-title" id="c32-alcaine">Mentor&iacute;a de Jos&eacute; Luis Alcaine y Filosof&iacute;a Fotogr&aacute;fica</h3>
+<p>Mario dedica un pasaje extenso a hablar de su maestro, el legendario director de fotograf&iacute;a espa&ntilde;ol <b>Jos&eacute; Luis Alcaine</b>, con quien trabaj&oacute; durante ocho a&ntilde;os en la d&eacute;cada de los 90:</p>
+<ul class="content-list">
+    <li><b>Filosof&iacute;a central:</b> Cada pel&iacute;cula comienza desde cero. Alcaine dec&iacute;a que no ten&iacute;a memoria, que empezaba cada proyecto sin preconcepciones. No cre&iacute;a en los &ldquo;estilos fotogr&aacute;ficos&rdquo; &mdash; consideraba que imponer un estilo era imponer el ego sobre la historia.</li>
+    <li><b>La pel&iacute;cula habla:</b> En lugar de imponer una est&eacute;tica, dejaba que la pel&iacute;cula le hablara. La fotograf&iacute;a deb&iacute;a emerger de la historia, no del ego del DOP.</li>
+    <li><b>Observaci&oacute;n diaria:</b> La mejor fotograf&iacute;a nace de la observaci&oacute;n cotidiana de la luz real: c&oacute;mo se siente el verano, c&oacute;mo la luz rebota en los espacios, c&oacute;mo el momento del d&iacute;a cambia la atm&oacute;sfera.</li>
+    <li><b>Maestr&iacute;a con m&iacute;nimos:</b> En un taller, Alcaine pidi&oacute; un &uacute;nico Fresnel de 650 vatios y demostr&oacute; <b>27 configuraciones de iluminaci&oacute;n distintas</b> con ese solo instrumento.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">An&eacute;cdota: Fernando Trueba y las Mariposas en el Est&oacute;mago</div>
+    <p>Mario acompa&ntilde;&oacute; a Jos&eacute; Luis Alcaine en una pel&iacute;cula de Fernando Trueba. Antes de empezar, Alcaine &mdash; que ya hab&iacute;a hecho ocho pel&iacute;culas con Trueba &mdash; todav&iacute;a ten&iacute;a un nudo en el est&oacute;mago. Le dijo a Mario: <b>&ldquo;El momento en que pierdas ese cosquilleo antes de empezar una pel&iacute;cula, abre una pizzer&iacute;a.&rdquo;</b> Una lecci&oacute;n sobre abordar siempre el trabajo con intensidad renovada.</p>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia Personal: El Primer D&iacute;a &mdash; La Experiencia &ldquo;Matrix&rdquo;</div>
+    <p>Mario describe una experiencia casi existencial: tras pasar todo el primer d&iacute;a de rodaje inmerso en los sets virtuales, <b>al salir a la calle cuestion&oacute; si la realidad era real</b>. Esa noche so&ntilde;&oacute; con ello. Lo compara con bajarse de un barco despu&eacute;s de navegar: la desorientaci&oacute;n al volver al mundo f&iacute;sico tras horas dentro de una realidad construida. Una experiencia que defini&oacute; como &ldquo;reveladora&rdquo;.</p>
+</div>
+
+<h3 class="section-title" id="c32-granvia">Proyecto Futuro: Gran V&iacute;a A&ntilde;os 40</h3>
+<p>Mario menciona un proyecto en desarrollo que utilizar&aacute; producci&oacute;n virtual para <b>recrear la Gran V&iacute;a de Madrid en la d&eacute;cada de 1940</b>:</p>
+<ul class="content-list">
+    <li><b>Enfoque elegido:</b> Croma con 3D virtual (Unreal Engine), no LED, bas&aacute;ndose en las lecciones aprendidas en &ldquo;Pare Nostre&rdquo;.</li>
+    <li><b>Planificaci&oacute;n rigurosa:</b> Se har&aacute; un desglose detallado de planos para decidir qu&eacute; secuencias necesitan qu&eacute; tecnolog&iacute;a.</li>
+    <li><b>Uso potencial de iluminaci&oacute;n multip&iacute;xel:</b> El panel multip&iacute;xel reci&eacute;n adquirido se planea probar en este proyecto, especialmente para simular la iluminaci&oacute;n din&aacute;mica de las farolas y los neones de la Gran V&iacute;a de la &eacute;poca.</li>
+</ul>
+
+<h3 class="section-title" id="c32-glosario">Glosario de T&eacute;rminos</h3>
+<table class="glossary-table">
+    <thead><tr><th>T&eacute;rmino</th><th>Definici&oacute;n</th></tr></thead>
+    <tbody>
+        <tr><td><b>Skylight</b></td><td>Luz amplia y difusa del cielo que entra a trav&eacute;s de una ventana. Base de la iluminaci&oacute;n natural de interiores, complementada por luz solar directa.</td></tr>
+        <tr><td><b>Trasfoco / Rack Focus</b></td><td>Cambio de foco entre dos planos de profundidad distintos dentro de un mismo plano. En LED, debe detenerse antes de enfocar la pantalla para evitar mostrar p&iacute;xeles.</td></tr>
+        <tr><td><b>Moir&eacute;</b></td><td>Patr&oacute;n de interferencia visual que aparece cuando el sensor de la c&aacute;mara resuelve los p&iacute;xeles individuales de la pantalla LED. Se controla con diafragma abierto y distancia.</td></tr>
+        <tr><td><b>Emanaci&oacute;n de luz</b></td><td>Luz que emite la pantalla LED sobre el set y los actores. Ventajosa para reflejos naturales; problem&aacute;tica cuando el DOP necesita control lum&iacute;nico total.</td></tr>
+        <tr><td><b>Liberado de &oacute;ptica</b></td><td>Proceso de calibraci&oacute;n de cada lente para que su perspectiva y profundidad de campo se correspondan correctamente con el mundo virtual.</td></tr>
+        <tr><td><b>Plate</b></td><td>Fondo filmado previamente (fotograf&iacute;a o v&iacute;deo de una localizaci&oacute;n real) que se reproduce en la pantalla LED como fondo de escena.</td></tr>
+        <tr><td><b>T&oacute;tem</b></td><td>Pantalla de v&iacute;deo colocada en el set como fuente de reflejos o iluminaci&oacute;n ambiental, no como fondo de escena. Calidad de luz limitada (CRI/TLCI/SSI bajos).</td></tr>
+        <tr><td><b>Multip&iacute;xel</b></td><td>Panel LED dise&ntilde;ado como instrumento de iluminaci&oacute;n donde cada p&iacute;xel act&uacute;a como canal DMX independiente. Reproduce din&aacute;micas de color de v&iacute;deo como luz de calidad.</td></tr>
+        <tr><td><b>DMX</b></td><td>Protocolo est&aacute;ndar de control de iluminaci&oacute;n. Utilizado para gestionar tanto las luces del set como la iluminaci&oacute;n del croma desde una mesa central.</td></tr>
+        <tr><td><b>CRI (Color Rendering Index)</b></td><td>&Iacute;ndice de reproducci&oacute;n crom&aacute;tica: mide la fidelidad con la que una fuente de luz reproduce los colores en comparaci&oacute;n con la luz natural.</td></tr>
+        <tr><td><b>TLCI (Television Lighting Consistency Index)</b></td><td>M&eacute;trica espec&iacute;fica para evaluar la calidad de una fuente de luz para rodaje con c&aacute;mara, especialmente importante para tonos de piel.</td></tr>
+        <tr><td><b>SSI (Spectral Similarity Index)</b></td><td>&Iacute;ndice de similitud espectral: mide cu&aacute;nto se parece el espectro de emisi&oacute;n de una fuente de luz al de una fuente de referencia.</td></tr>
+        <tr><td><b>Curva sensitom&eacute;trica</b></td><td>Curva que describe la respuesta del sensor de la c&aacute;mara a distintas intensidades de luz. Var&iacute;a con el ISO en la Alexa cl&aacute;sica; es constante en la Sony Venice.</td></tr>
+        <tr><td><b>Canal alfa</b></td><td>Capa de informaci&oacute;n de transparencia que permite componer elementos visuales en capas separadas durante la postproducci&oacute;n.</td></tr>
+        <tr><td><b>Light spears / Spill</b></td><td>Luces que se escapan fuera del &aacute;rea deseada. En croma abierto (sin paredes f&iacute;sicas), no son un problema porque no hay superficies que las reboten.</td></tr>
+        <tr><td><b>Ley del cuadrado inverso</b></td><td>Principio f&iacute;sico: la intensidad de la luz disminuye con el cuadrado de la distancia a la fuente. Relevante porque la pantalla LED, a pocos metros, tiene una ca&iacute;da de luz irreal para simular sol.</td></tr>
+        <tr><td><b>Gaussian Splatting</b></td><td>T&eacute;cnica de captura y reconstrucci&oacute;n 2.5D de localizaciones reales mediante fotograf&iacute;a, que genera un entorno navegable sin ser 3D completo. Alternativa a plates planos y a modelos 3D costosos.</td></tr>
+        <tr><td><b>Super 35</b></td><td>Formato de sensor cinematogr&aacute;fico est&aacute;ndar. Mario lo eligi&oacute; deliberadamente sobre gran formato para obtener las caracter&iacute;sticas de profundidad de campo deseadas.</td></tr>
+        <tr><td><b>Bokeh</b></td><td>Calidad est&eacute;tica de las zonas desenfocadas de una imagen. Las &oacute;pticas Cooke son valoradas por su bokeh org&aacute;nico y suave.</td></tr>
+    </tbody>
+</table>
+
+<a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>
+
+      
+</div>
+
     </main>
 </div>
 
@@ -2720,8 +3409,8 @@
         });
 
         // Switch day tab if needed
-        const isDia2 = id.startsWith('charla02');
-        switchDay(isDia2 ? 'día2' : 'día1', true);
+        const day = id.startsWith('charla03') ? 'día3' : id.startsWith('charla02') ? 'día2' : 'día1';
+        switchDay(day, true);
 
         // Close mobile menu if open
         if (window.innerWidth <= 900) toggleMobile(true);
@@ -2735,15 +3424,16 @@
         enterTalksMode();
 
         document.querySelectorAll('.day-tab').forEach((tab, i) => {
-            tab.classList.toggle('active', (day === 'día1' && i === 0) || (day === 'día2' && i === 1));
+            tab.classList.toggle('active', (day === 'día1' && i === 0) || (day === 'día2' && i === 1) || (day === 'día3' && i === 2));
         });
 
         document.getElementById('sidebar-día1').style.display = day === 'día1' ? 'block' : 'none';
         document.getElementById('sidebar-día2').style.display = day === 'día2' ? 'block' : 'none';
+        document.getElementById('sidebar-día3').style.display = day === 'día3' ? 'block' : 'none';
 
         // Auto-select first talk of the day if not skipping
         if (!skipTalkSwitch) {
-            const firstTalk = day === 'día1' ? 'charla01-1' : 'charla02-1';
+            const firstTalk = day === 'día1' ? 'charla01-1' : day === 'día2' ? 'charla02-1' : 'charla03-1';
             showTalk(firstTalk);
         }
     }
@@ -2763,6 +3453,7 @@
 
     // Initialize: home view visible, talks hidden
     document.getElementById('sidebar-día2').style.display = 'none';
+    document.getElementById('sidebar-día3').style.display = 'none';
 </script>
 
 </body>
