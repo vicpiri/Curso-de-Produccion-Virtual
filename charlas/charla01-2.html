@@ -1,0 +1,299 @@
+<div class="talk-header">
+        <h2>Calibración de cámara y Tracking</h2>
+        <div class="talk-meta">
+            <strong>Ponente:</strong> Enrique &mdash; Empresa: Brainstorm<br>
+            <strong>Fecha:</strong> Lunes 16 de marzo de 2026
+        </div>
+    </div>
+
+    <div class="section-nav">
+        <div class="section-nav-title">Contenidos</div>
+        <ul>
+            <li><a href="#c12-resumen">Resumen Ejecutivo</a></li>
+            <li><a href="#c12-tracking">El Corazon de la VP: Tracking y Sincronismo</a></li>
+            <li><a href="#c12-genlock">Genlock, Timecode y Sincronización</a></li>
+            <li><a href="#c12-lentes">La Complejidad de la Lente y el Punto Nodal</a></li>
+            <li><a href="#c12-historia">Evolución Histórica: Del Croma al Tiempo Real</a></li>
+            <li><a href="#c12-sgi">La Era Silicon Graphics y el Salto a PC</a></li>
+            <li><a href="#c12-brender">Pre-Render (Brender): La Solución Ingeniosa</a></li>
+            <li><a href="#c12-metodologías">Metodologias de Tracking Actuales</a></li>
+            <li><a href="#c12-freed">El Protocolo FreeD y la Posición Global</a></li>
+            <li><a href="#c12-calibración">Calibración de Lentes y Auto-Calibración</a></li>
+            <li><a href="#c12-green-vs-led">Green Screen vs LED Wall</a></li>
+            <li><a href="#c12-selección">Guia de Selección de Sistemas de Tracking</a></li>
+            <li><a href="#c12-democratización">Democratización y Futuro</a></li>
+            <li><a href="#c12-glosario">Glosario de Terminos</a></li>
+        </ul>
+    </div>
+
+    <div class="executive-summary" id="c12-resumen">
+        <h3 class="section-title" style="border:none;padding:0;margin:0 0 12px 0;">Resumen Ejecutivo</h3>
+        <p>La tesis central de la ponencia establece que el <b>tracking</b> es el cimiento indispensable de la producción virtual moderna. Sin un sistema preciso que comunique la posición (<b>XYZ</b>), orientación (<b>Pan, Tilt, Roll</b>) y campo de visión (<b>FoV</b>) de la cámara física al motor gráfico en tiempo real, la ilusión de la perspectiva se rompe. El ponente traza un recorrido histórico completo desde los primeros cromas de los anos 70 hasta los sistemas markerless actuales, pasando por la era de Silicon Graphics, los trackers artesanales hechos con ratones de bola, y la revolución que supuso el protocolo <b>FreeD</b>. Se subraya que el exito de una integración virtual depende criticamente del <b>Genlock</b> y la sincronización perfecta entre video y datos, y que la elección entre green screen y LED wall depende del tipo de producción (broadcast vs cine). La democratización tecnologica ha reducido costes de 200.000 dolares a 5.000-6.000 euros, abriendo la producción virtual a estudios de cualquier tamano.</p>
+    </div>
+
+    <!-- ─── TRACKING Y SINCRONISMO ─── -->
+    <h3 class="section-title" id="c12-tracking">El Corazon de la VP: Tracking y Sincronismo</h3>
+    <p>El tracking no es simplemente saber donde esta la cámara; es un sistema de seguimiento que informa constantemente la posición <b>XYZ</b> y la orientación <b>PTZ</b> (Pan, Tilt, Zoom/Roll), además del <b>Field of View</b> (FoV) de la cámara física. Esta información permite que la cámara virtual en el motor gráfico replique exactamente el movimiento físico, manteniendo la perspectiva y el punto de vista coherentes con el entorno renderizado.</p>
+    <p>Cuando la cámara física panea a izquierda/derecha, hace tilt arriba/abajo o hace zoom, la cámara virtual dentro del motor gráfico debe replicar ese movimiento con exactitud. Si esta correspondencia no es perfecta, los objetos virtuales "patinan" respecto al mundo real y el espectador detecta inmediatamente el truco.</p>
+
+    <div class="tech-concept">
+        <b>Posición Global vs Posición Relativa:</b> Los primeros sistemas de tracking (basados en encoders de raton) solo proporcionaban <b>posición relativa</b>: al apagar y encender el sistema, se reseteaba a cero y habia que recalibrar manualmente cada sesión. Los sistemas modernos (desde las cabezas roboticas Radamec) usan <b>posición global</b>: el sistema siempre conoce su ubicación absoluta, de modo que al encenderlo sabe inmediatamente donde esta.
+    </div>
+
+    <div class="experience-box">
+        <div class="experience-box-title">Experiencia en Set: El ritual matutino del "cero-cero-cero"</div>
+        <p>En los primeros anos con encoders de posición relativa, cada manana al llegar al estudio, el equipo tenia que resetear manualmente todas las cámaras a posición cero. "¡Venga, cámaras a cero-cero-cero, preparados? ¡Ya!" Era un proceso artesanal y tedioso que habia que repetir cada día antes de empezar a producir.</p>
+    </div>
+
+    <!-- ─── GENLOCK ─── -->
+    <h3 class="section-title" id="c12-genlock">Genlock, Timecode y Sincronización</h3>
+    <p>El <b>Genlock</b> es descrito como el dispositivo mas crítico de toda la cadena de producción virtual. Es un generador de sincronismo que asegura que los datos de video lleguen perfectamente sincronizados con los datos de tracking. Dicta cuando se pinta cada frame y en que momento exacto. Esta sincronización garantiza un movimiento fluido y perfecto donde cada frame tiene una posición de tracking correspondiente.</p>
+
+    <div class="tech-concept">
+        <b>Timestamp (Marca temporal):</b> Cuando el genlock dispara un frame, se registra un código de tiempo único llamado <b>timestamp</b> junto con la posición de tracking. Esto asegura que los datos de tracking y el frame de video esten vinculados para ese instante específico, permitiendo una sincronización perfecta.
+    </div>
+
+    <div class="tech-concept">
+        <b>SDI vs HDMI vs NDI:</b> Para producción virtual seria con movimiento de cámara, el ponente recomienda <b>SDI</b> sobre HDMI o NDI. Los mezcladores modernos tienen generadores de sincronismo integrados: si se pasa la señal de video por el sync del mezclador, llega sincronizada. También se puede usar una señal <b>Black Burst</b> para sincronizar la cabeza de cámara. El Genlock es obligatorio ("si o si") para cualquier producción virtual profesional.
+    </div>
+
+    <div class="experience-box">
+        <div class="experience-box-title">El dilema del Genlock en set</div>
+        <p>Durante la charla surgio una duda sobre la obligatoriedad del Genlock frente a mezcladores modernos con sincronizadores de cuadro integrados. El ponente fue tajante: para producción virtual seria con movimiento, el Genlock es imprescindible. Sin el, aparecen artefactos visuales como el <b>banding</b> (bandas negras en pantalla LED) debido a la falta de sincronia entre el frame rate de la cámara y el de los paneles. Es el mismo artefacto que se ve al grabar una pantalla LED con el móvil. La frecuencia de refresco del LED debe coincidir exactamente con el frame rate de la cámara.</p>
+    </div>
+
+    <!-- ─── LENTES ─── -->
+    <h3 class="section-title" id="c12-lentes">La Complejidad de la Lente y el Punto Nodal</h3>
+    <p>Una lente no es un objeto simple con dos focos; es un sistema complejo de cristales que incluye la <b>lente de foco</b>, la <b>lente de zoom/focal</b>, la <b>lente de macro foco</b> (Back Focus) y otros elementos donde se compone la imagen. Entre ellos se encuentra el <b>punto nodal</b>, que es el lugar exacto donde la imagen se invierte, el centro óptico de la lente donde convergen los rayos de luz.</p>
+    <p>En los inicios de la producción virtual, estos parametros se ignoraban a menudo. No se tenia en cuenta la distorsión, la profundidad de campo ni la posición del punto nodal. Hoy en día son criticos para evitar que los objetos virtuales "patinen" respecto al mundo real. Si la calibración no es perfecta, el desplazamiento (paralaje) no sera natural y el espectador notara el truco.</p>
+
+    <div class="tech-concept">
+        <b>Paralaje (Parallax):</b> La belleza de la producción XR (LED wall) radica en el paralaje: cuando la cámara se mueve, los objetos del entorno virtual se desplazan naturalmente unos respecto a otros, igual que en el mundo real. Con cámaras PTZ solas (sin tracking), este efecto de paralaje se pierde, haciendo el resultado menos convincente.
+    </div>
+
+    <!-- ─── HISTORIA ─── -->
+    <h3 class="section-title" id="c12-historia">Evolución Histórica: Del Croma al Tiempo Real</h3>
+    <p>La historia de la producción virtual tiene un recorrido que abarca mas de cinco decadas, desde los primeros cromas en azul de los anos 70 hasta los sistemas markerless de inteligencia artificial actuales.</p>
+
+    <h3 class="subsection-title">Linea temporal de hitos tecnologicos:</h3>
+    <ul class="content-list">
+        <li><b>Anos 70-80 &mdash; Los pioneros del croma:</b> Uso de mezcladores <b>Grass Valley</b> (el famoso Grass Valley 300) y <b>Sony 1200C</b> para los primeros cromas en azul. Pioneros como <b>Mariano Medina</b> y <b>Jose Antonio Maldonado</b> en meteorologia. "El transparente" era el termino coloquial en la TV española para referirse al mezclador de croma. Programas musicales de los 70-80 ya usaban croma de forma innovadora con loops visuales.</li>
+        <li><b>1983 &mdash; Cosmos de Carl Sagan:</b> Primer entorno virtual visto en televisión. El episodio del "calendario cosmico" mostraba a Sagan caminando por la <b>Biblioteca de Alejandria</b>, un entorno completamente renderizado. La cámara se movia dentro de la escena, algo extraordinario para 1983. No era tiempo real (pre-renderizado), pero fue el precursor de lo que seria la producción virtual.</li>
+        <li><b>Inicio de los 90 &mdash; Silicon Graphics entra en broadcast:</b> Maquinas SGI enormes (2 metros de alto, 90 cm de ancho), originalmente para simulaciónes aeronauticas y militares. Capaces de mover solo 16 MB de textura en tiempo real. Coste: 200.000 dolares (equivalente a mas de 500.000 dolares actuales). El modelo <b>Onyx</b> ofrecio hasta 64 MB de texturas.</li>
+        <li><b>Principios de los 90 &mdash; Brainstorm + Antena 3:</b> Crean la <b>primera producción virtual de la historia de España</b>. La famosa "bola de Antena 3" donde el presentador caminaba alrededor de un globo terraqueo 3D rotatorio.</li>
+        <li><b>Mediados de los 90 &mdash; Cabezas roboticas Radamec:</b> Introducen la posición global y el protocolo serie que se convertiria en FreeD. Se despliegan en las principales cadenas de TV.</li>
+        <li><b>Finales 90-2000s &mdash; FreeD y tracking óptico:</b> Nacimiento del tracking de cámara libre (dolly, grua, Steadicam). Brainstorm trabaja en <b>A.I. Inteligencia Artificial</b> de Spielberg. Los sistemas se expanden internacionalmente a NHK, NASDAQ, RTVE y cadenas en Alemania y Colombia.</li>
+        <li><b>2005-2018 &mdash; Migración a PC:</b> De SGI/Unix a Windows XP Professional. Las GPUs de NVIDIA (fundada por ex-ingenieros de SGI) revolucionan el coste: de 250.000 dolares a 5.000-6.000 euros por sistema. FreeD se convierte en protocolo universal. La Realidad Aumentada se populariza.</li>
+        <li><b>2018-presente &mdash; Era post-pandemia:</b> Boom del streaming. Cámaras PTZ compactas con tracking integrado. Lentes calibradas de fabrica. Auto-calibración con patrones ArUco. Nuevos sistemas markerless (Ncam RedSpy, Stype, Mo-Sys). El debate green screen vs LED wall se intensifica.</li>
+    </ul>
+
+    <div class="experience-box">
+        <div class="experience-box-title">Experiencia en Set: Los Trackers de Bola de Raton</div>
+        <p>En los anos 90 no existian protocolos de datos comerciales. Los primeros sistemas de tracking en <b>Antena 3</b> se fabricaron desmontando <b>ratones de bola</b> de ordenador y conectando sus encoders opticos a los ejes de la cámara. Se usaban cuatro ratones artesanales con gomitas: uno para el Pan, otro para el Tilt, uno para el Foco y otro para el Zoom. Era pura artesania que funcionaba sin tener en cuenta distorsiónes, profundidad de campo ni punto nodal, pero que permitio hitos como la famosa "bola de Antena 3", un globo terraqueo virtual alrededor del cual caminaba el presentador.</p>
+    </div>
+
+    <div class="experience-box">
+        <div class="experience-box-title">Experiencia: La expansión de Antena 3 y los despliegues internacionales</div>
+        <p>Tras el exito inicial, Antena 3 adopto la producción virtual para multiples programas: <b>Informativos</b>, <b>Espejo Público</b>, coberturas electorales y mas. Otras cadenas espanolas como <b>Televisión Española (RTVE)</b> siguieron el ejemplo. Brainstorm se expandio internacionalmente desplegando sistemas en <b>NHK</b> (Japon), <b>NASDAQ</b> (Nueva York, donde estuvieron un periodo muy largo), cadenas en Alemania y Colombia, entre otros paises.</p>
+    </div>
+
+    <!-- ─── SGI ─── -->
+    <h3 class="section-title" id="c12-sgi">La Era Silicon Graphics y el Salto a PC</h3>
+    <p><b>Silicon Graphics (SGI)</b> fue la empresa que hizo posible el 3D en tiempo real para broadcast. Sus maquinas eran enormes (2 metros de alto, 90 cm de ancho), funcionaban con <b>Unix</b> y costaban alrededor de 200.000 dolares. Originalmente disenadas para simulaciónes de aviones, meteorologia y uso militar, fueron adaptadas para televisión. Podian mover solo <b>16 MB de textura</b> en tiempo real, una limitación que impulso soluciones creativas como el Brender.</p>
+
+    <ul class="content-list">
+        <li><b>SGI Onyx:</b> Modelo avanzado que ofrecio hasta 64 MB de texturas. La unidad doble tenia 32 MB (dos sistemas independientes en un chasis).</li>
+        <li><b>Sirius (modulo de SGI):</b> Convertia la salida VGA del ordenador a video broadcast sincronizado (SD). Era el puente entre los gráficos por ordenador y la emisión televisiva.</li>
+        <li><b>Mantenimiento premium:</b> Cuando una maquina SGI se averiaba, llegaba un técnico "como un agente de Men in Black" con maletin, guantes y corbata, cambiaba una placa de circuito y cobraba mas de 5.000 dolares por la visita.</li>
+        <li><b>NVIDIA:</b> Fundada en parte por ex-ingenieros de Silicon Graphics. Desarrollo tarjetas graficas potentes basadas en el conocimiento de SGI. Permitio la migración de Unix a <b>Windows XP Professional</b> y redujo dramaticamente los costes (de 250.000 a 5.000-6.000 euros por sistema).</li>
+    </ul>
+
+    <div class="tech-concept">
+        <b>"Tiempo real" en broadcast:</b> En televisión broadcast europea, "tiempo real" significa <b>50 campos por segundo</b> (sistema PAL). En 1983 esto era imposible; incluso hoy, renders de alta calidad pueden tardar hasta un día por segundo de metraje usando <b>render farms</b> (10-15 ordenadores renderizando simultaneamente). La transición de pre-renderizado a tiempo real fue un cambio fundamental en la industria.
+    </div>
+
+    <div class="experience-box">
+        <div class="experience-box-title">Experiencia: El coste de un plató físico vs virtual</div>
+        <p>Un decorado físico de televisión en Antena 3 podia costar entre 2 y 3 millones de pesetas (12.000-15.000 euros de la epoca, una cantidad significativa en los anos 90). La inversión de 200.000 euros en una maquina SGI se amortizaba en solo 3-4 decorados virtuales. Además, los decorados virtuales no generaban residuos fisicos: los decorados fisicos se tiraban rutinariamente a la basura tras su uso.</p>
+    </div>
+
+    <!-- ─── BRENDER ─── -->
+    <h3 class="section-title" id="c12-brender">Pre-Render (Brender): La Solución Ingeniosa</h3>
+    <p>Ante la limitación de 16 MB de textura de las maquinas SGI, Brainstorm desarrollo un sistema llamado <b>"Brender"</b> (pre-render / background render). La idea era generar offline una imagen panoramica de 360 grados en alta calidad usando renderizadores de ray tracing como <b>RenderMan</b>, y luego cargarla en el sistema en tiempo real como un cilindro de fondo.</p>
+
+    <h3 class="subsection-title">Flujo de trabajo del Brender:</h3>
+    <ul class="content-list">
+        <li>Crear la escena 3D en software especializado: <b>3ds Max</b>, <b>Wavefront</b>, <b>Maya</b>, <b>LightWave</b> o <b>Softimage</b></li>
+        <li>Renderizar una imagen panoramica de 360 grados en alta calidad con ray tracing (RenderMan u otro motor)</li>
+        <li>Cargar la panoramica pre-renderizada en el sistema en tiempo real como un cilindro de fondo</li>
+        <li>Los datos de tracking indican al sistema que porción del panorama de 360 grados mostrar segun la orientación de la cámara</li>
+        <li>Resultado: calidad visual alta manteniendo el limite de 16 MB de textura</li>
+    </ul>
+    <p>El sistema era portable entre formatos y permitia usar fondos de altisima calidad que habrian sido imposibles de generar en tiempo real con el hardware de la epoca.</p>
+
+    <!-- ─── METODOLOGIAS ─── -->
+    <h3 class="section-title" id="c12-metodologías">Metodologias de Tracking Actuales</h3>
+    <p>El ponente clasifica las soluciones actuales segun su tecnología, coste y tipo de producción:</p>
+
+    <h3 class="subsection-title">Sistemas Mecanicos / Roboticos</h3>
+    <ul class="content-list">
+        <li><b>Radamec H435:</b> Primeras cabezas roboticas usadas en broadcast. Originalmente una empresa de <b>robots de alta precisión para radares aeronauticos</b> y aplicaciónes militares. Conectadas por puerto serie (RS-232). Proporcionaban posición global. Coste aproximado: 35.000 euros por tripode con robot.</li>
+        <li><b>Vinten 250e:</b> Tripode de tracking mecánico que ha sobrevivido mas de 30 anos. Extraordinariamente duradero ("dale una patada y sigue funcionando"). Hardware puro sin software: señales transmitidas por transistores en una placa de circuito. Siempre incluia genlock.</li>
+        <li><b>Vinten Steerbot:</b> Pedestal robótico que no solo hace tracking sino que se mueve de forma autonoma controlado por joystick.</li>
+    </ul>
+
+    <h3 class="subsection-title">Tracking Óptico (con Marcas)</h3>
+    <ul class="content-list">
+        <li><b>FreeD (Tracker Óptico de Radamec/Vinten):</b> Primer sistema de tracking de movimiento libre. Usaba una <b>pequeña cámara SD mirando hacia arriba</b> que leia <b>dianas/marcas en el techo</b>, cada una con un patron único. El sistema calculaba la posición segun que dianas podia ver. Descrito como "magico" al instalarse por primera vez.</li>
+        <li><b>Mo-Sys StarTracker:</b> Sistema de tracking óptico con marcadores reflectantes en el techo. Presente fisicamente en la sede del curso.</li>
+        <li><b>Stype:</b> Sistema de tracking basado en análisis de imagen con marcadores. También presente en la sede del curso.</li>
+        <li><b>Motion Analysis (Stormtrack):</b> Sistema de captura de movimiento / tracking que usa bolas reflectantes ("pelotitas").</li>
+    </ul>
+
+    <h3 class="subsection-title">Tracking sin Marcas (Markerless)</h3>
+    <ul class="content-list">
+        <li><b>Ncam:</b> Sistema de tracking inside-out, presente en la sede del curso. Ha evolucionado hacia <b>RedSpy</b>, una nueva generación que usa infrarrojo y lee la escenografía sin necesidad de marcas. Funciona bien para producción virtual.</li>
+        <li><b>Pixotop:</b> Sistema comparable que calcula la posición de la cámara mediante análisis de marcadores.</li>
+        <li><b>Sistemas Trackless:</b> Permiten producción virtual sin hardware de tracking físico, usando solo una pegatina/marcador y análisis por software. Tienen limitaciones significativas: sin paralaje, sin sombras adecuadas, sin reflejos, lo que hace la composición menos realista.</li>
+    </ul>
+
+    <h3 class="subsection-title">Otros Sistemas de Tracking</h3>
+    <ul class="content-list">
+        <li><b>Spider-Cam:</b> Sistema de cámara por cables que incluye tracking para conocer la posición de la cámara durante cobertura deportiva, panoramica y de eventos.</li>
+        <li><b>TouchCam / Touchpoint:</b> Empresa especializada en sincronizar/trackear cualquier cámara estándar (Panasonic, Sony, Canon) anadiendo un pequeño modulo de tracking. Muy util para espacios reducidos.</li>
+        <li><b>Cámaras PTZ modernas:</b> Cámaras Panasonic y Sony PTZ con encoders integrados y metadatos internos. Con perfiles de lente calibrados de fabrica. Ideales para streaming y producciónes de respuesta rápida.</li>
+        <li><b>Sony Venice / FX:</b> Cámaras modernas con sensores de metadatos internos que envian datos de la lente directamente.</li>
+    </ul>
+
+    <div class="experience-box">
+        <div class="experience-box-title">Experiencia en Set: El susto del robot</div>
+        <p>Durante las primeras pruebas con pedestales roboticos (alrededor de 2004), los movimientos del <b>Vinten Steerbot</b> eran tan precisos y "autonomos" que una presentadora confeso sentir miedo: "¡Me va a atacar!" &mdash; ver una cámara moverse sola por el set era alarmante. Hoy, con las aspiradoras Roomba en cada casa, esa tecnología esta totalmente normalizada.</p>
+    </div>
+
+    <!-- ─── FREED ─── -->
+    <h3 class="section-title" id="c12-freed">El Protocolo FreeD y la Posición Global</h3>
+    <p>El <b>FreeD</b> nacio como un dispositivo hardware (de Radamec) que permitia el movimiento libre de cámara (dolly, grua, movimiento tipo Steadicam) en lugar de estar limitado a un tripode fijo. Su protocolo de comunicación se convirtio en el <b>estándar de la industria</b> adoptado por todos los sistemas de tracking.</p>
+
+    <div class="tech-concept">
+        <b>Origen del protocolo FreeD:</b> El protocolo proviene originalmente del protocolo serie de Radamec. En el propio software de Brainstorm, la entrada de tracking se etiquetaba como "Radamec" durante muchas versiones antes de ser renombrada. El protocolo transmite posición XYZ, pan/tilt/roll, y tiene espacios de datos reservados para parametros adicionales futuros.
+    </div>
+
+    <ul class="content-list">
+        <li><b>Transmisión:</b> Posición XYZ + orientación Pan/Tilt/Roll + slots reservados para datos futuros</li>
+        <li><b>Conectividad:</b> Originalmente via puerto serie RS-232, hoy via red</li>
+        <li><b>Adopción:</b> Universal en la industria; todos los sistemas de tracking modernos soportan FreeD</li>
+        <li><b>Posición global:</b> A diferencia de los encoders relativos, los sistemas FreeD siempre conocen su posición absoluta en el espacio</li>
+    </ul>
+
+    <!-- ─── Calibración ─── -->
+    <h3 class="section-title" id="c12-calibración">Calibración de Lentes y Auto-Calibración</h3>
+    <p>Los sistemas modernos incluyen flujos de calibración de lentes que capturan parametros como la <b>distorsión de lente</b>, la <b>variación de longitud focal</b> y otras caracteristicas opticas.</p>
+
+    <h3 class="subsection-title">Flujo de calibración óptica con marcadores de techo:</h3>
+    <ul class="content-list">
+        <li>Colocar <b>marcadores de techo</b> (dianas reflectantes) en el estudio</li>
+        <li>Pasear la cámara por el estudio para que la cámara de tracking (mirando hacia arriba) pueda ver todas las marcas</li>
+        <li>El sistema realiza una calibración "dock" y mapea las posiciónes de los marcadores</li>
+        <li>A partir de ese punto, la cámara conoce su posición mirando hacia las marcas del techo</li>
+        <li>Para <b>sistemas markerless</b> (tipo Ncam/RedSpy): el sistema lee la escenografía física usando infrarrojo, sin necesidad de marcas</li>
+    </ul>
+
+    <h3 class="subsection-title">Auto-calibración con patrones ArUco:</h3>
+    <ul class="content-list">
+        <li>Colocar un patron impreso (<b>marcador ArUco</b>) en el suelo del estudio</li>
+        <li>Apuntar la cámara al patron</li>
+        <li>Hacer clic en un boton del software</li>
+        <li>El sistema calcula automaticamente la posición de la cámara y la distorsión de la lente</li>
+        <li>Ideal para entornos multi-estudio/multi-programa donde las cámaras se mueven entre 5 estudios/programas diferentes en el mismo croma</li>
+    </ul>
+
+    <div class="tech-concept">
+        <b>Perfiles de lente de fabrica:</b> Algunas cámaras y sistemas (como las PTZ de Riedel/Panasonic) vienen con <b>perfiles de lente precalibrados de fabrica</b>. Al conectar la cámara, el sistema carga automaticamente los parametros opticos y esta listo casi inmediatamente. Esto es ideal para streaming y producciónes con tiempo de preparación mínimo.
+    </div>
+
+    <!-- ─── GREEN VS LED ─── -->
+    <h3 class="section-title" id="c12-green-vs-led">Green Screen vs LED Wall</h3>
+    <p>El ponente describe humoristicamente este debate como una batalla en curso comparable a "Mac vs Windows". Su posición es matizada: la elección depende del proposito de la producción.</p>
+
+    <ul class="content-list">
+        <li><b>Broadcast (informativos, programas con multiples cámaras):</b> El green screen es mas práctico porque los muros LED causan problemas con <b>configuraciónes multi-cámara</b>. Los LED walls no soportan facilmente el paralaje multi-cámara (cada cámara ve una perspectiva diferente).</li>
+        <li><b>Cine:</b> La producción con LED (XR) es preferible por la calidad de iluminación, los reflejos naturales en el talento y la inmersión del actor en el entorno.</li>
+        <li><b>Streaming y producciónes rapidas:</b> Los sistemas PTZ con tracking integrado o incluso sistemas trackless pueden ser suficientes para necesidades básicas.</li>
+    </ul>
+
+    <div class="experience-box">
+        <div class="experience-box-title">Experiencia: Brainstorm y A.I. Inteligencia Artificial de Spielberg</div>
+        <p>Brainstorm trabajo en la producción de <b>"A.I. Inteligencia Artificial"</b> de Steven Spielberg. El sistema se uso para mostrar a los actores (en un set de croma verde) una <b>previsualización en tiempo real en baja resolución (low-poly)</b> del entorno virtual, resolviendo el problema de que los actores estuvieran "mas perdidos que un faro en una tortilla" en sets de croma. Además, esto ahorraba un enorme tiempo de render: si una toma era incorrecta, re-renderizar podia tardar horas por frame, así que la previsualización en tiempo real ayudaba a evitar tomas desperdiciadas.</p>
+    </div>
+
+    <!-- ─── SELECCIÓN ─── -->
+    <h3 class="section-title" id="c12-selección">Guia de Selección de Sistemas de Tracking</h3>
+    <p>El ponente presenta una matriz de decisión para elegir sistemas de tracking segun el tipo de producción:</p>
+
+    <table class="glossary-table">
+        <thead><tr><th>Tipo de Producción</th><th>Sistema Recomendado</th></tr></thead>
+        <tbody>
+            <tr><td><b>XR / LED wall con paralaje</b></td><td>Tracking completo (óptico o mecánico). Requiere precisión maxima.</td></tr>
+            <tr><td><b>Broadcast multi-cámara</b></td><td>Tracking mecánico u óptico sobre tripodes. Green screen preferido.</td></tr>
+            <tr><td><b>Virtual simple / streaming</b></td><td>PTZ con tracking integrado o sistemas trackless pueden bastar.</td></tr>
+            <tr><td><b>Exteriores / localización</b></td><td>Sistemas markerless (tipo Ncam/RedSpy) preferidos, ya que no se pueden instalar marcadores en el techo.</td></tr>
+            <tr><td><b>Cine</b></td><td>Tracking óptico o mecánico de alta precisión. LED wall preferido.</td></tr>
+        </tbody>
+    </table>
+
+    <!-- ─── DEMOCRATIZACIÓN ─── -->
+    <h3 class="section-title" id="c12-democratización">Democratización y Futuro</h3>
+    <p>Un tema recurrente en la ponencia es la evolución desde sistemas de mas de 200.000 dolares accesibles solo a 4-5 cadenas principales, hasta sistemas basados en PC de 5.000-6.000 euros que cualquiera puede permitirse. Esta reducción de costes de 50x cambio fundamentalmente quien podia hacer producción virtual, pasando de grandes cadenas de televisión a estudios pequenos y operaciónes de streaming.</p>
+
+    <h3 class="subsection-title">Flujo de trabajo moderno con cámaras PTZ (post-pandemia):</h3>
+    <ul class="content-list">
+        <li>Usar una cámara PTZ moderna (Panasonic, Sony) con encoders integrados y metadatos</li>
+        <li>Conectar un modulo de tracking compacto</li>
+        <li>Los <b>perfiles de lente de fabrica</b> se cargan automaticamente</li>
+        <li>El sistema esta listo casi inmediatamente: conectar la cámara y empezar a producir</li>
+        <li>Ideal para streaming y producciónes de respuesta rápida</li>
+    </ul>
+
+    <div class="tech-concept">
+        <b>Impacto de la pandemia COVID-19:</b> La pandemia cambio fundamentalmente la producción virtual al impulsar un aumento masivo en producciónes de <b>streaming</b>. Empresas que nunca habian considerado la producción virtual de repente la necesitaban. Esto acelero la adopción y el desarrollo de sistemas mas compactos y asequibles.
+    </div>
+
+    <h3 class="subsection-title">Flujo básico de señal en producción virtual moderna:</h3>
+    <ul class="content-list">
+        <li>Un <b>fondo</b> (green screen o LED wall) se coloca detras del talento</li>
+        <li>La <b>cámara</b> captura la escena</li>
+        <li>Los <b>datos de tracking</b> (posición XYZ, orientación PTR, FoV) fluyen al motor gráfico</li>
+        <li>Un <b>genlock</b> sincroniza todas las señales</li>
+        <li>El <b>motor en tiempo real</b> (Unreal Engine, Brainstorm Infinity, etc.) renderiza la escena virtual coincidiendo con la perspectiva de la cámara</li>
+        <li>La salida compuesta combina el metraje real de la cámara con el fondo virtual</li>
+    </ul>
+
+    <!-- ─── GLOSARIO ─── -->
+    <h3 class="section-title" id="c12-glosario">Glosario de Terminos</h3>
+    <table class="glossary-table">
+        <thead><tr><th>Termino</th><th>Definición</th></tr></thead>
+        <tbody>
+            <tr><td><b>Tracking</b></td><td>Sistema de seguimiento que informa la posición (XYZ), orientación (Pan, Tilt, Roll) y campo de visión (FoV) de la cámara física al motor gráfico en tiempo real.</td></tr>
+            <tr><td><b>Genlock</b></td><td>Generador de sincronismo que asegura que todos los dispositivos (cámara, motor gráfico, pantalla) capturen y pinten el frame al unisono. Obligatorio para producción virtual profesional.</td></tr>
+            <tr><td><b>Timestamp</b></td><td>Marca temporal única asociada a cada frame de video y su correspondiente dato de tracking, garantizando la correspondencia exacta entre ambos.</td></tr>
+            <tr><td><b>FreeD</b></td><td>Protocolo de datos de tracking originado en Radamec que se ha convertido en el estándar universal de la industria. Transmite posición XYZ y orientación Pan/Tilt/Roll.</td></tr>
+            <tr><td><b>PTZ</b></td><td>Siglas de Pan (horizontal), Tilt (vertical) y Zoom. Describe tanto el movimiento de cámara como un tipo de cámara robótica.</td></tr>
+            <tr><td><b>Punto Nodal</b></td><td>Centro óptico de la lente donde convergen y se invierten los rayos de luz; crítico para que el fondo virtual no "baile" o "patine" respecto al mundo real.</td></tr>
+            <tr><td><b>Banding</b></td><td>Efecto de bandas negras visibles que aparece cuando la obturación de la cámara no esta sincronizada con la frecuencia de refresco de un panel LED.</td></tr>
+            <tr><td><b>Paralaje (Parallax)</b></td><td>Efecto visual donde los objetos se desplazan unos respecto a otros al mover la cámara, creando sensación de profundidad. Esencial para la credibilidad del entorno virtual.</td></tr>
+            <tr><td><b>Brender</b></td><td>Sistema desarrollado por Brainstorm que usaba imágenes panoramicas de 360 grados pre-renderizadas en alta calidad como fondo en tiempo real, superando las limitaciones de textura del hardware.</td></tr>
+            <tr><td><b>Black Burst</b></td><td>Senal de referencia de video negro utilizada para sincronizar la cabeza de cámara y otros dispositivos en la cadena de producción.</td></tr>
+            <tr><td><b>Posición Global</b></td><td>Capacidad del sistema de tracking de conocer su ubicación absoluta en el espacio en todo momento, sin necesidad de recalibrar al encender.</td></tr>
+            <tr><td><b>Posición Relativa</b></td><td>Sistemas de tracking antiguos que solo median desplazamiento desde un punto cero arbitrario, requiriendo recalibración manual en cada sesión.</td></tr>
+            <tr><td><b>ArUco</b></td><td>Tipo de marcador visual impreso (patron geometrico) usado para auto-calibración automática de la posición de cámara y distorsión de lente.</td></tr>
+            <tr><td><b>Markerless (Sin marcas)</b></td><td>Sistemas de tracking que calculan la posición de la cámara analizando la escena visible o usando infrarrojos, sin necesidad de marcadores fisicos en el techo.</td></tr>
+            <tr><td><b>Inside-Out Tracking</b></td><td>Método de tracking donde la cámara de seguimiento esta montada en la propia cámara de producción y mira hacia el entorno, en lugar de ser un sistema externo que observa la cámara.</td></tr>
+            <tr><td><b>SDI</b></td><td>Serial Digital Interface. Estándar de conexión de video profesional recomendado para producción virtual seria, frente a HDMI o NDI.</td></tr>
+            <tr><td><b>Render Farm</b></td><td>Conjunto de multiples ordenadores (10-15) renderizando simultaneamente para generar imágenes de alta calidad. Un segundo de metraje puede tardar hasta un día en renderizarse.</td></tr>
+            <tr><td><b>Trackless</b></td><td>Sistemas de producción virtual sin hardware de tracking físico, que usan solo marcadores y análisis de software. Tienen limitaciones en paralaje, sombras y reflejos.</td></tr>
+            <tr><td><b>XR (Extended Reality)</b></td><td>Producción virtual con pantallas LED que rodean al talento, permitiendo paralaje real, reflejos naturales e iluminación ambiental coherente.</td></tr>
+            <tr><td><b>Sirius</b></td><td>Modulo de SGI que convertia la salida VGA del ordenador a video broadcast sincronizado (SD), siendo el puente entre gráficos por ordenador y emisión televisiva.</td></tr>
+        </tbody>
+    </table>
+
+    <a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>

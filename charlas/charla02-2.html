@@ -1,0 +1,385 @@
+<div class="talk-header">
+        <h2>VP sobre Green Screen &amp; Recursos en el Aula</h2>
+        <div class="talk-meta">
+            <strong>Ponente:</strong> Oscar Olarte &mdash; Co-fundador de Mr. Factory y Director de Master en The Core<br>
+            <strong>Fecha:</strong> Martes 17 de marzo de 2026
+        </div>
+    </div>
+
+<div class="section-nav">
+    <div class="section-nav-title">Contenidos</div>
+    <ul>
+        <li><a href="#c22-summary">Resumen Ejecutivo</a></li>
+        <li><a href="#c22-twin">El Concepto de Gemelo Digital</a></li>
+        <li><a href="#c22-real-vs-virtual">Real vs. Virtual: El Challenge de Mr. Factory</a></li>
+        <li><a href="#c22-led-vs-green">Crítica al Volumen LED vs. Croma</a></li>
+        <li><a href="#c22-supervisor">El Rol del Supervisor de VFX</a></li>
+        <li><a href="#c22-history">Historia y Antecedentes de la Producción Virtual</a></li>
+        <li><a href="#c22-cases">Casos de Exito y Producciones</a></li>
+        <li><a href="#c22-workflow">Flujo de Trabajo: Del Croma al Final Pixel</a></li>
+        <li><a href="#c22-escenarios">Tipos de Escenarios Virtuales (2D, 2.5D, Full 3D)</a></li>
+        <li><a href="#c22-color">Infraestructura Técnica y Colorimetria</a></li>
+        <li><a href="#c22-gaussian">Gaussian Splatting y Fotogrametria</a></li>
+        <li><a href="#c22-business">Modelo de Negocio y Estrategia (IA y Datasets)</a></li>
+        <li><a href="#c22-ia">Postura Crítica sobre la Inteligencia Artificial</a></li>
+        <li><a href="#c22-innovation">Innovación y Reingeniería</a></li>
+        <li><a href="#c22-universo">El Concepto de Universo vs. Transmedia</a></li>
+        <li><a href="#c22-education">Filosofia Educativa: Trabajo en Equipo</a></li>
+        <li><a href="#c22-España">España Latente y Productividad en España</a></li>
+        <li><a href="#c22-tools">Herramientas y Software Clave</a></li>
+        <li><a href="#c22-glossary">Glosario Técnico</a></li>
+    </ul>
+</div>
+
+<div class="executive-summary" id="c22-summary">
+    <h3 class="section-title" style="border:none;padding:0;margin:0 0 12px 0;">Resumen Ejecutivo</h3>
+    <p>Oscar Olarte, co-fundador de Mr. Factory y director academico del Master de Producción Virtual en The Core, presenta una visión integral de la producción virtual basada en <b>croma (green screen)</b> como alternativa superior a los volumenes LED para ficción de bajo y medio coste. Su tesis central sostiene que la tecnología debe servir a la narrativa y no al reves, y que el verdadero valor futuro no reside en la infraestructura física sino en la <b>generación de Datasets</b> de alta calidad para entrenar modelos de Inteligencia Artificial. Olarte defiende que el concepto de <b>Gemelo Digital</b> (cámara, óptica, iluminación) es la piedra angular de toda producción virtual coherente, y que el croma ofrece mayor control, menor riesgo operativo y mejor rendimiento cromático que el LED. Con estudios en Yakarta, Sudafrica, Malasia y España, Mr. Factory produce 120 películas al ano y 300 spots, demostrando que es posible rodar 90 minutos de ficción en solo tres días con calidad profesional.</p>
+</div>
+
+<!-- ═══ GEMELO DIGITAL ═══ -->
+<h3 class="section-title" id="c22-twin">El Concepto de Gemelo Digital</h3>
+<p>Para Olarte, hablar de producción virtual es hablar obligatoriamente de <b>gemelo digital</b>. Todo elemento físico del set debe tener su replica exacta en el entorno virtual para que la composición sea coherente e invisible al espectador. Este proceso abarca cuatro capas fundamentales:</p>
+<ul class="content-list">
+    <li><b>Gemelo de la Cámara:</b> Se genera una cámara virtual con identicas especificaciones al cuerpo real: mismo sensor, misma colorimetría, mismo comportamiento. Por ejemplo, si se rueda con una ARRI Alexa S35, la cámara virtual replica exactamente ese sensor.</li>
+    <li><b>Gemelo de la Lente/Óptica:</b> La óptica virtual debe replicar la aberración cromatica, el bokeh, la distorsión y el comportamiento del enfoque de la lente física. Cuando la cámara real enfoca, la virtual lo hace simultaneamente gracias al sistema de tracking.</li>
+    <li><b>Gemelo de la Iluminación:</b> Es fundamental generar gemelos digitales de cada fuente de luz. Si se coloca un Sky Panel en el set físico, se pone un foco virtual idéntico en la misma posición. Las sombras, reflejos y la proyección de luz deben ser consistentes entre el actor real y el entorno virtual.</li>
+    <li><b>Gemelo de la Localización:</b> El escenario virtual replica con exactitud matematica la localización real (o la deseada). Se utilizan técnicas como la fotogrametría de polarización cruzada para capturar entornos con fidelidad submilimetrica.</li>
+</ul>
+<div class="tech-concept">
+    <p><b>Método de verificación:</b> Para validar que el gemelo digital funciona correctamente, se coloca en el set físico un plató de cromo, bolas de VFX (una cromada y una gris) y una carta de color. Si el trabajo de gemelo digital esta bien hecho, las imágenes reales y virtuales seran consistentes y coherentes: las sombras coincidiran, los reflejos seran correctos y los colores se corresponderan entre ambos mundos.</p>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: Corto del Master en The Core</div>
+    <p>En el master de producción virtual de The Core, los alumnos deben rodar un corto real y otro virtual, y ambos deben coincidir visualmente. Utilizando una Alexa y fotogrametría de polarización cruzada, reconstruyen una casa normal de la sierra en 3D. En las pruebas se demuestra como la luz virtual se mueve consistentemente con la real, las sombras se proyectan de forma coherente y la cámara se desplaza con tracking preciso, logrando que sea imposible distinguir que escena es real y cual virtual.</p>
+</div>
+
+<!-- ═══ REAL VS VIRTUAL CHALLENGE ═══ -->
+<h3 class="section-title" id="c22-real-vs-virtual">Real vs. Virtual: El Challenge de Mr. Factory</h3>
+<p>Olarte defiende que la medida de calidad de la producción virtual debe ser el <b>cine real</b>: la imagen virtual tiene que ser, como mínimo, igual en todos los sentidos a una imagen rodada en localización. Para demostrarlo, Mr. Factory lanzo un "challenge" público:</p>
+<div class="experience-box">
+    <div class="experience-box-title">El Reto Real vs. Virtual</div>
+    <p>Se presentaron 50 fotografías mezclando tomas reales con tomas generadas virtualmente y se pidio a directores de fotografía que identificaran cuales eran 3D y cuales no. El challenge quedo sin respuesta: ningun profesional fue capaz de distinguirlas consistentemente. Este test se convirtio en referencia mundial de lo que es posible alcanzar con producción virtual basada en croma, y fue reconocido por la comunidad internacional, apareciendo en publicaciones como Render Out Son.</p>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Reconocimiento: VES Handbook y Virtual Production Partners</div>
+    <p>Olarte fue invitado a escribir el primer capitulo de la "Biblia" de la producción virtual: el <i>Visual Effects Society Handbook of Virtual Production</i>. Alli defendio que el concepto de "Final Pixel" no debe limitarse al LED, ya que el cine siempre se ha revelado en postproducción. Además, Mr. Factory aparece listada como Virtual Production Partner junto a gigantes como NVIDIA, Adobe e Industrial Light &amp; Magic, algo sorprendente para una empresa pequeña española.</p>
+</div>
+
+<!-- ═══ Crítica AL LED ═══ -->
+<h3 class="section-title" id="c22-led-vs-green">Crítica al Volumen LED vs. Croma</h3>
+<p>Olarte presenta una postura abiertamente crítica hacia el uso indiscriminado de volumenes LED, apoyandose en argumentos técnicos, en el paper de Paul Debevec (FMX 2022) y en la opinion de Sol Dibb, Chief Research Officer de Netflix. Su argumento principal: el LED introduce problemas técnicos severos que el croma resuelve de forma mas eficiente para la mayoria de producciónes:</p>
+<div class="tech-concept">
+    <ul class="content-list">
+        <li><b>Color Langosta (Skin Tone Sensations):</b> El LED tiene un TLCI (Televisión Lighting Consistency Index) deficiente al no disponer de doppler white. Esto desvia los tonos de piel hacia tonos rojizos irreales, convirtiendo la piel en "color langosta". Una luz profesional o el sol tienen TLCI cercano a 100; el LED esta muy lejos de eso.</li>
+        <li><b>Contaminación Luminica de los Negros:</b> La propia emisión del LED contamina los negros de la escena. Incluso en instalaciónes de gama altisima como Sony Crystal LED, las antorchas de una escena no brillan como deberian (10.000 nits) y los negros no son verdaderamente negros, sino gris oscuro contaminado.</li>
+        <li><b>Doble Generación:</b> Al rodar una pantalla que ya proyecta una imagen capturada por otra cámara con otra óptica, se genera un conflicto de profundidad de campo. No hay profundidad de campo real, lo que produce problemas de moire y artefactos visuales evidentes.</li>
+        <li><b>Rango Dinámico Comprometido:</b> Los paneles LED estan limitados a unos 1.500 nits con un gamut RGB reducido. El espacio de color esta severamente comprometido comparado con el cine tradicional o las técnicas de croma con gamut ampliado (Rec. 2020).</li>
+        <li><b>Problemas de Moire y Color Banding:</b> Al mover la cámara aparecen artefactos de moire y bordes de color (color fringing). La sincronización entre la frecuencia de refresco del LED y el obturador de la cámara es una pesadilla técnica, ya que el LED solo puede modular su brillo mediante on/off a mayor o menor velocidad.</li>
+        <li><b>Resolución Efectiva Limitada:</b> Cada loseta LED tiene tipicamente 1K de resolución (1024x1024), una resolución muy baja. Mover contenido 4K a traves de losetas de 1K genera perdida de detalle significativa.</li>
+        <li><b>Riesgo Operativo Crítico:</b> Un fallo en el sistema LED puede detener un rodaje millonario. Olarte plantea el escenario: si Tom Cruise viene a rodar unas horas y el LED falla, se enfrenta a una demanda por danos y perjuicios. En cambio, con croma, se puede seguir rodando con marcas fisicas (esparadrapo y cruces) sin interrupción.</li>
+    </ul>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Referencia Cientifica: Paul Debevec (FMX 2022)</div>
+    <p>Olarte se apoya en el estudio de Paul Debevec (inventor del HDR Radiance, uno de los cientificos mas importantes en computer graphics) presentado en FMX 2022. Debevec analiza sistematicamente la distorsión óptica, los tonos de piel (skin tone sensations), el rango dinámico y el gamut del LED. Su conclusión: el LED se puede usar, pero requiere correcciones extremadamente sofisticadas que solo un especialista de su nivel puede implementar. Para el 99% de las producciónes, el croma ofrece un resultado superior con menos complicaciones.</p>
+</div>
+<p><b>Casos de uso validos para LED segun Olarte:</b> Escenas de coches (por los reflejos en la carroceria), personajes con armaduras metalicas que necesitan reflejos en tiempo real, y situaciones especificas donde el supervisor de VFX determine que el LED es la mejor solución técnica. Pero nunca debe ser una decisión empresarial indiscriminada.</p>
+
+<!-- ═══ SUPERVISOR VFX ═══ -->
+<h3 class="section-title" id="c22-supervisor">El Rol del Supervisor de VFX</h3>
+<p>Olarte insiste en la importancia crítica de formar <b>supervisores de VFX</b>, que son los profesionales que mas escasean en la industria. El supervisor es el "arquitecto" de los efectos visuales:</p>
+<ul class="content-list">
+    <li><b>Desglose técnico:</b> Recibe el guion y un presupuesto, y determina que se rueda de forma tradicional, que con animatronics, que con prosteticos, que con producción virtual en LED, que con croma, etc.</li>
+    <li><b>Equipo clave del pipeline:</b> El supervisor de VFX trabaja junto al responsable de innovación/I+D y al Technical Director. Estos tres perfiles son fundamentales para decidir que tecnologías se emplean en cada secuencia.</li>
+    <li><b>Pruebas de concepto:</b> Antes de comprometer una producción, el equipo debe realizar pilotos y pruebas de concepto que se validan y presentan al director.</li>
+</ul>
+<p>Olarte pide encarecidamente a las instituciones educativas: <i>"Por favor, formad supervisores, porque no hay. Necesitamos gente de 3D, gente de postproducción, pero sobre todo supervisores de VFX."</i></p>
+
+<!-- ═══ HISTORIA Y ANTECEDENTES ═══ -->
+<h3 class="section-title" id="c22-history">Historia y Antecedentes de la Producción Virtual</h3>
+<p>Olarte realiza un recorrido histórico para demostrar que la producción virtual no es algo nuevo, sino la evolución natural de técnicas centenarias:</p>
+<ul class="content-list">
+    <li><b>Melies y el viaje a la Luna:</b> Desde los origenes del cine, los efectos visuales han sido inseparables de la narrativa cinematográfica.</li>
+    <li><b>Fritz Lang y Metropolis:</b> El glass shot (pintura sobre cristal) fue el antecedente directo de los fondos virtuales.</li>
+    <li><b>Cantando bajo la lluvia (1952):</b> Ejemplo paradigmático de escenografía construida con eficiencia brutal, antecedente de la producción virtual moderna.</li>
+    <li><b>Lampara de Sodio:</b> Técnica histórica de croma que resolvia todos los problemas de extracción de forma elegante.</li>
+    <li><b>Star Wars y el Glass Shot:</b> George Lucas utilizo el glass shot de forma masiva en las trilogias originales.</li>
+    <li><b>Hook (1991):</b> Primera película en utilizar camera mapping/projection mapping para crear la isla de Nunca Jamas.</li>
+    <li><b>Terminator 2 (1991):</b> Olarte trabajo con ordenadores de 33 MHz, 8 MB de RAM y 80 MB de disco duro, usando Electric Image Animation System y After Effects (cuando aun se llamaba CoSA).</li>
+    <li><b>The Walk (2006-2008):</b> Ejemplo de previsualización volumétrica de altisima calidad que permitia al director conocer el encuadre exacto en tiempo real.</li>
+    <li><b>Retroproyección para coches:</b> Técnica clásica con baterias de cine que hoy se reemplaza por LED, pero que Olarte domina con croma y reflejos HDRI.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia Personal: Los Inicios (1988-2000)</div>
+    <p>Olarte empezo en 1988 con McRenderMan, haciendo animación 3D. En 1991, conocio a William Farrell, presidente de After Effects cuando aun se llamaba CoSA. Trabajo con la Rebel Unit de Macintosh dentro de Industrial Light &amp; Magic, compitiendo con Silicon Graphics. A principios de 2000, monto un gran evento en España invitando a todos los directores de cine, incluyendo al operador de cámara de Almodovar (Juan Maside), para demostrar el potencial de la producción virtual. "Me miraron todos como si estuviera loco", recuerda.</p>
+</div>
+
+<!-- ═══ CASOS DE EXITO ═══ -->
+<h3 class="section-title" id="c22-cases">Casos de Exito y Producciones</h3>
+
+<div class="experience-box">
+    <div class="experience-box-title">Teleportación en Gran Hermano (GH 2017)</div>
+    <p>Mr. Factory fue la <b>primera empresa en el mundo</b> en realizar una teleportación de un presentador en directo en prime time. En Gran Hermano 2017, Jorge Javier Vazquez cruzo una puerta virtual tipo "Stargate" y realizo una entrevista en directo en la casa de Gran Hermano, estando a 50 km de distancia en tiempo real. El proyecto incluia escenarios virtuales, público virtual, realidad aumentada y teleportación. Fue un concurso internacional donde compitieron Stargate Studios y Vizrt, y Mr. Factory gano.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Ceremonia de Apertura UEFA Champions League - Marshmello (2021)</div>
+    <p>En 2021, Mr. Factory realizo la ceremonia de apertura de la Champions League con el artista Marshmello. Fue un proyecto de producción masiva con plazos extremadamente ajustados. "Fue una locura absoluta. Estuvimos deliberando varios días si aceptarlo o no. Como nos va un poquito el lio, nos metimos en ello." El proyecto fue reconocido internacionalmente y consolido a Mr. Factory como referente en eventos en vivo de gran escala.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Informativos y Realidad Aumentada de Mediaset (Telecinco)</div>
+    <p>Mr. Factory tiene un contrato con Mediaset para producir toda la realidad aumentada de los informativos de Telecinco. Un equipo de siete personas desarrolla microdocumentales explicativos donde el presentador camina por escenarios recreados digitalmente. Ejemplos notables incluyen la cobertura de la Dana (DANA) con recreación del desbordamiento del barranco, el conflicto de Ucrania donde el presentador "camina" por las calles del conflicto, pasando a Gaza y luego a China en plano secuencia, y la cobertura del fallecimiento del Papa. Todo se graba como falso directo con previsualizaciónes en tiempo real, por capas, con el canal alfa embebido y con telepromter.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Tornasol Films: Pruebas de Concepto para Cine</div>
+    <p>Con Tornasol Films (la productora que mas cine ha hecho en España, 180 películas), Mr. Factory realizo una prueba de concepto: rodar en un solo día tres escenas de tres películas distintas, incluyendo un interior de cuarto de bano con reflejos. Los cuartos de bano son especialmente dificiles de rodar porque normalmente hay que mover paredes; con croma y reflejos barnizados se resuelve elegantemente. Participaron el director de fotografía David Omedes y Gerardo Herrero, entre otros. El resultado fue presentado como DCP cinematográfico.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Sky Rojo y La Casa de Papel: Escenas de Coches</div>
+    <p>Mr. Factory realizo las escenas de coches de Sky Rojo y La Casa de Papel usando croma con reflejos HDRI. Para las escenas de conducción, desarrollaron técnicas innovadoras como la proyección con proyector laser para generar sombras dinamicas (arboles, hojas) que aportan realismo y dinamismo a las escenas. También trabajaron con Ignacio Lacosta en el set, donde las proyecciones de reflejos en la espalda de actores en cuartos de bano son algo que "no puedes hacer con LED de forma que se vea la espalda".</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Lanzamiento de PlayStation 5 con El Rubius</div>
+    <p>Para el lanzamiento mundial de PlayStation 5, Mr. Factory monto una experiencia con El Rubius y Segura recreando "En Busca del Arca Perdida" con tecnología de teleportación y realidad aumentada, la misma plataforma usada en Gran Hermano.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Javier de la Iglesia: Rodaje Complejo con Calavera</div>
+    <p>En una producción con el director Javier de la Iglesia, Mr. Factory monto una calavera de 500 kilos en un plató con 25 metros de alto. Desmontaron toda la infraestructura del plató durante dos días para que especialistas (stunt performers) pudieran colgarse y subir a la calavera, que representaba la cabeza de una estatua de 50 metros. El proyecto combinaba producción virtual con efectos practicos.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Documental de Amazon y Spots Internacionales</div>
+    <p>Mr. Factory ha producido documentales para Amazon utilizando escenarios full 3D, así como spots para marcas internacionales como Nestle en Italia (combinando escenografía real con nieve fake y suelo construido) y Cobay (anuncio de queso con fotogrametría que conserva el subsurface scattering del producto). También realizan spots de asistencia en carretera usando sliders motorizados para generar paralaje.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Película en Yakarta y Sudafrica: 90 Minutos en 4 Días</div>
+    <p>Mr. Factory demostro que es posible producir una película completa de 90 minutos en cuatro días en Yakarta con calidad cercana a Hollywood a precio popular, incluyendo preproducción, producción y postproducción. También rodaron y estrenaron una película en Sudafrica recreando la casa de "Parasitos" (Bong Joon-ho) enteramente en 3D. El making-of muestra el flujo desde la grabación en logaritmico hasta la aplicación del croma con Ultimatte.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">La Voz: Escenografía de Realidad Aumentada</div>
+    <p>Para el programa "La Voz", Mr. Factory creo la escenografía de realidad aumentada. Se les pidio especificamente que tuviera aspecto de videojuego para que se notara que era realidad aumentada, no un spot tradicional. La plataforma permitia que mas de 100 artistas realizaran audiciones en un entorno visual inmersivo.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Maribel Verdu: Escenas de Conducción (2015-2016)</div>
+    <p>En 2015-2016, en la protohistoria de la producción virtual en España, Mr. Factory realizo escenas de conducción con Maribel Verdu para Tornasol Films. Usaron reflejos, sombras y croma, y "la gente lo ha visto y se ha creido que estaba rodando en localización real". Este fue un hito temprano que demostro la viabilidad del croma para ficción cinematográfica.</p>
+</div>
+
+<!-- ═══ FLUJO DE TRABAJO ═══ -->
+<h3 class="section-title" id="c22-workflow">Flujo de Trabajo: Del Croma al Final Pixel</h3>
+<p>La producción virtual basada en croma requiere una preproducción exhaustiva y un flujo de trabajo muy preciso:</p>
+<div class="tech-concept">
+    <ul class="content-list">
+        <li><b>Preproducción (PPM):</b> La Pre-Production Meeting es el momento clave donde se cierran todos los detalles técnicos y creativos. El supervisor de VFX realiza el desglose del guion, asignando cada escena a la técnica mas adecuada.</li>
+        <li><b>Integración Logaritmica:</b> La imagen se graba en perfil logaritmico nativo de cámara. El croma se aplica mejor trabajando en logaritmico, aplicando después los LUTs de corrección para mantener el máximo rango dinámico.</li>
+        <li><b>Rodaje por Capas:</b> Técnica desarrollada por Olarte donde se graba por capas con el canal alfa embebido, permitiendo composición en tiempo real con telepromter para que los presentadores vean la previsualización.</li>
+        <li><b>Sincronización de Cámaras:</b> La cámara virtual replica exactamente el sensor y la óptica física. El sistema de tracking (basado en SynCraft/Scenario con opticas Zeiss) comunica la posición en tiempo real con cero latencia.</li>
+        <li><b>Keying con Ultimatte:</b> El sistema Ultimatte se usa para la extracción de croma con precisión quirurgica. La versión actual de Ultimatte no trabaja en PQ ni en HLG, por lo que se convierte la señal a Rec. 2020 SDR para el keying y después se "infla" la señal de vuelta.</li>
+        <li><b>Verificación con Carta de Color y Bolas VFX:</b> En localización se capturan bolas VFX y carta de color; en el plató virtual se colocan las mismas. La carta de color calibra los blancos y los negros, las bolas verifican la coherencia luminica.</li>
+    </ul>
+</div>
+<p><b>Resiliencia operativa del croma:</b> Olarte subraya que si algo falla en el sistema de tracking, se puede seguir rodando con marcas fisicas (cruces de esparadrapo, puntos de ataque con "chapota navajo" en el suelo). El sistema es totalmente modular y desplegable en minutos con cámaras inalambricas.</p>
+
+<!-- ═══ TIPOS DE ESCENARIOS ═══ -->
+<h3 class="section-title" id="c22-escenarios">Tipos de Escenarios Virtuales (2D, 2.5D, Full 3D)</h3>
+<p>Mr. Factory trabaja con tres niveles de complejidad de escenarios virtuales:</p>
+<ul class="content-list">
+    <li><b>2D (Some Plate):</b> Plates rodados en localización real. Se rueda en exteriores con planos generales, medios y de cobertura. Ideal para fondos estaticos y extensiones de set. Ejemplo: backdrop exterior con sol real para ventanas.</li>
+    <li><b>2.5D (Projection Mapping):</b> Se pinta o captura una imagen y se proyecta sobre una geometría sencilla desde la posición de cámara. Esto genera la ilusión de paralaje sin necesidad de un escenario full 3D. Técnica heredera del camera mapping de "Hook" (1991). Mr. Factory utiliza palmas y capas sin información 3D completa para dar sensación de profundidad.</li>
+    <li><b>Full 3D:</b> Escenarios completamente modelados y renderizados en 3D con simulación física de luz por niveles de energía (V-Ray render). Se generan con fotogrametría, Gaussian Splatting o modelado manual. Permiten movimiento libre de cámara con paralaje real y reflejos coherentes.</li>
+</ul>
+<div class="tech-concept">
+    <p><b>Recomendación de Olarte:</b> Si la escuela dispone de un parking exterior, usarlo como backdrop con sol real es la configuración mas efectiva. Para interiores, pintar el plató de azul (o verde) y hacer los interiores en platócerrado. El sol real da un juego maravilloso de tonos calidos en piel que ningun LED puede replicar. "Luz calida es azul; luz fria es verde. El cielo llega hasta 9.000 grados Kelvin."</p>
+</div>
+
+<!-- ═══ COLORIMETRIA ═══ -->
+<h3 class="section-title" id="c22-color">Infraestructura Técnica y Colorimetria</h3>
+<p>La gestion del color es uno de los puntos mas criticos de la producción virtual de alta gama:</p>
+<ul class="content-list">
+    <li><b>Espacios de Color Ampliados:</b> Trabajar en Rec. 2020 es fundamental porque ofrece un gamut ampliado con mas colores disponibles. La señal RAW de cámaras como Blackmagic se convierte a HLG o Rec. 2020 para maximizar la capacidad cromatica durante el keying.</li>
+    <li><b>Flujo de Color (Workflow):</b> Se graba en RAW o en logaritmico nativo &rarr; se convierte a Rec. 2020 SDR para Ultimatte (que no soporta PQ ni HLG) &rarr; se hace el keying &rarr; se "infla" la señal de vuelta al espacio de color de destino. Se monitoriza en HLG y se graba en 4:4:4.</li>
+    <li><b>El Problema del Azul vs. Verde:</b> Historicamente se prefiere el verde sobre el azul porque los sensores de cámara tienen mayor densidad de pixeles verdes (patron Bayer). Sin embargo, las cámaras actuales representan el azul con suficiente calidad para trabajar con ambos colores. El espacio CIE 1931 muestra que el verde ocupa mayor area del gamut.</li>
+    <li><b>LEDs de 8 Colores:</b> Para iluminación de set, Olarte utiliza exclusivamente paneles con LEDs de 8 colores por pixel (como el ARRI Sky Panel X), no paneles RGB basicos. Esto es crítico porque al pasar de tungsteno a LED se perdio el infrarrojo y el superred, lo que afecta gravemente a los tonos de piel.</li>
+    <li><b>Espectrometro Obligatorio:</b> En todo rodaje profesional se debe usar un espectrometro para medir las fuentes de luz y verificar valores en vectorscopio y forma de onda.</li>
+    <li><b>Reflejos con Plexiglas:</b> Para escenas donde se necesitan reflejos (ventanas, cuartos de bano), se colocan placas de plexiglas sobre el croma. Si no se quieren reflejos, se deja en mate. Se barnizan superficies selectivamente para controlar reflejos.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Gestion del Spill del Croma</div>
+    <p>El spill (contaminación verde) sigue la ley del cuadrado inverso de la distancia: cuanto mas lejos este el actor del fondo verde, menos contaminación recibe. Lo ideal es un platógrande. Si la cámara esta lejos del croma y se interponen alfombras y suelo, la afección es minima. El problema surge cuando el actor se acerca a una ventana (cerca del fondo verde), donde el spill se hace evidente. "Cuanto mas grande el plato, mejor."</p>
+</div>
+
+<!-- ═══ GAUSSIAN SPLATTING ═══ -->
+<h3 class="section-title" id="c22-gaussian">Gaussian Splatting, HDRI y Fotogrametria</h3>
+<p>La captura de escenarios reales para su uso en producción virtual emplea varias técnicas complementarias:</p>
+<ul class="content-list">
+    <li><b>Gaussian Splatting:</b> Técnica de representación de escenas 3D a partir de fotografías que permite capturar entornos reales con alta fidelidad luminica. Mr. Factory lo utiliza en localizaciónes como Sevilla y Cuenca para generar fondos fotorrealistas.</li>
+    <li><b>HDRI (High Dynamic Range Imaging):</b> Siempre que se hace un Gaussian Splatting hay que capturar un HDRI para poder integrar elementos 3D (como personajes o arboles animados) de forma que la luz sea consistente. Sin HDRI, los arboles del splatting estaran quietos (inadmisible) y la luz no sera coherente.</li>
+    <li><b>Técnica de Captura Rápida de HDRI:</b> Olarte desarrollo una técnica propietaria para capturar HDRIs a maxima velocidad, ya que el sol se mueve y la luz cambia constantemente. Se usan de una a tres cámaras: una apuntando arriba (contrapicado 45&deg;), una al centro y una hacia abajo. Con una sola cámara, el operador debe recorrer la localización corriendo en 15 minutos tomando fotos de 50 megapixeles cada una, mientras un compañero va al lado capturando zonas de HDRI.</li>
+    <li><b>Fotogrametria de Polarización Cruzada:</b> Técnica utilizada para capturar escenarios con fidelidad submilimetrica, eliminando reflejos especulares y capturando el albedo puro de las superficies. Se usa para crear los escenarios del master de The Core.</li>
+    <li><b>Subsurface Scattering en Fotogrametria:</b> Incluso para productos publicitarios (como queso en un spot de Cobay), la fotogrametría conserva el subsurface scattering del material, fundamental para que la luz penetre y se disperse correctamente.</li>
+</ul>
+
+<!-- ═══ MODELO DE NEGOCIO ═══ -->
+<h3 class="section-title" id="c22-business">Modelo de Negocio y Estrategia (IA y Datasets)</h3>
+<p>La visión de Mr. Factory trasciende la producción audiovisual clásica para convertirse en una <b>"Factoria de Datasets"</b>:</p>
+<ul class="content-list">
+    <li><b>Datasets como Valor Permanente:</b> Los modelos de IA (GPT, Sora, Runway, etc.) son commodities que iran cambiando y mejorando. Pero los datos de alta calidad (rodajes etiquetados, fotogrametría, captioning) son el valor permanente. El mismo dataset aplicado a un modelo superior dara resultados exponencialmente mejores.</li>
+    <li><b>Estudios = Factorias de Datos:</b> Los estudios de Mr. Factory no son solo infraestructuras para crear propiedad intelectual; son centros de captura y creación de datasets. Cada rodaje genera datos etiquetados que alimentan modelos propios.</li>
+    <li><b>Ficción de Bajo Coste (FTV):</b> El objetivo principal no es el blockbuster de Hollywood sino la telenovela, el daily show, la ficción de bajo coste que mantiene a las cadenas de televisión. Se aplica reingeniería: un formato clásico (FTV/cinetrón) al que se le anade producción virtual para ahorrar costes y tiempos.</li>
+    <li><b>Series Internacionales:</b> Mr. Factory produce 120 películas/ano en Yakarta (90 minutos cada una en 3 días), 300 spots, con estudios en Yakarta, Sudafrica, Malasia e Indonesia. Los escenarios virtuales se generan centralizadamente en España.</li>
+    <li><b>Teleportación de Actores:</b> Con Gaussian Splatting e HDRI, es viable producir series donde un personaje de Yakarta conoce a uno español, viajan, y todo se rueda en estudio teleportando a los actores a localizaciónes de Cuenca, Johannesburgo o Sevilla.</li>
+    <li><b>Preservación del Patrimonio y Turismo:</b> La digitalización de localizaciónes sirve también para preservar patrimonio histórico (proyecto Next Generation de la UE) y para promoción turistica involuntaria (como el caso de la serie rodada en Granada que multiplico el turismo surcoreano). El ejemplo de Assassin's Creed y Notre Dame demuestra el valor de tener activos digitales unicos.</li>
+</ul>
+<div class="tech-concept">
+    <p><b>Las 4 Patas de la IA segun Olarte:</b> La inteligencia artificial no es una sola cosa, sino cuatro: <b>Dataset</b>, <b>Modelo</b>, <b>Computación</b> y <b>Electricidad</b> (huella de carbono). Nadie puede ser experto en las cuatro. Mr. Factory ha elegido el dataset porque es lo que una empresa de rodaje sabe hacer: capturar datos de alta calidad.</p>
+</div>
+
+<!-- ═══ POSTURA Crítica IA ═══ -->
+<h3 class="section-title" id="c22-ia">Postura Crítica sobre la Inteligencia Artificial</h3>
+<p>Olarte, fundador de la Asociación de IA de España y ponente invitado en conferencias de IA en Tokio, presenta un enfoque crítico y matizado:</p>
+<ul class="content-list">
+    <li><b>El Futuro es Hibrido:</b> Ni todo IA ni todo tradicional. La tecnología debe usarse donde tenga sentido segun el caso de uso, no como solución universal.</li>
+    <li><b>Data Set Scraping = Estafa:</b> Las empresas que han entrenado modelos con contenido de Internet sin pagar derechos de autor han cometido un fraude. Si hubieran tenido que producir o licenciar ese contenido, el coste seria inasumible y las suscripciones multiplicarian su precio.</li>
+    <li><b>La "Maquina Tragaperras":</b> Olarte llama a la IA generativa "slot machine": le das enter, esperas 15 minutos, ves lo que sale, no te gusta, vuelves a darle. Es un sumidero de tiempo y dinero.</li>
+    <li><b>Limite de los Datasets:</b> Si hipoteticament solo se pudiera entrenar con contenido hasta 1970, la IA no podria generar hip-hop, por ejemplo. Esto demuestra que sin datasets adecuados, la IA no funciona para contenido nuevo o específico.</li>
+    <li><b>La Realidad de los Proyectos de IA:</b> En 35 anos de carrera, Olarte solo ha tenido dos "no conformidades" (clientes que rechazan y no pagan el trabajo), y ambas fueron en proyectos que el cliente pidio especificamente que fueran hechos con IA.</li>
+    <li><b>No Reemplaza a los Actores:</b> El método Stanislavski, el método Brecht... la profundidad emocional de un actor no se puede entrenar con IA. Usar IA para generar interpretaciones es bajar la calidad sistematicamente.</li>
+    <li><b>Producción en Linea vs. Producción Clásica:</b> En producción clásica se escribe un guion y se produce. Con IA se generan planos aleatorios y cuando encajan se escribe un guion. Es un enfoque invertido que no funciona para narrativa de calidad.</li>
+    <li><b>Regulación (EU AI Act):</b> El reglamento europeo de IA (AI Act 2024, con reglamento en agosto 2026) impondra limitaciones severas. Habra una "travesia del desierto" similar a la que hubo tras la burbuja puntocom.</li>
+</ul>
+
+<!-- ═══ Innovación ═══ -->
+<h3 class="section-title" id="c22-innovation">Innovación y Reingeniería</h3>
+<p>Olarte distingue entre dos estrategias de desarrollo que práctica Mr. Factory:</p>
+<ul class="content-list">
+    <li><b>Innovación:</b> Juntar elementos que ya existen y funcionan para crear algo nuevo. Ejemplo: la dinamita combino nitrogeno, oxigeno y otros componentes conocidos con un proceso nuevo. Mr. Factory combina videojuegos, cine, televisión e IA para crear formatos y productos nuevos.</li>
+    <li><b>Reingeniería:</b> Tomar algo que existe (formato FTV clásico) y anadirle una tecnología nueva (producción virtual) para mejorar eficiencia, coste y calidad.</li>
+    <li><b>Ley de Rendimientos Acelerados (Kurzweil):</b> Detras de la IA y la producción virtual hay una sola cosa: el aumento exponencial de la potencia computacional. Las redes neuronales existen desde los 80, pero la fundación práctica de la IA fue en 2012, cuando Alex Krizhevsky (cofundador de lo que seria OpenAI) corrio algoritmos de deep learning en una GPU con CUDA y obtuvo rendimientos superiores a cualquier otra tecnología.</li>
+    <li><b>El Triangulo Imposible:</b> Solo se pueden elegir dos de tres variables: rápido, barato, buena calidad. Pero en un contexto de aceleración, lo que era "imposible" hace 5 anos hoy es posible. La variable tiempo transforma lo imposible en posible.</li>
+</ul>
+
+<!-- ═══ UNIVERSO VS TRANSMEDIA ═══ -->
+<h3 class="section-title" id="c22-universo">El Concepto de Universo vs. Transmedia</h3>
+<p>Olarte plantea una evolución del concepto de transmedia hacia la creación de <b>universos</b>:</p>
+<ul class="content-list">
+    <li><b>Universo, no Transmedia:</b> En vez de crear una serie y adaptarla a multiples medios (transmedia), se crea un universo completo que se explota a traves de multiples ventanas: series, videojuegos, experiencias inmersivas, merchandising. Star Wars es el ejemplo paradigmático.</li>
+    <li><b>El Universo como Dataset:</b> El universo creado implica datasets, creación de personajes, localizaciónes digitales. Sirve para lo de hoy y para lo de manana. Es un activo permanente.</li>
+    <li><b>Series Interactivas:</b> Netflix ya experimenta con series interactivas ("Elijo Amor"). El modelo de negocio subyacente es el marketplace: el espectador toca la camiseta de un personaje y va al carrito de la compra. La película se convierte en marketplace.</li>
+    <li><b>Omnicasting:</b> La convergencia de televisión, comercio electrónico, videojuegos y redes sociales en super-apps (Apple, Amazon). El contenido debe adaptarse al usuario, no al reves.</li>
+    <li><b>Divorcio Generacional:</b> Hay un divorcio creciente entre generaciónes por la "tasa de información por unidad de tiempo". La Generación Z y Alfa requieren velocidades de consumo muy diferentes a las tradicionales.</li>
+</ul>
+
+<!-- ═══ Educación ═══ -->
+<h3 class="section-title" id="c22-education">Filosofia Educativa: Trabajo en Equipo</h3>
+<p>Como director academico del Master de Producción Virtual en The Core, Olarte tiene una filosofía educativa muy definida que prioriza la simulación de la realidad profesional:</p>
+<ul class="content-list">
+    <li><b>Perfiles Eclecticos:</b> El master mezcla deliberadamente estudiantes de producción, 3D, rodaje y otras disciplinas. No todos son artistas 3D ni todos son productores. Esto fuerza la comunicación interdisciplinar.</li>
+    <li><b>Un Solo Corto, Tres Grupos:</b> Todos los alumnos trabajan en un único cortometraje pero divididos en tres grupos con defensas separadas. El grupo que mejor defienda el trabajo de todo el equipo obtiene la mejor nota.</li>
+    <li><b>Roles Asignados, No Elegidos:</b> Los alumnos deben adoptar roles que no necesariamente desean. Se les fuerza a trabajar con personas que "a lo mejor no les gustan", simulando la realidad profesional.</li>
+    <li><b>Entender el Sufrimiento del Otro:</b> El objetivo es que el de producción entienda las limitaciones del 3D, y el de 3D entienda que el presupuesto no llega. "Vas a entender que no es el gilipollas que esta ahi; vas a entender su problema porque has vivido su sufrimiento."</li>
+    <li><b>PPM Oficial con Venta a Cliente:</b> El master incluye una PPM oficial y una defensa ante un tribunal que simula una cadena de televisión o un estudio. Se invita a profesionales reales de estudios de televisión para que actuen como tribunal.</li>
+    <li><b>Crítica a la Segmentación Educativa:</b> Olarte crítica que la educación audiovisual este segmentada (3D por un lado, producción por otro, rodaje por otro). Su master rompe esa segmentación obligando al trabajo conjunto.</li>
+    <li><b>Autoformación Especializada:</b> La especialización técnica (Unreal Engine, Blender, etc.) se fomenta como autoformación con tutoriales y sesiones magistrales en Telegram. El master se centra en el trabajo en equipo y la práctica en plato.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia Educativa: El Conflicto Creativo</div>
+    <p>"Empezamos con el guion y cada uno quiere hacer su guion y quiere la gloria para el. Desde ahi, desde 'quiero hacer mi guion' hasta elegir quien es el director... los problemas. Luego dicen: 'Y cuando toco la herramienta? Cuando toco Unreal?' Y yo les digo: 'De momento estamos en la PPM'. Eso es lo mas importante: que aprendan que la preproducción es donde se gana o se pierde una producción."</p>
+</div>
+
+<!-- ═══ España LATENTE ═══ -->
+<h3 class="section-title" id="c22-España">España Latente y Productividad en España</h3>
+<p>Olarte lidera el proyecto "España Latente" desde The Core, una iniciativa pionera:</p>
+<ul class="content-list">
+    <li><b>Formación Remota en Pueblos:</b> Se forma a personas en pueblos de España para trabajar remotamente en proyectos internacionales de producción virtual. Los alumnos de The Core empezaron siendo monitorizados y ahora trabajan con salarios internacionales desde sus pueblos.</li>
+    <li><b>Economia del Modelo:</b> En Madrid una jornada cuesta 400-500 euros; en los pueblos sale a un tercio. Es una situación win-win: ellos viven bien con ese salario y la empresa obtiene productividad competitiva.</li>
+    <li><b>Productividad Española:</b> Los profesionales espanoles son <b>el doble de productivos</b> que los de estudios en Moldavia o India, a pesar de que los salarios en esos paises son mucho menores (salario mínimo en India: 400 euros; en Moldavia: 170 euros). Mr. Factory mide la operación en conjunto, no solo el coste por hora.</li>
+    <li><b>Economia Creativa:</b> España y Brasil son los numeros uno del mundo en economia creativa (36% de los espanoles se dedican a ella). Esto supone una ventaja competitiva natural para el sector audiovisual.</li>
+    <li><b>Centralización en España:</b> Todos los escenarios virtuales para Yakarta, Sudafrica, Malasia e Indonesia se producen en España, y los datasets se envian desde alli para ser transformados aqui.</li>
+</ul>
+
+<!-- ═══ HERRAMIENTAS ═══ -->
+<h3 class="section-title" id="c22-tools">Herramientas y Software Clave</h3>
+<ul class="content-list">
+    <li><b>Unreal Engine:</b> Motor de videojuegos usado como base para la previsualización y rendering en tiempo real de escenarios virtuales.</li>
+    <li><b>Ultimatte:</b> Hardware/software de keying en tiempo real para extracción de croma con precisión profesional. No soporta PQ ni HLG; requiere conversión a Rec. 2020 SDR.</li>
+    <li><b>JetSet (Lightcraft):</b> Aplicación de tracking y previsualización creada por Elliot Mack, el pionero de la producción virtual. Funciona incluso en móvil como tracker. Tiene tres versiones, incluyendo una profesional con Ultimatte integrado por unos 500 euros.</li>
+    <li><b>SynCraft Scenario:</b> Sistema de tracking que utiliza puntos del sensor (similar a LIDAR Bonjourr en 3D) para trackear la cámara en tiempo real sin necesidad de marcas fisicas visibles.</li>
+    <li><b>Mr. Box (Mixed Reality Box):</b> Sistema modular y desplegable de Mr. Factory para producción virtual portátil. Incluye cámaras inalambricas, tracking SynCraft y latencia cero. Se despliega en minutos en cualquier localización.</li>
+    <li><b>V-Ray (Chaos):</b> Motor de render por simulación de energía física. Usado para generar escenarios con fidelidad fotorrealista offline.</li>
+    <li><b>Blender:</b> Software 3D open source usado por los alumnos del master para generar escenarios y gemelos digitales.</li>
+    <li><b>Proside / Rosco Lite Panels:</b> Sistemas modulares de croma para montar cicloramas rapidamente, incluso en escuelas. Permiten contrapicados y son aptos para exteriores.</li>
+    <li><b>ARRI Sky Panel X:</b> Panel LED de 8 colores por pixel (incluyendo infrarrojo y superred), crítico para la correcta reproducción de tonos de piel en set.</li>
+</ul>
+
+<!-- ═══ GLOSARIO ═══ -->
+<h3 class="section-title" id="c22-glossary">Glosario Técnico</h3>
+<dl class="glossary-grid">
+    <dt>Gemelo Digital</dt>
+    <dd>Replica virtual exacta de un elemento físico (cámara, lente, luz, localización) que garantiza la coherencia visual entre el mundo real y el virtual en una producción.</dd>
+
+    <dt>Final Pixel</dt>
+    <dd>Concepto donde la imagen final se obtiene directamente en cámara durante el rodaje. Olarte argumenta que el cine nunca ha sido "final pixel" puro, ya que siempre ha existido un proceso de revelado o postproducción.</dd>
+
+    <dt>TLCI (Televisión Lighting Consistency Index)</dt>
+    <dd>Indice que mide la calidad de la reproducción cromatica de una fuente de luz para sensores de cámara. El sol y luces profesionales tienen TLCI cercano a 100; los LEDs de pantalla tienen valores significativamente inferiores.</dd>
+
+    <dt>Skin Tone Sensations / Color Langosta</dt>
+    <dd>Efecto por el cual las pantallas LED con TLCI deficiente desvian los tonos de piel hacia tonos rojizos irreales, dandoles aspecto de "langosta". Causado por la ausencia de doppler white en los LEDs.</dd>
+
+    <dt>Gaussian Splatting</dt>
+    <dd>Técnica de representación de escenas 3D a partir de fotografías que utiliza primitivas gaussianas para reconstruir entornos reales con alta fidelidad luminica y geometrica.</dd>
+
+    <dt>HDRI (High Dynamic Range Imaging)</dt>
+    <dd>Captura de imágenes con rango dinámico extendido (360 grados) que registra la información luminica completa de una escena. Imprescindible para integrar elementos 3D en fondos de Gaussian Splatting.</dd>
+
+    <dt>Tracking</dt>
+    <dd>Sistema que comunica en tiempo real la posición y orientación exacta de la cámara física a la cámara virtual. Tecnologias como SynCraft Scenario o JetSet permiten tracking con cero latencia.</dd>
+
+    <dt>Ultimatte</dt>
+    <dd>Hardware/software profesional de keying en tiempo real para extraer el croma con maxima precisión. Trabaja en Rec. 2020 SDR y requiere conversión de señales HLG o PQ.</dd>
+
+    <dt>PPM (Pre-Production Meeting)</dt>
+    <dd>Reunion de preproducción donde se cierran todos los detalles técnicos, creativos y presupuestarios antes de comenzar el rodaje. Es el momento mas crítico de toda producción virtual.</dd>
+
+    <dt>Projection Mapping / Camera Mapping</dt>
+    <dd>Técnica 2.5D donde una imagen se proyecta sobre geometría simple desde la posición de cámara, generando ilusión de paralaje sin necesidad de un escenario full 3D. Inventada para "Hook" (1991).</dd>
+
+    <dt>Glass Shot</dt>
+    <dd>Técnica clásica donde se pinta parte de la escena sobre un cristal colocado frente a la cámara, integrando elementos ficticios con el set real. Antecedente directo de los fondos virtuales, usado extensivamente en Star Wars y Metropolis.</dd>
+
+    <dt>Spill</dt>
+    <dd>Contaminación de color verde (o azul) que el fondo de croma refleja sobre los actores y objetos del set. Se reduce aumentando la distancia al fondo y colocando alfombras o suelo oscuro.</dd>
+
+    <dt>Rec. 2020</dt>
+    <dd>Espacio de color ampliado que ofrece un gamut mucho mayor que Rec. 709. Fundamental en VP porque permite capturar verdes de croma mas puros y mantener mayor fidelidad cromatica en el keying.</dd>
+
+    <dt>HLG (Hybrid Log-Gamma)</dt>
+    <dd>Estándar de transferencia para alto rango dinámico (HDR) compatible con monitores SDR. Mr. Factory monitoriza en HLG y convierte a Rec. 2020 SDR para el proceso de keying con Ultimatte.</dd>
+
+    <dt>Fotogrametria de Polarización Cruzada</dt>
+    <dd>Técnica avanzada de captura 3D que utiliza filtros polarizadores cruzados para eliminar reflejos especulares y capturar el albedo puro de las superficies, obteniendo modelos con fidelidad submilimetrica.</dd>
+
+    <dt>Dataset</dt>
+    <dd>Conjunto de datos etiquetados (imágenes, rodajes, fotogrametría, captioning) que se usan para entrenar modelos de inteligencia artificial. Segun Olarte, el dataset es el valor permanente frente a los modelos que cambian.</dd>
+
+    <dt>Subsurface Scattering</dt>
+    <dd>Fenomeno físico por el cual la luz penetra un material translucido (piel, cera, queso) y se dispersa internamente antes de salir. Crítico para el realismo en fotogrametría y rendering de productos y personajes.</dd>
+
+    <dt>Doble Generación</dt>
+    <dd>Problema técnico del LED: al rodar con una cámara una imagen que ya fue capturada por otra cámara/óptica y proyectada en pantalla, se genera un conflicto de profundidad de campo, moire y degradación de calidad.</dd>
+
+    <dt>Supervisor de VFX</dt>
+    <dd>Profesional que actua como "arquitecto" de los efectos visuales de una producción. Recibe el guion y presupuesto, y determina que técnica (LED, croma, prosteticos, animatronics, rodaje tradicional) es optima para cada secuencia.</dd>
+
+    <dt>Ley de Kurzweil (Rendimientos Acelerados)</dt>
+    <dd>Teoria de Ray Kurzweil que sostiene que el progreso tecnologico crece de forma exponencial. Olarte la usa para explicar que lo que hoy es "imposible" sera posible en meses, convirtiendo lo imposible en una variable de tiempo.</dd>
+</dl>
+
+<a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>

@@ -1,0 +1,241 @@
+<div class="talk-header">
+        <h2>VP sobre Volumenes LED</h2>
+        <div class="talk-meta">
+            <strong>Ponentes:</strong> Supervisores de VFX de Netflix España<br>
+            <strong>Ubicación:</strong> Visita a Netflix España &mdash; Madrid Content City<br>
+            <strong>Fecha:</strong> Martes 17 de marzo de 2026
+        </div>
+    </div>
+
+    <div class="section-nav">
+        <div class="section-nav-title">Contenidos</div>
+        <ul>
+            <li><a href="#c23-resumen">Resumen Ejecutivo</a></li>
+            <li><a href="#c23-espacio">El Espacio Físico: Configuración del Volumen</a></li>
+            <li><a href="#c23-versatilidad">Versatilidad y Tipos de Contenido</a></li>
+            <li><a href="#c23-integración">Integración Técnica: Hardware y Software</a></li>
+            <li><a href="#c23-color">Color, Metamerismo y Calibración</a></li>
+            <li><a href="#c23-sensor">El Sensor, la Lente y la Senal RAW</a></li>
+            <li><a href="#c23-flujo">Colaboración Interdepartamental y Roles</a></li>
+            <li><a href="#c23-lineup">Jornada de Calibración (Line-Up Day)</a></li>
+            <li><a href="#c23-fps">Frame Rate y Formatos de Entrega</a></li>
+            <li><a href="#c23-sostenibilidad">Sostenibilidad y Beneficios Operativos</a></li>
+            <li><a href="#c23-experiencia">Experiencias en Set</a></li>
+            <li><a href="#c23-glosario">Glosario de Terminos</a></li>
+        </ul>
+    </div>
+
+    <div class="executive-summary" id="c23-resumen">
+        <h3 class="section-title" style="border:none;padding:0;margin:0 0 12px 0;">Resumen Ejecutivo</h3>
+        <p>Los supervisores de VFX de Netflix España reciben al grupo en las instalaciónes de Madrid Content City, donde se opera un volumen LED de 30m x 6m a 180 grados. La sesión combina una presentación teorica con una demostración práctica en vivo, abordando la totalidad del flujo de trabajo de la Producción Virtual mediante volumenes LED: desde la configuración física del espacio y las tipologías de contenido (2D, 2.5D, 3D), pasando por la calibración cromatica (metamerismo, ST 2084, transformación de gamut), el registro del material (RAW vs. logaritmico), la sincronización de hardware (Genlock, Media Player, tracking), hasta los roles del personal clave en set y la filosofía de colaboración interdepartamental. Se enfatiza que la VP no es una simple sustitución del croma, sino un cambio de paradigma completo que requiere calibración técnica exhaustiva entre hardware, software y todos los equipos humanos del set.</p>
+    </div>
+
+    <!-- ─── ESPACIO Físico ─── -->
+    <h3 class="section-title" id="c23-espacio">El Espacio Físico: Configuración del Volumen</h3>
+    <p>El estudio de Netflix dispone de una pantalla principal de <b>30m x 6m</b> en semicirculo de <b>180 grados</b>. En el momento de la visita se estaba utilizando una configuración reducida de <b>10m x 4m</b> con <b>techo LED</b> que permite generar reflejos e iluminación cenital sobre los objetos del decorado. Los paneles estan montados sobre <b>ruedas</b>, lo que permite reconfigurar el espacio rapidamente: entrar y sacar decorados, ajustar la curvatura o reducir las dimensiones segun cada producción.</p>
+    <p>Se explica que la industria ha evolucionado desde los espacios enormes estilo "The Mandalorian" (volumenes gigantes con enorme inversión) hacia <b>configuraciónes versatiles y modulares</b>. El objetivo es adaptar el tamano del volumen al tipo de producción:</p>
+    <ul class="content-list">
+        <li><b>Secuencias de conducción:</b> Pantalla alargada y estrecha, solo lo que se ve por las ventanillas del vehículo. No se justifica el gasto de una pantalla completa.</li>
+        <li><b>Escenas de interior con "ventana":</b> Una pantalla detras de un ventanal puede ser suficiente si la cámara no se acerca demasiado.</li>
+        <li><b>Producciones con decorados grandes:</b> Se usa la pantalla completa de 30x6m con el semicirculo.</li>
+    </ul>
+    <div class="tech-concept">
+        <b>Equilibrio entre pixel pitch, distancia y coste</b><br>
+        Cuanto mas pequeño el pixel pitch, mayor resolución pero también mayor coste y mayor carga de procesado (mas pixeles en el mismo espacio físico). Hay que encontrar el equilibrio: la cámara debe estar lo suficientemente lejos como para que la pantalla quede <b>fuera de la profundidad de campo</b> (manteniendo la ilusión de "ventana"), pero lo suficientemente cerca para que la pantalla cubra el ángulo de visión necesario. Si el pixel pitch es grande, la distancia minima de enfoque aumenta, pero se necesita menos potencia de procesado.
+    </div>
+
+    <!-- ─── VERSATILIDAD Y TIPOS DE CONTENIDO ─── -->
+    <h3 class="section-title" id="c23-versatilidad">Versatilidad y Tipos de Contenido</h3>
+
+    <h4 class="subsection-title">Live Grading en tiempo real</h4>
+    <p>Durante la demostración, se mostro como un mismo fondo (una escena diurna de las <b>Torres de Madrid</b> con gran detalle) podia transformarse rapidamente en un <b>atardecer</b> o en una <b>escena nocturna</b> mediante ajustes de Live Grading en vivo. Esto elimina la necesidad de volver a localizaciónes multiples veces y permite comprimir los planes de rodaje. Se pueden hacer explosiones de luz, cambios de ambiente y transiciónes de hora del día sin recargar contenido, solo ajustando parametros.</p>
+
+    <h4 class="subsection-title">Tipologias de Contenido: 2D, 2.5D y 3D</h4>
+    <ul class="content-list">
+        <li><b>2D (Plates):</b> Imágenes planas proyectadas sin información de profundidad. Ideales cuando la cámara esta estatica o se necesita solo un fondo de "ventana". Es la opción mas ligera en recursos.</li>
+        <li><b>2.5D (Capas):</b> Imágenes preparadas por capas separadas. En el ejemplo de las Torres de Madrid, cada torre estaba preparada individualmente como una capa, lo que permite un ligero efecto de profundidad sin un entorno 3D completo. También se mencionan las palmeras como elementos 2D sin información de paralaje colocados en capas.</li>
+        <li><b>3D (Unreal Engine):</b> Necesario cuando la cámara requiere <b>información de paralaje y distancia real</b>. El fondo reacciona en tiempo real al movimiento de la lente mediante sistemas de tracking. Implica mayor carga de procesado, mas equipamiento de hardware, mas personal y mayor coste. Se recurre a ello cuando hay movimientos complejos de cámara que exigen que la perspectiva del fondo se actualice con el punto de vista.</li>
+    </ul>
+    <p>Se destaca que muchas producciónes <b>no necesitan 3D</b>: trabajar con plates 2D o 2.5D bien preparados es mas eficiente si la cámara no va a tener movimientos de paralaje significativos. Un plate en 3D ofrece flexibilidad (mover el sol, cambiar temperatura de color facilmente en Unreal), pero un plate 2D bien rodado puede resolver la misma escena con menos recursos.</p>
+
+    <div class="tech-concept">
+        <b>Secuencias de conducción como estándar industrial</b><br>
+        Se señala que las secuencias de conducción en coches son ya un <b>estándar extendido</b> en la industria para el uso de volumenes LED. Cuando la escena es un exterior visto desde dentro del vehículo, el LED funciona especialmente bien porque los fondos estan alejados y difuminados, y la pantalla proporciona reflejos naturales sobre las superficies cromadas de la carroceria (algo imposible con croma verde).
+    </div>
+
+    <!-- ─── Integración Técnica ─── -->
+    <h3 class="section-title" id="c23-integración">Integración Técnica: Hardware y Software</h3>
+    <p>Se presenta un diagrama que muestra la <b>integración técnica y colaborativa</b> entre todos los equipos del set. La ponencia insiste en que da igual la tipología de contenido (2D, 2.5D o 3D): todos los elementos del sistema deben estar perfectamente sincronizados.</p>
+
+    <h4 class="subsection-title">El contenido debe comportarse como la realidad</h4>
+    <p>El contenido digital proyectado en el volumen LED debe <b>comportarse exactamente igual que el entorno físico</b>: las fuentes de luz de la pantalla deben integrarse de manera realista con los objetos fisicos del decorado, y todo debe ser capturado coherentemente por la cámara. Si no se ha realizado un <b>alineamiento geometrico</b> correcto (calcular distancias entre objetos fisicos, cámara y pantalla), aparecen artefactos visuales. Si la sincronización no es precisa, se produce <b>banding</b> (lineas negras) porque los fotogramas de la cámara no coinciden con los ciclos de refresco de los paneles LED.</p>
+
+    <h4 class="subsection-title">Componentes del sistema</h4>
+    <ul class="content-list">
+        <li><b>Media Player:</b> El dispositivo que reproduce o administra el material que se proyecta en las pantallas. Controla las entradas de señal, el tamano de imagen y la resolución.</li>
+        <li><b>Procesador LED:</b> Recibe la señal del Media Player y la convierte en instrucciones para cada modulo de la pantalla. Gestiona el <b>pixel pitch</b>, el <b>brillo</b>, la <b>frecuencia de escaneo</b> y la sincronización.</li>
+        <li><b>Genlock:</b> Sistema de sincronización que garantiza que la cámara y la pantalla capturen y reproduzcan el frame exactamente al mismo tiempo. Sin Genlock, aparece banding.</li>
+        <li><b>Sistema de Tracking (opcional):</b> Solo necesario para contenido 3D. En el estudio de Netflix se disponia de <b>Stype</b> (sistema lateral). Requiere calibración óptica para que la cámara virtual "entienda" donde esta la cámara física en el mundo 3D.</li>
+    </ul>
+
+    <!-- ─── COLOR Y METAMERISMO ─── -->
+    <h3 class="section-title" id="c23-color">Color, Metamerismo y Calibración</h3>
+    <p>Esta fue la sección mas técnica y extensa de la ponencia, con demostración práctica incluida.</p>
+
+    <h4 class="subsection-title">El problema fundamental del espectro LED</h4>
+    <p>Las pantallas LED estan compuestas por pixeles RGB (rojo, verde, azul). Cuando se mezclan estos tres colores, pueden generar blanco y una gama de colores, pero <b>no cubren todo el espectro visible</b>. Entre los picos de emisión del rojo, verde y azul existen "valles" donde no hay información de color. Esto genera el fenomeno del <b>metamerismo</b>: dos colores que parecen iguales bajo una luz pueden diferir completamente bajo otra. Cuando una superficie blanca del decorado refleja la luz LED, puede parecer correcta al ojo pero la cámara (cuyo sensor tiene una respuesta espectral diferente) puede registrar colores falseados, especialmente en los <b>tonos de piel</b> de los actores.</p>
+
+    <h4 class="subsection-title">Transformación de color (Gamut Mapping)</h4>
+    <p>La solución es realizar una <b>transformación de color</b> que mapee el gamut (triangulo de colores) de la pantalla LED dentro del gamut que la cámara es capaz de capturar. En la demostración se mostro visualmente como el triangulo de color del LED es <b>mucho mas pequeño</b> que el del sensor de la cámara. El proceso consiste en:</p>
+    <ul class="content-list">
+        <li>Identificar el gamut real de la pantalla LED (no confiar en valores de fabrica).</li>
+        <li>Identificar el gamut del sensor de la cámara específica que se va a usar.</li>
+        <li>Aplicar una transformación que haga que los colores de la pantalla se reproduzcan <b>dentro de lo que la cámara registra de forma natural</b>, para que los colores restantes respondan de manera coherente con los elementos fisicos del set.</li>
+    </ul>
+
+    <h4 class="subsection-title">Estándar ST 2084 (Perceptual Quantizer)</h4>
+    <p>Se utiliza el estándar <b>ST 2084</b> como función de transferencia para HDR. Este estándar mapea la información de luminancia en <b>valores absolutos de nits</b>:</p>
+    <ul class="content-list">
+        <li>Un valor digital de 1.0 corresponde a <b>10,000 nits</b>.</li>
+        <li>La relación es lineal y predecible: si una luna en la escena tiene un valor que corresponde a 200 nits, se reproducira exactamente a <b>200 nits</b> en la pantalla.</li>
+        <li>Esto permite <b>previsualizar en un monitor HDR</b> exactamente como se vera el contenido en el volumen LED, antes de ir al estudio.</li>
+        <li>Si algo se "clipea" (supera el rango), se puede detectar y corregir en la fase de preparación.</li>
+    </ul>
+
+    <h4 class="subsection-title">Calibración de la temperatura de color</h4>
+    <p>Los valores de fabrica de las pantallas (tipicamente <b>6500K o 3500K</b>) no son fiables. Se debe verificar y ajustar la temperatura de color real de cada pantalla con instrumentación. Se menciono que a veces las pantallas vienen configuradas a 6500K pero en realidad estan emitiendo a 5000K, lo que desajusta toda la cadena de color.</p>
+
+    <div class="experience-box">
+        <div class="experience-box-title">Los dos cambios de paradigma en España</div>
+        <p><b>Primer nivel (error comun):</b> Muchas empresas espanolas cometieron el error de simplemente "encender la pantalla y rodar", confiando en que la imagen se veria bien. El resultado era cromaticamente incorrecto: la respuesta del color en cámara no coincidio con lo que el ojo veia.</p>
+        <p><b>Segundo nivel (práctica actual):</b> Consiste en calibrar el sistema completo para mapear todo el espectro visible que la cámara puede captar, asegurandose de que la pantalla LED reproduce los colores <b>exactamente dentro de lo que el sensor es capaz de registrar</b>. Existen herramientas especificas de calibración que han evolucionado significativamente en los ultimos anos para facilitar este proceso.</p>
+    </div>
+
+    <!-- ─── SENSOR Y RAW ─── -->
+    <h3 class="section-title" id="c23-sensor">El Sensor, la Lente y la Senal RAW</h3>
+    <p>Esta sección surgio de las preguntas del público durante la demostración y genero una explicación detallada del recorrido de la luz desde la pantalla hasta el archivo final.</p>
+
+    <h4 class="subsection-title">Recorrido de la señal</h4>
+    <ul class="content-list">
+        <li><b>1. La pantalla emite luz</b> que llega al decorado físico, a los actores y directamente a la cámara.</li>
+        <li><b>2. La luz cruza la lente</b> y llega al sensor. La lente introduce sus propias caracteristicas (aberración cromatica, distorsión, bokeh).</li>
+        <li><b>3. El sensor captura de forma empirica</b>, sin ninguna curva específica. Registra los valores de luz tal como llegan, de forma lineal.</li>
+        <li><b>4. La cámara convierte esos valores</b> a un formato digital. Las cámaras profesionales registran en <b>RAW</b>, que son valores de 16 bits o superiores sin procesar.</li>
+        <li><b>5. Las curvas logaritmicas</b> (como LogC de ARRI) se aplican <b>después</b>, como codificación para comprimir la información de rango dinámico en un archivo manejable.</li>
+    </ul>
+
+    <h4 class="subsection-title">Por que registrar en RAW</h4>
+    <p>Se recomienda registrar siempre en <b>RAW sin LUTs aplicadas</b> en la captura, para que el material sea lo mas "limpio y reversible" posible. Esto asegura que:</p>
+    <ul class="content-list">
+        <li>El fondo digital y los elementos fisicos del set <b>respondan de la misma manera</b> en el archivo.</li>
+        <li>La maxima información de rango dinámico se preserve para la postproducción.</li>
+        <li>El colorista tenga la mayor flexibilidad posible en DI (Digital Intermediate).</li>
+    </ul>
+    <p>Sin embargo, se reconoce que en producciónes con <b>limitaciones de almacenamiento</b> se hacen concesiones (formatos comprimidos), lo que reduce la capacidad de ajuste posterior. Si la producción cambia de dirección creativa y se rodo con material comprimido, "puede que no lleguemos a donde queriamos".</p>
+
+    <div class="tech-concept">
+        <b>Cámaras aprobadas por Netflix</b><br>
+        Se menciono que Netflix tiene una lista de <b>cámaras aprobadas</b> que cumplen sus estándares técnicos de calidad. El material entregado debe cumplir especificaciones estrictas de formato, espacio de color y resolución. Todo el equipo de postproducción (DI, corrección de color) debe utilizar el mismo "lenguaje contenedor" de espacios de color para que la cadena sea consistente hasta la entrega final.
+    </div>
+
+    <!-- ─── COLABORACIÓN ─── -->
+    <h3 class="section-title" id="c23-flujo">Colaboración Interdepartamental y Roles en el Set</h3>
+    <p>La VP exige que el Director de Fotografia (DoP) y el equipo de VFX trabajen de la mano desde la preproducción. El lenguaje del DoP (grados Kelvin, stocks, diafragma, nivel de brillo, dirección de la luz) debe <b>traducirse a parametros digitales</b> que el operador del volumen LED pueda ajustar en tiempo real. Esta traducción de lenguajes es uno de los mayores retos organizativos.</p>
+    <p>Se destaca que las pantallas LED no fueron disenadas originalmente para producción cinematográfica, sino para eventos. Por tanto, hay que <b>adaptar las capacidades técnicas</b> de esta herramienta a las exigencias del lenguaje cinematográfico.</p>
+
+    <h4 class="subsection-title">Personal clave en el set</h4>
+    <ul class="content-list">
+        <li><b>Supervisor de Volumen:</b> Responsable de que todo el sistema funcione: hardware, software, sincronización, calibración y coordinación entre equipos. Es el "director técnico" del volumen LED.</li>
+        <li><b>Playback / Media Operator:</b> Gestiona el contenido que se reproduce en las pantallas. Controla la resolución, el pixel pitch, el brillo, la frecuencia de escaneo y la sincronización (Genlock). También gestiona el tamano de imagen y se asegura de que las entradas de señal son correctas.</li>
+        <li><b>Supervisor de VFX:</b> Trabaja junto al DoP para definir el look final. En España es comun que los equipos generadores de contenido digital sean externos al estudio (a diferencia de otras regiones donde el estudio tiene su propio equipo de contenido). Debe entregar el material de manera rigurosa.</li>
+        <li><b>Colorista en set (On-Set Grading):</b> Realiza el Live Grading durante el rodaje. Manipula directamente la exposición, el color y el contraste del contenido digital, asegurandose de que los <b>LUTs aplicados al contenido digital</b> se integran correctamente con lo que la cámara esta capturando. Debe trabajar codo a codo con el DoP: cuando el DoP pide "subeme el brillo" o "llevalo a un valor mas calido", la respuesta debe ser inmediata.</li>
+        <li><b>Director de Fotografia (DoP):</b> Decide el look final de la imagen. Es quien elige la cámara, las opticas, y define la intención estetica. Todos los ajustes del volumen deben responder a sus indicaciones.</li>
+    </ul>
+
+    <!-- ─── LINE-UP DAY ─── -->
+    <h3 class="section-title" id="c23-lineup">Jornada de Calibración (Line-Up Day)</h3>
+    <p>Antes de cada bloque de rodaje se dedica <b>una jornada completa</b> (o mas, segun la complejidad) exclusivamente a calibrar todo el sistema. El proceso incluye:</p>
+    <ul class="content-list">
+        <li>Traer las <b>opticas reales</b> que se van a usar en el rodaje.</li>
+        <li>Calibrar la <b>luminancia</b> de la pantalla para las escenas previstas.</li>
+        <li>Ajustar la <b>exposición, el color y el contraste</b> del contenido digital.</li>
+        <li>Verificar que el material <b>responde correctamente en cámara</b> (monitorizar la señal con forma de onda y vectorscopio para confirmar valores absolutos).</li>
+        <li>Comprobar que el DoP tiene el <b>rango dinámico suficiente</b> para llevar la imagen a postproducción.</li>
+        <li>Si se va a usar <b>contenido 3D con tracking</b>: calibrar las opticas para que la cámara virtual "entienda" donde esta la cámara física en el espacio 3D (en Netflix se dispone de sistema <b>Stype</b> lateral).</li>
+        <li>Preparar simultaneamente el contenido de la <b>siguiente jornada</b> de rodaje mientras se rueda la actual.</li>
+    </ul>
+    <p>Esta jornada es <b>imprescindible</b> para que el rodaje después fluya al ritmo de una producción normal. Sin ella, cada cambio de plano o de decorado implicaria tiempos muertos inaceptables.</p>
+
+    <div class="tech-concept">
+        <b>Monitorización en set: lo que ves con los ojos no es lo que ve la cámara</b><br>
+        Se insistio en que la percepción visual humana y la del sensor de la cámara son diferentes. Lo que parece correcto a ojo puede estar cromaticamente desajustado en la señal de la cámara. Por eso es crítico monitorizar siempre la señal de salida de la cámara (no el ojo) para tomar decisiónes de iluminación y color. Los monitores de referencia externos pueden mostrar un valor y la pantalla otro; el contraste y la exposición deben verificarse en la señal real.
+    </div>
+
+    <!-- ─── FPS ─── -->
+    <h3 class="section-title" id="c23-fps">Frame Rate y Formatos de Entrega</h3>
+    <p>La decisión del frame rate no es solo creativa, sino de producción y distribución:</p>
+    <ul class="content-list">
+        <li><b>24 fps:</b> Estándar cinematográfico. Preferido para producciónes destinadas a salas de cine.</li>
+        <li><b>25 fps:</b> Estándar de televisión europeo. Las cadenas y plataformas en Europa (como Movistar) emiten a 25 fps.</li>
+        <li><b>23.976 fps:</b> Variante que la mayoria de dispositivos modernos ya aceptan.</li>
+        <li><b>30 fps:</b> Estándar de televisión estadounidense (NTSC).</li>
+    </ul>
+    <p>Se menciono que el material rodado en EEUU para Netflix suele ser a 30 fps tanto dentro como fuera del volumen LED. La decisión debe tomarse al inicio de la producción porque una conversión posterior (como la de 24 a 25 fps que se hizo en La Casa de Papel para Movistar) anade complejidad y puede degradar el resultado.</p>
+
+    <!-- ─── SOSTENIBILIDAD ─── -->
+    <h3 class="section-title" id="c23-sostenibilidad">Sostenibilidad y Beneficios Operativos</h3>
+    <ul class="content-list">
+        <li><b>Reducción de desplazamientos:</b> Se evitan viajes masivos a localizaciónes naturales (camiones, catering, alojamiento), reduciendo la huella de carbono y los costes logisticos.</li>
+        <li><b>Rodaje con menores de edad:</b> La legislación limita estrictamente los horarios de rodaje para menores. El volumen LED permite respetar estos horarios en un entorno controlado, sin depender de la luz natural ni de condiciones meteorologicas.</li>
+        <li><b>Impacto territorial reducido:</b> Se minimiza el impacto sobre localizaciónes naturales y entornos protegidos.</li>
+        <li><b>Mejora para actores:</b> Los actores trabajan en un entorno inmersivo real en lugar de un fondo verde, lo que mejora sus interpretaciones y su experiencia en el set.</li>
+        <li><b>Aceleración de postproducción:</b> Los editores ven desde el primer momento como va a ser el material final. Esto es especialmente valioso en <b>series rodadas en bloques</b> con multiples directores y montadores simultaneos, donde la coherencia visual entre episodios es crítica.</li>
+        <li><b>Superficies cromadas:</b> La integración visual sobre superficies reflectantes (carrocerias, cristales, armaduras) es <b>enormemente superior</b> con LED que con croma verde, ya que la pantalla genera reflejos reales que la cámara captura directamente.</li>
+    </ul>
+
+    <!-- ─── EXPERIENCIAS EN SET ─── -->
+    <h3 class="section-title" id="c23-experiencia">Experiencias en Set: Lecciones Aprendidas</h3>
+    <div class="experience-box">
+        <div class="experience-box-title">El Caso de Asturias (2019)</div>
+        <p>En una producción ambientada en comisarias en Asturias, se utilizo un gran ventanal con pantallas LED mostrando una ciudad por detras. Al no estar nunca muy pegados a la pantalla, la ilusión de "ventana" funcionaba perfectamente. Se recuerda esta producción como ejemplo de que, incluso con tecnología de hace anos, una correcta planificación de la distancia y la óptica permite mantener la ilusión sin inversiones desproporcionadas. El pixel pitch de la epoca era mayor, pero al mantener la cámara alejada con una óptica adecuada, el resultado era convincente.</p>
+    </div>
+    <div class="experience-box">
+        <div class="experience-box-title">Superficies cromadas y puntos de tracking</div>
+        <p>Se advierte sobre el uso de puntos de tracking fisicos en el set: en superficies cromadas como la carroceria de un coche, los puntos de track se reflejan y arruinan la integración visual. La recomendación es optar por sistemas de tracking alternativos que no requieran marcas visibles (como el sistema <b>Stype</b> instalado lateralmente en el estudio de Netflix, que no necesita pegatinas en el techo o el suelo del set). Si el proyecto no requiere tracking 3D (es solo un plate 2D), no hace falta instalar ningun sistema de tracking, simplificando el setup.</p>
+    </div>
+    <div class="experience-box">
+        <div class="experience-box-title">La Casa de Papel y los FPS</div>
+        <p>Para la ultima temporada de La Casa de Papel, estrenada en Movistar (donde todo se emite a 25 fps), se tuvo que realizar una conversión de 24 a 25 fotogramas en <b>todas las temporadas</b>. El estándar de 24 fps no se transmite directamente a traves de los canales de televisión europeos convencionales, lo que forzo la conversión. Esta anecdota subraya la importancia de decidir el frame rate al inicio de la producción, no al final.</p>
+    </div>
+    <div class="experience-box">
+        <div class="experience-box-title">Demostración en vivo: ajuste de diafragma</div>
+        <p>Durante la sesión práctica, se demostro en directo que cuando todos los elementos estan bien calibrados, <b>el sistema funciona de forma exacta</b>: al ajustar el diafragma de la cámara, la respuesta de la pantalla LED se comporta identicamente a como se comportaria un fondo real. Se insistio en que "esto no es una percepción, funciona exacto" cuando la calibración es correcta.</p>
+    </div>
+    <div class="experience-box">
+        <div class="experience-box-title">Modulos LED danados y mantenimiento</div>
+        <p>Ante una pregunta del público sobre pixeles muertos, se explico que cuando un modulo LED presenta suficientes pixeles danados (el umbral depende del fabricante, pero ronda los 16 pixeles por modulo), se <b>sustituye el modulo completo</b> en lugar de repararlo. Los modulos estan disenados para ser intercambiables rapidamente y estar operativos para la siguiente jornada de rodaje.</p>
+    </div>
+
+    <!-- ─── GLOSARIO ─── -->
+    <h3 class="section-title" id="c23-glosario">Glosario de Terminos</h3>
+    <table class="glossary-table">
+        <thead><tr><th>Termino</th><th>Definición</th></tr></thead>
+        <tbody>
+            <tr><td><b>Paralaje</b></td><td>Cambio aparente en la posición de un objeto en el fondo respecto al frente cuando el observador (cámara) se mueve. Determina si se necesita contenido 3D o basta un plate 2D.</td></tr>
+            <tr><td><b>Metamerismo</b></td><td>Fenomeno donde dos muestras de color parecen coincidir bajo una iluminación pero difieren bajo otra. Crítico en volumenes LED porque los pixeles RGB no cubren todo el espectro visible.</td></tr>
+            <tr><td><b>Gamut</b></td><td>Triangulo de colores que un dispositivo es capaz de reproducir o capturar. El gamut del LED es mas pequeño que el del sensor, lo que exige una transformación de color.</td></tr>
+            <tr><td><b>ST 2084 (PQ)</b></td><td>Estándar de función de transferencia para HDR que mapea luminancia en valores absolutos de nits. Un valor de 1.0 = 10,000 nits. Permite previsualizar exactamente el brillo del volumen en un monitor HDR.</td></tr>
+            <tr><td><b>Live Grading</b></td><td>Ajuste de color en tiempo real sobre el contenido de la pantalla durante el rodaje. Permite cambiar de día a noche, modificar la temperatura de color o ajustar el contraste sin recargar fondos.</td></tr>
+            <tr><td><b>Genlock</b></td><td>Sincronización de la frecuencia de cuadro entre la cámara y la pantalla LED. Sin Genlock aparece banding (lineas negras) porque los fotogramas de la cámara no coinciden con los ciclos de refresco de los paneles.</td></tr>
+            <tr><td><b>Media Player</b></td><td>Dispositivo que reproduce y administra el material proyectado en las pantallas LED. Gestiona las entradas de señal, resoluciónes y formatos.</td></tr>
+            <tr><td><b>Frecuencia de escaneo</b></td><td>Velocidad a la que los paneles LED actualizan su imagen. Debe ser compatible con el frame rate de la cámara para evitar artefactos.</td></tr>
+            <tr><td><b>Line-Up Day</b></td><td>Jornada previa al rodaje dedicada exclusivamente a calibrar pantallas, opticas, tracking, color y luminancia. Imprescindible para que el rodaje fluya.</td></tr>
+            <tr><td><b>Plate</b></td><td>Imagen o video 2D proyectado en la pantalla sin profundidad 3D. Tipologias: 2D (plano único) o 2.5D (capas separadas).</td></tr>
+            <tr><td><b>RAW</b></td><td>Formato de grabación sin curvas de codificación aplicadas. Preserva la maxima información del sensor (16+ bits) para la postproducción.</td></tr>
+            <tr><td><b>LogC / Logaritmico</b></td><td>Curva de codificación que comprime la información de rango dinámico del sensor en un archivo manejable. Se aplica después de la captura RAW, no durante.</td></tr>
+            <tr><td><b>Stype</b></td><td>Sistema de tracking óptico lateral instalado en el estudio de Netflix. Permite que la cámara virtual replique la posición de la cámara física sin necesidad de marcas en el suelo o techo.</td></tr>
+            <tr><td><b>Pixel Pitch</b></td><td>Distancia entre los centros de dos pixeles LED adyacentes. Determina la resolución de la pantalla y la distancia minima de enfoque de la cámara.</td></tr>
+        </tbody>
+    </table>
+
+    <a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>

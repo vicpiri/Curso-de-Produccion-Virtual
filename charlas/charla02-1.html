@@ -1,0 +1,478 @@
+<div class="talk-header">
+        <h2>Virtual Production sobre Volumenes LED</h2>
+        <div class="talk-meta">
+            <strong>Ponente:</strong> Victor Ceruelo &mdash; Empresa: Tangram Solutions<br>
+            <strong>Fecha:</strong> Martes 17 de marzo de 2026
+        </div>
+    </div>
+
+<div class="section-nav">
+    <div class="section-nav-title">Contenidos</div>
+    <ul>
+        <li><a href="#c21-resumen">Resumen Ejecutivo</a></li>
+        <li><a href="#c21-led-fundamentals">Fundamentos de Volumenes LED</a></li>
+        <li><a href="#c21-pixel-pitch">Pixel Pitch y Efecto Moire</a></li>
+        <li><a href="#c21-color">Calibración de Color y Profundidad</a></li>
+        <li><a href="#c21-tracking">Sistemas de Tracking</a></li>
+        <li><a href="#c21-iluminación">Iluminación y DMX</a></li>
+        <li><a href="#c21-frustum">Frustum, Parallax y Movimiento de Cámara</a></li>
+        <li><a href="#c21-acústica">Geometria de Pantalla y Acústica</a></li>
+        <li><a href="#c21-suelo">El Problema del Suelo</a></li>
+        <li><a href="#c21-workflow">Workflow Completo de Producción</a></li>
+        <li><a href="#c21-playback">Playback vs. Contenido Interactivo</a></li>
+        <li><a href="#c21-herramientas">Herramientas: Software y Hardware</a></li>
+        <li><a href="#c21-costes">Desglose de Costes</a></li>
+        <li><a href="#c21-viabilidad">Viabilidad del Negocio</a></li>
+        <li><a href="#c21-experiencias">Experiencias en Set</a></li>
+        <li><a href="#c21-filosofía">Filosofia y Principios Clave</a></li>
+        <li><a href="#c21-glosario">Glosario</a></li>
+    </ul>
+</div>
+
+<div class="executive-summary" id="c21-resumen">
+    <h3 class="section-title" style="border:none;padding:0;margin:0 0 12px 0;">Resumen Ejecutivo</h3>
+    <p>Victor Ceruelo, junto a su compañero Cesar (ambos con casi 30 anos de experiencia en la industria), presenta la producción virtual (VP) sobre volumenes LED como un <b>cambio de paradigma completo</b> en la producción audiovisual. La tesis central es que, aunque la inversión inicial es elevada (en torno a 2 millones de euros solo en pantalla), la VP permite un ahorro masivo al trasladar el grueso del trabajo a la preproducción, eliminando costes de postproducción, decorados fisicos y logística de localizaciónes. Se insiste en que <b>no cualquier pantalla LED sirve</b>: las de eventos/conciertos son inadecuadas para cine, y la calidad del hardware, la calibración cromatica y la integración con motores como Unreal Engine son criticos para el exito. La charla cubre desde fundamentos técnicos (pixel pitch, moire, tracking, DMX) hasta anecdotas reales de fracasos y exitos, pasando por un desglose economico detallado y advertencias sobre la viabilidad del negocio.</p>
+</div>
+
+<!-- ═══════ FUNDAMENTOS LED ═══════ -->
+<h3 class="section-title" id="c21-led-fundamentals">Fundamentos de Volumenes LED</h3>
+
+<div class="tech-concept">
+    <b>1. Que es un volumen LED</b><br>
+    Un volumen LED es una instalación de pantallas LED curvadas que sirven como fondo de rodaje, sustituyendo decorados fisicos o croma. Las dimensiones tipicas son del orden de 26 metros de diametro y 6 a 6,5 metros de altura (comparable al escenario de The Mandalorian). Los modulos LED individuales miden aproximadamente 50x50 cm segun el fabricante.
+</div>
+
+<div class="tech-concept">
+    <b>2. Calidad de los paneles: producción fija vs. rental de eventos</b><br>
+    Las pantallas de eventos (conciertos, festivales) sufren un desgaste enorme por el montaje y desmontaje continuo: pixeles muertos, superficies no planas y siliconas derretidas por el calor. Una instalación fija sufre muchisimo menos desgaste. Además, todos los modulos deben ser de la <b>misma hornada de fabricación</b> para garantizar consistencia cromatica. LEDs fabricados meses después, con componentes diferentes, tendran calibraciónes distintas y crearan diferencias visibles en pantalla.
+</div>
+
+<div class="tech-concept">
+    <b>3. Brillo de pantalla y sensibilidad del sensor</b><br>
+    Las pantallas operan a niveles de brillo muy bajos (en torno al 3%) porque el sensor de cámara es mucho mas sensible que el ojo humano. Si el brillo es excesivo, el actor queda sobreexpuesto ("pegado") contra el fondo. Un brillo bajo permite mayor flexibilidad para la iluminación complementaria del DP. La pantalla y el techo LED ya proporcionan luz ambiental que coincide con el entorno virtual.
+</div>
+
+<div class="tech-concept">
+    <b>4. Frecuencia de refresco y lineas de escaneo</b><br>
+    Las pantallas LED tienen una frecuencia de refresco que el sensor de cámara puede captar, provocando lineas de escaneo o banding visibles. Es imprescindible coordinar el ángulo de obturación y la velocidad de la cámara con la frecuencia de refresco de la pantalla.
+</div>
+
+<div class="tech-concept">
+    <b>5. Paneles de techo</b><br>
+    El techo LED proporciona iluminación cenital que coincide con el entorno virtual. Se secciona en partes independientes (tres secciones en la instalación de La Coruna) que pueden elevarse o bajarse individualmente para mantenimiento o para crear diferentes configuraciónes de luz. Cerrar completamente el techo complica el mantenimiento al no poder bajar los paneles.
+</div>
+
+<div class="tech-concept">
+    <b>6. Paneles laterales para reflejos</b><br>
+    Los paneles LED laterales generan reflejos en objetos brillantes (coches, cascos, cabezas calvas, etc.), eliminando la necesidad de que el equipo de VFX cree reflejos manualmente en postproducción. Es una de las grandes ventajas sobre el croma tradicional.
+</div>
+
+<!-- ═══════ PIXEL PITCH Y MOIRE ═══════ -->
+<h3 class="section-title" id="c21-pixel-pitch">Pixel Pitch y Efecto Moire</h3>
+
+<div class="tech-concept">
+    <b>Pixel Pitch</b><br>
+    El pixel pitch es la distancia entre centros de dos pixeles LED contiguos. Para VP cinematográfica se necesita un pitch pequeño porque la cámara esta cerca. Para eventos (conciertos), se acepta un pitch grande porque la distancia de visión es enorme. La pantalla de demostración de Tangram tiene un pixel pitch de 1,9 mm.
+</div>
+
+<div class="tech-concept">
+    <b>La Regla del 2,5x para el Moire</b><br>
+    El efecto moire surge cuando la rejilla de pixeles del sensor de cámara interfiere con la rejilla de pixeles de la pantalla LED. La regla práctica: <b>multiplicar el pixel pitch por 2,5</b> para obtener la distancia minima de la cámara a la pantalla. Con un pitch de 1,9 mm, la distancia minima es de aproximadamente 4,7 metros. El calculo depende también de la distancia focal de la óptica y del ángulo de incidencia. Existen telas difusoras anti-moire como método adicional de prevención.
+</div>
+
+<!-- ═══════ Calibración DE COLOR ═══════ -->
+<h3 class="section-title" id="c21-color">Calibración de Color y Profundidad</h3>
+
+<div class="tech-concept">
+    <b>Calibración del fabricante</b><br>
+    El fabricante de LED realiza una calibración de color inicial que requiere una <b>noche entera a oscuras</b>, con un sensor colocado en el centro de la pantalla. Este proceso garantiza la uniformidad cromatica base de toda la instalación.
+</div>
+
+<div class="tech-concept">
+    <b>Calibración del sistema VP (Pixotope)</b><br>
+    El software Pixotope/disguise puede hacer calibraciónes rapidas adicionales usando patrones mostrados en pantalla, en cuestion de minutos. El sistema puede trabajar en espacio de color <b>Rec. 2020</b> y ajustar la gama cromatica segun las necesidades de la producción (por ejemplo, una película espacial con un rango de color inusual).
+</div>
+
+<div class="tech-concept">
+    <b>Profundidad de color: Broadcast vs. Cine</b><br>
+    Para broadcast, la profundidad de bits estándar es suficiente. Para cine, se necesitan sistemas capaces de hasta <b>12 bits de profundidad de color</b> (producciónes "Triple A"). Conseguir el color correcto en cámara evita costes enormes de corrección en postproducción.
+</div>
+
+<div class="tech-concept">
+    <b>Calibración de opticas</b><br>
+    Cada lente u óptica requiere su propio archivo de calibración para funcionar con el sistema VP. Cambiar de óptica implica recalibración, lo que consume tiempo de producción. Ceruelo enfatiza lo costoso que es tener al equipo parado mientras se recalibra la técnica.
+</div>
+
+<!-- ═══════ TRACKING ═══════ -->
+<h3 class="section-title" id="c21-tracking">Sistemas de Tracking</h3>
+
+<div class="tech-concept">
+    <b>Tracking con marcadores fisicos</b><br>
+    El sistema de tracking es el puente entre el mundo real y el virtual. Se colocan marcadores ("stickers") reflectantes en techo, suelo y paredes a distintas alturas y tamanos. El sensor de la cámara identifica su posición en el espacio 3D para renderizar la perspectiva correcta del entorno virtual.
+</div>
+
+<div class="tech-concept">
+    <b>Pixotope / Practicam (recomendado)</b><br>
+    Pixotope ha absorbido la marca de tracking Practicam. Ceruelo lo describe como la mejor solución de tracking: opera como capa nativa sobre Unreal Engine, evitando perdida de calidad en la transferencia de datos. Incluye una base de datos integrada de perfiles de cámaras y opticas, lo que acelera enormemente la calibración. Se han equipado tres centros de formación con este sistema.
+</div>
+
+<div class="tech-concept">
+    <b>Mo-Sys (problemático)</b><br>
+    Ceruelo posee un Mo-Sys y lo describe como "un dolor de cabeza". El punto cero se desplaza con frecuencia, exigiendo recalibración constante. Genera retrasos significativos en producción. Utiliza marcadores de puntos reflectantes a varias alturas.
+</div>
+
+<div class="tech-concept">
+    <b>STYPE (coste oculto)</b><br>
+    Otro sistema de tracking que parece muy barato inicialmente, pero cobra cantidades elevadas por cada perfil de óptica, haciendo que el coste total sea muy alto.
+</div>
+
+<div class="tech-concept">
+    <b>Tracking sin marcadores (solo pantallas premium)</b><br>
+    Con pantallas de alta gama como Alfalay/ROE, el sistema de tracking puede usar patrones emitidos por la propia pantalla a frecuencias invisibles al ojo humano, eliminando por completo la necesidad de marcadores fisicos. Solo funciona con marcas de pantalla especificas.
+</div>
+
+<div class="tech-concept">
+    <b>HTC Vive (no profesional)</b><br>
+    Algunas personas reutilizan sistemas de tracking de gafas VR para VP. Ceruelo lo desaconseja rotundamente para producción profesional.
+</div>
+
+<!-- ═══════ Iluminación Y DMX ═══════ -->
+<h3 class="section-title" id="c21-iluminación">Iluminación e Integración DMX</h3>
+
+<div class="tech-concept">
+    <b>Control bidireccional DMX</b><br>
+    El sistema funciona de forma bidireccional con el protocolo DMX. El operador en el ordenador controla la iluminación del plató desde el software, y el técnico en la mesa DMX puede controlar el software desde su posición. Esta interconexion permite programar cambios de iluminación sincronizados con la acción en pantalla: por ejemplo, una luz que baja automaticamente cuando un actor pasa por un punto determinado. Esta sincronización es lo que da realismo final a la escena.
+</div>
+
+<div class="tech-concept">
+    <b>Simulación de posición solar</b><br>
+    El software VP permite introducir coordenadas geograficas y especificar una hora del día para simular con precisión la posición del sol. Ejemplo dado por Ceruelo: "Quiero saber como es el sol a las 3 de la tarde en Wellington, Nueva Zelanda."
+</div>
+
+<!-- ═══════ FRUSTUM Y PARALLAX ═══════ -->
+<h3 class="section-title" id="c21-frustum">Frustum, Parallax y Movimiento de Cámara</h3>
+
+<div class="tech-concept">
+    <b>El frustum</b><br>
+    El frustum es la porción del entorno virtual que la cámara esta capturando de la pared LED en un momento dado. Esa region se renderiza a maxima resolución en tiempo real. Esto exige una GPU potente: si la tarjeta gráfica no puede mantener el ritmo, el sistema colapsa.
+</div>
+
+<div class="tech-concept">
+    <b>Parallax y movimiento</b><br>
+    Al mostrar un paisaje amplio (por ejemplo, una montaña), cuando la cámara se mueve, el fondo debe desplazarse correspondientemente. Con una pantalla relativamente pequeña el movimiento de parallax es sutil pero existe, y anade realismo. El tamano del decorado y el entorno virtual deben planificarse en función de los movimientos de cámara previstos.
+</div>
+
+<!-- ═══════ Acústica ═══════ -->
+<h3 class="section-title" id="c21-acústica">Geometria de Pantalla y Desafios Acusticos</h3>
+
+<div class="tech-concept">
+    <b>Curvatura de la pantalla</b><br>
+    La curvatura afecta tanto a la calidad visual como a la acústica. La instalación de La Coruna tenia inicialmente una curvatura de 2,5 grados que los bomberos obligaron a cambiar a 3 grados. A mayor ángulo de cerramiento, mayor reverberación acústica.
+</div>
+
+<div class="tech-concept">
+    <b>Problema acústico: el efecto parabola</b><br>
+    Las paredes LED crean problemas serios de reverberación. En configuraciónes cerradas (especialmente 270 grados), el efecto parabolico hace que un susurro en la pared trasera sea audible desde la posición de rodaje. Las trampas de sonido no caben fisicamente en configuraciónes muy cerradas. Una óptica de 135 mm obligo a la cámara a acercarse tanto que el sonido se convirtio en un problema crítico. Dolby visito una instalación en España y confirmo que la acústica de una configuración de 270 grados seria desastrosa.
+</div>
+
+<!-- ═══════ EL PROBLEMA DEL SUELO ═══════ -->
+<h3 class="section-title" id="c21-suelo">El Problema del Suelo</h3>
+
+<div class="tech-concept">
+    <b>La Regla de Oro: "Rompe la linea"</b><br>
+    La union entre el suelo físico y la pared LED es un problema crítico. No existe continuidad natural porque los puntos de fuga no coinciden: el cerebro humano detecta inmediatamente el error. La solución profesional es <b>siempre "romper" la linea</b> con elementos fisicos (arena, monticulos, rocas, maquinas reales, vegetación) que tapen la transición entre suelo real y pantalla. Si colocas objetos reales en primer plano, el cerebro asume que todo lo que hay detras también es real.
+</div>
+
+<div class="tech-concept">
+    <b>Lo que NO funciona en el suelo</b><br>
+    <ul class="content-list">
+        <li><b>Dar continuidad directa:</b> Intentar que un patron de suelo (por ejemplo, baldosas rojas y blancas) continue del suelo físico a la pantalla es imposible por la geometría de puntos de fuga.</li>
+        <li><b>Poner croma en el suelo:</b> La luz de la pantalla LED contamina el croma verde, haciendo imposible el keying. Ceruelo desafio a que ni siquiera el sistema disguise pudiera resolverlo, ofreciendo pagarlo de su bolsillo.</li>
+        <li><b>Suelo LED (como en Noruega):</b> Funciona para broadcast pero no para cine, porque ilumina a los actores desde abajo de forma antinatural.</li>
+    </ul>
+</div>
+
+<!-- ═══════ WORKFLOW ═══════ -->
+<h3 class="section-title" id="c21-workflow">Workflow Completo de Producción</h3>
+
+<div class="tech-concept">
+    <b>Servicio integral de Tangram (de principio a fin)</b><br>
+    <ol class="content-list">
+        <li><b>Evaluación de viabilidad:</b> Comprobar si el espacio físico es adecuado.</li>
+        <li><b>Ingenieria estructural:</b> Verificar si las cerchas del techo soportan el peso; si no, disenar estructura autoportante.</li>
+        <li><b>Instalación de pantalla:</b> Montar los modulos LED asegurando alineación y planitud.</li>
+        <li><b>Calibración de color (fabricante):</b> Proceso nocturno a oscuras completo con sensor central.</li>
+        <li><b>Calibración del sistema (Pixotope):</b> Calibración rápida basada en patrones, en minutos.</li>
+        <li><b>Configuración de tracking:</b> Colocar marcadores, calibrar el sistema, crear gemelo digital del plato.</li>
+        <li><b>Preproducción:</b> Storyboard, creación de entorno 3D, selección de opticas, planificación de planos.</li>
+        <li><b>Rodaje:</b> Operación en tiempo real con control bidireccional de iluminación DMX.</li>
+    </ol>
+</div>
+
+<div class="tech-concept">
+    <b>Pipeline de creación de entornos 3D</b><br>
+    <ol class="content-list">
+        <li>Modelado en Maya o Blender.</li>
+        <li>Creación/obtención de texturas (Adobe Substance o escaneo).</li>
+        <li>Importación a Unreal Engine.</li>
+        <li>Iluminación y configuración de la escena.</li>
+        <li>Para contenido interactivo: configuración a traves de la capa Pixotope sobre Unreal.</li>
+        <li>Para playback: renderizar como plates y enviar directamente a la pantalla sin la carga de Pixotope.</li>
+    </ol>
+</div>
+
+<div class="tech-concept">
+    <b>Escaneo de localizaciónes con drones</b><br>
+    Se programa la ruta de vuelo del dron (puede repetir el mismo recorrido exacto multiples veces). Se captura durante varios días y horas para obtener condiciones de luz variadas (nublado vs. soleado, diferentes temperaturas de color). Se extraen texturas HDR y se genera geometría 3D que se importa a Unreal Engine.
+</div>
+
+<div class="tech-concept">
+    <b>Gemelo digital del plato</b><br>
+    Dentro de Pixotope se crea una replica digital de las dimensiones fisicas de la pantalla. Esto permite que el entorno virtual se mapee correctamente sobre la geometría física. Sin esto, el operador tendria que hacerlo manualmente.
+</div>
+
+<!-- ═══════ PLAYBACK VS INTERACTIVO ═══════ -->
+<h3 class="section-title" id="c21-playback">Playback vs. Contenido Interactivo</h3>
+
+<div class="tech-concept">
+    <b>Plates / Playback</b><br>
+    Contenido prerenderizado (video o imagen) que se proyecta en la pantalla LED sin tracking ni interacción en tiempo real. Se usa cuando no hay movimiento de cámara y no se necesita parallax. Ejemplo: "La Sociedad de la Nieve" utilizo pantallas LED exclusivamente como plates de playback. Es mucho mas economico en recursos.
+</div>
+
+<div class="tech-concept">
+    <b>Contenido interactivo con tracking</b><br>
+    Entornos renderizados en tiempo real via Unreal Engine que responden a la posición de la cámara. Requiere sistemas de tracking y GPU potente. Proporciona parallax real y es necesario cuando la cámara se mueve. La decisión entre uno y otro depende de si se necesita movimiento de cámara; si no, el playback ahorra recursos significativos.
+</div>
+
+<!-- ═══════ HERRAMIENTAS ═══════ -->
+<h3 class="section-title" id="c21-herramientas">Herramientas: Software y Hardware</h3>
+
+<div class="tech-concept">
+    <b>Software</b><br>
+    <ul class="content-list">
+        <li><b>Unreal Engine</b> (Epic Games) &mdash; Motor de renderizado en tiempo real principal. Tangram es el único reseller oficial de Unreal Engine en la Peninsula Iberica para VP. Superior a Unity para VP por su mejor integración con workflows de producción.</li>
+        <li><b>Pixotope</b> &mdash; Software de control VP que opera como capa nativa sobre Unreal Engine. Proporciona botones de automatización, gestion de escenas y control de parametros en tiempo real. Ha absorbido la marca de tracking Practicam.</li>
+        <li><b>disguise</b> &mdash; Sistema VP alternativo. Mencionado como incapaz de resolver el problema de croma en suelo con contaminación LED.</li>
+        <li><b>Maya</b> &mdash; Herramienta de modelado 3D usada en el pipeline de creación de entornos.</li>
+        <li><b>Blender</b> &mdash; Herramienta de modelado 3D alternativa.</li>
+        <li><b>Adobe Substance</b> &mdash; Usado para creación de texturas.</li>
+        <li><b>Unity</b> &mdash; Motor de juego alternativo, muy usado en videojuegos pero no preferido para VP.</li>
+    </ul>
+</div>
+
+<div class="tech-concept">
+    <b>Hardware &mdash; Cámaras</b><br>
+    <ul class="content-list">
+        <li><b>ARRI</b> &mdash; La cámara que muchos directores de fotografía prefieren. Potencialmente incompatible con ciertas marcas de LED optimizadas solo para Sony.</li>
+        <li><b>Sony Venice</b> &mdash; Mencionada porque ciertas pantallas LED (como las de Sony Crystal LED) solo funcionan correctamente con esta cámara, lo que Ceruelo ve como una limitación grave.</li>
+        <li><b>Canon</b> &mdash; Usada para las pruebas de stop-motion en la pantalla pequeña de Tangram.</li>
+    </ul>
+</div>
+
+<div class="tech-concept">
+    <b>Hardware &mdash; GPUs</b><br>
+    <ul class="content-list">
+        <li><b>NVIDIA RTX 6000 Ada</b> &mdash; Opción profesional para renderizado VP.</li>
+        <li><b>NVIDIA RTX 4090</b> &mdash; Opción prosumer.</li>
+        <li><b>NVIDIA RTX 5090</b> &mdash; Ultima generación; Ceruelo advierte sobre la necesidad de cambiar conectores de alimentación y bromea sobre tener un extintor cerca.</li>
+    </ul>
+</div>
+
+<div class="tech-concept">
+    <b>Hardware &mdash; Pantallas LED</b><br>
+    <ul class="content-list">
+        <li><b>Alfalay / ROE Visual</b> &mdash; Fabricante español con el que Tangram trabaja. Alabado por calidad, fabricación a medida, stock de respaldo etiquetado por cliente, y disposición a fabricar paneles adicionales anos después. Usa LEDs basados en oro para fidelidad cromatica superior y mínimo consumo.</li>
+        <li><b>Samsung</b> &mdash; Mencionado negativamente: una TV gallega instalo paneles con modulos al reves, solo 5 grados de movimiento de cámara util.</li>
+        <li><b>Paneles chinos genericos</b> &mdash; Mencionados negativamente: incapaces de reproducir el amarillo correctamente en cámara.</li>
+        <li><b>Sony Crystal LED</b> &mdash; Negros impresionantes pero solo compatibles con Sony Venice, lo que Ceruelo considera inaceptable.</li>
+    </ul>
+</div>
+
+<!-- ═══════ COSTES ═══════ -->
+<h3 class="section-title" id="c21-costes">Desglose de Costes</h3>
+
+<div class="tech-concept">
+    <b>Inversión inicial y costes operativos</b><br>
+    <table class="glossary-table" style="width:100%">
+        <tr><td style="width:55%"><b>Pantalla LED + instalación</b></td><td>~2.000.000 &euro; (puede ser mas por escasez de componentes)</td></tr>
+        <tr><td><b>Construcción del plató (1.000 m&sup2;)</b></td><td>~1.500.000 &euro; (varia mucho segun zona: Madrid mucho mas caro que zonas rurales)</td></tr>
+        <tr><td><b>Personal mínimo anual (salarios)</b></td><td>~400.000 &euro;</td></tr>
+        <tr><td><b>Electricidad anual (pantalla 20m x 5m)</b></td><td>~72.000 &euro; (reducible con placas solares)</td></tr>
+        <tr><td><b>Alquiler semanal del plato</b></td><td>~27.000 &euro; (en EE.UU. se paga el doble o mas)</td></tr>
+        <tr><td><b>Creación de escenario 3D para VP</b></td><td>10.000-30.000 &euro; (3 semanas, hiperrealista)</td></tr>
+        <tr><td><b>VFX equivalente en croma</b></td><td>70.000-80.000 &euro; (equipo de 10 personas, 3 semanas)</td></tr>
+    </table>
+    <p style="margin-top:10px;">Los costes mensuales y anuales se calculan para una amortización a 5 anos. El porcentaje de beneficio debe sumarse al alquiler, y hay que contar con que no todas las semanas estara el plató ocupado.</p>
+</div>
+
+<!-- ═══════ VIABILIDAD ═══════ -->
+<h3 class="section-title" id="c21-viabilidad">Viabilidad del Negocio</h3>
+
+<div class="tech-concept">
+    <b>Advertencias de Ceruelo sobre montar un plató VP</b><br>
+    <ul class="content-list">
+        <li><b>No montar sin contratos firmados:</b> "Vas a arruinarte tu, a todos tus empleados y a toda tu familia por generaciónes." Sin producción asegurada, la inversión no se amortiza jamas.</li>
+        <li><b>El mercado broadcast no paga lo suficiente:</b> Telemadrid, Antena 3, Mediaset no van a pagar lo que cuesta un plató de estas caracteristicas. Es absurdo montar una pantalla de alta calidad para dar servicio a televisión.</li>
+        <li><b>Los platos privados en España sobreviven</b> atrayendo producción americana. Los clientes portugueses invirtieron 5 millones y sobreviven porque mueven producción continuamente.</li>
+        <li><b>Comparativa con decorados fisicos:</b> Solo las maderas del decorado de La Casa de Papel costaron mas de 300.000 euros, sin contar construcción y mantenimiento. Un entorno 3D equivalente tiene coste de mantenimiento cero.</li>
+    </ul>
+</div>
+
+<!-- ═══════ EXPERIENCIAS EN SET ═══════ -->
+<h3 class="section-title" id="c21-experiencias">Experiencias en Set: Lecciones Aprendidas</h3>
+
+<div class="experience-box">
+    <div class="experience-box-title">El Plato de 270 Grados en Alcorcon (Madrid)</div>
+    <p>Se planeo la mayor pantalla de Europa con una curvatura de 270 grados. El problema fue el efecto parabola acústica: era imposible eliminar la reverberación en un espacio tan cerrado. No cabian trampas de sonido efectivas. Los representantes de Dolby visitaron la instalación y confirmaron que el sonido seria desastroso. El proyecto se detuvo además por problemas con el Ayuntamiento.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Las Pantallas "Chinas" de la TV Gallega</div>
+    <p>Una televisión de Galicia compro dos pantallas: una de ellas, de fabricación china barata, simplemente no reproducia el amarillo en cámara. Por mas que el director técnico lo intentaba, el color no salia. El problema era que los modulos no estaban preparados para broadcast ni cine. Fue una inversión perdida.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Los Modulos Samsung Colocados al Reves</div>
+    <p>Otra televisión gallega instalo paneles Samsung para su plató de informativos. Los modulos estaban colocados al reves, con un ángulo de visión de solo 5 grados. Si la cámara se movia un centimetro fuera de ese eje, la imagen desaparecia. Ceruelo: "No todo vale; no cualquier pantalla sirve para broadcast o cine."</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">El Videoclip del Nieto de Tony de Blanco</div>
+    <p>Rodaron un videoclip en la pantalla pequeña de la oficina de Tangram (3x2 metros) con el nieto de Tony de Blanco, un chico de 1,98 metros. El chaval "se salia" del volumen constantemente. Tuvieron que combinar tomas con LED y con croma, adelantando al actor al máximo para evitar que su altura rompiera la perspectiva del tracking. Demostración de que la preproducción debe considerar hasta la altura física de los actores.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">El Desastre del Operador de Telefonia</div>
+    <p>Un gran operador de telecomunicaciónes contrato una producción que uso pantallas LED de alquiler de eventos. Tangram advirtio repetidamente que usaran pantallas de calidad cinematográfica. Hicieron caso omiso. Las pantallas de rental tenian una colorimetría horrible: los colores corporativos de la marca (que deben ser perfectamente uniformes) eran irreproducibles. Se gastaron una fortuna en postproducción intentando arreglar el color. La productora nunca volvio a hacer un anuncio con VP.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">La Arena de Playa que No Coincidia</div>
+    <p>Un cliente puso arena de playa real en el suelo para dar continuidad con un entorno de playa mostrado en la pantalla LED. Problema: el color de la arena real era diferente al de la arena virtual. La arena virtual se puede calibrar a cualquier color; la real no. Un fallo clásico de preproducción.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">El Suelo de Baldosas Rojo-Blanco</div>
+    <p>Un cliente intento que un suelo de baldosas rojas y blancas continuara sin cortes del suelo físico a la pantalla LED. Imposible por la geometría de puntos de fuga: el cerebro humano detecta instantaneamente la discontinuidad. El mismo cliente después intento poner croma verde en el suelo para insertar en post. Ceruelo lo declaro imposible por la contaminación luminica de la pantalla LED sobre el verde.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">El Fallo de Tracking por la Cinturon de la Actriz</div>
+    <p>En un rodaje, los stickers reflectantes de tracking estaban colocados a varias alturas y tamanos (pequenos arriba, grandes abajo). Una actriz llevaba un cinturon con marcadores, pero el sistema de tracking no la localizaba porque los marcadores pequenos a la altura de su cintura confundian al sensor. Tuvieron que montarle un tracker Mo-Sys en la cabeza. Ceruelo bromeo con que necesitaria un fisioterapeuta.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Las Pruebas de Stop-Motion para Pinocho</div>
+    <p>Alguien pregunto si se podia hacer stop-motion con VP sobre volumenes LED. Ceruelo inicialmente dijo que no sabia. En un encuentro del sector, dos equipos de artistas (uno español, otro argentino) realizaron pruebas colocando la mesa de stop-motion frente a la pantalla LED. El hallazgo clave: la pantalla proporcionaba reflejos naturales sobre las figuras de stop-motion. Tangram cometio un error inicial en la posición de la mesa que los artistas corrigieron.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">La Instalación de Portugal (Fabrica de Armas)</div>
+    <p>Los clientes portugueses fueron los primeros que Ceruelo vio llegar con storyboards completos y la preproducción hecha. Invirtieron 5 millones de euros de su bolsillo. Estructura autoportante porque las cerchas del edificio no soportaban el peso. Techo en tres secciones independientes. Curvatura de 2,5 grados cambiada a 3 por los bomberos. Dos meses de plazo para montar pantalla y sistema completo. Tres producciónes completadas rapidamente y ocho mas firmadas: por eso es viable.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">El Demo del Almacen Post-Apocalíptico con Arcade</div>
+    <p>Tangram creo un entorno de demostración (entre tres personas, incluyendo a Gabriel) de un almacen destruido/post-apocalíptico con maquinas arcade. Hecho en Maya, transferido a Unreal Engine, con unos 2 meses de preproducción. Usaron plantas reales y maquinas arcade reales (unas de pie, otras tumbadas) delante de la pantalla. El principio: si el cerebro ve algo real en primer plano, asume que todo lo de detras es real también.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Real Madrid / Santiago Bernabeu (era COVID)</div>
+    <p>Durante la pandemia, Tangram creo una recreación virtual del estadio Santiago Bernabeu (viejo y nuevo) con multitudes 3D interactivas que respondian al zoom y movimiento de cámara. Llevaron una unidad móvil de broadcasting. Florentino Perez quedo satisfecho con el resultado: podia ver el partido como queria verlo.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">La Propuesta de la "Caja LED" desde Miami</div>
+    <p>Alguien de Miami propuso construir un recinto LED cerrado en forma de caja. Ceruelo considero que no era práctico a menos que el plató superara los 2.000 metros cuadrados. El modelo mental del proponente funcionaba en teoria, pero la evaluación profesional de Ceruelo fue que no funcionaria en la práctica.</p>
+</div>
+
+<!-- ═══════ FILOSOFIA ═══════ -->
+<h3 class="section-title" id="c21-filosofía">Filosofia de Trabajo y Principios Clave</h3>
+
+<div class="tech-concept">
+    <b>Invertir la piramide de producción</b><br>
+    En el modelo clásico, los problemas se resuelven en postproducción ("fix it in post"). En VP, <b>todo debe estar resuelto antes de llegar al set</b>. Si el escenario 3D no es hiperrealista o el storyboard no es preciso, el coste de corregir el error sobre una pantalla LED que cuesta 27.000 euros a la semana es inasumible. La preproducción ES la postproducción.
+</div>
+
+<div class="tech-concept">
+    <b>"Engana al cerebro"</b><br>
+    Coloca objetos reales en primer plano (plantas, maquinaria, escombros, vehículos). Si el cerebro percibe algo real en el foreground, asume que el fondo también lo es. Este principio se aplica en cada producción.
+</div>
+
+<div class="tech-concept">
+    <b>"Rompe siempre"</b><br>
+    Nunca intentes dar continuidad perfecta entre el suelo físico y la pantalla. Rompe la linea de base con elementos fisicos. Si quieres poner arena, pon un monticulo que tape la linea inferior. Si quieres un interior, coloca muebles y atrezzo que corten la transición.
+</div>
+
+<div class="tech-concept">
+    <b>No todo vale para LED</b><br>
+    Pantallas de eventos, rentals, fabricaciones baratas no sirven para cine ni broadcast de calidad. La diferencia entre una pantalla preparada y una que no lo esta es la diferencia entre el exito y el fracaso total de la producción.
+</div>
+
+<div class="tech-concept">
+    <b>La brecha de profesionales</b><br>
+    Hay una escasez crítica de profesionales cualificados en VP. Muchos en LinkedIn dicen saber de VP pero solo conocen Unreal Engine para videojuegos: no saben de cámaras, opticas, iluminación ni workflow de producción en plato. Un buen operador VP necesita <b>ambas competencias</b>: 3D/Unreal y experiencia real en set.
+</div>
+
+<!-- ═══════ GLOSARIO ═══════ -->
+<h3 class="section-title" id="c21-glosario">Glosario de Terminos</h3>
+<dl class="glossary-grid">
+    <dt>Pixel Pitch</dt>
+    <dd>Distancia entre los centros de dos pixeles LED contiguos. Cuanto menor es, mas cerca puede estar la cámara sin ver el punto individual. Se mide en milimetros.</dd>
+
+    <dt>Frustum</dt>
+    <dd>La region de la pantalla LED que la cámara esta capturando en un momento dado y que se renderiza a maxima resolución en tiempo real.</dd>
+
+    <dt>Efecto Moire</dt>
+    <dd>Interferencia visual producida cuando la rejilla de pixeles del sensor de cámara interactua con la rejilla de pixeles de la pantalla LED. Se evita respetando la distancia minima (pitch x 2,5).</dd>
+
+    <dt>Unreal Engine</dt>
+    <dd>Motor gráfico de Epic Games utilizado para renderizar entornos 3D en tiempo real. Es el estándar de facto para producción virtual sobre LED.</dd>
+
+    <dt>Pixotope</dt>
+    <dd>Software de control de VP que opera como capa nativa sobre Unreal Engine. Gestiona escenas, automatizaciónes y tracking. Ha absorbido la marca Practicam.</dd>
+
+    <dt>DMX</dt>
+    <dd>Protocolo de control de iluminación que permite sincronizar de forma bidireccional la luz de la pantalla LED con los focos reales del plato.</dd>
+
+    <dt>Plate / Playback</dt>
+    <dd>Imagen o video prerenderizado proyectado en la pantalla LED sin tracking ni interacción 3D. Se usa cuando no hay movimiento de cámara para ahorrar recursos.</dd>
+
+    <dt>Rec. 2020</dt>
+    <dd>Espacio de color de amplio gamut definido por la UIT para televisión de ultra alta definición. Permite reproducir una gama cromatica mucho mayor que Rec. 709.</dd>
+
+    <dt>Tracking (seguimiento)</dt>
+    <dd>Sistema que determina la posición y orientación de la cámara en el espacio 3D para renderizar la perspectiva correcta del entorno virtual en la pantalla LED.</dd>
+
+    <dt>Mo-Sys</dt>
+    <dd>Sistema de tracking por marcadores reflectantes. Funcional pero propenso a derivas en el punto cero que requieren recalibración frecuente.</dd>
+
+    <dt>Gemelo Digital (Digital Twin)</dt>
+    <dd>Replica virtual de las dimensiones y geometría fisicas de la pantalla LED dentro del software VP, necesaria para que el mapeo del entorno sea correcto.</dd>
+
+    <dt>Set Extensión</dt>
+    <dd>Técnica donde elementos fisicos reales en primer plano se combinan con el entorno virtual de la pantalla LED para crear la ilusión de un espacio mayor.</dd>
+
+    <dt>Hornada de fabricación</dt>
+    <dd>Lote de producción de modulos LED. Los paneles de la misma hornada comparten componentes identicos y calibración cromatica consistente. Mezclar hornadas causa diferencias de color visibles.</dd>
+
+    <dt>4D Scan / Captura Volumétrica</dt>
+    <dd>Escaneo de personas reales en movimiento para generar extras virtuales en el entorno 3D. Funcionan bien en planos medios/lejanos pero no en primer plano.</dd>
+
+    <dt>STYPE</dt>
+    <dd>Sistema de tracking alternativo, barato en hardware base pero con costes elevados por cada perfil de óptica/lente que se necesite calibrar.</dd>
+
+    <dt>Alfalay / ROE Visual</dt>
+    <dd>Fabricante de pantallas LED de alta gama para producción virtual. Sus pantallas permiten tracking sin marcadores fisicos mediante patrones emitidos a frecuencias invisibles.</dd>
+
+    <dt>disguise</dt>
+    <dd>Sistema alternativo de control de producción virtual. Competidor de Pixotope con un enfoque diferente de gestion de escenas y contenido.</dd>
+
+    <dt>Profundidad de Color (Bit Depth)</dt>
+    <dd>Número de bits usados para representar cada canal de color. 8 bits para broadcast; 12 bits para producciónes cinematograficas "Triple A" que requieren maxima fidelidad.</dd>
+
+    <dt>Parallax</dt>
+    <dd>Efecto de desplazamiento relativo de los objetos del fondo virtual cuando la cámara se mueve. Anade realismo y es una de las ventajas del contenido interactivo frente al playback.</dd>
+</dl>
+
+<a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>

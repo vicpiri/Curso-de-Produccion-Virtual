@@ -1,0 +1,301 @@
+<div class="talk-header">
+        <h2 class="talk-title">Charla 03-2: Dirección de Fotografía en Producción Virtual</h2>
+        <div class="talk-meta">
+            <strong>Ponente:</strong> Mario Montero &mdash; Director de Fotografía<br>
+            <strong>Fecha:</strong> Miércoles 18 de marzo de 2026
+        </div>
+      </div>
+      
+<div class="section-nav">
+    <div class="section-nav-title">Contenidos</div>
+    <ul>
+        <li><a href="#c32-resumen">Resumen Ejecutivo</a></li>
+        <li><a href="#c32-parenostre">Caso de Estudio: &ldquo;Pare Nostre&rdquo; &mdash; Primera Pel&iacute;cula 100% VP en Espa&ntilde;a</a></li>
+        <li><a href="#c32-led-vs-croma">LED vs. Croma: Criterios de Decisi&oacute;n</a></li>
+        <li><a href="#c32-emanacion">El Problema de la Emanaci&oacute;n de Luz del LED</a></li>
+        <li><a href="#c32-optica">Calibraci&oacute;n de &Oacute;pticas y Lentes</a></li>
+        <li><a href="#c32-foco">Foco y Pantallas LED: El Problema de la Visibilidad de P&iacute;xeles</a></li>
+        <li><a href="#c32-profundidad">Profundidad de Campo y Control de Diafragma</a></li>
+        <li><a href="#c32-skylight">Concepto de Skylight y Dise&ntilde;o Lum&iacute;nico Narrativo</a></li>
+        <li><a href="#c32-croma-temp">T&eacute;cnica de Variaci&oacute;n de Temperatura de Color en Croma</a></li>
+        <li><a href="#c32-reflejos">Reflejos en Producci&oacute;n Virtual</a></li>
+        <li><a href="#c32-totems">T&oacute;tems e Iluminaci&oacute;n Din&aacute;mica Multip&iacute;xel</a></li>
+        <li><a href="#c32-plates">Plates vs. 3D vs. LED: Enfoques de Producci&oacute;n</a></li>
+        <li><a href="#c32-interior-exterior">Interior vs. Exterior: Observaciones Pr&aacute;cticas</a></li>
+        <li><a href="#c32-camaras">C&aacute;maras, &Oacute;pticas y Equipamiento</a></li>
+        <li><a href="#c32-workflow">Flujo de Trabajo del Director de Fotograf&iacute;a en VP</a></li>
+        <li><a href="#c32-alcaine">Mentor&iacute;a de Jos&eacute; Luis Alcaine y Filosof&iacute;a Fotogr&aacute;fica</a></li>
+        <li><a href="#c32-granvia">Proyecto Futuro: Gran V&iacute;a A&ntilde;os 40</a></li>
+        <li><a href="#c32-glosario">Glosario de T&eacute;rminos</a></li>
+    </ul>
+</div>
+
+<div class="executive-summary" id="c32-resumen">
+    <h3 class="section-title" style="border:none;padding:0;margin:0 0 12px 0;">Resumen Ejecutivo</h3>
+    <p>Mario Montero, Director de Fotograf&iacute;a, comparte su experiencia en <b>&ldquo;Pare Nostre&rdquo;</b>, la primera pel&iacute;cula rodada al 100% en producci&oacute;n virtual en Espa&ntilde;a (y posiblemente en Europa), dirigida por Manuel (Manel) Huerga y producida por Mediapro. La charla pivota sobre las decisiones cr&iacute;ticas del DOP cuando trabaja con pantallas LED y croma simult&aacute;neamente: cu&aacute;ndo elegir cada tecnolog&iacute;a, c&oacute;mo la emanaci&oacute;n de luz del LED condiciona los interiores, por qu&eacute; no se debe hacer foco directo sobre las pantallas, y c&oacute;mo el diafragma y la elecci&oacute;n de &oacute;pticas afectan a la integraci&oacute;n del fondo virtual. Montero detalla tambi&eacute;n t&eacute;cnicas innovadoras como la variaci&oacute;n de temperatura de color del croma verde, el uso de t&oacute;tems, la iluminaci&oacute;n multip&iacute;xel din&aacute;mica, y su filosof&iacute;a heredada del maestro Jos&eacute; Luis Alcaine: la observaci&oacute;n diaria de la luz real como fundamento de toda cinematograf&iacute;a. La sesi&oacute;n ofrece una visi&oacute;n extremadamente pr&aacute;ctica y honesta, incluyendo los errores y limitaciones encontradas durante el rodaje.</p>
+</div>
+
+<h3 class="section-title" id="c32-parenostre">Caso de Estudio: &ldquo;Pare Nostre&rdquo; &mdash; Primera Pel&iacute;cula 100% VP en Espa&ntilde;a</h3>
+<p>&ldquo;Pare Nostre&rdquo; narra el esc&aacute;ndalo pol&iacute;tico de Jordi Pujol en Catalu&ntilde;a. Dirigida por Manel Huerga y producida por Mediapro, se rod&oacute; &iacute;ntegramente en producci&oacute;n virtual &mdash; con <b>pantalla LED y croma verde disponibles simult&aacute;neamente</b> en el mismo estudio de Mediapro en Barcelona. La historia transcurre aproximadamente en un d&iacute;a con flashbacks, ambientada principalmente en el interior de la casa de Pujol, con secuencias de coches, exteriores de pueblo y un funeral.</p>
+<ul class="content-list">
+    <li><b>Duraci&oacute;n del rodaje:</b> Aproximadamente 5 semanas (casi 4 y algo), frente a lo que hubiera sido un rodaje considerablemente m&aacute;s largo en producci&oacute;n tradicional.</li>
+    <li><b>Preiluminaci&oacute;n virtual:</b> Mario pas&oacute; un mes y medio iluminando todos los decorados virtuales en Unreal Engine antes del rodaje principal.</li>
+    <li><b>Un solo decorado f&iacute;sico:</b> Solo se construy&oacute; f&iacute;sicamente el pasillo/vest&iacute;bulo. Todo lo dem&aacute;s era virtual. Los elementos f&iacute;sicos se limitaban a lo que los actores tocaban: mesa, sof&aacute;, sillas, televisi&oacute;n, cama, l&aacute;mparas.</li>
+    <li><b>Suelos verdes:</b> Todos los suelos en los sets de croma eran verdes y se reemplazaron en postproducci&oacute;n, un proceso que result&oacute; enormemente complejo.</li>
+    <li><b>Metodolog&iacute;a dual:</b> Se saltaba constantemente entre LED y croma seg&uacute;n lo que funcionaba mejor para cada secuencia. Las secuencias de coches se hicieron en LED; los interiores de la casa principalmente en croma.</li>
+    <li><b>Desbordamiento de presupuesto:</b> Los costes de limpieza de croma y composici&oacute;n en VFX se dispararon respecto a las estimaciones iniciales, especialmente en las primeras fases cuando el equipo a&uacute;n estaba aprendiendo.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: El Despacho de Jordi Pujol &mdash; Dise&ntilde;o Lum&iacute;nico Narrativo</div>
+    <p>Mario dise&ntilde;&oacute; la casa virtual con intenci&oacute;n narrativa: orient&oacute; el edificio para que el <b>despacho de Pujol mirara al norte</b> (sin sol directo), creando una atm&oacute;sfera fr&iacute;a y austera que representaba los oscuros manejos pol&iacute;ticos. Las zonas de estar miraban al sur, con luz m&aacute;s c&aacute;lida y luminosa. La transici&oacute;n temporal (del d&iacute;a a la noche) se planific&oacute; secuencia por secuencia, como un reloj, para que la progresi&oacute;n de la luz contara la historia.</p>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: Secuencias de Coches &mdash; La Gran Eficiencia del LED</div>
+    <p>Las secuencias de coches fueron donde el LED brill&oacute; con diferencia. En <b>un solo d&iacute;a</b>, Mario rod&oacute; aproximadamente cinco situaciones distintas de coches en Barcelona: taxi nocturno, conducci&oacute;n diurna por Paseo de Gracia, y m&aacute;s. Cambiaba de d&iacute;a a noche en cuesti&oacute;n de cuatro minutos. En localizaci&oacute;n real, esto habr&iacute;a requerido una semana completa como m&iacute;nimo. Los reflejos naturales del LED en los cristales del coche eran impresionantes y se capturaban directamente en c&aacute;mara.</p>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: La Secuencia de Tortura &mdash; Croma al Extremo</div>
+    <p>La escena de interrogatorio/tortura se rod&oacute; <b>completamente en croma verde</b>, incluyendo el suelo sobre el que el actor estaba tumbado. Mario utiliz&oacute; diafragma m&aacute;ximo abierto para aislar al sujeto, con iluminaci&oacute;n fluorescente fr&iacute;a que generaba un tono cl&iacute;nico y opresivo. Intencionadamente permiti&oacute; un toque de spill verde en las sombras para a&ntilde;adir a la atm&oacute;sfera enfermiza de la escena.</p>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: La Deconstrucci&oacute;n Final &mdash; Revelar la Mentira</div>
+    <p>El final de la pel&iacute;cula fue una decisi&oacute;n art&iacute;stica de Manel Huerga: <b>deconstruir literalmente el set</b>, revelando el estudio detr&aacute;s de la producci&oacute;n virtual. El croma verde se pint&oacute; de negro para que durante la revelaci&oacute;n no se viera el verde. El personaje sale de su mundo ficticio y el espectador ve el plat&oacute; real donde se rod&oacute;, en una jugada narrativa reminiscente de &ldquo;The Matrix&rdquo;.</p>
+</div>
+
+<h3 class="section-title" id="c32-led-vs-croma">LED vs. Croma: Criterios de Decisi&oacute;n</h3>
+<p>La gran lecci&oacute;n pr&aacute;ctica de &ldquo;Pare Nostre&rdquo; fue definir <b>cu&aacute;ndo usar cada tecnolog&iacute;a</b>. Mario lleg&oacute; a conclusiones claras despu&eacute;s de la experiencia:</p>
+<ul class="content-list">
+    <li><b>LED funciona bien para:</b> Secuencias de coches (reflejos naturales en cristales, cambio r&aacute;pido de escenarios), ciertos paisajes en penumbra que no emanan excesiva luz, y situaciones donde la iluminaci&oacute;n ambiental del LED beneficia la escena.</li>
+    <li><b>Croma funciona mejor para:</b> Interiores de casas y habitaciones, donde el DOP necesita control total de la situaci&oacute;n lum&iacute;nica. Un espacio de 4&times;5 metros con pantalla LED no resulta cre&iacute;ble.</li>
+    <li><b>El problema fundamental del LED en interiores:</b> La pantalla emana luz de forma incontrolable. Si colocas a una persona al lado, esa luz &ldquo;mala&rdquo; cae sobre ella sin que el DOP pueda gestionarla.</li>
+    <li><b>Ventaja del 3D sobre plates en LED:</b> Con entornos 3D en tiempo real, Mario pod&iacute;a cambiar condiciones de luz (nublar el sol, cambiar su posici&oacute;n) en dos minutos. Con plates pregrabados, los cambios eran imposibles.</li>
+    <li><b>Coste:</b> LED con plates es m&aacute;s econ&oacute;mico que LED con 3D en tiempo real, porque la creaci&oacute;n de entornos 3D requiere una inversi&oacute;n enorme.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Caso: El Exterior del Pueblo con Pedraforca &mdash; Lo que No Funcion&oacute;</div>
+    <p>Mario relata con honestidad una secuencia que <b>no le convenci&oacute;</b>: un exterior de pueblo con la monta&ntilde;a de Pedraforca al fondo, rodado en LED con plates. El resultado &ldquo;cantaba&rdquo; (se ve&iacute;a falso) debido a la insuficiente distancia entre la fuente de luz y el sujeto (la ley del cuadrado inverso hac&iacute;a que la ca&iacute;da de luz fuera poco realista), desajustes de temperatura de color, y la dificultad general de empatar la luz artificial del cine con la luz natural exterior. Mario habr&iacute;a preferido rodarlo en croma con 3D virtual en Unreal Engine. Sugiere que para esa toma, un Gaussian Splatting del paisaje real habr&iacute;a funcionado mejor.</p>
+</div>
+
+<h3 class="section-title" id="c32-emanacion">El Problema de la Emanaci&oacute;n de Luz del LED</h3>
+<p>Uno de los temas recurrentes de la charla: las pantallas LED <b>emiten luz constantemente</b>, lo cual es simult&aacute;neamente su mayor ventaja (reflejos naturales, iluminaci&oacute;n ambiental integrada) y su mayor limitaci&oacute;n (p&eacute;rdida de control lum&iacute;nico para el DOP).</p>
+<ul class="content-list">
+    <li><b>Beneficio:</b> En secuencias de coches, la luz emanada genera reflejos naturales en cristales, carrocer&iacute;a y piel de los actores &mdash; algo extremadamente dif&iacute;cil de replicar en composici&oacute;n sobre croma.</li>
+    <li><b>Problema:</b> En interiores peque&ntilde;os, la emanaci&oacute;n destruye el control lum&iacute;nico del DOP. No se puede iluminar selectivamente cuando la pantalla ba&ntilde;a todo el set con su luz.</li>
+    <li><b>Temperatura de color:</b> Al inicio del proyecto, la temperatura de color de las pantallas LED era dif&iacute;cil de ajustar con precisi&oacute;n. Mario nota que esto ha mejorado significativamente en los &uacute;ltimos a&ntilde;os.</li>
+    <li><b>Ley del cuadrado inverso:</b> La luz real del sol no tiene ca&iacute;da perceptible porque la fuente est&aacute; infinitamente lejos. La luz del LED, a pocos metros del sujeto, tiene una ca&iacute;da muy marcada, lo que delata la artificialidad especialmente en simulaci&oacute;n de exteriores.</li>
+</ul>
+
+<h3 class="section-title" id="c32-optica">Calibraci&oacute;n de &Oacute;pticas y Lentes</h3>
+<p>Cada lente requiere su propia <b>calibraci&oacute;n espec&iacute;fica</b> (lo que se denomina &ldquo;liberado de &oacute;ptica&rdquo;) para que la perspectiva y la profundidad de campo del mundo virtual coincidan con las del mundo f&iacute;sico:</p>
+<ul class="content-list">
+    <li><b>Perspectiva variable:</b> Al cambiar la &oacute;ptica en el decorado virtual, la perspectiva del fondo virtual cambiaba en consonancia, emparejando el comportamiento f&iacute;sico de la lente real.</li>
+    <li><b>Profundidad de campo:</b> Cambiar el diafragma afectaba visiblemente la profundidad percibida del fondo virtual. Mario encontr&oacute; esto impresionante y lo utiliz&oacute; como herramienta narrativa.</li>
+    <li><b>Focales utilizadas:</b> 18 mm para planos generales de establecimientos, 40 mm como focal principal de trabajo, 50 mm, y 12 mm para un plano subjetivo espec&iacute;fico. Angulares (focales cortas) para interiores de coches.</li>
+</ul>
+
+<h3 class="section-title" id="c32-foco">Foco y Pantallas LED: El Problema de la Visibilidad de P&iacute;xeles</h3>
+<p>Una de las reglas m&aacute;s cr&iacute;ticas que Mario comparte, reforzada por una conversaci&oacute;n con Paco de Netflix Vancouver: <b>nunca hacer foco directo sobre la pantalla LED</b>.</p>
+<ul class="content-list">
+    <li><b>La regla del trasfoco:</b> Cuando un director pide un rack focus (trasfoco) del actor al fondo, Mario lo ejecuta de forma r&aacute;pida pero deteni&eacute;ndose justo antes del punto donde los p&iacute;xeles se hacen visibles. El fondo queda &ldquo;casi&rdquo; en foco, pero no del todo.</li>
+    <li><b>Moir&eacute; y artefactos:</b> Si se lleva el foco demasiado n&iacute;tido a la pantalla, aparecen patrones de moir&eacute; y se ven las imperfecciones de la matriz de p&iacute;xeles del LED.</li>
+    <li><b>Ventaja del 3D virtual:</b> En contraste, cuando se trabaja con croma y 3D renderizado en Unreal, <b>s&iacute;</b> se puede hacer un trasfoco completo hasta el fondo porque el fondo es una imagen renderizada, no una superficie f&iacute;sica de p&iacute;xeles.</li>
+    <li><b>Gesti&oacute;n del diafragma:</b> Abrir el diafragma ayuda a suavizar el moir&eacute;, pero limita las opciones creativas del DOP cuando necesitar&iacute;a mayor profundidad de campo.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Consejo de Producci&oacute;n: La Regla de Paco de Netflix</div>
+    <p>Mario cita una conversaci&oacute;n con <b>Paco, de las operaciones de Netflix en Vancouver</b>, quien reafirm&oacute; categ&oacute;ricamente la regla de no hacer foco en las pantallas LED. Esta limitaci&oacute;n t&eacute;cnica tiene implicaciones directas en la planificaci&oacute;n de secuencias: cualquier plano que requiera trasfoco completo al fondo debe considerarse para rodaje en croma con 3D, no en LED.</p>
+</div>
+
+<h3 class="section-title" id="c32-profundidad">Profundidad de Campo y Control de Diafragma</h3>
+<p>Mario utiliza la profundidad de campo como <b>herramienta narrativa fundamental</b>, no solo t&eacute;cnica:</p>
+<ul class="content-list">
+    <li><b>Diafragma habitual:</b> Trabaja frecuentemente alrededor de f/4, buscando un equilibrio entre aislamiento del sujeto y contexto visual del entorno.</li>
+    <li><b>M&aacute;xima apertura narrativa:</b> En la escena de tortura, utiliz&oacute; la m&aacute;xima apertura para aislar completamente al sujeto, creando una calidad on&iacute;rica y claustrofóbica.</li>
+    <li><b>Interacci&oacute;n con el fondo virtual:</b> Descubri&oacute; que al cambiar el diafragma, la profundidad percibida del fondo virtual variaba de forma convincente, a&ntilde;adiendo una capa de realismo que le entusiasm&oacute;.</li>
+    <li><b>Limitaciones:</b> En algunos casos, la respuesta de profundidad de campo del fondo virtual no emparejaba perfectamente con la f&iacute;sica real de la lente, creando peque&ntilde;as inconsistencias visibles para un ojo entrenado.</li>
+</ul>
+
+<h3 class="section-title" id="c32-skylight">Concepto de Skylight y Dise&ntilde;o Lum&iacute;nico Narrativo</h3>
+<p>El <b>skylight</b> &mdash; luz amplia del cielo que entra por una ventana &mdash; es uno de los conceptos lum&iacute;nicos centrales del trabajo de Mario Montero:</p>
+<ul class="content-list">
+    <li><b>Definici&oacute;n pr&aacute;ctica:</b> Una combinaci&oacute;n de luz ambiente amplia del cielo m&aacute;s un complemento de sol directo. Es la base de la iluminaci&oacute;n natural de interiores.</li>
+    <li><b>Aplicaci&oacute;n en VP:</b> En el set de croma, Mario pod&iacute;a colocar un aparato de luz f&iacute;sico fuera del set y hacer que el sol &ldquo;entrara&rdquo; por la ventana virtual. La ventaja: como no hab&iacute;a paredes f&iacute;sicas que recortaran la luz, ten&iacute;a libertad total para iluminar sin preocuparse por spills o light spears.</li>
+    <li><b>Dise&ntilde;o narrativo:</b> Para el despacho de Pujol, dise&ntilde;&oacute; una luz norte fr&iacute;a (sin sol directo) que transmitiera austeridad. Para las zonas de estar, luz sur c&aacute;lida con sol directo. La transici&oacute;n d&iacute;a-noche se planific&oacute; secuencia a secuencia.</li>
+    <li><b>Secuencia nocturna:</b> Para una escena de dormitorio nocturno, la luz ven&iacute;a desde abajo (nivel de calle), creando una calidad inquietante inspirada en el estilo de Tobe Hooper. El personaje mira hacia abajo a la calle, y la luz sube desde ah&iacute;.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: Recuerdos y Escenas de Ensue&ntilde;o</div>
+    <p>Para las escenas de memoria/flashback donde el personaje se encuentra con su yo m&aacute;s joven, Mario utiliz&oacute; un <b>proyector incandescente de 10K</b> para crear un flare c&aacute;lido y envolvente que evocara la calidad on&iacute;rica del recuerdo. Manten&iacute;a alrededor de un 10% de fuentes incandescentes en su equipo precisamente para estos momentos que requer&iacute;an el espectro continuo y la calidad natural del tungsteno.</p>
+</div>
+
+<h3 class="section-title" id="c32-croma-temp">T&eacute;cnica de Variaci&oacute;n de Temperatura de Color en Croma</h3>
+<p>Un descubrimiento personal de Mario que comparti&oacute; como una de las t&eacute;cnicas m&aacute;s &uacute;tiles del rodaje:</p>
+<ul class="content-list">
+    <li><b>T&eacute;cnica:</b> En lugar de controlar &uacute;nicamente la intensidad de la iluminaci&oacute;n del croma verde, <b>variaba la temperatura de color</b> de los LEDs que iluminaban la tela verde, oscilando entre 3200 K y 5000 K.</li>
+    <li><b>Motivo:</b> Dependiendo de las condiciones de luz ambiente de cada secuencia (c&aacute;lida, fr&iacute;a, mixta), ajustar la temperatura del croma mejoraba dr&aacute;sticamente la calidad de la extracci&oacute;n de key en postproducci&oacute;n.</li>
+    <li><b>Delegaci&oacute;n eficiente:</b> Los operadores de VFX controlaban la iluminaci&oacute;n del croma desde su mesa por DMX, gestionando tanto intensidad como temperatura. Esto <b>liberaba a Mario</b> para concentrarse exclusivamente en la iluminaci&oacute;n narrativa y art&iacute;stica de la escena.</li>
+    <li><b>Resultado:</b> El equipo de croma encontr&oacute; que los resultados de keying eran significativamente superiores con esta t&eacute;cnica frente al m&eacute;todo tradicional de intensidad &uacute;nica.</li>
+</ul>
+
+<h3 class="section-title" id="c32-reflejos">Reflejos en Producci&oacute;n Virtual</h3>
+<p>Los reflejos son uno de los grandes retos y, al mismo tiempo, una de las grandes ventajas de la producci&oacute;n virtual:</p>
+<ul class="content-list">
+    <li><b>Reflejos naturales del LED:</b> Mario descubri&oacute; con entusiasmo que los entornos virtuales se reflejaban correctamente en superficies f&iacute;sicas: cristales, espejos, metales. La ley de reflexi&oacute;n (&aacute;ngulo de incidencia = &aacute;ngulo de reflexi&oacute;n) funcionaba naturalmente.</li>
+    <li><b>Gafas de los actores:</b> En croma, las gafas reflejaban el verde, lo cual result&oacute; &uacute;til porque el equipo de VFX pod&iacute;a extraer el verde y sustituirlo por el reflejo del entorno virtual.</li>
+    <li><b>Superficies brillantes en croma:</b> En otra producci&oacute;n, se us&oacute; una superficie de croma <b>barnizada (brillante)</b> en lugar de mate para capturar reflejos especulares reales de los actores que luego se compositar&iacute;an en el set virtual (una escena de ba&ntilde;o con azulejos).</li>
+    <li><b>Ley del billar:</b> Mario utiliza la met&aacute;fora de las bolas de billar para explicar c&oacute;mo los reflejos obedecen a las mismas leyes f&iacute;sicas tanto en superficies reales como ante pantallas LED.</li>
+</ul>
+
+<h3 class="section-title" id="c32-totems">T&oacute;tems e Iluminaci&oacute;n Din&aacute;mica Multip&iacute;xel</h3>
+<p>Dos conceptos de iluminaci&oacute;n avanzada que Mario distingue con precisi&oacute;n:</p>
+
+<h4 class="subsection-title">T&oacute;tems: Pantallas de V&iacute;deo como Fuentes de Luz</h4>
+<ul class="content-list">
+    <li><b>Definici&oacute;n:</b> Pantallas de v&iacute;deo utilizadas no como fondo sino como fuentes de luz pr&aacute;cticas para generar reflejos y volumen lum&iacute;nico sobre actores y decorado.</li>
+    <li><b>Problema de calidad:</b> Los t&oacute;tems est&aacute;n dise&ntilde;ados para emitir v&iacute;deo, <b>no para iluminar</b>. Sus m&eacute;tricas de calidad de luz (CRI, TLCI, SSI) son deficientes comparadas con instrumentos de iluminaci&oacute;n dedicados.</li>
+    <li><b>Uso apropiado:</b> Funcionan bien para generar reflejos ambientales (farolas que pasan en escenas de coche, cambios de color de sem&aacute;foros), pero no como iluminaci&oacute;n principal.</li>
+</ul>
+
+<h4 class="subsection-title">Iluminaci&oacute;n Multip&iacute;xel Din&aacute;mica</h4>
+<ul class="content-list">
+    <li><b>Concepto:</b> Paneles LED dise&ntilde;ados espec&iacute;ficamente como <b>proyectores de iluminaci&oacute;n</b>, no como pantallas de v&iacute;deo. Cada p&iacute;xel se controla individualmente por DMX.</li>
+    <li><b>Apariencia:</b> A simple vista no se ve una imagen resuelta (solo manchas de color), pero cada p&iacute;xel act&uacute;a como un canal de iluminaci&oacute;n independiente.</li>
+    <li><b>Conversi&oacute;n de se&ntilde;al:</b> La se&ntilde;al de v&iacute;deo se convierte a datos DMX que controlan el panel multip&iacute;xel. El panel reproduce la informaci&oacute;n de color y movimiento del v&iacute;deo pero como <b>luz de calidad</b> (buen SSI, CRI), no como imagen visible.</li>
+    <li><b>Limitaci&oacute;n:</b> No sirven para generar reflejos (se ver&iacute;an borrosos), pero son excelentes para iluminaci&oacute;n ambiental din&aacute;mica (simular pasear por la Gran V&iacute;a con luces de calle cambiantes).</li>
+    <li><b>Movimiento f&iacute;sico de la luz:</b> Mario destaca una distinci&oacute;n importante: no es lo mismo una fuente fija que se enciende y apaga cuando el sujeto pasa por debajo (como una farola) que una fuente cuya luz se mueve f&iacute;sicamente dentro del aparato. El camino f&iacute;sico del movimiento de la luz importa para el realismo.</li>
+</ul>
+
+<h3 class="section-title" id="c32-plates">Plates vs. 3D vs. LED: Enfoques de Producci&oacute;n</h3>
+<p>Mario distingue tres enfoques distintos utilizados en &ldquo;Pare Nostre&rdquo;:</p>
+<ul class="content-list">
+    <li><b>LED con plates pregrabados:</b> Fondos filmados previamente reproducidos en la pantalla LED. M&aacute;s econ&oacute;mico, pero sin posibilidad de modificar condiciones de luz en tiempo real. Usado principalmente para secuencias de coches.</li>
+    <li><b>LED con 3D en tiempo real:</b> Entornos creados en Unreal Engine reproducidos en la pantalla LED. M&aacute;s caro y complejo, pero permite cambios din&aacute;micos (posici&oacute;n del sol, nubes, hora del d&iacute;a). Algunos paisajes se hicieron as&iacute;.</li>
+    <li><b>Croma con 3D virtual:</b> Fondo verde f&iacute;sico, entorno 3D renderizado en Unreal visible en el monitor del DOP durante el rodaje y composited en postproducci&oacute;n. Ofrece m&aacute;xima flexibilidad y control lum&iacute;nico. Fue el enfoque principal para interiores de la casa.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia en Set: Cambiar el Sol en Dos Minutos</div>
+    <p>Una de las ventajas que m&aacute;s entusiasm&oacute; a Mario del trabajo con 3D en tiempo real en Unreal: pod&iacute;a pedir que se <b>nublara el cielo</b> o cambiar la posici&oacute;n del sol, y en dos minutos lo ten&iacute;a. Para un DOP acostumbrado a esperar horas por las condiciones de luz adecuadas en exteriores, esta capacidad result&oacute; reveladora.</p>
+</div>
+
+<h3 class="section-title" id="c32-interior-exterior">Interior vs. Exterior: Observaciones Pr&aacute;cticas</h3>
+<p>Una de las conclusiones contraintuitivas del rodaje:</p>
+<ul class="content-list">
+    <li><b>Los interiores funcionan mejor en VP que los exteriores:</b> Aunque parece contradictorio (para qu&eacute; construir un interior virtualmente?), los interiores tienen gradientes de iluminaci&oacute;n y paletas de color m&aacute;s simples y controlables.</li>
+    <li><b>Los exteriores son m&aacute;s dif&iacute;ciles:</b> Tienen vida natural, movimiento, complejidad atmosf&eacute;rica, y una luz que es extremadamente dif&iacute;cil de empatar con la iluminaci&oacute;n artificial del cine.</li>
+    <li><b>La pantalla LED en interiores peque&ntilde;os no funciona:</b> Espec&iacute;ficamente, un espacio de 4&times;5 metros con pantalla LED es inviable por la emanaci&oacute;n de luz incontrolable.</li>
+    <li><b>Paisajes en penumbra:</b> Ciertos paisajes que estaban en penumbra s&iacute; funcionaron en LED porque al no emanar luz excesiva, el DOP pod&iacute;a complementar con sus propias fuentes usando las pantallas como apoyo de iluminaci&oacute;n ambiental.</li>
+</ul>
+
+<h3 class="section-title" id="c32-camaras">C&aacute;maras, &Oacute;pticas y Equipamiento</h3>
+
+<h4 class="subsection-title">ARRI Alexa 35</h4>
+<ul class="content-list">
+    <li><b>C&aacute;mara principal de &ldquo;Pare Nostre&rdquo;.</b> Mario la eligi&oacute; espec&iacute;ficamente por su formato Super 35 (no gran formato), que le daba las caracter&iacute;sticas de profundidad de campo que buscaba.</li>
+    <li><b>Calidad de imagen:</b> Elogia su imagen org&aacute;nica, la reproducci&oacute;n de tonos de piel y la gradaci&oacute;n tonal del sensor. La describe como &ldquo;m&aacute;s org&aacute;nica, me recuerda m&aacute;s al cine&rdquo;.</li>
+    <li><b>Filosof&iacute;a de exposici&oacute;n:</b> Mario expone org&aacute;nicamente en c&aacute;mara en lugar de depender de plugins de postproducci&oacute;n. Instruy&oacute; al equipo 3D para que renderizara los entornos virtuales tal como &eacute;l los expondr&iacute;a realmente.</li>
+</ul>
+
+<h4 class="subsection-title">ARRI Alexa Cl&aacute;sica (Comparaci&oacute;n)</h4>
+<ul class="content-list">
+    <li><b>Curva sensitom&eacute;trica variable:</b> En la Alexa original, cambiar el ISO modificaba la curva de contraste. A 800 ISO la curva se suavizaba (ideal para situaciones de alto contraste); a ISOs bajos (250-400) las sombras ganaban contraste. Mario usaba esto creativamente.</li>
+</ul>
+
+<h4 class="subsection-title">Sony Venice (Comparaci&oacute;n)</h4>
+<ul class="content-list">
+    <li><b>Curva sensitom&eacute;trica constante:</b> A diferencia de la Alexa, la Venice mantiene la misma curva de contraste independientemente del ISO (500 o 3200). Los cambios de ISO no alteran el contraste.</li>
+    <li><b>Venice 2:</b> Mario est&aacute; actualmente probando la Venice 2, trabajando a 3200 ISO base e incluso subexponiendo a 2500 ISO para ganar un tercio de stop de margen de manipulaci&oacute;n.</li>
+</ul>
+
+<h4 class="subsection-title">&Oacute;pticas Cooke</h4>
+<ul class="content-list">
+    <li>Elogiadas por su <b>bokeh org&aacute;nico</b> y su caracter&iacute;stico renderizado de las zonas desenfocadas.</li>
+    <li>Focales utilizadas: 12 mm (subjetivo especial), 18 mm (generales), 40 mm (focal principal de trabajo), 50 mm.</li>
+</ul>
+
+<h4 class="subsection-title">Equipamiento de Iluminaci&oacute;n</h4>
+<ul class="content-list">
+    <li><b>Paneles LED:</b> Utilizados extensivamente tanto para iluminaci&oacute;n del set como del croma. Temperatura de color variable entre 3200 K y 5000 K.</li>
+    <li><b>Incandescentes:</b> Mario manten&iacute;a un 10% de fuentes incandescentes para escenas espec&iacute;ficas. Incluye un proyector de 10K para la escena de recuerdos.</li>
+    <li><b>Fresneles:</b> Referenciados tanto en la producci&oacute;n como en la an&eacute;cdota de Alcaine (650 vatios, 27 configuraciones distintas).</li>
+    <li><b>Fluorescentes:</b> Usados en la secuencia de tortura para crear tono cl&iacute;nico y fr&iacute;o.</li>
+    <li><b>Panel multip&iacute;xel LED:</b> Reci&eacute;n adquirido, convierte se&ntilde;al de v&iacute;deo en salida DMX multip&iacute;xel. RGB, cada p&iacute;xel direccionable individualmente. Planificado para la pr&oacute;xima producci&oacute;n.</li>
+    <li><b>Marcos de difusi&oacute;n (palios):</b> Usados para iluminaci&oacute;n clave, especialmente con skylight.</li>
+</ul>
+
+<h3 class="section-title" id="c32-workflow">Flujo de Trabajo del Director de Fotograf&iacute;a en VP</h3>
+
+<h4 class="subsection-title">Preproducci&oacute;n (1,5 Meses Antes del Rodaje)</h4>
+<ul class="content-list">
+    <li><b>Lectura del gui&oacute;n:</b> M&uacute;ltiples lecturas con gui&oacute;n f&iacute;sico, marcando secuencias de d&iacute;a/noche con c&oacute;digos de color (azul para noche).</li>
+    <li><b>Visualizaci&oacute;n mental:</b> Planificaci&oacute;n del arco emocional/psicol&oacute;gico de la luz a lo largo de toda la pel&iacute;cula.</li>
+    <li><b>Dise&ntilde;o de espacios virtuales:</b> Colaboraci&oacute;n con el equipo 3D/VP: orientaci&oacute;n del edificio virtual, colocaci&oacute;n de ventanas, &aacute;ngulos de entrada de luz.</li>
+    <li><b>Preiluminaci&oacute;n en Unreal:</b> Mario dirig&iacute;a a los operadores de Unreal sin tocar &eacute;l mismo el software. Lo compara con el proceso del colorista: da instrucciones y el operador ejecuta.</li>
+    <li><b>Codificaci&oacute;n:</b> Todo se codific&oacute; para referencia de postproducci&oacute;n.</li>
+</ul>
+
+<h4 class="subsection-title">Rodaje en Croma</h4>
+<ul class="content-list">
+    <li><b>Set con m&iacute;nimos f&iacute;sicos:</b> Solo elementos que los actores tocan. Suelo marcado con cinta indicando posiciones de paredes.</li>
+    <li><b>Visi&oacute;n en c&aacute;mara:</b> Mario opera personalmente la c&aacute;mara, viendo el compositing en tiempo real por el visor. El director ve el composite en su monitor.</li>
+    <li><b>Iluminaci&oacute;n narrativa:</b> Mario se ocupa de la luz art&iacute;stica; los operadores de VFX gestionan la iluminaci&oacute;n del croma por DMX.</li>
+    <li><b>Canal alfa:</b> La c&aacute;mara captura con canales alfa para composici&oacute;n por capas. El editor recibe el metraje compuesto y monta con los fondos virtuales visibles.</li>
+</ul>
+
+<h4 class="subsection-title">Rodaje en LED con Plates</h4>
+<ul class="content-list">
+    <li><b>Plates o entornos 3D en la pantalla.</b> Para coches: reproducci&oacute;n de plates de calles de Barcelona; el cambio de escena tarda unos 4 minutos.</li>
+    <li><b>Reflejos capturados en c&aacute;mara:</b> Reflejos naturales del LED en cristales, carrocer&iacute;a y superficies del actor.</li>
+</ul>
+
+<h3 class="section-title" id="c32-alcaine">Mentor&iacute;a de Jos&eacute; Luis Alcaine y Filosof&iacute;a Fotogr&aacute;fica</h3>
+<p>Mario dedica un pasaje extenso a hablar de su maestro, el legendario director de fotograf&iacute;a espa&ntilde;ol <b>Jos&eacute; Luis Alcaine</b>, con quien trabaj&oacute; durante ocho a&ntilde;os en la d&eacute;cada de los 90:</p>
+<ul class="content-list">
+    <li><b>Filosof&iacute;a central:</b> Cada pel&iacute;cula comienza desde cero. Alcaine dec&iacute;a que no ten&iacute;a memoria, que empezaba cada proyecto sin preconcepciones. No cre&iacute;a en los &ldquo;estilos fotogr&aacute;ficos&rdquo; &mdash; consideraba que imponer un estilo era imponer el ego sobre la historia.</li>
+    <li><b>La pel&iacute;cula habla:</b> En lugar de imponer una est&eacute;tica, dejaba que la pel&iacute;cula le hablara. La fotograf&iacute;a deb&iacute;a emerger de la historia, no del ego del DOP.</li>
+    <li><b>Observaci&oacute;n diaria:</b> La mejor fotograf&iacute;a nace de la observaci&oacute;n cotidiana de la luz real: c&oacute;mo se siente el verano, c&oacute;mo la luz rebota en los espacios, c&oacute;mo el momento del d&iacute;a cambia la atm&oacute;sfera.</li>
+    <li><b>Maestr&iacute;a con m&iacute;nimos:</b> En un taller, Alcaine pidi&oacute; un &uacute;nico Fresnel de 650 vatios y demostr&oacute; <b>27 configuraciones de iluminaci&oacute;n distintas</b> con ese solo instrumento.</li>
+</ul>
+<div class="experience-box">
+    <div class="experience-box-title">An&eacute;cdota: Fernando Trueba y las Mariposas en el Est&oacute;mago</div>
+    <p>Mario acompa&ntilde;&oacute; a Jos&eacute; Luis Alcaine en una pel&iacute;cula de Fernando Trueba. Antes de empezar, Alcaine &mdash; que ya hab&iacute;a hecho ocho pel&iacute;culas con Trueba &mdash; todav&iacute;a ten&iacute;a un nudo en el est&oacute;mago. Le dijo a Mario: <b>&ldquo;El momento en que pierdas ese cosquilleo antes de empezar una pel&iacute;cula, abre una pizzer&iacute;a.&rdquo;</b> Una lecci&oacute;n sobre abordar siempre el trabajo con intensidad renovada.</p>
+</div>
+<div class="experience-box">
+    <div class="experience-box-title">Experiencia Personal: El Primer D&iacute;a &mdash; La Experiencia &ldquo;Matrix&rdquo;</div>
+    <p>Mario describe una experiencia casi existencial: tras pasar todo el primer d&iacute;a de rodaje inmerso en los sets virtuales, <b>al salir a la calle cuestion&oacute; si la realidad era real</b>. Esa noche so&ntilde;&oacute; con ello. Lo compara con bajarse de un barco despu&eacute;s de navegar: la desorientaci&oacute;n al volver al mundo f&iacute;sico tras horas dentro de una realidad construida. Una experiencia que defini&oacute; como &ldquo;reveladora&rdquo;.</p>
+</div>
+
+<h3 class="section-title" id="c32-granvia">Proyecto Futuro: Gran V&iacute;a A&ntilde;os 40</h3>
+<p>Mario menciona un proyecto en desarrollo que utilizar&aacute; producci&oacute;n virtual para <b>recrear la Gran V&iacute;a de Madrid en la d&eacute;cada de 1940</b>:</p>
+<ul class="content-list">
+    <li><b>Enfoque elegido:</b> Croma con 3D virtual (Unreal Engine), no LED, bas&aacute;ndose en las lecciones aprendidas en &ldquo;Pare Nostre&rdquo;.</li>
+    <li><b>Planificaci&oacute;n rigurosa:</b> Se har&aacute; un desglose detallado de planos para decidir qu&eacute; secuencias necesitan qu&eacute; tecnolog&iacute;a.</li>
+    <li><b>Uso potencial de iluminaci&oacute;n multip&iacute;xel:</b> El panel multip&iacute;xel reci&eacute;n adquirido se planea probar en este proyecto, especialmente para simular la iluminaci&oacute;n din&aacute;mica de las farolas y los neones de la Gran V&iacute;a de la &eacute;poca.</li>
+</ul>
+
+<h3 class="section-title" id="c32-glosario">Glosario de T&eacute;rminos</h3>
+<table class="glossary-table">
+    <thead><tr><th>T&eacute;rmino</th><th>Definici&oacute;n</th></tr></thead>
+    <tbody>
+        <tr><td><b>Skylight</b></td><td>Luz amplia y difusa del cielo que entra a trav&eacute;s de una ventana. Base de la iluminaci&oacute;n natural de interiores, complementada por luz solar directa.</td></tr>
+        <tr><td><b>Trasfoco / Rack Focus</b></td><td>Cambio de foco entre dos planos de profundidad distintos dentro de un mismo plano. En LED, debe detenerse antes de enfocar la pantalla para evitar mostrar p&iacute;xeles.</td></tr>
+        <tr><td><b>Moir&eacute;</b></td><td>Patr&oacute;n de interferencia visual que aparece cuando el sensor de la c&aacute;mara resuelve los p&iacute;xeles individuales de la pantalla LED. Se controla con diafragma abierto y distancia.</td></tr>
+        <tr><td><b>Emanaci&oacute;n de luz</b></td><td>Luz que emite la pantalla LED sobre el set y los actores. Ventajosa para reflejos naturales; problem&aacute;tica cuando el DOP necesita control lum&iacute;nico total.</td></tr>
+        <tr><td><b>Liberado de &oacute;ptica</b></td><td>Proceso de calibraci&oacute;n de cada lente para que su perspectiva y profundidad de campo se correspondan correctamente con el mundo virtual.</td></tr>
+        <tr><td><b>Plate</b></td><td>Fondo filmado previamente (fotograf&iacute;a o v&iacute;deo de una localizaci&oacute;n real) que se reproduce en la pantalla LED como fondo de escena.</td></tr>
+        <tr><td><b>T&oacute;tem</b></td><td>Pantalla de v&iacute;deo colocada en el set como fuente de reflejos o iluminaci&oacute;n ambiental, no como fondo de escena. Calidad de luz limitada (CRI/TLCI/SSI bajos).</td></tr>
+        <tr><td><b>Multip&iacute;xel</b></td><td>Panel LED dise&ntilde;ado como instrumento de iluminaci&oacute;n donde cada p&iacute;xel act&uacute;a como canal DMX independiente. Reproduce din&aacute;micas de color de v&iacute;deo como luz de calidad.</td></tr>
+        <tr><td><b>DMX</b></td><td>Protocolo est&aacute;ndar de control de iluminaci&oacute;n. Utilizado para gestionar tanto las luces del set como la iluminaci&oacute;n del croma desde una mesa central.</td></tr>
+        <tr><td><b>CRI (Color Rendering Index)</b></td><td>&Iacute;ndice de reproducci&oacute;n crom&aacute;tica: mide la fidelidad con la que una fuente de luz reproduce los colores en comparaci&oacute;n con la luz natural.</td></tr>
+        <tr><td><b>TLCI (Television Lighting Consistency Index)</b></td><td>M&eacute;trica espec&iacute;fica para evaluar la calidad de una fuente de luz para rodaje con c&aacute;mara, especialmente importante para tonos de piel.</td></tr>
+        <tr><td><b>SSI (Spectral Similarity Index)</b></td><td>&Iacute;ndice de similitud espectral: mide cu&aacute;nto se parece el espectro de emisi&oacute;n de una fuente de luz al de una fuente de referencia.</td></tr>
+        <tr><td><b>Curva sensitom&eacute;trica</b></td><td>Curva que describe la respuesta del sensor de la c&aacute;mara a distintas intensidades de luz. Var&iacute;a con el ISO en la Alexa cl&aacute;sica; es constante en la Sony Venice.</td></tr>
+        <tr><td><b>Canal alfa</b></td><td>Capa de informaci&oacute;n de transparencia que permite componer elementos visuales en capas separadas durante la postproducci&oacute;n.</td></tr>
+        <tr><td><b>Light spears / Spill</b></td><td>Luces que se escapan fuera del &aacute;rea deseada. En croma abierto (sin paredes f&iacute;sicas), no son un problema porque no hay superficies que las reboten.</td></tr>
+        <tr><td><b>Ley del cuadrado inverso</b></td><td>Principio f&iacute;sico: la intensidad de la luz disminuye con el cuadrado de la distancia a la fuente. Relevante porque la pantalla LED, a pocos metros, tiene una ca&iacute;da de luz irreal para simular sol.</td></tr>
+        <tr><td><b>Gaussian Splatting</b></td><td>T&eacute;cnica de captura y reconstrucci&oacute;n 2.5D de localizaciones reales mediante fotograf&iacute;a, que genera un entorno navegable sin ser 3D completo. Alternativa a plates planos y a modelos 3D costosos.</td></tr>
+        <tr><td><b>Super 35</b></td><td>Formato de sensor cinematogr&aacute;fico est&aacute;ndar. Mario lo eligi&oacute; deliberadamente sobre gran formato para obtener las caracter&iacute;sticas de profundidad de campo deseadas.</td></tr>
+        <tr><td><b>Bokeh</b></td><td>Calidad est&eacute;tica de las zonas desenfocadas de una imagen. Las &oacute;pticas Cooke son valoradas por su bokeh org&aacute;nico y suave.</td></tr>
+    </tbody>
+</table>
+
+<a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>

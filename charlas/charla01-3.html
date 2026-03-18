@@ -1,0 +1,283 @@
+<div class="talk-header">
+        <h2>SKYJET VR: Case Study</h2>
+        <div class="talk-meta">
+            <strong>Ponentes:</strong> Cesar (Iralta VR - Innovación y Cofundador) y Alberto Sanchez<br>
+            <strong>Fecha:</strong> Lunes 16 de marzo de 2026
+        </div>
+    </div>
+
+<div class="section-nav">
+    <div class="section-nav-title">Contenidos</div>
+    <ul>
+        <li><a href="#c13-resumen">Resumen Ejecutivo</a></li>
+        <li><a href="#c13-gemelos">Gemelos Digitales y Fotogrametria del IGN</a></li>
+        <li><a href="#c13-captura360">Captura y Postproducción de Video 360</a></li>
+        <li><a href="#c13-optimización">Optimización para Tiempo Real en Unreal Engine</a></li>
+        <li><a href="#c13-materiales">Sistema de Materiales y Vegetación Procedural</a></li>
+        <li><a href="#c13-producción-vp">Producción Virtual en el Plato LED de Mediapro</a></li>
+        <li><a href="#c13-vr-experiencia">Diseño de la Experiencia VR de Skyjet</a></li>
+        <li><a href="#c13-escaneo">Escaneo Digital de Vestuario y Personajes</a></li>
+        <li><a href="#c13-filosofía">Filosofia de Trabajo y Cambio de Paradigma</a></li>
+        <li><a href="#c13-industria">Observaciones sobre la Industria</a></li>
+        <li><a href="#c13-anecdotas">Experiencias y Anecdotas en Producción</a></li>
+        <li><a href="#c13-premios">Premios y Exhibiciones</a></li>
+        <li><a href="#c13-glosario">Glosario de Terminos</a></li>
+    </ul>
+</div>
+
+<div class="executive-summary" id="c13-resumen">
+    <h3 class="section-title" style="border:none;padding:0;margin:0 0 12px 0;">Resumen Ejecutivo</h3>
+    <p>La ponencia presenta el caso de exito de <b>Skyjet VR</b>, una experiencia inmersiva de vuelo desarrollada por <b>Iralta VR</b> (fundada hace 20 anos por Cesar y su hermano Angel) que hibrida la producción virtual en pantallas LED, el video 360 de alta resolución y la interactividad de los motores de videojuegos. Cesar y Alberto Sanchez exponen como el proyecto evoluciono desde una visión creativa propia &mdash;financiada inicialmente por el Ministerio de Cultura y después por Industria y Turismo&mdash; hasta convertirse en un producto galardonado internacionalmente (premio a Mejor Experiencia en <b>United XR</b> de Bruselas y premio <b>AMETIC</b> al mejor uso de VR en promoción turistica).</p>
+    <p>El nucleo técnico del proyecto reside en la creación de <b>gemelos digitales</b> del territorio español a partir de los datos cartograficos del <b>Instituto Geografico Nacional (IGN)</b>, combinados con rodajes aereos en 360 grados con drones y cámaras personalizadas. La tesis principal subraya que la tecnología debe estar siempre al servicio de la narrativa, que la producción virtual exige una transformación profunda en la preproducción (regla de <b>3 a 1</b>: tres días de preparación por cada día de rodaje), y que existe una carencia crítica de técnicos formados para operar estas tecnologías en España.</p>
+</div>
+
+<!-- ─── GEMELOS DIGITALES ─── -->
+<h3 class="section-title" id="c13-gemelos">Gemelos Digitales y Fotogrametria del IGN</h3>
+
+<h4 class="subsection-title">Que es un Gemelo Digital</h4>
+<p>Un gemelo digital consiste en generar un modelo 3D de algo que ya existe fisicamente: una catedral, un parque nacional, una ciudad entera. Se crea mediante <b>fotogrametría</b>, <b>Gaussian Splatting</b> u otras tecnologías de captura disponibles. Existe una financiación europea masiva dirigida a generar gemelos digitales de ciudades, ya que las administraciones municipales se benefician de tener un sistema digital de sus territorios para controlar el catastro con fines fiscales. Para los creadores de contenido, los gemelos digitales permiten crear experiencias de sobrevuelo virtual, contenido para gafas de VR y fondos para producción virtual en pantallas LED.</p>
+
+<h4 class="subsection-title">Colaboración con el Instituto Geografico Nacional</h4>
+<p>El IGN proporcionaba los datos cartograficos del territorio español en forma de <i>tiles</i> (baldosas de datos). Los parques nacionales contaban con escaneos de mayor resolución gracias al programa <b>PNOA</b> (Plan Nacional de Ortofotografía Aerea). El IGN estaba muy interesado en ver sus datos visualizados en 3D en tiempo real, algo que nunca se habia hecho con ese nivel de calidad.</p>
+
+<div class="tech-concept">
+    <b>Problema de la captura cenital:</b> La fotogrametría aerea del IGN se captura desde arriba (cenital), lo que significa que las paredes verticales, acantilados y precipicios aparecen como pixeles estirados y borrosos. La solución fue aplicar <b>materiales procedurales</b> sobre la textura base de fotogrametría para cubrir esos artefactos, mezclando la textura original con materiales de roca y hierba de la libreria de Quixel Megascans.
+</div>
+
+<p>Se desarrollo un <b>flujo de trabajo reutilizable</b>: si un nuevo cliente quiere el Parque Nacional del Teide o la ciudad de Roma, el equipo ya sabe como procesar datos cartograficos para su uso en tiempo real. Las localizaciónes capturadas para Skyjet incluyen el <b>Parque Nacional de Ordesa y Monte Perdido</b> (localización principal), La Sagrada Familia (Barcelona), La Giralda (Sevilla) y regiones de Andalucia, Aragon, Cataluna, Castilla y Leon, Castilla-La Mancha, La Rioja y Pais Vasco.</p>
+
+<!-- ─── CAPTURA 360 ─── -->
+<h3 class="section-title" id="c13-captura360">Captura y Postproducción de Video 360</h3>
+
+<h4 class="subsection-title">Sistemas de Cámara</h4>
+<p>El proyecto utiliza dos tipos de <i>rigs</i> de cámara dependiendo del entorno y la normativa de espacio aereo:</p>
+<ul class="content-list">
+    <li><b>Rig de 8 lentes (GoPro):</b> Cámara personalizada construida junto a un ingeniero ucraniano especificamente para cumplir con las regulaciones aereas de peso y tamano para montaje en drones. Ocho cámaras GoPro dispuestas para captura esferica completa.</li>
+    <li><b>Cámara de 2-4 lentes (180 grados):</b> Versión mas pequeña utilizada en entornos donde el rig grande no podia volar por regulaciones. Captura hemisferica en lugar de esferica completa.</li>
+    <li><b>Cámara tipo Insta360 (la "cámara meta"):</b> Cámara 360 mas grande que no podia montarse en drones en ciertos entornos pero se utilizaba en escenarios naturales controlados.</li>
+</ul>
+
+<h4 class="subsection-title">Proceso de Stitching</h4>
+<p>El <b>stitching</b> (cosido de imágenes) es el proceso de unir todas las tomas separadas de las multiples lentes de la cámara 360 en una única imagen panoramica continua. Se describe como un esfuerzo de postproducción enorme y en gran parte manual. Con la cámara de 8 lentes, el trabajo de stitching se duplica respecto a cámaras con menos lentes. Incluye la estabilización del metraje, particularmente difícil con viento. Muy pocos profesionales se especializan en stitching &mdash; se identifica como una laguna crítica de talento en la industria.</p>
+
+<div class="tech-concept">
+    <b>Imagen equirectangular:</b> La imagen resultante del video 360 es rectangular cuando se aplana, similar a desplegar un mapa del mundo. Cuando se visualiza en gafas de VR o se proyecta en pantallas LED, produce imágenes de muy alta resolución.
+</div>
+
+<!-- ─── Optimización ─── -->
+<h3 class="section-title" id="c13-optimización">Optimización para Tiempo Real en Unreal Engine</h3>
+
+<h4 class="subsection-title">Pipeline de Fotogrametria a Tiempo Real</h4>
+<p>El reto central del proyecto era lograr que un modelo fotogrametrico tuviera la maxima calidad artistica y al mismo tiempo estuviera lo suficientemente optimizado para renderizar en tiempo real dentro de un motor de juegos. El flujo de trabajo completo es:</p>
+<ul class="content-list">
+    <li><b>Recepción de tiles del IGN:</b> Los datos originales del Valle de Ordesa consistian en aproximadamente <b>100 modelos separados</b>.</li>
+    <li><b>Combinación de modelos:</b> Se fusionaron y redujeron a unos <b>20 bloques manejables</b>.</li>
+    <li><b>Reducción de materiales:</b> Cada modelo se redujo a <b>1 o 2 materiales máximo</b>, porque cada material representa un pase de render que debe ejecutarse en cada frame.</li>
+    <li><b>Retopologia / Optimización de malla:</b> Eliminación de vertices innecesarios, especialmente en areas planas con densidad excesiva de vertices.</li>
+    <li><b>Sistema LOD (Level of Detail):</b> Uso del sistema integrado de Unreal Engine que ajusta la densidad de triangulos segun la distancia de la cámara: los objetos cercanos reciben mas triangulos, los lejanos reciben triangulos mas grandes y menos numerosos.</li>
+    <li><b>Aplicación de materiales maestros:</b> Con capas para corregir problemas de textura.</li>
+    <li><b>Vegetación procedural:</b> Sistema automático basado en altitud.</li>
+    <li><b>Testeo e iteración:</b> Hasta alcanzar framerates aceptables.</li>
+</ul>
+
+<!-- ─── MATERIALES ─── -->
+<h3 class="section-title" id="c13-materiales">Sistema de Materiales y Vegetación Procedural</h3>
+
+<h4 class="subsection-title">Material Maestro Multicapa</h4>
+<p>Se creo un <b>material maestro</b> en Unreal Engine con multiples capas que incluian: rocas, hierba, arena, agua y cascadas. La textura base de fotogrametría se combinaba con materiales de libreria (de <b>Quixel Megascans</b>) para cubrir las areas problematicas como acantilados y precipicios. Los materiales se controlaban mediante parametros, permitiendo variación a lo largo del terreno desde un único material maestro con multiples variantes. Este enfoque resuelve el problema de las superficies verticales donde la textura se estira por la captura cenital.</p>
+
+<h4 class="subsection-title">Sistema de Vegetación Procedural</h4>
+<p>Se construyo una herramienta personalizada dentro de Unreal Engine para colocar vegetación de forma procedural. En lugar de posiciónar manualmente cada arbol uno por uno a lo largo de un bosque entero, crearon un sistema que <b>instanciaba arboles segun parametros de altitud y posición</b>. Esto era esencial dada la enorme escala del entorno del Valle de Ordesa, donde la colocación manual habria sido impracticable.</p>
+
+<!-- ─── Producción VIRTUAL ─── -->
+<h3 class="section-title" id="c13-producción-vp">Producción Virtual en el Plato LED de Mediapro</h3>
+
+<h4 class="subsection-title">El Plato de Mediapro</h4>
+<p>Mediapro dispone de un volumen LED descrito como uno de los mejores de España: <b>18 metros de ancho por 6 metros de alto</b>, con paneles laterales y techo. Cuando vieron el contenido de Skyjet (el Parque de Ordesa) en un telefono móvil, propusieron una colaboración: Iralta rodaria un spot utilizando el plató LED de Mediapro para probar sus fondos virtuales.</p>
+
+<h4 class="subsection-title">Frustums vs. Plates</h4>
+<p>Para la producción virtual, el equipo distingue entre dos enfoques fundamentales:</p>
+<ul class="content-list">
+    <li><b>Frustum (3D en tiempo real):</b> Volumen 3D interactivo con <i>parallax</i>. La cámara puede moverse libremente y el fondo responde en tiempo real. Requiere mucha mas optimización pero ofrece maxima flexibilidad.</li>
+    <li><b>Plates (renders pre-renderizados):</b> Renders fijos de alta resolución reproducidos como video. Son "super rapidos" comparados con ejecutar una escena 3D compleja en tiempo real. Para el spot de Skyjet, la mayoria de escenas usaron plates pre-renderizados con calidad maxima de sombras y modelos.</li>
+</ul>
+
+<div class="tech-concept">
+    <b>Decisión crítica del VFX Supervisor:</b> Alberto señala que, aunque el 3D en tiempo real ofrece flexibilidad, muchas veces un <i>plate</i> en super alta resolución es mas eficiente si la cámara no requiere movimientos complejos en el eje Z. El rol del <b>supervisor de VFX</b> es esencial en el plato: decide que necesita tracking, que puede ser un simple plate fijo, y que debe dejarse para postproducción.
+</div>
+
+<h4 class="subsection-title">Tracking de Cámara</h4>
+<p>Se utilizo una <b>Steadicam con sistema de tracking</b> en el volumen LED. Algunas escenas usaron tracking para parallax (movimiento del fondo 3D en respuesta al movimiento de la cámara), pero muchas escenas no lo necesitaban: un simple plate fijo era suficiente. La reflexión clave es que a veces un movimiento de cámara tradicional sin tracking es mejor que anadir complejidad innecesaria.</p>
+
+<h4 class="subsection-title">Reflexiones en el Volumen LED</h4>
+<p>Los paneles LED proporcionan no solo la imagen de fondo sino también <b>reflejos realistas</b> en los elementos de atrezzo (cascos, visores). Los paneles envolventes (paredes y techo) generan iluminación ambiental sobre los actores y sujetos, lo que reduce drasticamente el trabajo de composición en postproducción.</p>
+
+<h4 class="subsection-title">Workflow del Rodaje (Mediapro)</h4>
+<ul class="content-list">
+    <li><b>Preproducción:</b> Crear la escaleta (shot list), determinar que escenas necesitan 3D en tiempo real vs. plates pre-renderizados, definir movimientos de cámara.</li>
+    <li><b>Previsualización:</b> Crear previews en Unreal Engine mostrando posiciónes de cámara virtual y entornos; algunos compositeados en After Effects/Photoshop.</li>
+    <li><b>Preparación de assets:</b> Renderizar plates de fondo en alta resolución; optimizar escenas 3D en tiempo real donde sea necesario.</li>
+    <li><b>Día 1 (tarde):</b> Carga de equipos, montaje, primeras pruebas.</li>
+    <li><b>Día 2:</b> Día completo de pruebas &mdash; verificar todo el contenido en la pantalla LED, comprobar movimientos de cámara, calibrar tracking.</li>
+    <li><b>Día 3:</b> Día de rodaje real.</li>
+</ul>
+
+<!-- ─── EXPERIENCIA VR ─── -->
+<h3 class="section-title" id="c13-vr-experiencia">Diseño de la Experiencia VR de Skyjet</h3>
+
+<h4 class="subsection-title">Concepto y Diseño de Interacción</h4>
+<p>Skyjet se concibio como una experiencia de vuelo con <b>jetpack</b> (no un ala delta), dando al usuario la sensación de vuelo personal propulsado. La experiencia combina una primera sección cargada de adrenalina con una sección mas contemplativa basada en metraje de dron real. Se diseño como experiencia <b>de pie</b> (no tumbado) para un procesamiento mas rápido de usuarios: en el Mobile World Congress procesaron un gran número de personas en 4 días gracias a la rapidez del formato de pie (subir, ponerse las gafas, volar).</p>
+
+<h4 class="subsection-title">Curvas Bezier para la Trayectoria de Vuelo</h4>
+<p>La trayectoria de vuelo usa <b>curvas Bezier</b> para crear transiciónes suaves. Los cambios de dirección y altitud se hacen muy graduales para prevenir el mareo por movimiento. El resultado: una tasa de aceptación del <b>97%</b> en casi 1.500 vuelos con quejas minimas de nauseas.</p>
+
+<h4 class="subsection-title">Experiencia Semi-Guiada</h4>
+<p>Los usuarios tienen libertad parcial para mirar alrededor (el head tracking controla la dirección de la mirada), pero la trayectoria de vuelo los mantiene dentro de un "tunel" para evitar que vuelen hacia areas sin acabar o se estrellen contra montañas. El diseño equilibra la agencia del usuario con una experiencia curada.</p>
+
+<h4 class="subsection-title">Plataforma Física de Simulación</h4>
+<p>Skyjet incluye una <b>plataforma física</b> que se mueve en 3 ejes (X, Y, Z), sincronizada con el movimiento de las gafas de VR. Pesa aproximadamente <b>200 kg</b>. Además, incorpora <b>ventiladores</b> sincronizados con la experiencia para simular la sensación del viento durante el vuelo.</p>
+
+<h4 class="subsection-title">Estrategia Multi-Plataforma</h4>
+<p>Un mismo activo digital se diseño para ser util en multiples contextos: producción virtual en pantallas LED, gafas de VR y realidad aumentada. Por ejemplo, el interior del hangar del avion se recreo en una versión mas realista para los fondos de la pantalla LED, separada de la versión para gafas de VR. Cada plataforma tiene requisitos especificos, pero planificar para todas desde el principio es clave.</p>
+
+<!-- ─── ESCANEO DIGITAL ─── -->
+<h3 class="section-title" id="c13-escaneo">Escaneo Digital de Vestuario y Personajes</h3>
+<p>Para el proyecto se escaneo una actriz y su vestuario utilizando una cabina de fotogrametría en <b>Peris Costumes</b> (Algete, Madrid). La cabina dispone de aproximadamente <b>102 cámaras Sony</b> que disparan simultaneamente para capturar un único instante. El escaneo genera automaticamente un modelo 3D del vestuario completo.</p>
+<ul class="content-list">
+    <li><b>Asset hero (primer plano):</b> Modelo de alta resolución para personajes principales con detalle suficiente para planos cerrados.</li>
+    <li><b>Replicación de multitudes:</b> El mismo escaneo puede usarse a menor resolución para poblar escenas con extras virtuales.</li>
+    <li><b>Pipeline:</b> Se aplica un <i>rig</i> al modelo escaneado y luego se anima para darle vida y movimiento.</li>
+</ul>
+
+<!-- ─── FILOSOFIA ─── -->
+<h3 class="section-title" id="c13-filosofía">Filosofia de Trabajo y Cambio de Paradigma</h3>
+
+<h4 class="subsection-title">La Regla de 3 a 1</h4>
+<p>La producción virtual no es necesariamente mas barata, pero si mas eficiente si se planifica correctamente. Cesar enfatiza la regla de <b>3 a 1</b>: por cada día de rodaje en plató LED, se requieren tres días de preparación previa. Los productores odian pagar 3 días de alquiler de plató para solo 1 día de rodaje, pero es el estándar necesario de la industria.</p>
+
+<h4 class="subsection-title">Choque con la Cultura Publicitaria</h4>
+<p>Esto choca frontalmente con la cultura de la publicidad tradicional, donde los clientes hacen cambios hasta el ultimo momento. La producción virtual requiere un cambio de mentalidad fundamental: todo debe prepararse con antelación. Hay que crear una escaleta, determinar que escenas necesitan 3D, cuales pueden usar pre-renders, y definir movimientos de cámara por adelantado. Las agencias a menudo solicitan tecnología que vieron en algun sitio sin entender sus requisitos ni si encaja en el proyecto.</p>
+
+<h4 class="subsection-title">Tecnologia al Servicio de la Historia</h4>
+<p>La maxima de Cesar: <b>"La tecnología al servicio de la historia"</b>. Nunca usar tecnología solo porque existe o esta de moda. Los proyectos propios de I+D son esenciales: permiten investigar en profundidad sin presión de cliente, construyendo una experiencia que genera retorno cuando llegan los proyectos comerciales.</p>
+
+<h4 class="subsection-title">Formación y Escuela Pública</h4>
+<p>Alberto llego a Iralta hace 4 anos como uno de los mejores estudiantes del instituto donde se imparte esta charla. Llego con ciertos conocimientos pero necesito formación adicional extensa en el puesto de trabajo. Cesar enfatiza que esto ilustra la necesidad de mejor educación formal en estas habilidades, especialmente en la educación pública.</p>
+
+<!-- ─── INDUSTRIA ─── -->
+<h3 class="section-title" id="c13-industria">Observaciones sobre la Industria</h3>
+<ul class="content-list">
+    <li><b>Boom de platos LED con precaución:</b> Muchas regiones en España quieren construir el plató LED mas grande, pero no hay suficientes técnicos formados para operarlos. Construir infraestructura sin personal formado es un riesgo (comparación con la fiebre de los aeropuertos).</li>
+    <li><b>VP no siempre es mas barata:</b> Ahorra dinero en casos especificos (anuncios de coches, localizaciónes imposibles) pero no es universalmente mas barata que la producción tradicional. Requiere una evaluación honesta de cuando tiene sentido.</li>
+    <li><b>Anuncios de coches:</b> Practicamente ningun anuncio de coches se rueda ya en carreteras reales: todos se hacen en volumenes LED porque es mas barato y facil que cerrar carreteras y montar camera cars.</li>
+    <li><b>Integración de IA:</b> Se usa en multiples procesos de producción: mejora de texturas, generación de texturas, organización de producción, asistencia general al flujo de trabajo. Se describe como una herramienta que asiste pero requiere operadores cualificados.</li>
+    <li><b>Problema de la cartografía en la nube:</b> Plataformas como Google Earth cargan tiles desde la nube, causando artefactos visibles de carga/borrosidad durante sobrevuelos: no es adecuado para contenido VR de alta calidad.</li>
+    <li><b>Ecosistema Fortnite/Epic:</b> Unreal Engine se describe como un motor con una curva de aprendizaje muy alta pero extremadamente capaz.</li>
+</ul>
+
+<!-- ─── ANECDOTAS ─── -->
+<h3 class="section-title" id="c13-anecdotas">Experiencias y Anecdotas en Producción</h3>
+
+<div class="experience-box">
+    <div class="experience-box-title">El "incidente" en la Sagrada Familia</div>
+    <p>Durante el rodaje en Barcelona, la complejidad no fue solo técnica sino logística. Mientras estaban operando el dron en la Sagrada Familia, la policia intervino obligandoles a bajar el dispositivo de inmediato. Lo mas surrealista de la anecdota es que, en medio del caos y la tensión con las autoridades, aprovecharon el descuido para <b>robarles las mesas de producción</b> que tenian instaladas en la calle.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">El estres del tiempo real en el plato</div>
+    <p>Cesar describe la tensión que se vive en un plató de VP cuando algo falla. Mientras el equipo de Unreal intenta solucionar un problema o cambiar una luz &mdash;proceso que puede tardar media hora&mdash;, el productor ve como el dinero se esfuma por cada minuto de espera. El equipo esta sentado ante ordenadores y <b>parece que no pasa nada</b>, lo que genera frustración. La solución: planificar exhaustivamente en preproducción que puede y que no puede cambiarse el día del rodaje. Cambios de luz son viables; cambios grandes de 3D, no.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Ordesa: el parque donde no puedes volar</div>
+    <p>En el Parque Nacional de Ordesa y Monte Perdido es <b>legalmente imposible volar drones</b>. Precisamente por eso crearon el gemelo digital 3D del valle completo: para ofrecer una experiencia de sobrevuelo de un lugar al que los drones no pueden acceder. Lo que empezo como una limitación regulatoria se convirtio en el argumento de venta mas potente del proyecto.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">La llamada de Mediapro</div>
+    <p>Cuando mostraron el contenido de Skyjet (el Parque de Ordesa) en un simple telefono móvil a los responsables de Mediapro, estos quedaron tan impresionados que propusieron una colaboración: Iralta utilizaria el plató LED de Mediapro para rodar un spot y probar sus fondos virtuales. Al no haber un cliente con fecha limite, tuvieron <b>tiempo para investigar y preparar adecuadamente</b>, algo inusual en la industria.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">"El Mapa": televisión en realidad aumentada en directo</div>
+    <p>Antes de Skyjet, uno de los proyectos mas complejos de Iralta fue <b>"El Mapa"</b>, un programa de televisión para TVE (Televisión Española) que utilizaba realidad aumentada en tiempo real. Emplearon el sistema de tracking <b>Mo-Sys</b> y fue el <b>primer programa de televisión del mundo</b> en hacer un concurso en directo con cuatro cámaras y realidad aumentada, con una chica como personaje en AR. Alberto fue una de las personas clave del proyecto.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">La evolución de Alberto: del instituto al plato</div>
+    <p>Alberto Sanchez llego a Iralta hace 4 anos como uno de los mejores alumnos del mismo instituto donde se imparte esta charla. A pesar de llegar con conocimientos solidos, necesito <b>formación adicional extensa</b> en el puesto de trabajo para adaptarse a la realidad de la producción virtual profesional. Cesar utiliza este ejemplo para defender que la educación pública debe mejorar su oferta formativa en estas disciplinas.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Desafios logisticos de los rodajes con drones por toda España</div>
+    <p>Los rodajes aereos en 360 fueron extraordinariamente complejos a nivel logístico: permisos, clima impredecible y regulaciones estrictas. No se puede volar excesivamente alto en ciudades. Las producciónes grandes deben controlar todo el perimetro de vuelo. Vuelos cancelados por viento, niebla o cambios meteorologicos subitos fueron constantes. Las regiones cubiertas incluyen Andalucia, Aragon, Cataluna, Castilla y Leon, Castilla-La Mancha, La Rioja y Pais Vasco.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">El MVP y la busqueda de financiación</div>
+    <p>El desarrollo de Skyjet siguio varias fases: primero, financiación del <b>Ministerio de Cultura</b> para I+D inicial; después, financiación de <b>Industria y Turismo</b> a traves del programa "ideas de ultima milla" para desarrollar el Producto Mínimo Viable (MVP). Ahora buscan clientes comerciales: oficinas de turismo, instituciones, parques tematicos y centros de visitantes.</p>
+</div>
+
+<!-- ─── PREMIOS ─── -->
+<h3 class="section-title" id="c13-premios">Premios y Exhibiciones</h3>
+<ul class="content-list">
+    <li><b>United XR (Bruselas, diciembre):</b> Premio a "Mejor Experiencia" en la mayor feria de realidad extendida de Europa (fusionada con AWE, la asociación estadounidense de realidad aumentada). No esperaban ganar.</li>
+    <li><b>AMETIC:</b> Mejor experiencia por el uso de VR en promoción turistica.</li>
+    <li><b>FITUR (Madrid):</b> Presentación del proyecto en la Feria Internacional de Turismo.</li>
+    <li><b>Mobile World Congress (Barcelona):</b> Invitados a llevar el proyecto. Gran volumen de usuarios procesados en 4 días.</li>
+    <li><b>NewImages Festival (Francia):</b> Proxima aparición en este festival de VR.</li>
+</ul>
+
+<!-- ─── GLOSARIO ─── -->
+<h3 class="section-title" id="c13-glosario">Glosario de Terminos</h3>
+<dl class="glossary-grid">
+    <dt>Stitching</dt>
+    <dd>Proceso de unir o "coser" las imágenes de multiples lentes para crear una única imagen panoramica o de 360 grados. Es un trabajo de postproducción en gran parte manual.</dd>
+
+    <dt>Gemelo Digital</dt>
+    <dd>Modelo digital 3D preciso de un objeto físico o lugar existente, generado mediante fotogrametría, escaneo laser o Gaussian Splatting.</dd>
+
+    <dt>Fotogrametria</dt>
+    <dd>Técnica de captura que utiliza fotografías desde multiples angulos para reconstruir un modelo 3D de un objeto o entorno real.</dd>
+
+    <dt>Gaussian Splatting</dt>
+    <dd>Tecnologia avanzada de renderizado de escenas 3D a partir de fotografías que permite capturar entornos reales con alta fidelidad luminica mediante nubes de puntos gaussianas.</dd>
+
+    <dt>MVP (Producto Mínimo Viable)</dt>
+    <dd>La versión inicial funcional de Skyjet utilizada para captar inversores, clientes y demostrar el concepto antes de desarrollar el producto completo.</dd>
+
+    <dt>Nanite</dt>
+    <dd>Sistema de geometría virtualizada de Unreal Engine que permite renderizar millones de poligonos en tiempo real optimizando automaticamente el nivel de detalle segun la distancia de cámara.</dd>
+
+    <dt>LOD (Level of Detail)</dt>
+    <dd>Sistema integrado en motores de juegos que ajusta la densidad de triangulos de un modelo 3D segun la distancia a la cámara: mas detalle de cerca, menos de lejos.</dd>
+
+    <dt>Frustum</dt>
+    <dd>En producción virtual, el volumen 3D del entorno virtual que se renderiza y proyecta en la sección de la pantalla LED visible para la cámara, con parallax en tiempo real.</dd>
+
+    <dt>Plate</dt>
+    <dd>Render fijo de alta resolución pre-renderizado que se reproduce como video en la pantalla LED, sin interactividad en tiempo real. Mas rápido pero menos flexible que un frustum.</dd>
+
+    <dt>Parallax</dt>
+    <dd>Efecto de desplazamiento aparente de los objetos en los fondos 3D cuando la cámara se mueve, esencial para la sensación de profundidad en producción virtual.</dd>
+
+    <dt>Equirectangular</dt>
+    <dd>Formato de proyección del video 360 que aplana la esfera en un rectangulo, similar a desplegar un mapa del mundo. Es el formato estándar para contenido VR y video inmersivo.</dd>
+
+    <dt>Retopologia</dt>
+    <dd>Proceso de optimización de malla 3D que consiste en reorganizar y reducir los vertices y poligonos de un modelo para mejorar su rendimiento en tiempo real sin perder calidad visual.</dd>
+
+    <dt>Curvas Bezier</dt>
+    <dd>Curvas matematicas utilizadas para definir trayectorias suaves de vuelo en la experiencia VR, permitiendo transiciónes graduales de dirección y altitud que minimizan el mareo.</dd>
+
+    <dt>PNOA</dt>
+    <dd>Plan Nacional de Ortofotografía Aerea. Programa del IGN que proporciona escaneos de alta resolución del territorio español mediante fotografía aerea sistematica.</dd>
+
+    <dt>Material Maestro (Master Material)</dt>
+    <dd>Sistema de shader en Unreal Engine con multiples capas parametrizables (roca, hierba, arena, agua) que permite generar variaciones de materiales a partir de una única configuración base.</dd>
+
+    <dt>Mo-Sys</dt>
+    <dd>Sistema profesional de tracking de cámara utilizado en producción virtual y realidad aumentada para sincronizar el movimiento físico de la cámara con el entorno virtual en tiempo real.</dd>
+</dl>
+
+<a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>
