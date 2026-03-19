@@ -1,0 +1,358 @@
+<div class="talk-header" id="c42-top">
+        <h2 class="talk-title">Charla 04-2: IA Generativa en el Audiovisual</h2>
+        <div class="talk-meta">
+            <strong>Ponente:</strong> Francisco Asensi (&ldquo;Paco&rdquo;)<br>
+            <strong>Fecha:</strong> Jueves 19 de marzo de 2026
+        </div>
+      </div>
+
+<div class="section-nav">
+    <div class="section-nav-title">Contenidos</div>
+    <ul>
+        <li><a href="#c42-resumen">Resumen Ejecutivo</a></li>
+        <li><a href="#c42-netflix">La IA ya estaba en la Industria: Netflix como Paradigma</a></li>
+        <li><a href="#c42-datos">Datos Macroeconómicos</a></li>
+        <li><a href="#c42-paradigma">Cambio de Paradigma: de &ldquo;Fix it in Post&rdquo; a &ldquo;Fix it in Pre&rdquo;</a></li>
+        <li><a href="#c42-guiones">Preproducción: Escritura y Guiones</a></li>
+        <li><a href="#c42-pitchdecks">Preproducción: Pitch Decks y Biblias</a></li>
+        <li><a href="#c42-libros">Preproducción: Análisis de Libros para Adaptación</a></li>
+        <li><a href="#c42-loras">Producción: Consistencia Visual con LoRAs</a></li>
+        <li><a href="#c42-upscaling">Postproducción: Mejora de Video (Upscaling)</a></li>
+        <li><a href="#c42-deepfake">Postproducción: Deepfake Profesional</a></li>
+        <li><a href="#c42-vfx">Postproducción: VFX con IA</a></li>
+        <li><a href="#c42-nerf">NeRF y Gaussian Splatting en Producción</a></li>
+        <li><a href="#c42-doblaje">Doblaje Automatizado y Lip Sync</a></li>
+        <li><a href="#c42-audio">Audio e IA</a></li>
+        <li><a href="#c42-estudios">Grandes Estudios y su Estrategia</a></li>
+        <li><a href="#c42-casos">Casos de Producción con IA</a></li>
+        <li><a href="#c42-youtube">YouTube e IA</a></li>
+        <li><a href="#c42-atresmedia">Caso Empresarial: Atresmedia</a></li>
+        <li><a href="#c42-datos-audiencias">Análisis de Datos y Audiencias</a></li>
+        <li><a href="#c42-etica">Ética, Propiedad Intelectual y Regulación</a></li>
+        <li><a href="#c42-herramientas">Herramientas Completas</a></li>
+        <li><a href="#c42-glosario">Glosario Técnico</a></li>
+    </ul>
+</div>
+
+<div class="executive-summary" id="c42-resumen">
+    <h3 class="section-title" style="border:none;padding:0;margin:0 0 12px 0;">Resumen Ejecutivo</h3>
+    <p>Francisco Asensi (&ldquo;Paco&rdquo;), abogado de formación con una dilatada trayectoria en la industria audiovisual &mdash;Real Madrid TV, MP Music, RTVE (seis años como director de desarrollo de negocio digital), DeAPlaneta (dos periodos, miembro del comité de IA), Ministerio de Asuntos Económicos y docente universitario&mdash;, ofrece una visión panorámica exhaustiva de cómo la <b>IA generativa</b> se está integrando en cada fase del pipeline audiovisual profesional. La charla recorre preproducción (guiones, pitch decks, análisis de libros para adaptación), producción (consistencia visual con LoRAs, NeRF, Gaussian Splatting) y postproducción (upscaling, deepfake profesional, VFX con IA, doblaje automatizado), con herramientas validadas por la industria y casos de grandes estudios como Disney, Netflix, Paramount y producciones concretas como <b>The Mandalorian</b>, <b>Superman</b> y <b>Jurassic World Rebirth</b>. Paco aporta datos económicos del sector (181.000 millones de dólares de gasto global, 60.000 millones reasignados por IA), aborda en profundidad las cuestiones de propiedad intelectual, ética, regulación sindical derivada de la huelga de Hollywood (SAG-AFTRA y WGA), y analiza el impacto directo de la IA en los roles profesionales del audiovisual. Es también autor de un capítulo académico sobre IA en retransmisiones deportivas.</p>
+</div>
+
+<h3 class="section-title" id="c42-netflix">La IA ya estaba en la Industria: Netflix como Paradigma</h3>
+<p>Paco comienza la charla poniendo en contexto histórico que la inteligencia artificial no es algo nuevo en la industria audiovisual. Netflix es el ejemplo paradigmático de una empresa fundada por tecnólogos, no por gente del mundo del entretenimiento, y que desde sus inicios integró el <b>machine learning</b> como núcleo de su modelo de negocio.</p>
+<ul class="content-list">
+    <li><b>Fundadores tecnólogos:</b> Netflix fue creada por ingenieros y matemáticos que entendían el poder de los datos desde el primer momento. No era una empresa de contenido que luego añadió tecnología, sino exactamente al revés.</li>
+    <li><b>Competición crowdsource:</b> Netflix lanzó una competición pública ofreciendo un premio económico a quien lograra mejorar su algoritmo de recomendación en un 10%. La competición duró aproximadamente dos años y atrajo a equipos de investigación de todo el mundo, generando avances significativos en machine learning aplicado a recomendaciones.</li>
+    <li><b>33 millones de versiones de Netflix:</b> Según Lloris Everest, existen tantas versiones de Netflix como suscriptores tiene la plataforma. Cada usuario ve una interfaz personalizada, con contenidos, orden y presentación diferentes.</li>
+    <li><b>Pósters dinámicos por usuario:</b> Los pósters de las películas y series cambian en función del perfil de cada usuario. Si a un espectador le gustan las comedias románticas, el póster de una película destacará a la pareja protagonista; si prefiere el thriller, el mismo título mostrará un fotograma de acción o tensión.</li>
+    <li><b>Alineación por hora del día:</b> El algoritmo también tiene en cuenta la franja horaria en la que el usuario accede. No se muestran los mismos contenidos a las 10 de la mañana que a las 11 de la noche.</li>
+    <li><b>Shows de &ldquo;banquete&rdquo; vs. episódicos:</b> Netflix distingue entre shows diseñados para el consumo en maratón (binge watching) y shows de consumo episódico semanal. Esta distinción afecta a cómo se programan los lanzamientos y cómo se presentan en la interfaz.</li>
+    <li><b>Origen de la cultura algorítmica:</b> Profesores de la Universidad de Indiana acuñaron el concepto de que Netflix representa el origen de la <b>cultura algorítmica</b>: la primera vez que un algoritmo determina masivamente qué contenido cultural consume la población.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Concepto clave:</b> Netflix no es simplemente una plataforma que usa IA para recomendar contenido. Es una empresa de tecnología que produce contenido. Esta distinción es fundamental para entender por qué la IA generativa no es una amenaza externa para la industria audiovisual, sino una evolución natural de un proceso que comenzó hace más de dos décadas.</p>
+</div>
+
+<h3 class="section-title" id="c42-datos">Datos Macroeconómicos</h3>
+<p>Paco presenta cifras concretas que dimensionan el impacto económico de la IA en la industria audiovisual global:</p>
+<ul class="content-list">
+    <li><b>Gasto global en producción audiovisual:</b> 181.000 millones de dólares anuales. Esta cifra engloba cine, televisión, plataformas de streaming y publicidad audiovisual a nivel mundial.</li>
+    <li><b>Reasignación por IA:</b> De esos 181.000 millones, se estima que aproximadamente 60.000 millones de dólares serán reasignados debido al impacto de la inteligencia artificial. No necesariamente desaparecen, sino que se redistribuyen hacia nuevas formas de producción.</li>
+    <li><b>Mejora de productividad estimada:</b> Entre un 5% y un 10% de mejora de productividad general en el pipeline audiovisual gracias a la IA. Paco subraya que esta cifra es la más realista y conservadora.</li>
+    <li><b>Estimación de McKinsey:</b> La consultora McKinsey publicó un informe estimando un ahorro del 80-90% en costes de VFX gracias a la IA. Paco califica esta estimación de <b>exagerada</b> y alejada de la realidad práctica de la producción.</li>
+    <li><b>Drivers según Forrester:</b> La consultora Forrester identifica dos drivers principales: la <b>aceleración del tiempo de lanzamiento</b> (time to market) y la <b>reducción de costes de producción</b>.</li>
+    <li><b>Caso Snowfall (serie):</b> Un ejemplo concreto de ahorro. El coste de localización por episodio era de 84.000 dólares. Con herramientas de IA se logró un ahorro de 49.000 dólares por episodio, lo que traducido a una temporada completa supone un ahorro cercano a los 500.000 dólares.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Perspectiva económica:</b> La clave no es el ahorro bruto en un departamento aislado, sino la reasignación presupuestaria que permite la IA. Si los VFX cuestan un 30% menos, ese presupuesto puede invertirse en más días de rodaje, mejor reparto o una postproducción de sonido superior. La IA no reduce el gasto total de la industria: lo redistribuye.</p>
+</div>
+
+<h3 class="section-title" id="c42-paradigma">Cambio de Paradigma: de &ldquo;Fix it in Post&rdquo; a &ldquo;Fix it in Pre&rdquo;</h3>
+<p>Uno de los cambios más profundos que trae la IA generativa a la producción audiovisual es el desplazamiento del peso creativo y económico hacia la <b>preproducción</b>. La frase histórica de la industria, &ldquo;ya lo arreglaremos en postproducción&rdquo;, da paso a un nuevo paradigma donde las decisiones se toman antes de rodar.</p>
+<ul class="content-list">
+    <li><b>Mayor peso de la preproducción:</b> La IA permite iterar sobre ideas, diseños visuales y narrativas con un coste marginal mínimo. Esto hace que sea económicamente viable explorar múltiples opciones antes de comprometer recursos de producción.</li>
+    <li><b>Iteración con coste marginal:</b> Generar diez versiones de un storyboard con IA cuesta prácticamente lo mismo que generar una. Esto cambia radicalmente la dinámica de toma de decisiones creativas.</li>
+    <li><b>Múltiples previsualizaciones:</b> Se pueden crear previos de secuencias completas con distintos enfoques visuales, permitiendo al director y al productor decidir con información visual real antes de rodar.</li>
+    <li><b>Mapa de madurez de la IA en audiovisual:</b> Paco presenta un mapa que clasifica las aplicaciones de IA según su nivel de madurez en la industria. Las áreas más maduras son: <b>creación de contenido</b> (imágenes y vídeo generativo), <b>metadatado</b> (etiquetado automático de archivos), <b>traducción y localización</b>, <b>publicidad dinámica</b> (personalización de anuncios) y <b>analítica del espectador</b> (predicción de audiencias y comportamiento).</li>
+</ul>
+
+<h3 class="section-title" id="c42-guiones">Preproducción: Escritura y Guiones</h3>
+<p>Paco dedica especial atención a desmitificar el papel de la IA en la escritura de guiones, un tema que generó una enorme controversia durante la huelga de guionistas en Hollywood.</p>
+<ul class="content-list">
+    <li><b>La IA NO es creativa per se:</b> Paco es tajante en este punto. La IA generativa no tiene capacidad creativa propia. No genera guiones buenos de forma autónoma. Lo que hace es procesar patrones estadísticos sobre textos existentes.</li>
+    <li><b>No genera guiones buenos solos:</b> Un guion generado íntegramente por IA carece de la singularidad, la voz autoral y la profundidad emocional que requiere una buena historia. Los resultados son genéricos, predecibles y carentes de matices.</li>
+    <li><b>Sí es útil para revisión de incoherencias:</b> Donde la IA sí demuestra valor es en tareas analíticas: detectar incoherencias temporales, contradicciones en la trama, errores de continuidad o agujeros argumentales.</li>
+    <li><b>Profundización de personajes y conflictos:</b> La IA puede ayudar a explorar las motivaciones de un personaje, generar variantes de conflictos secundarios o proponer giros que el guionista puede evaluar y descartar o desarrollar.</li>
+    <li><b>José Manuel Lorenzo (Iberseries):</b> El guionista José Manuel Lorenzo contó en Iberseries que ChatGPT le había ayudado fundamentalmente a saber &ldquo;lo que no quería&rdquo;. Es decir, le servía como espejo inverso: al ver lo que generaba la IA, entendía mejor qué dirección creativa quería evitar.</li>
+    <li><b>Planes de rodaje:</b> Paco señala que los planes de rodaje son probablemente lo que peor hace la IA. La logística de producción tiene demasiadas variables interdependientes, excepciones y conocimiento tácito como para que un modelo de lenguaje lo resuelva bien.</li>
+    <li><b>Datos puros:</b> Lo que es &ldquo;puro dato&rdquo; &mdash;desgloses de producción, presupuestos, listas de material&mdash; sí lo gestiona bien la IA, porque son tareas estructuradas sin ambigüedad creativa.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Anécdota: El Alumno y Gaspar Noé</div>
+    <p>Paco relata la anécdota de un alumno que, durante una clase, mencionó al director Gaspar Noé como referente estilístico para un proyecto. La conversación derivó en cómo la IA puede ayudar a analizar el estilo visual y narrativo de un director concreto &mdash;paletas de color, ritmo de montaje, estructura narrativa&mdash; pero nunca podrá replicar la intención artística ni la provocación deliberada que caracteriza a un autor como Noé. La IA puede describir patrones, pero no puede crear transgresión.</p>
+</div>
+
+<h3 class="section-title" id="c42-pitchdecks">Preproducción: Pitch Decks y Biblias</h3>
+<p>El pitch deck (presentación visual de un proyecto para buscar financiación) y la biblia (documento exhaustivo que define todos los aspectos de una serie) son dos de las áreas donde la IA generativa ha tenido un impacto más inmediato y transformador.</p>
+<ul class="content-list">
+    <li><b>90-100% de pitch decks con IA:</b> Paco estima que entre el 90% y el 100% de los pitch decks que se presentan hoy en día en la industria incluyen elementos generados con IA. Es una adopción prácticamente total.</li>
+    <li><b>Escenas visuales generadas:</b> En lugar de buscar referencias fotográficas en bancos de imágenes o encargar ilustraciones, los productores generan las escenas que imaginan directamente con herramientas de imagen.</li>
+    <li><b>Casting tentativo con IA:</b> Se generan imágenes de los personajes con el aspecto físico, la edad y la estética que se buscan, permitiendo visualizar el reparto antes de iniciar el casting real.</li>
+    <li><b>Estilo visual con IA:</b> Se definen paletas cromáticas, iluminación, grano de película y atmósferas generales del proyecto mediante prompts en generadores de imagen.</li>
+    <li><b>Moodboards con Midjourney:</b> Midjourney se ha convertido en la herramienta predominante para la creación de moodboards (tableros de referencias visuales). La capacidad de generar imágenes con una estética muy controlada lo hace ideal para definir el tono visual de un proyecto.</li>
+    <li><b>Ventaja para directores independientes:</b> La democratización que supone la IA en la fase de pitch es especialmente significativa para directores y productores independientes que antes no tenían presupuesto para crear materiales visuales de calidad profesional. Ahora un director novel puede presentar un pitch deck visualmente tan potente como el de un estudio grande.</li>
+</ul>
+
+<h3 class="section-title" id="c42-libros">Preproducción: Análisis de Libros para Adaptación</h3>
+<p>Paco comparte su experiencia directa en DeAPlaneta con el uso de IA para evaluar libros como posibles candidatos a adaptación audiovisual, un proceso que antes requería semanas de lectura y análisis humano.</p>
+<ul class="content-list">
+    <li><b>DeAPlaneta y análisis con IA:</b> En DeAPlaneta implementaron un sistema de análisis de libros mediante IA para evaluar su potencial de adaptación a cine o serie. El sistema analiza estructura narrativa, personajes, arcos dramáticos, potencial visual y público objetivo.</li>
+    <li><b>Procesado múltiple para proto-guion:</b> El caso más emblemático fue el libro &ldquo;Las historias de la taberna japonesa&rdquo; (Takawa), que fue procesado hasta 15 veces con diferentes prompts y enfoques para obtener un proto-guion viable como base de trabajo.</li>
+    <li><b>Aplicación a podcasts:</b> El mismo sistema se utiliza para analizar podcasts como posibles fuentes de contenido para adaptación audiovisual, transcribiendo y analizando episodios completos.</li>
+    <li><b>Evaluación previa a la adquisición de derechos:</b> Una de las ventajas más importantes es poder evaluar el potencial de un libro ANTES de adquirir los derechos de adaptación, lo que reduce significativamente el riesgo económico de la inversión.</li>
+    <li><b>Productoras grandes con SLMs propios:</b> Las grandes productoras como Mediapro y Secuoya utilizan Small Language Models (SLMs) entrenados de forma privada con sus propios datos, ejecutados en servidores propios para mantener la confidencialidad del material.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Anécdota: Las Historias de la Taberna Japonesa</div>
+    <p>Paco describe en detalle cómo el libro de Takawa fue sometido a un proceso iterativo de 15 pasadas con IA, cada una con un enfoque diferente: primero un análisis general, luego extracción de personajes principales, después mapeo de arcos dramáticos, posteriormente identificación de escenas con mayor potencial visual, y así sucesivamente hasta obtener un proto-guion que sirviera como punto de partida para el equipo de desarrollo. El proceso, que antes habría requerido semanas de trabajo de un lector profesional, se completó en días.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso Fallido: Nuremberg</div>
+    <p>No todo funciona con IA. Paco relata el caso del análisis de material sobre los <b>juicios de Nuremberg</b> para una posible producción. Al tratarse de personajes históricos reales cuyo destino es ampliamente conocido, la IA producía resultados obvios y redundantes. El modelo no podía aportar nada que no estuviera ya en cualquier libro de historia: los arcos dramáticos eran previsibles porque el desenlace es de dominio público. Este caso demostró que la IA funciona mejor con material ficcional o con historias reales poco conocidas donde puede explorar posibilidades narrativas.</p>
+</div>
+
+<h3 class="section-title" id="c42-loras">Producción: Consistencia Visual con LoRAs</h3>
+<p>Uno de los mayores desafíos técnicos de la IA generativa en producción audiovisual es mantener la <b>consistencia visual entre frames</b>. Paco explica las soluciones que la industria está adoptando para resolver este problema fundamental.</p>
+<ul class="content-list">
+    <li><b>El problema principal &mdash; consistencia:</b> Cuando se genera una imagen con IA y luego se solicita una segunda imagen del mismo personaje o escenario, el resultado suele ser visualmente diferente. Para producción audiovisual, donde cada frame debe ser coherente con el anterior, esto es inaceptable.</li>
+    <li><b>LoRA (Low Rank Adaptation):</b> La solución más extendida en la industria. Consiste en un entrenamiento ligero del modelo con imágenes de referencia del personaje, objeto o estilo visual que se quiere mantener. El LoRA no reemplaza el modelo completo sino que lo ajusta específicamente para reconocer y reproducir esos elementos.</li>
+    <li><b>Ventajas del LoRA:</b> Es más rápido de entrenar que un fine-tuning completo, consume menos recursos computacionales, permite un control creativo granular sobre qué aspectos mantener consistentes y se puede combinar con otros LoRAs.</li>
+    <li><b>ComfyUI como herramienta principal:</b> ComfyUI se ha consolidado como la herramienta principal para trabajar con workflows de IA generativa en producción. Su sistema de nodos permite encadenar procesos (generación, LoRA, upscaling, inpainting) de forma visual y reproducible.</li>
+    <li><b>Alternativa: Seed en Runway/Sora:</b> Para quienes no necesitan el control granular de ComfyUI, herramientas como Runway y Sora permiten fijar un &ldquo;seed&rdquo; (código numérico del primer vídeo generado) para intentar mantener consistencia entre generaciones sucesivas. El resultado es menos preciso que un LoRA pero más accesible.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Concepto técnico &mdash; LoRA:</b> Low Rank Adaptation es una técnica de fine-tuning eficiente que modifica solo un subconjunto de los parámetros del modelo original. En lugar de reentrenar millones de parámetros, un LoRA entrena una matriz de bajo rango que se aplica como un &ldquo;filtro&rdquo; sobre el modelo base. Esto permite crear personajes consistentes, estilos visuales reproducibles y escenarios coherentes con un coste computacional asumible.</p>
+</div>
+
+<h3 class="section-title" id="c42-upscaling">Postproducción: Mejora de Video (Upscaling)</h3>
+<p>El upscaling con IA es una de las aplicaciones más maduras y extendidas en postproducción, permitiendo mejorar la resolución de material audiovisual existente de forma que antes era imposible.</p>
+<ul class="content-list">
+    <li><b>Topaz Video AI:</b> La herramienta de referencia para upscaling profesional. Permite escalar material de SD (definición estándar) a HD, 4K e incluso 8K con resultados que superan con creces el escalado por interpolación tradicional.</li>
+    <li><b>DeAPlaneta y &ldquo;Érase una vez el hombre&rdquo;:</b> DeAPlaneta procesó la serie clásica de animación &ldquo;Érase una vez el hombre&rdquo; con Topaz Video AI, actualizando un catálogo de décadas de antigüedad a resoluciones modernas para su explotación en plataformas actuales.</li>
+    <li><b>RTVE y el archivo histórico:</b> RTVE está procesando su extenso archivo histórico audiovisual con herramientas de upscaling, recuperando material que de otra forma sería inutilizable en emisiones actuales por su baja resolución.</li>
+    <li><b>Problemas del upscaling:</b> La IA no sabe cuál es el elemento principal del encuadre. Puede mejorar el fondo con el mismo énfasis que el sujeto principal, o peor aún, puede desajustar encuadres al interpretar incorrectamente la composición original de la imagen.</li>
+    <li><b>Freepik con Magnific:</b> La empresa española Freepik ha integrado la tecnología de Magnific para ofrecer upscaling de imágenes. Magnific destaca especialmente en la mejora de detalles faciales y texturas.</li>
+</ul>
+
+<h3 class="section-title" id="c42-deepfake">Postproducción: Deepfake Profesional</h3>
+<p>El deepfake, una tecnología inicialmente asociada a usos fraudulentos, ha encontrado aplicaciones profesionales legítimas en la industria del cine y la televisión, siempre bajo estrictos marcos de consentimiento contractual.</p>
+<ul class="content-list">
+    <li><b>Disney y versiones de rostros:</b> Disney utiliza tecnología de deepfake para crear versiones alternativas de los rostros de sus actores: versiones más jóvenes, más envejecidas, o con modificaciones sutiles necesarias para la trama.</li>
+    <li><b>De-aging y aging:</b> Las dos aplicaciones más comunes del deepfake profesional son el rejuvenecimiento digital (de-aging) y el envejecimiento digital (aging), que permiten que un mismo actor interprete a su personaje en diferentes épocas sin necesidad de maquillaje prostético extenso.</li>
+    <li><b>Metaphysic: Tom Hanks y Robin Wright:</b> La empresa Metaphysic realizó el trabajo de deepfake para la película dirigida por Robert Zemeckis en la que Tom Hanks y Robin Wright aparecen en distintas edades. El resultado fue considerablemente más convincente que técnicas anteriores de rejuvenecimiento digital.</li>
+    <li><b>DeepFaceLab:</b> Es el framework de código abierto más utilizado para deepfake profesional. Ofrece un control granular sobre el proceso de entrenamiento y generación de rostros, aunque requiere conocimientos técnicos significativos.</li>
+    <li><b>Consentimiento contractual obligatorio:</b> Paco subraya que todo uso de deepfake profesional requiere un consentimiento contractual explícito del actor. Este fue uno de los puntos centrales de la negociación durante la huelga de actores de SAG-AFTRA.</li>
+</ul>
+
+<h3 class="section-title" id="c42-vfx">Postproducción: VFX con IA</h3>
+<p>Los efectos visuales han sido tradicionalmente una de las partidas más costosas y lentas de la postproducción. La IA está empezando a transformar significativamente estos flujos de trabajo.</p>
+<ul class="content-list">
+    <li><b>GANs (Redes Generativas Antagonistas):</b> La arquitectura de redes neuronales que está detrás de muchas de las aplicaciones de IA en VFX. Dos redes compiten entre sí: una genera contenido y otra lo evalúa, mejorando iterativamente la calidad del resultado.</li>
+    <li><b>Netflix y El Eternauta:</b> En la producción de &ldquo;El Eternauta&rdquo;, Netflix utilizó IA para generar la secuencia de derrumbe de un edificio. El proceso fue aproximadamente <b>10 veces más rápido</b> que el enfoque tradicional de VFX, demostrando el potencial de aceleración en efectos de destrucción y simulación.</li>
+    <li><b>Edición de vídeo por prompting:</b> Paco describe la emergencia de herramientas que permiten editar vídeo mediante instrucciones de texto, lo que califica como &ldquo;el ChatGPT para edición de vídeo&rdquo;. En lugar de manipular manualmente cada frame, el editor describe qué quiere cambiar y la IA ejecuta la modificación.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Concepto técnico &mdash; GANs:</b> Las Redes Generativas Antagonistas (Generative Adversarial Networks) consisten en dos redes neuronales que compiten: el Generador crea contenido sintético intentando que sea indistinguible del real, mientras que el Discriminador intenta distinguir lo real de lo falso. Este juego competitivo produce resultados progresivamente más realistas y es la base de muchas aplicaciones de deepfake, generación de texturas y efectos visuales.</p>
+</div>
+
+<h3 class="section-title" id="c42-nerf">NeRF y Gaussian Splatting en Producción</h3>
+<p>Las técnicas de captura y reconstrucción 3D basadas en IA están transformando la forma en que los estudios escanean localizaciones, crean entornos virtuales y realizan scouting digital.</p>
+<ul class="content-list">
+    <li><b>NeRF (Neural Radiance Fields):</b> Técnica que utiliza redes neuronales para reconstruir escenas 3D a partir de fotografías. ILM (Industrial Light & Magic) la ha utilizado especialmente para representar agua y reflejos complejos. El entrenamiento requiere horas o incluso días, dependiendo de la complejidad de la escena.</li>
+    <li><b>Gaussian Splatting:</b> Evolución técnica que ofrece resultados más nítidos que NeRF con tiempos de entrenamiento de minutos en lugar de horas. Utiliza esferas gaussianas en lugar de campos de radiancia neural, lo que permite renderizado en tiempo real ultra rápido.</li>
+    <li><b>Superman &mdash; perro Krypto:</b> En la producción de Superman, se utilizó Gaussian Splatting para capturar y reproducir al perro Krypto, aprovechando la velocidad de procesamiento para trabajar con un animal que no puede posar de forma controlada durante horas.</li>
+    <li><b>Jurassic World Rebirth &mdash; virtual scouting:</b> La producción de Jurassic World Rebirth utilizó estas técnicas para realizar virtual scouting (exploración virtual de localizaciones). Los equipos de producción escanearon localizaciones reales y las reconstruyeron digitalmente, permitiendo al director planificar tiros de cámara y movimientos sin estar físicamente en el lugar.</li>
+    <li><b>The Mandalorian &mdash; StageCraft + denoising:</b> La producción de The Mandalorian combina el sistema StageCraft (volumen LED de ILM) con técnicas de denoising basadas en IA para limpiar el ruido de la imagen renderizada en tiempo real, mejorando la calidad visual final.</li>
+    <li><b>Herramientas disponibles:</b> Luma AI (captura con smartphone y procesado en la nube), Scaniverse (aplicación móvil para captura 3D), Super Splat (visor y editor web de archivos Gaussian Splatting), Niantics Studio (plataforma de captura 3D del creador de Pokémon GO).</li>
+</ul>
+
+<h3 class="section-title" id="c42-doblaje">Doblaje Automatizado y Lip Sync</h3>
+<p>El doblaje automatizado con sincronización labial es una de las aplicaciones de IA más prometedoras para la distribución internacional de contenido, aunque aún presenta limitaciones significativas.</p>
+<ul class="content-list">
+    <li><b>Empresa española Gamia:</b> Paco destaca a Gamia como empresa española pionera en doblaje automatizado con IA, capaz de generar doblajes con sincronización labial (lip sync) en múltiples idiomas.</li>
+    <li><b>La Abeja Maya &mdash; castellano a italiano:</b> Gamia realizó la conversión de la serie de animación &ldquo;La Abeja Maya&rdquo; del castellano al italiano, demostrando que el sistema funciona especialmente bien entre lenguas románicas con patrones fonéticos similares.</li>
+    <li><b>Pruebas con otros idiomas:</b> Se realizaron pruebas con alemán y polaco, con resultados notablemente peores. Las lenguas germánicas y eslavas presentan patrones de articulación y duración de sílabas muy diferentes al castellano, lo que dificulta la sincronización labial.</li>
+    <li><b>Animación más difícil que imagen real:</b> Paradójicamente, el lip sync por IA es más difícil de aplicar a animación que a imagen real. En imagen real, el sistema puede modificar sutilmente los labios del actor; en animación, los movimientos labiales están dibujados con un estilo específico que la IA tiene que respetar.</li>
+    <li><b>Herramientas principales:</b> Eleven Labs (la más versátil en clonación de voz e idiomas), Papercup (especializada en doblaje automatizado para distribución).</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Anécdota: La Abeja Maya en Italiano</div>
+    <p>Paco describe el resultado del doblaje de La Abeja Maya al italiano como sorprendentemente convincente, especialmente para una serie de animación dirigida a público infantil. La similitud fonética entre castellano e italiano facilitó enormemente la sincronización labial. Sin embargo, cuando intentaron el mismo proceso con alemán, el resultado fue claramente artificial: las vocales largas del alemán no encajaban con los movimientos labiales diseñados para el ritmo silábico del castellano.</p>
+</div>
+
+<h3 class="section-title" id="c42-audio">Audio e IA</h3>
+<p>El audio es otro campo donde la IA generativa está produciendo herramientas con aplicaciones directas en producción audiovisual.</p>
+<ul class="content-list">
+    <li><b>Eleven Labs:</b> Plataforma líder en síntesis de voz y clonación vocal. Permite replicar la voz de un hablante con muestras mínimas de audio y generar locuciones en múltiples idiomas manteniendo el timbre original.</li>
+    <li><b>Adobe Podcast:</b> Paco la considera la herramienta más profesional para tratamiento de audio con IA. Incluye funciones de eliminación de ruido, mejora de claridad vocal y nivelación automática que rivalizan con procesos de estudio.</li>
+    <li><b>Suno y Udio:</b> Generadores de música con IA. Permiten crear composiciones musicales completas a partir de descripciones de texto (género, instrumentación, tempo, estado de ánimo). Útiles para maquetas, demos y música provisional durante la edición.</li>
+    <li><b>YouTube Speech-to-Song (Lyria):</b> Herramienta de Google/YouTube basada en el modelo Lyria que convierte habla en canto, manteniendo el contenido semántico pero transformando la prosodia en melodía.</li>
+    <li><b>DaVinci Resolve + Colourlab AI para color:</b> Aunque no es estrictamente audio, Paco menciona la integración de Colourlab AI con DaVinci Resolve para la corrección de color automatizada como ejemplo de IA aplicada a postproducción en general.</li>
+</ul>
+
+<h3 class="section-title" id="c42-estudios">Grandes Estudios y su Estrategia</h3>
+<p>Los grandes estudios de Hollywood no están esperando a que la IA madure: están invirtiendo activamente en integrarla en sus pipelines y definiendo políticas corporativas para su uso.</p>
+<ul class="content-list">
+    <li><b>Disney Accelerator:</b> El programa de aceleración de startups de Disney ha incluido a empresas de IA como Eleven Labs (síntesis de voz) y Promethean AI (generación de entornos virtuales). Esto indica la apuesta estratégica de Disney por integrar IA en su pipeline de producción.</li>
+    <li><b>Netflix &mdash; Guidelines de IA:</b> Netflix ha publicado directrices internas para el uso de IA que se estructuran en torno a cuatro principios fundamentales, acompañados de una tabla de riesgo que clasifica las aplicaciones según su nivel de exposición y un requisito obligatorio de <b>human in the loop</b> (supervisión humana) en todas las fases del proceso.</li>
+    <li><b>Paramount &mdash; todo el pipeline:</b> Paramount ha adoptado un enfoque de integración de IA a lo largo de todo su pipeline de producción, desde el desarrollo de contenido hasta la distribución y el marketing.</li>
+    <li><b>Lionsgate + OpenAI:</b> Lionsgate firmó un acuerdo con OpenAI que generó considerable polémica en la industria. El acuerdo implica el uso de modelos de OpenAI entrenados con contenido del catálogo de Lionsgate, lo que plantea cuestiones complejas sobre propiedad intelectual y precedentes para el resto de estudios.</li>
+    <li><b>Netflix compra Interpositive (Ben Affleck):</b> Netflix adquirió Interpositive, la empresa de producción de Ben Affleck, por 600 millones de dólares. Esta adquisición incluye una apuesta explícita por integrar herramientas de IA en el proceso creativo.</li>
+    <li><b>Incorporación de Runway en servidores:</b> Varios estudios están incorporando Runway directamente en sus servidores internos de producción, integrándolo en el pipeline como una herramienta más del flujo de trabajo de VFX y postproducción.</li>
+</ul>
+
+<h3 class="section-title" id="c42-casos">Casos de Producción con IA</h3>
+<p>Paco presenta varios casos concretos de producciones que han utilizado IA generativa como componente central de su proceso creativo.</p>
+<ul class="content-list">
+    <li><b>Darren Aronofsky &mdash; Primordial Show, &ldquo;Ansistra&rdquo;:</b> El director Darren Aronofsky exploró el uso de IA generativa en su proyecto Primordial Show, con una pieza titulada &ldquo;Ansistra&rdquo; que integra elementos generados por IA en su lenguaje visual.</li>
+    <li><b>The Golden Pink (Henry Dufour):</b> Considerado el primer cortometraje 100% generado con IA que resulta visualmente convincente. Realizado por Henry Dufour utilizando Imagen 3 + Veo 2 + Flow (herramientas de Google). Requirió aproximadamente <b>40.000 iteraciones</b> y fue creado por una sola persona. Demuestra que la barrera de entrada para la producción audiovisual se ha reducido drásticamente.</li>
+    <li><b>Alberto Mielgo (ganador del Oscar):</b> El director y artista español Alberto Mielgo, ganador del Oscar por &ldquo;El limpiaparabrisas&rdquo;, utiliza captura con iPhone como parte de su proceso creativo, integrando las posibilidades de la captura móvil con herramientas de IA para sus producciones.</li>
+    <li><b>Peris Digital (española):</b> Empresa española especializada en la <b>digitalización de vestuario histórico</b>. Utilizan IA y escaneo 3D para crear versiones digitales de trajes de época, facilitando la previsualización y reduciendo el desgaste del vestuario original durante la fase de diseño.</li>
+</ul>
+
+<h3 class="section-title" id="c42-youtube">YouTube e IA</h3>
+<p>YouTube está integrando masivamente funcionalidades de IA en su plataforma, tanto para creadores como para espectadores, aunque esta integración no está exenta de problemas.</p>
+<ul class="content-list">
+    <li><b>Dream Screen:</b> Funcionalidad que permite generar fondos virtuales para vídeos de YouTube Shorts utilizando IA generativa.</li>
+    <li><b>Inspiration Tab:</b> Pestaña de inspiración que sugiere ideas de contenido a los creadores basándose en tendencias, rendimiento anterior y análisis de audiencia.</li>
+    <li><b>Auto doblaje:</b> YouTube ha implementado doblaje automático de vídeos a múltiples idiomas. Paco lo califica como &ldquo;malo&rdquo; en su estado actual, con problemas evidentes de naturalidad, sincronización y preservación del tono original.</li>
+    <li><b>Veo:</b> Integración del modelo de generación de vídeo Veo de Google directamente en la plataforma de YouTube para creadores.</li>
+    <li><b>Transcripciones automáticas:</b> Generación de transcripciones completas de los vídeos con IA, cada vez más precisas y útiles para accesibilidad y SEO.</li>
+    <li><b>AI Studio:</b> Entorno de producción con herramientas de IA integradas para creadores de contenido de YouTube.</li>
+    <li><b>Speech-to-Song (Lyria):</b> Transformación de fragmentos hablados en fragmentos cantados utilizando el modelo Lyria de Google.</li>
+    <li><b>Editor con IA:</b> Herramientas de edición asistida por IA integradas directamente en el editor de YouTube.</li>
+    <li><b>Problema: contenido sintético descontrolado:</b> Paco señala el problema fundamental de la proliferación de contenido sintético en YouTube. La facilidad para generar vídeos con IA está provocando una avalancha de contenido de baja calidad que dificulta la visibilidad de los creadores humanos y plantea problemas de desinformación.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Anécdota: El CEO de San Francisco y YouTube</div>
+    <p>Paco relata una conversación con un CEO del ecosistema tecnológico de San Francisco que le explicó la visión interna de YouTube respecto a la IA: la plataforma asume que en pocos años una parte significativa del contenido será generado o asistido por IA, y su estrategia es liderar esa transición desde dentro en lugar de intentar frenarla. El problema, según este ejecutivo, no es la IA en sí, sino la incapacidad actual de los sistemas de moderación para distinguir contenido sintético de contenido real a escala.</p>
+</div>
+
+<h3 class="section-title" id="c42-atresmedia">Caso Empresarial: Atresmedia</h3>
+<p>Paco presenta el caso de Atresmedia como ejemplo de un gran grupo mediático español que está integrando activamente la IA en sus operaciones.</p>
+<ul class="content-list">
+    <li><b>Consola de control propia:</b> Atresmedia ha desarrollado una consola de control interna que centraliza el acceso a múltiples herramientas de IA, permitiendo a sus equipos utilizar diferentes modelos según la tarea.</li>
+    <li><b>Modelos integrados:</b> La consola incluye acceso a GPT (OpenAI), Gemini (Google) y Copilot (Microsoft), permitiendo a los profesionales elegir el modelo más adecuado para cada necesidad.</li>
+    <li><b>Análisis de guion automatizado:</b> Atresmedia utiliza IA para analizar guiones de forma automatizada, evaluando estructura narrativa, coherencia temporal, distribución de diálogos por personaje y otros parámetros técnicos.</li>
+    <li><b>Previsión meteorológica para localizaciones:</b> Una aplicación innovadora: utilizan IA para cruzar datos meteorológicos con los calendarios de rodaje y las necesidades lumínicas de cada escena, optimizando la planificación de exteriores.</li>
+    <li><b>Alba Renai &mdash; presentadora IA:</b> Atresmedia creó a Alba Renai, una presentadora generada íntegramente con IA, utilizada para determinados contenidos digitales del grupo. Representa uno de los primeros casos en España de un &ldquo;talento virtual&rdquo; en un medio de comunicación tradicional.</li>
+    <li><b>Mediaset y doblaje de series turcas:</b> Como contrapunto, Paco menciona que Mediaset está utilizando IA para el doblaje de series turcas, un género que produce en grandes volúmenes y donde la velocidad de localización es un factor competitivo clave.</li>
+</ul>
+
+<h3 class="section-title" id="c42-datos-audiencias">Análisis de Datos y Audiencias</h3>
+<p>La IA aplicada al análisis de audiencias y al marketing de contenido audiovisual es una de las áreas donde la tecnología lleva más tiempo operativa y donde los resultados económicos son más cuantificables.</p>
+<ul class="content-list">
+    <li><b>Love Simon (Fox) &mdash; Julie Reader:</b> En la campaña de marketing de la película &ldquo;Love Simon&rdquo;, Fox utilizó machine learning bajo la dirección de Julie Reader para optimizar la segmentación de audiencias. Reader afirmó que sin los datos de IA habrían gastado mucho más presupuesto innecesariamente en campañas genéricas.</li>
+    <li><b>Itarobot + AWS:</b> Plataforma de análisis que combina inteligencia artificial con la infraestructura de Amazon Web Services para procesar datos de audiencia a escala masiva.</li>
+    <li><b>Be On Labs:</b> Plataforma que permite subir una película completa y obtener un dashboard analítico automatizado: clasificación por géneros, identificación de momentos clave, generación automática de trailers adaptados a diferentes targets demográficos.</li>
+    <li><b>Generación de trailers automáticos por target:</b> La IA puede generar múltiples versiones de un trailer para la misma película, cada una optimizada para un público objetivo diferente (adolescentes, adultos, familias, público de acción, público de drama).</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Anécdota: Lolo y Be On Labs</div>
+    <p>Paco describe cómo la película &ldquo;Lolo&rdquo; fue analizada por Be On Labs como caso de estudio. La plataforma procesó la película completa y generó un dashboard con métricas detalladas: distribución de géneros dentro del film (comedia 45%, drama 30%, romance 25%), curva emocional escena por escena, y trailers automáticos dirigidos a distintos segmentos. El resultado demostró que los trailers generados por IA para públicos específicos obtenían métricas de engagement superiores a los trailers editados de forma tradicional con enfoque genérico.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso Polémico: Civil War de A24</div>
+    <p>Paco aborda la polémica campaña de marketing de <b>Civil War</b> de A24, que utilizó IA generativa para crear imágenes promocionales. La campaña generó controversia porque las imágenes generadas por IA representaban escenarios de guerra civil en Estados Unidos con un realismo que algunos críticos consideraron irresponsable. El debate puso sobre la mesa la cuestión de los límites éticos del uso de IA generativa en marketing de contenido sensible, especialmente en el contexto político estadounidense.</p>
+</div>
+
+<h3 class="section-title" id="c42-etica">Ética, Propiedad Intelectual y Regulación</h3>
+<p>Paco, aprovechando su formación jurídica, dedica una sección extensa a las implicaciones legales, éticas y laborales de la IA generativa en el audiovisual.</p>
+<ul class="content-list">
+    <li><b>Huelga SAG-AFTRA y WGA:</b> La huelga de actores (SAG-AFTRA) y guionistas (WGA) de Hollywood en 2023 tuvo la regulación de la IA como uno de sus ejes centrales. Los acuerdos alcanzados sentaron precedentes importantes para toda la industria.</li>
+    <li><b>Prohibición de IA para reescritura sin guionistas:</b> Los estudios no pueden utilizar IA para reescribir guiones prescindiendo de guionistas humanos. La IA no puede ser acreditada como autor de un guion.</li>
+    <li><b>Guionistas sí pueden usar IA:</b> Los guionistas tienen derecho a utilizar herramientas de IA como parte de su proceso creativo, pero la responsabilidad y la autoría recaen siempre en el profesional humano.</li>
+    <li><b>Transparencia obligatoria:</b> Los estudios deben informar a los actores y guionistas cuando se utilice IA en cualquier aspecto de la producción que afecte a su trabajo o a su imagen.</li>
+    <li><b>Autoría humana:</b> El acuerdo establece que el autor de una obra es siempre un ser humano. La IA es una herramienta, no un creador, y por tanto no puede ostentar derechos de autor.</li>
+    <li><b>Servidores propios:</b> Muchos estudios están optando por ejecutar modelos de IA en servidores propios para evitar que material confidencial (guiones, imágenes de producción) circule por servidores de terceros.</li>
+    <li><b>ChatGPT Enterprise:</b> La versión empresarial de ChatGPT, que garantiza que los datos introducidos no se utilizan para reentrenar el modelo, es la opción elegida por algunos estudios que trabajan con material sensible.</li>
+    <li><b>Small Language Models (SLMs):</b> Modelos de lenguaje más pequeños y especializados que pueden ejecutarse localmente. Ofrecen menos capacidades que los grandes modelos pero garantizan la privacidad total del dato.</li>
+    <li><b>Gemma local:</b> El modelo Gemma de Google puede ejecutarse en un servidor local por un coste aproximado de 3.000 euros, ofreciendo una alternativa privada y económica para tareas que no requieren la potencia de los modelos más grandes.</li>
+    <li><b>Data poisoning:</b> Técnica de sabotaje que consiste en inyectar datos contaminados en los conjuntos de entrenamiento de la IA. Paco menciona el concepto de &ldquo;píxel envenenado&rdquo;: una modificación imperceptible en una imagen que corrompe el aprendizaje del modelo cuando la procesa.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Anécdota: Bob Esponja y MDMA (Prompt Injection)</div>
+    <p>Paco ilustra el concepto de <b>prompt injection</b> con un ejemplo memorable: alguien logró que un modelo de IA generara una imagen de Bob Esponja asociada a la sustancia MDMA simplemente manipulando el prompt de forma creativa para sortear los filtros de seguridad. Este ejemplo, aparentemente cómico, demuestra una vulnerabilidad seria de los modelos de IA generativa: los filtros de seguridad pueden ser eludidos con ingeniería de prompts, lo que tiene implicaciones directas para la producción audiovisual cuando se trabaja con marcas, personajes con licencia o contenido dirigido a público infantil.</p>
+</div>
+
+<h3 class="section-title" id="c42-herramientas">Herramientas Completas</h3>
+<p>Paco presenta un mapa completo de las herramientas de IA relevantes para la producción audiovisual, organizadas por categoría funcional:</p>
+
+<table class="glossary-table">
+    <thead><tr><th>Categoría</th><th>Herramientas</th></tr></thead>
+    <tbody>
+        <tr><td><b>Modelos de lenguaje</b></td><td>ChatGPT (OpenAI), Gemini (Google), Claude (Anthropic), Copilot (Microsoft). Para guiones, análisis, resúmenes, traducciones y tareas de texto.</td></tr>
+        <tr><td><b>Generación de imagen</b></td><td>Midjourney (moodboards, concept art), DALL-E 3 (integrado con ChatGPT), Imagen 3 (Google, alta calidad), Flux (código abierto), Magnific (upscaling y mejora de detalle).</td></tr>
+        <tr><td><b>Generación de vídeo</b></td><td>Runway (líder en producción, integrado en estudios), Veo/Veo 2/Veo 3 (Google, calidad creciente), Sora (OpenAI), Kling (alternativa emergente).</td></tr>
+        <tr><td><b>Edición profesional</b></td><td>Adobe Premiere Pro (con funciones de IA integradas), After Effects (con plugins de IA), DaVinci Resolve (con Colourlab AI para color automatizado).</td></tr>
+        <tr><td><b>Upscaling</b></td><td>Topaz Video AI (referencia en la industria para escalar SD a HD/4K/8K).</td></tr>
+        <tr><td><b>Workflows y pipelines</b></td><td>ComfyUI (sistema de nodos para workflows de IA, herramienta principal de producción), Flow (Google, encadenamiento de procesos), Freepik (con Magnific integrado), Filmmaster (previsualización con IA).</td></tr>
+        <tr><td><b>Captura 3D</b></td><td>Luma AI (captura con smartphone, procesado en nube), Scaniverse (app móvil para escaneo 3D), Super Splat (visor/editor web de Gaussian Splatting), Niantics Studio (plataforma de captura 3D).</td></tr>
+        <tr><td><b>Audio e IA</b></td><td>Eleven Labs (síntesis y clonación de voz), Adobe Podcast (la más profesional para tratamiento de audio), Suno (generación musical), Udio (generación musical), Lyria (YouTube, Speech-to-Song).</td></tr>
+        <tr><td><b>Doblaje automatizado</b></td><td>Gamia (empresa española, lip sync multilingüe), Papercup (doblaje automatizado para distribución).</td></tr>
+        <tr><td><b>Deepfake profesional</b></td><td>DeepFaceLab (framework de código abierto, control granular), Metaphysic (empresa especializada, trabajo con grandes estudios).</td></tr>
+        <tr><td><b>Análisis y audiencias</b></td><td>Itarobot + AWS (análisis de audiencia a escala), Be On Labs (dashboard analítico de películas, trailers automáticos por target).</td></tr>
+    </tbody>
+</table>
+
+<h3 class="section-title" id="c42-glosario">Glosario Técnico</h3>
+<table class="glossary-table">
+    <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+    <tbody>
+        <tr><td><b>NeRF</b></td><td>Neural Radiance Fields. Técnica de reconstrucción 3D a partir de fotografías mediante redes neuronales. Genera representaciones volumétricas continuas de una escena. Entrenamiento lento (horas/días) pero resultados fotorrealistas, especialmente en superficies complejas como agua y reflejos.</td></tr>
+        <tr><td><b>Gaussian Splatting</b></td><td>Técnica de representación 3D basada en esferas gaussianas que reconstruye escenas a partir de fotografías. Entrenamiento en minutos, renderizado en tiempo real, más nítido que NeRF. Utilizada en producciones como Superman y Jurassic World Rebirth.</td></tr>
+        <tr><td><b>LoRA</b></td><td>Low Rank Adaptation. Técnica de fine-tuning eficiente que modifica un subconjunto reducido de parámetros del modelo base mediante matrices de bajo rango. Permite crear personajes y estilos visuales consistentes con coste computacional asumible.</td></tr>
+        <tr><td><b>Seed</b></td><td>Código numérico que inicializa el generador de números aleatorios de un modelo de IA. Fijar el seed permite reproducir resultados similares en generaciones sucesivas, ayudando a mantener consistencia visual.</td></tr>
+        <tr><td><b>Prompt</b></td><td>Instrucción en lenguaje natural que se proporciona a un modelo de IA generativa para dirigir el resultado. La calidad y precisión del prompt determina directamente la calidad del output.</td></tr>
+        <tr><td><b>Prompt injection</b></td><td>Técnica de manipulación que consiste en insertar instrucciones ocultas o camufladas en un prompt para eludir los filtros de seguridad del modelo y obtener resultados no permitidos.</td></tr>
+        <tr><td><b>Data poisoning</b></td><td>Envenenamiento de datos. Técnica de sabotaje que inyecta datos contaminados (como píxeles envenenados en imágenes) en los conjuntos de entrenamiento para corromper el aprendizaje del modelo.</td></tr>
+        <tr><td><b>Alucinación</b></td><td>Fenómeno en el que un modelo de IA genera información falsa o inexistente con apariencia de veracidad. Especialmente problemático en tareas de análisis de guiones o generación de datos factuales.</td></tr>
+        <tr><td><b>Uncanny valley</b></td><td>Valle inquietante. Fenómeno psicológico por el que una representación casi humana pero no perfecta genera rechazo. Muy relevante en deepfake y animación con IA donde la similitud es alta pero insuficiente.</td></tr>
+        <tr><td><b>A/B Testing</b></td><td>Metodología de experimentación que compara dos versiones de un elemento (póster, trailer, thumbnail) para determinar cuál obtiene mejores resultados con la audiencia. Ampliamente utilizado por Netflix.</td></tr>
+        <tr><td><b>Pitch deck</b></td><td>Presentación visual de un proyecto audiovisual diseñada para buscar financiación o aprobación de producción. Incluye sinopsis, estilo visual, casting tentativo y plan de producción.</td></tr>
+        <tr><td><b>Biblia</b></td><td>Documento exhaustivo que define todos los aspectos de una serie: personajes, mundo, tono, arcos por temporada, reglas del universo narrativo. Sirve como referencia para todo el equipo creativo.</td></tr>
+        <tr><td><b>Lip sync</b></td><td>Sincronización labial. Técnica de ajustar el movimiento de los labios de un personaje o actor al audio de diálogo, ya sea en el idioma original o en un doblaje.</td></tr>
+        <tr><td><b>De-aging / Aging</b></td><td>Técnicas de rejuvenecimiento o envejecimiento digital de actores mediante IA o VFX. Permiten que un actor interprete a su personaje en diferentes edades sin maquillaje prostético.</td></tr>
+        <tr><td><b>Denoising</b></td><td>Eliminación de ruido en imagen o vídeo mediante IA. En producción virtual, se aplica al renderizado en tiempo real para limpiar artefactos sin perder detalle, como en StageCraft de The Mandalorian.</td></tr>
+        <tr><td><b>Upscaling</b></td><td>Aumento de resolución de una imagen o vídeo mediante IA. La red neuronal genera píxeles nuevos coherentes con el contenido existente, superando el escalado por interpolación.</td></tr>
+        <tr><td><b>GANs</b></td><td>Generative Adversarial Networks (Redes Generativas Antagonistas). Arquitectura de dos redes neuronales que compiten: el Generador crea contenido y el Discriminador lo evalúa, mejorando iterativamente la calidad.</td></tr>
+        <tr><td><b>Small Language Model (SLM)</b></td><td>Modelo de lenguaje más pequeño y especializado que los grandes modelos (GPT-4, Gemini). Puede ejecutarse en servidores locales, garantizando privacidad. Ejemplos: Gemma (Google), Llama (Meta).</td></tr>
+        <tr><td><b>Tokens</b></td><td>Unidades mínimas de texto que procesan los modelos de lenguaje. Una palabra puede equivaler a uno o varios tokens. El límite de tokens determina la longitud máxima de entrada y salida del modelo.</td></tr>
+        <tr><td><b>ComfyUI</b></td><td>Interfaz gráfica basada en nodos para diseñar workflows de IA generativa. Permite encadenar procesos (generación, LoRA, upscaling, inpainting) de forma visual y reproducible. Herramienta principal en producción profesional.</td></tr>
+        <tr><td><b>Workflow</b></td><td>Flujo de trabajo automatizado que encadena múltiples herramientas o procesos de IA en una secuencia definida. En ComfyUI, un workflow es un grafo de nodos conectados.</td></tr>
+        <tr><td><b>Virtual scouting</b></td><td>Exploración virtual de localizaciones. Consiste en escanear localizaciones reales (con NeRF o Gaussian Splatting) y explorarlas digitalmente para planificar tiros de cámara y logística sin desplazarse físicamente.</td></tr>
+        <tr><td><b>StageCraft</b></td><td>Sistema de producción virtual de ILM (Industrial Light & Magic) basado en volúmenes LED. Utilizado originalmente en The Mandalorian, integra renderizado en tiempo real con Unreal Engine.</td></tr>
+        <tr><td><b>Metadatado</b></td><td>Proceso de etiquetar contenido audiovisual con metadatos descriptivos (género, personajes, ubicación, emociones). La IA automatiza este proceso, que antes era enteramente manual.</td></tr>
+        <tr><td><b>Crowdsource</b></td><td>Externalización de tareas a una comunidad abierta. Netflix utilizó crowdsourcing para su competición de mejora del algoritmo de recomendación.</td></tr>
+        <tr><td><b>Cultura algorítmica</b></td><td>Concepto acuñado por investigadores de la Universidad de Indiana que describe el fenómeno por el cual los algoritmos de recomendación determinan qué contenido cultural consume masivamente la población.</td></tr>
+        <tr><td><b>Human in the loop</b></td><td>Principio de diseño que exige supervisión humana en cada etapa del proceso de IA. Requisito fundamental en las guidelines de Netflix y en los acuerdos sindicales de Hollywood.</td></tr>
+        <tr><td><b>Freemium</b></td><td>Modelo de negocio que ofrece una versión básica gratuita y funcionalidades avanzadas de pago. Habitual en herramientas de IA como Runway, Eleven Labs y Suno.</td></tr>
+        <tr><td><b>WGA</b></td><td>Writers Guild of America (Sindicato de Guionistas de América). Protagonizó junto a SAG-AFTRA la huelga de 2023 que incluyó la regulación de la IA como eje central de la negociación.</td></tr>
+        <tr><td><b>SAG-AFTRA</b></td><td>Screen Actors Guild &ndash; American Federation of Television and Radio Artists. Sindicato de actores que negoció condiciones sobre el uso de IA en la representación digital de sus miembros, incluyendo consentimiento contractual y compensación.</td></tr>
+    </tbody>
+</table>
+
+<a href="#c42-top" class="back-top">&uarr; Volver al inicio de la charla</a>&nbsp;&nbsp;<a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>

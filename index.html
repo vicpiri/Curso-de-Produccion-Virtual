@@ -22,6 +22,7 @@
     <button class="day-tab active" onclick="switchDay('día1')">Día 1 &mdash; Lunes 16 Marzo</button>
     <button class="day-tab" onclick="switchDay('día2')">Día 2 &mdash; Martes 17 Marzo</button>
     <button class="day-tab" onclick="switchDay('día3')">Día 3 &mdash; Miércoles 18 Marzo</button>
+    <button class="day-tab" onclick="switchDay('día4')">Día 4 &mdash; Jueves 19 Marzo</button>
 </div>
 
 <!-- Mobile menu -->
@@ -75,9 +76,10 @@
                         </div>
                     </td>
                     <td>
-                        <div class="cal-cell">
-                            <div class="cal-title">Fotogrametria y Gaussian Splatting</div>
-                            <div class="cal-speaker">Raul Maqueda &mdash; Twinpixel (90min)</div>
+                        <div class="cal-cell clickable" onclick="showTalk('charla04-1')">
+                            <div class="cal-title">Fotogrametría y Gaussian Splatting</div>
+                            <div class="cal-speaker">Raúl Maqueda &mdash; Twinpixel (90min)</div>
+                            <span class="cal-badge">Ver informe</span>
                         </div>
                     </td>
                 </tr>
@@ -113,10 +115,11 @@
                             <span class="cal-badge">Ver informe</span>
                         </div>
                     </td>
-                    <td>
-                        <div class="cal-cell">
+                    <td rowspan="2">
+                        <div class="cal-cell clickable" onclick="showTalk('charla04-2')" style="height:100%;">
                             <div class="cal-title">IA generativa en audiovisual</div>
                             <div class="cal-speaker">Francisco Asensi (120min)</div>
+                            <span class="cal-badge">Ver informe</span>
                         </div>
                     </td>
                 </tr>
@@ -129,9 +132,6 @@
                             <div class="cal-speaker">Cesar &mdash; Iralta VR (60min)</div>
                             <span class="cal-badge">Ver informe</span>
                         </div>
-                    </td>
-                    <td>
-                        <div class="cal-cell cal-nodata" style="font-style:italic;">(Continuación sesión anterior)</div>
                     </td>
                 </tr>
                 <!-- Comida -->
@@ -229,6 +229,17 @@
                 <span class="speaker">Oscar Olarte &mdash; MR Factory</span>
             </button>
         </div>
+        <div class="sidebar-section" id="sidebar-día4">
+            <h3>Día 4 &mdash; Jueves 19</h3>
+            <button class="talk-btn" onclick="showTalk('charla04-1')">
+                Fotogrametría y Gaussian Splatting
+                <span class="speaker">Raúl Maqueda &mdash; Twinpixel</span>
+            </button>
+            <button class="talk-btn" onclick="showTalk('charla04-2')">
+                IA Generativa en Audiovisual
+                <span class="speaker">Francisco Asensi</span>
+            </button>
+        </div>
     </aside>
 
     <!-- Main Content -->
@@ -279,6 +290,16 @@
 <!-- CHARLA 03-3: Visita a MR Factory Group — Demostración Técnica -->
 <!-- ════════════════════════════════════════════════════════════ -->
 <div class="talk-content" id="charla03-3"></div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CHARLA 04-1: Raúl Maqueda / Twinpixel - Fotogrametría -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="talk-content" id="charla04-1"></div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CHARLA 04-2: Francisco Asensi - IA Generativa -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="talk-content" id="charla04-2"></div>
 
     </main>
 </div>

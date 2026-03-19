@@ -1,0 +1,344 @@
+<div class="talk-header">
+        <h2 class="talk-title">Charla 04-1: Fotogrametría y Gaussian Splatting</h2>
+        <div class="talk-meta">
+            <strong>Ponente:</strong> Raúl Maqueda &mdash; Twinpixel<br>
+            <strong>Fecha:</strong> Jueves 19 de marzo de 2026
+        </div>
+      </div>
+
+<div class="section-nav">
+    <div class="section-nav-title">Contenidos</div>
+    <ul>
+        <li><a href="#c41-resumen">Resumen Ejecutivo</a></li>
+        <li><a href="#c41-fotogrametria">Fotogrametría: Fundamentos</a></li>
+        <li><a href="#c41-iluminacion">Estado Neutro e Iluminación</a></li>
+        <li><a href="#c41-problemas">Problemas y Limitaciones de la Fotogrametría</a></li>
+        <li><a href="#c41-splatting">Gaussian Splatting: Fundamentos</a></li>
+        <li><a href="#c41-splatting-pros-cons">Gaussian Splatting: Ventajas y Limitaciones</a></li>
+        <li><a href="#c41-comparativa">Comparativa Fotogrametría vs. Gaussian Splatting</a></li>
+        <li><a href="#c41-mapas">Mapas del Instituto Geográfico Nacional</a></li>
+        <li><a href="#c41-versiones">Gestión de Versiones y Catálogo</a></li>
+        <li><a href="#c41-objetos">Fotogrametría de Objetos vs. Espacios</a></li>
+        <li><a href="#c41-camaras360">Captura con Cámaras 360</a></li>
+        <li><a href="#c41-personajes">Fotogrametría de Personajes</a></li>
+        <li><a href="#c41-setextensions">Set Extensions y Aplicaciones</a></li>
+        <li><a href="#c41-experiencias">Experiencias de Producción</a></li>
+        <li><a href="#c41-herramientas">Herramientas y Software</a></li>
+        <li><a href="#c41-glosario">Glosario Técnico</a></li>
+    </ul>
+</div>
+
+<div class="executive-summary" id="c41-resumen">
+    <h3 class="section-title" style="border:none;padding:0;margin:0 0 12px 0;">Resumen Ejecutivo</h3>
+    <p>Raúl Maqueda, de la empresa <b>Twinpixel</b>, presenta una charla exhaustiva sobre las dos principales tecnologías de captura de realidad para producción virtual: la <b>fotogrametría</b> y el <b>Gaussian Splatting</b>. La charla cubre los fundamentos técnicos de ambas tecnologías, sus ventajas, limitaciones, formatos de exportación, flujos de trabajo y casos reales de producción. Entre los ejemplos prácticos se incluyen: dobles digitales de platós de televisión (Telecinco, plató de Franganillo), escenarios históricos y arquitectónicos (Puerta de Toledo, Palacio de Santoña), la producción de HBO <b>&laquo;Win-Time&raquo;</b> con 85 personajes digitales segmentados, la serie de Netflix <b>&laquo;1899&raquo;</b>, y tests comparativos de rodaje real frente a producción virtual (chalet de Navacerrada reproducido en estudio 6 semanas después, con resultado prácticamente indistinguible). Raúl también aborda la captura con cámaras 360, la fotogrametría de objetos frente a espacios, la gestión de versiones y catálogo de assets, los mapas del Instituto Geográfico Nacional para topografía virtual, y el uso de drones para captura aérea. El mensaje central de la charla es contundente: <b>la preproducción importa más que la tecnología</b>. Sin una buena planificación y un conocimiento profundo de las herramientas, la tecnología por sí sola no garantiza resultados profesionales.</p>
+</div>
+
+<h3 class="section-title" id="c41-fotogrametria">Fotogrametría: Fundamentos</h3>
+<p>La fotogrametría es la técnica de reconstrucción de modelos 3D a partir de múltiples fotografías tomadas desde distintos ángulos. El software analiza las coincidencias entre imágenes para calcular la posición espacial de cada punto y generar una malla tridimensional con textura. Es la base de la captura de realidad para producción virtual y postproducción.</p>
+<ul class="content-list">
+    <li><b>Principio básico:</b> Se toman decenas o cientos de fotografías de un objeto o espacio desde múltiples ángulos. El software de procesamiento identifica puntos comunes entre imágenes y, mediante triangulación, reconstruye la geometría 3D completa del sujeto.</li>
+    <li><b>Formatos de exportación:</b> Los modelos se exportan típicamente como <b>FBX</b> u <b>OBJ</b>, acompañados de sus texturas en formato JPG. Estos formatos son compatibles con Unreal Engine y la mayoría de software de postproducción.</li>
+    <li><b>Texturas generadas &mdash; Albedo:</b> El mapa de Albedo contiene el color puro de la superficie, <b>sin sombras ni iluminación</b>. Visualmente parece &laquo;raro&raquo; o plano porque carece de toda información lumínica. Esto es intencionado: un Albedo limpio permite re-iluminar el modelo con cualquier condición de luz dentro del motor de render.</li>
+    <li><b>Diferencia entre Albedo y Diffuse:</b> El Albedo es color puro sin sombras. El Diffuse incluye información de iluminación ambiental integrada. Para Unreal Engine se necesita específicamente el Albedo, ya que el motor calculará su propia iluminación sobre la superficie.</li>
+    <li><b>Texturas generadas &mdash; Normal Map:</b> Mapa que simula relieve y detalle geométrico sin añadir polígonos reales. Permite que superficies de baja resolución poligonal muestren detalles finos como rugosidades, grietas o texturas de material.</li>
+    <li><b>Texturas generadas &mdash; AO (Ambient Occlusion):</b> Mapa de oclusión ambiental que define las zonas donde la luz tiene dificultad para llegar: rincones, juntas, pliegues. Añade profundidad y realismo a las sombras de contacto.</li>
+    <li><b>Texturas generadas &mdash; Metallic:</b> Mapa que define qué partes de la superficie son metálicas y cuáles no. Los valores son típicamente binarios: blanco (metal) o negro (no metal).</li>
+    <li><b>Texturas generadas &mdash; Roughness:</b> Mapa que define la rugosidad de la superficie. Negro indica una superficie completamente lisa y reflectante (como un espejo), blanco indica una superficie totalmente rugosa y mate. Controla cómo se dispersa la luz al incidir sobre el material.</li>
+    <li><b>UVs:</b> Las coordenadas de mapeo que determinan cómo se proyectan las texturas 2D sobre la geometría 3D. Un buen desplegado de UVs es esencial para que las texturas se apliquen correctamente sin distorsiones ni costuras visibles.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Concepto clave:</b> El aspecto &laquo;plano&raquo; o &laquo;extraño&raquo; de un mapa de Albedo bien procesado es una señal de calidad, no un error. Un Albedo con sombras horneadas contamina el resultado final cuando el motor de render aplica su propia iluminación, generando sombras dobles e inconsistencias visuales. El objetivo es obtener un modelo en <b>estado neutro</b> que pueda recibir cualquier iluminación.</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-iluminacion">Estado Neutro e Iluminación</h3>
+<p>Uno de los conceptos fundamentales que Raúl enfatiza es que un modelo de fotogrametría bien procesado se encuentra en <b>estado neutro</b>: no contiene ninguna información de iluminación. Esto es lo que lo convierte en un asset versátil para producción virtual.</p>
+<ul class="content-list">
+    <li><b>Estado neutro:</b> El modelo procesado correctamente no tiene luces, sombras ni reflejos horneados. Es una superficie &laquo;virgen&raquo; lista para recibir cualquier condición lumínica que se le aplique dentro de Unreal Engine.</li>
+    <li><b>Versatilidad lumínica:</b> Un mismo modelo en estado neutro puede iluminarse como atardecer, como luz diurna intensa o como noche americana (tonos azules). Raúl muestra el mismo modelo con tres iluminaciones completamente diferentes, demostrando la flexibilidad del enfoque.</li>
+    <li><b>Noche americana:</b> Técnica cinematográfica clásica que simula la noche mediante tonos azulados sobre una escena rodada o iluminada de día. En producción virtual, se consigue aplicando una iluminación con dominante azul sobre el modelo neutro.</li>
+    <li><b>Consistencia del modelo máster:</b> El mismo modelo máster se utiliza en todas las versiones del proyecto: la versión para Unreal Engine (tiempo real), la versión para postproducción (mayor resolución) y la versión para experiencias inmersivas (VR). La base geométrica y de textura es idéntica; lo que cambia es la optimización y la resolución según el destino.</li>
+    <li><b>Iluminación como narrativa:</b> La capacidad de re-iluminar permite que el departamento de fotografía utilice la luz como herramienta narrativa, exactamente igual que en un rodaje real. La diferencia es que en producción virtual pueden probar todas las opciones antes de comprometerse con una.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Principio fundamental:</b> La inversión en un buen procesado fotogramétrico que elimine completamente la información lumínica se amortiza multiplicativamente: un solo modelo sirve para infinitas condiciones de iluminación, lo que reduce drásticamente el tiempo y coste de captura en localización.</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-problemas">Problemas y Limitaciones de la Fotogrametría</h3>
+<p>Raúl detalla los principales problemas técnicos que enfrenta la fotogrametría y las soluciones prácticas que Twinpixel aplica en producción:</p>
+<ul class="content-list">
+    <li><b>Superficies sin textura (plástico liso, paredes lisas):</b> La fotogrametría necesita variación visual en la superficie para encontrar puntos de coincidencia entre imágenes. Las superficies completamente lisas y uniformes no generan suficiente información. <b>Solución:</b> se aplica un <b>spray matificador</b> que crea una capa fina de micropartículas sobre la superficie, proporcionando textura temporal que el software puede detectar.</li>
+    <li><b>Transparencias (cristal, vidrio):</b> Los materiales transparentes confunden al algoritmo porque la cámara ve a través de ellos, capturando lo que hay detrás en lugar de la superficie. <b>Solución:</b> el mismo spray matificador aplicado sobre el cristal lo convierte temporalmente en una superficie opaca y mate que puede ser capturada correctamente.</li>
+    <li><b>Pelo y cabello:</b> El cabello humano genera una masa informe en fotogrametría, sin definición de mechones individuales. La geometría resultante es una especie de bulto con textura de pelo. <b>Solución:</b> el pelo debe generarse por separado mediante técnicas específicas de modelado y simulación de cabello (groom systems), no mediante fotogrametría.</li>
+    <li><b>Superficies especulares y brillantes:</b> Los reflejos especulares cambian de posición con cada foto, lo que confunde al algoritmo de reconstrucción y genera artefactos. <b>Solución:</b> se utiliza <b>polarización cruzada</b> durante la captura. Todas las luces llevan filtros polarizadores y la cámara lleva un filtro polarizador orientado perpendicularmente. Esto elimina completamente la especularidad durante la captura. Posteriormente, los mapas de Roughness y Metallic se generan para replicar la especularidad correcta dentro del motor de render.</li>
+    <li><b>Zonas de sombra:</b> Las áreas con poca luz o muy oscuras producen textura e información de color deficientes. El software no puede extraer detalle de lo que no puede ver. Requiere iluminación adicional o múltiples pasadas con diferentes condiciones de luz.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Solución Profesional: Kit de Captura de Twinpixel</div>
+    <p>Twinpixel lleva siempre un kit completo de captura que incluye spray matificador, paneles polarizados, filtros polarizadores para las cámaras e iluminación adicional portátil. El spray matificador es económico y se limpia fácilmente tras la captura. La polarización cruzada es especialmente importante para la captura de interiores con superficies metálicas, mármoles, cristales y objetos lacados, que son extremadamente comunes en escenarios reales.</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-splatting">Gaussian Splatting: Fundamentos</h3>
+<p>El Gaussian Splatting es una tecnología de captura de realidad fundamentalmente diferente a la fotogrametría. Raúl explica que es esencial comprender que <b>no genera geometría real</b>, lo que tiene implicaciones profundas para su uso en producción.</p>
+<ul class="content-list">
+    <li><b>No es geometría:</b> A diferencia de la fotogrametría, el Gaussian Splatting NO produce mallas poligonales. Es una proyección de <b>texels</b> (unidades de información de color) en el espacio tridimensional.</li>
+    <li><b>Analogía del confeti:</b> Raúl lo describe como &laquo;confeti esparcido en el espacio&raquo;. Miles o millones de puntos flotantes, cada uno con información de color y forma, que al visualizarse en conjunto recrean la apariencia del espacio capturado.</li>
+    <li><b>Proyecciones ovales:</b> Cada punto en el Gaussian Splatting es una proyección oval (gaussiana) que cambia de color y forma según el ángulo de visualización. No es una textura plana ni un polígono: es una función matemática que se evalúa en tiempo real.</li>
+    <li><b>No editable como bitmap:</b> A diferencia de una textura convencional que se puede abrir en Photoshop y modificar píxel a píxel, los datos del Gaussian Splatting no se pueden editar de la misma manera. La información está codificada como funciones matemáticas, no como píxeles.</li>
+    <li><b>Captura de datos diferente:</b> Aunque visualmente el proceso de captura puede parecer similar (tomar muchas fotos desde distintos ángulos), el procesamiento es radicalmente distinto al de la fotogrametría. Se basa en <b>redes neuronales e inteligencia artificial</b>.</li>
+    <li><b>Interpolación por IA:</b> Las redes neuronales interpolan entre las posiciones de las cámaras para generar vistas intermedias que nunca fueron fotografiadas. El sistema &laquo;aprende&raquo; cómo se ve la escena y puede generar nuevos puntos de vista dentro del rango capturado.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Diferencia fundamental:</b> La fotogrametría reconstruye la <b>forma física</b> del objeto (geometría + textura). El Gaussian Splatting reconstruye la <b>apariencia visual</b> del objeto desde múltiples ángulos (color en el espacio). Esto significa que un modelo fotogramétrico se puede tocar, cortar, modificar y re-iluminar; un Gaussian Splat solo se puede observar.</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-splatting-pros-cons">Gaussian Splatting: Ventajas y Limitaciones</h3>
+<p>Raúl presenta un análisis detallado de las ventajas y limitaciones del Gaussian Splatting basándose en su experiencia práctica en producción:</p>
+
+<p><b>Ventajas:</b></p>
+<ul class="content-list">
+    <li><b>Velocidad de procesamiento:</b> Es <b>muchísimo más rápido</b> que la fotogrametría tanto en captura como en procesamiento. Lo que en fotogrametría lleva horas de cálculo, en Gaussian Splatting se resuelve en una fracción del tiempo.</li>
+    <li><b>Calidad visual potencialmente superior:</b> En determinadas condiciones, el resultado visual puede igualar o incluso superar la calidad de la fotogrametría, especialmente en planos generales y medios.</li>
+    <li><b>Resolución de zonas de sombra:</b> Donde la fotogrametría tiene dificultades con zonas oscuras, el Gaussian Splatting resuelve bien estas áreas gracias a la interpolación neuronal que &laquo;rellena&raquo; la información faltante.</li>
+    <li><b>Filtración de luz:</b> Gestiona correctamente fenómenos lumínicos como la filtración de luz a través de hojas, cristales o elementos semitransparentes, algo que la fotogrametría tradicional no puede capturar.</li>
+    <li><b>Materiales reflectantes:</b> Desde el punto de vista original de captura, los materiales reflectantes y especulares se reproducen con fidelidad, ya que el sistema captura exactamente cómo se veían los reflejos.</li>
+</ul>
+
+<p><b>Limitaciones:</b></p>
+<ul class="content-list">
+    <li><b>Sombras permanentemente horneadas:</b> Las sombras capturadas están integradas de forma permanente en los datos. No se pueden eliminar ni modificar. Si la captura se realizó con sol, las sombras del sol estarán siempre presentes.</li>
+    <li><b>Artefactos en primeros planos:</b> Al acercarse mucho a las superficies, se hacen visibles los puntos individuales del splatting, generando artefactos visuales que rompen la ilusión. Funciona mucho mejor en planos generales y medios.</li>
+    <li><b>Imposibilidad de re-texturizar:</b> No se puede cambiar el color o la textura de una superficie específica del modelo. La información de color es inseparable de la estructura de datos.</li>
+    <li><b>Re-iluminación no viable:</b> No se puede re-iluminar de forma limpia. Al no haber geometría real, no hay superficies donde calcular rebotes de luz, sombras o reflejos. La iluminación capturada es la iluminación final.</li>
+    <li><b>Inconsistencias por movimiento solar:</b> Si la captura se prolonga en el tiempo, el movimiento del sol genera inconsistencias. Raúl describe un ejemplo donde la sombra de una torre aparecía con dos líneas diferentes porque el sol se había movido entre el inicio y el final de la captura.</li>
+    <li><b>Reflejos especulares limitados:</b> Los reflejos solo funcionan correctamente desde el punto de vista original de captura. Al desplazarse a un ángulo diferente, los reflejos no se actualizan correctamente porque están &laquo;congelados&raquo; en los datos originales.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Regla práctica:</b> El Gaussian Splatting es excelente para planos generales y fondos donde no se necesita interacción lumínica ni edición posterior. La fotogrametría sigue siendo imprescindible cuando se necesita re-iluminar, editar materiales o hacer primeros planos detallados. La decisión entre una u otra debe tomarse en preproducción según las necesidades específicas de cada plano.</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-comparativa">Comparativa Fotogrametría vs. Gaussian Splatting</h3>
+<p>Raúl presenta una comparativa directa entre ambas tecnologías para facilitar la toma de decisiones en preproducción:</p>
+
+<table class="glossary-table">
+    <thead><tr><th>Aspecto</th><th>Fotogrametría</th><th>Gaussian Splatting</th></tr></thead>
+    <tbody>
+        <tr><td><b>Naturaleza</b></td><td>Geometría 3D real (malla poligonal + texturas)</td><td>Proyección de color en el espacio (texels, sin geometría)</td></tr>
+        <tr><td><b>Editable</b></td><td>Sí: se puede cortar, modificar, re-texturizar</td><td>Muy limitado: no se puede editar como un modelo convencional</td></tr>
+        <tr><td><b>Re-iluminable</b></td><td>Sí: estado neutro permite cualquier iluminación</td><td>No: la iluminación capturada es permanente</td></tr>
+        <tr><td><b>Velocidad de captura</b></td><td>Moderada a lenta (muchas fotos con condiciones controladas)</td><td>Rápida (proceso de captura más ágil)</td></tr>
+        <tr><td><b>Velocidad de procesamiento</b></td><td>Lenta (horas de cálculo)</td><td>Mucho más rápida</td></tr>
+        <tr><td><b>Zonas de sombra</b></td><td>Problemáticas (poca información de color)</td><td>Se resuelven bien gracias a la interpolación neuronal</td></tr>
+        <tr><td><b>Primeros planos</b></td><td>Excelente con suficiente resolución</td><td>Artefactos visibles al acercarse</td></tr>
+        <tr><td><b>Planos generales</b></td><td>Buena calidad</td><td>Excelente calidad, potencialmente superior</td></tr>
+        <tr><td><b>Especularidad</b></td><td>Se elimina en captura (polarización) y se recrea con mapas</td><td>Se captura tal cual, solo funciona desde el ángulo original</td></tr>
+        <tr><td><b>Postproducción</b></td><td>Totalmente integrable: se edita, modifica y ajusta</td><td>Limitada: lo que se captura es lo que hay</td></tr>
+        <tr><td><b>Integración en VP</b></td><td>Total: es geometría estándar de Unreal Engine</td><td>Requiere plugins específicos, limitaciones de interacción</td></tr>
+    </tbody>
+</table>
+
+<div class="tech-concept">
+    <p><b>Conclusión de Raúl:</b> No se trata de elegir una tecnología sobre otra. Ambas son herramientas complementarias que deben usarse <b>según las necesidades específicas de cada producción</b>. En un mismo proyecto pueden coexistir assets fotogramétricos (para elementos editables y re-iluminables) y Gaussian Splats (para fondos y planos generales donde la velocidad de producción es prioritaria).</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-mapas">Mapas del Instituto Geográfico Nacional</h3>
+<p>Raúl presenta un recurso poco conocido pero extremadamente útil para la producción virtual: los mapas del <b>Instituto Geográfico Nacional (IGN)</b> de España.</p>
+<ul class="content-list">
+    <li><b>Proyecto del Valle de Ordesa:</b> Twinpixel utilizó los mapas del IGN para recrear el Valle de Ordesa en un entorno virtual. Este tipo de proyecto demuestra cómo datos públicos pueden alimentar producciones de alta calidad.</li>
+    <li><b>Mapas con información de altura:</b> El IGN proporciona mapas topográficos donde la información de altitud está codificada en <b>escala de grises</b>. Cada tono de gris corresponde a una altitud específica, lo que los convierte directamente en mapas de desplazamiento.</li>
+    <li><b>Displacement maps sobre plano:</b> Estos mapas en escala de grises se aplican como <b>displacement maps</b> (mapas de desplazamiento) sobre un plano simple en Unreal Engine. El motor deforma el plano según los valores de gris, simulando la topografía real del terreno con gran fidelidad.</li>
+    <li><b>Eficiencia para VR:</b> Esta técnica es especialmente eficiente para experiencias de realidad virtual, donde se necesitan grandes extensiones de terreno sin la carga poligonal que supondría un modelo 3D completo de toda la orografía.</li>
+    <li><b>Complemento con fotogrametría:</b> Los mapas del IGN proporcionan la forma general del terreno (macro-topografía), mientras que la fotogrametría complementa con la geometría real y las texturas detalladas de zonas específicas de interés (rocas, vegetación, edificaciones).</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Recurso Práctico: Datos Públicos del IGN</div>
+    <p>Los datos del Instituto Geográfico Nacional son de acceso público y cubren todo el territorio español con resolución suficiente para producción virtual. Raúl recomienda consultar el <b>Centro de Descargas del IGN</b> para obtener modelos digitales de elevación (MDE) que pueden importarse directamente como heightmaps en Unreal Engine. Es un recurso gratuito que muchos profesionales desconocen.</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-versiones">Gestión de Versiones y Catálogo</h3>
+<p>Raúl explica el sistema de control de versiones y catalogación que Twinpixel utiliza para gestionar sus activos de fotogrametría:</p>
+<ul class="content-list">
+    <li><b>Modelo Máster:</b> La versión de máxima calidad del modelo fotogramétrico, con la mayor resolución poligonal y de textura posible. Es el punto de partida del que se derivan todas las demás versiones. Se conserva siempre como referencia absoluta.</li>
+    <li><b>Versión para Unreal Engine (tiempo real):</b> Optimizada para renderizado en tiempo real. Requiere <b>decimación de polígonos</b> agresiva para mantener el framerate por encima de 55-60 fps. Las texturas se ajustan al tamaño máximo que el hardware pueda manejar sin degradar el rendimiento.</li>
+    <li><b>Versión para postproducción:</b> Puede utilizar una resolución poligonal mucho mayor que la versión de tiempo real, ya que el renderizado es offline y no tiene restricciones de framerate. Se aprovecha para planos donde la calidad debe ser máxima.</li>
+    <li><b>Versión para experiencias inmersivas (VR):</b> Optimizada específicamente para las limitaciones de hardware de los cascos de VR, que requieren renderizar a framerates muy altos (90+ fps) en estéreo.</li>
+    <li><b>Catálogo de información:</b> Cada fotogrametría incluye un catálogo de metadatos: localización, fecha de captura, condiciones de iluminación, resolución del máster, versiones derivadas disponibles, estado de procesamiento y notas de producción.</li>
+    <li><b>Decimación de polígonos:</b> Proceso de reducción controlada del número de polígonos de una malla, manteniendo la silueta y las formas generales mientras se eliminan los triángulos innecesarios. La información de detalle perdida se compensa con los mapas de Normal y AO.</li>
+</ul>
+
+<div class="tech-concept">
+    <p><b>Flujo de trabajo:</b> Máster (máxima calidad) &rarr; Decimación controlada &rarr; Regeneración de mapas (Normal, AO) desde el máster &rarr; Versión optimizada para cada destino. Este flujo garantiza que todas las versiones son consistentes entre sí y derivan de la misma fuente de verdad.</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-objetos">Fotogrametría de Objetos vs. Espacios</h3>
+<p>Raúl establece una distinción fundamental entre la fotogrametría de objetos individuales y la fotogrametría de espacios completos, ya que cada una tiene requisitos y problemas específicos:</p>
+<ul class="content-list">
+    <li><b>Objetos individuales:</b> Se escanean por separado utilizando un <b>turntable</b> (mesa giratoria automatizada). El objeto rota sobre la plataforma mientras la cámara permanece fija, capturando todas las vistas necesarias de forma controlada y repetible.</li>
+    <li><b>Espacios completos:</b> Se capturan limpios, es decir, <b>sin los objetos</b> que normalmente contienen. Las sillas, mesas, decoración y elementos sueltos se retiran antes de la captura del espacio.</li>
+    <li><b>Por qué separar objetos y espacios:</b> Capturar objetos y espacios juntos genera errores de geometría en los <b>puntos de contacto</b> (donde el objeto toca el suelo o una superficie). El algoritmo no puede distinguir dónde termina un elemento y empieza otro, generando geometría fusionada e incorrecta.</li>
+    <li><b>Caras traseras inaccesibles:</b> Cuando un objeto está apoyado contra una pared o sobre un suelo, su parte trasera o inferior es inaccesible para la cámara. Al escanearlo por separado en el turntable, se pueden capturar todas sus caras.</li>
+    <li><b>Fotogrametría solo de textura:</b> En algunos casos no se necesita la geometría 3D del suelo o una pared, sino solo su textura. Raúl describe el ejemplo de las <b>baldosas del suelo</b>: se fotografían desde arriba para extraer únicamente la textura, que luego se aplica como material tileable sobre una geometría plana simple.</li>
+    <li><b>Ensamblaje final:</b> En postproducción se combinan los objetos escaneados individualmente con el espacio capturado limpio, posicionándolos en sus ubicaciones correctas dentro de Unreal Engine.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Detalle Técnico: El Turntable Automatizado</div>
+    <p>Twinpixel utiliza un turntable motorizado con rotación programable. El objeto se coloca sobre la plataforma y esta gira en incrementos precisos (por ejemplo, cada 10 grados) mientras la cámara dispara automáticamente. Este sistema garantiza una cobertura angular uniforme y repetible, eliminando el factor humano. Para objetos pequeños es especialmente eficiente: en pocos minutos se obtiene la cobertura completa.</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-camaras360">Captura con Cámaras 360</h3>
+<p>Raúl aborda el uso de cámaras 360 en el contexto de la captura de realidad, diferenciando claramente sus aplicaciones:</p>
+<ul class="content-list">
+    <li><b>No sirven para fotogrametría convencional:</b> Las cámaras 360 <b>no funcionan</b> para el proceso estándar de fotogrametría. La distorsión esférica de sus ópticas y la forma en que capturan la escena no son compatibles con los algoritmos de reconstrucción fotogramétrica convencionales.</li>
+    <li><b>Sí sirven para Gaussian Splatting:</b> Las cámaras 360 <b>sí pueden utilizarse</b> como fuente de datos para Gaussian Splatting. El proceso de entrenamiento neuronal es capaz de interpretar las imágenes esféricas y generar el campo de puntos gaussianos a partir de ellas.</li>
+    <li><b>Necesidad de diferentes alturas:</b> Para obtener buenos resultados, las capturas 360 deben realizarse a <b>diferentes alturas</b>. Una sola altura genera un splat con información limitada en el eje vertical, lo que produce artefactos al mirar hacia arriba o hacia abajo.</li>
+    <li><b>El operador aparece en todos los frames:</b> Al capturar en 360 grados, el operador que sostiene o posiciona la cámara queda inevitablemente registrado en todas las imágenes. Es necesario un proceso de <b>limpieza</b> posterior para eliminar su presencia.</li>
+    <li><b>Orientación de la cámara:</b> La cámara 360 &laquo;apunta hacia el centro&raquo; para capturar todos los ángulos de la escena circundante. A diferencia de la fotogrametría tradicional donde la cámara apunta hacia el objeto, aquí la cámara captura todo lo que la rodea simultáneamente.</li>
+</ul>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-personajes">Fotogrametría de Personajes</h3>
+<p>Raúl presenta uno de los campos más complejos y espectaculares de la fotogrametría: la captura de personajes humanos para su uso como extras digitales o dobles en producción virtual y postproducción.</p>
+<ul class="content-list">
+    <li><b>Personajes digitales como extras:</b> La fotogrametría de personas permite generar extras digitales que pueblan escenas sin necesidad de figurantes reales. Esto es especialmente útil para escenas de masas, fondos de calles o espacios públicos.</li>
+    <li><b>HBO &laquo;Win-Time&raquo; &mdash; 85 personajes digitales:</b> Para esta producción de HBO, Twinpixel capturó <b>85 personajes digitales segmentados</b>. Cada personaje se dividía en parte superior e inferior del cuerpo por separado, lo que permitía mezclar combinaciones: la parte de arriba de un personaje con la de abajo de otro, multiplicando enormemente la variedad visual.</li>
+    <li><b>Segmentación superior/inferior:</b> La captura separada de la mitad superior y la mitad inferior del cuerpo permite crear combinaciones. Con 85 capturas segmentadas se pueden generar miles de combinaciones únicas de extras digitales, evitando la repetición visual.</li>
+    <li><b>Netflix &laquo;1899&raquo;:</b> Otra producción donde se utilizaron personajes fotogramétricos para poblar escenas con extras digitales, demostrando la versatilidad de la técnica en producciones de alta gama.</li>
+    <li><b>Setup de captura:</b> La captura de personajes requiere un setup especializado con <b>muchas cámaras</b> disparando simultáneamente (para congelar el instante y evitar movimiento) y <b>muchas luces</b>. Todos los <b>paneles de iluminación están polarizados</b> para eliminar reflejos especulares de la piel, la ropa y los accesorios. La cámara de captura, sin embargo, <b>no lleva filtro polarizador</b>, ya que necesita captar la máxima luz posible.</li>
+    <li><b>Estudio pequeño, resultado grande:</b> En la producción de Win-Time, un estudio físicamente pequeño se utilizó para simular una calle completa poblada de personajes. La combinación de fotogrametría de personajes con entornos virtuales permitió escalar la producción muy por encima de las limitaciones del espacio físico.</li>
+</ul>
+
+<div class="experience-box">
+    <div class="experience-box-title">Detalle Técnico: Polarización en Captura de Personajes</div>
+    <p>La configuración de polarización para captura de personajes es inversa a lo que podría esperarse: las <b>luces están polarizadas</b> pero la <b>cámara no</b>. La razón es que la cámara necesita recibir la máxima cantidad de luz para un Albedo limpio. Los paneles de iluminación polarizados eliminan los reflejos especulares de la piel, ojos, ropa y accesorios. Si la cámara también estuviera polarizada (cruzada), se perdería demasiada luz y el resultado sería una captura subexpuesta con ruido.</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-setextensions">Set Extensions y Aplicaciones</h3>
+<p>Raúl explica cómo la fotogrametría y el Gaussian Splatting se integran en el pipeline de producción virtual como herramientas para <b>set extensions</b> (extensiones de decorado digital):</p>
+<ul class="content-list">
+    <li><b>Extensiones de fondo digitales:</b> Los modelos fotogramétricos y los Gaussian Splats se utilizan como fondos virtuales que extienden el decorado físico más allá de sus límites reales. Una habitación de 5 metros puede parecer que tiene vistas a un paisaje infinito.</li>
+    <li><b>Calles de Madrid infinitas:</b> Twinpixel ha creado extensiones digitales de calles madrileñas utilizando dobles digitales fotogramétricos. Una calle real capturada se puede extender virtualmente para parecer kilómetros más larga, con edificios, fachadas y detalles urbanos fieles a la realidad.</li>
+    <li><b>Dobles digitales de localización:</b> Se captura fotogramétricamente una localización real y se recrea como doble digital dentro de Unreal Engine. Esto permite rodar escenas de esa localización en estudio, controlando las condiciones de iluminación, meteorología y horario sin depender de las limitaciones del rodaje en exteriores.</li>
+    <li><b>Integración en el pipeline VP:</b> Los assets fotogramétricos se integran en el flujo de trabajo estándar de producción virtual: se importan en Unreal Engine, se optimizan para tiempo real, se iluminan según las necesidades de la escena y se proyectan sobre las pantallas LED del volumen.</li>
+</ul>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-experiencias">Experiencias de Producción</h3>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso: Test Comparativo Real vs. Producción Virtual &mdash; Chalet de Navacerrada</div>
+    <p>Uno de los ejemplos más impactantes de la charla. Twinpixel realizó un rodaje real en un chalet de Navacerrada y, <b>6 semanas después</b>, reprodujo la misma localización mediante fotogrametría en un estudio de producción virtual. El resultado fue <b>prácticamente indistinguible</b>: cuando se proyectaron ambas versiones a los alumnos del curso, estos no pudieron identificar cuál era el rodaje real y cuál la producción virtual. La principal lección extraída fue que los <b>props físicos</b> son imprescindibles para la interacción del actor: aunque el fondo sea virtual, los objetos con los que el actor interactúa directamente (una mesa, una silla, un vaso) deben ser reales para que la actuación resulte creíble.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso: Doble Digital del Plató de Telecinco &mdash; Franganillo</div>
+    <p>Twinpixel creó un <b>doble digital del plató de informativos de Telecinco</b> (plató de Franganillo). El proceso incluyó varios retos técnicos específicos: las superficies lisas y sin textura del plató (pantallas, superficies lacadas) requerían la proyección de un <b>patrón de camuflaje</b> sobre las superficies sin textura para que la fotogrametría pudiera detectar puntos de coincidencia. Las sillas del plató se escanearon individualmente mediante fotogrametría separada. El proceso de <b>limpieza fue exhaustivo</b>: eliminar reflejos residuales, corregir zonas de contacto, unificar texturas y asegurar que el doble digital fuera fiel al original.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso: Producción para Mr. Factory</div>
+    <p>Producción intensiva de <b>2 días</b> con <b>8 horas de captura</b> en total. El equipo capturó espacios completos, objetos individuales y fotogrametría de texturas por separado. La organización del trabajo fue clave para aprovechar el tiempo: mientras un equipo capturaba el espacio limpio, otro escaneaba objetos en el turntable y un tercero realizaba fotogrametría de texturas de suelos y paredes.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso: Win-Time &mdash; HBO</div>
+    <p>Producción de HBO donde Twinpixel capturó <b>85 personajes digitales segmentados</b> (parte superior e inferior del cuerpo por separado, mezclables entre sí). El setup se realizó en un <b>estudio pequeño</b> que, gracias a la combinación de personajes fotogramétricos con entornos virtuales, logró <b>simular una calle completa</b> poblada de extras digitales. Este proyecto demostró la escalabilidad de la fotogrametría de personajes para producciones de gran envergadura.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso: Puerta de Toledo &mdash; Madrid</div>
+    <p>Captura fotogramétrica del monumento histórico de la Puerta de Toledo en Madrid. Raúl realizó una <b>demostración en vivo</b> cambiando la orientación del sol sobre el modelo fotogramétrico, mostrando cómo un mismo modelo en estado neutro puede iluminarse con diferentes condiciones: amanecer, mediodía, atardecer. Este ejemplo demostró la versatilidad del enfoque de estado neutro y la importancia de eliminar la iluminación original durante el procesado.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso: Palacio de Santoña &mdash; Madrid</div>
+    <p>Digitalización fotogramétrica de un <b>palacio privado</b> en Madrid. El interés de este caso radica en que los espacios del palacio son físicamente estrechos y difíciles de rodar con cámaras reales. La versión digital permite <b>tiros de cámara imposibles</b> en el espacio físico real: planos abiertos en habitaciones pequeñas, travellings a través de pasillos estrechos y ángulos que la arquitectura original no permite. La fotogrametría convierte las limitaciones físicas del espacio en posibilidades virtuales ilimitadas.</p>
+</div>
+
+<div class="experience-box">
+    <div class="experience-box-title">Caso: Calle de Madrid con Dron</div>
+    <p>Captura aérea de una calle de Madrid utilizando un <b>mini dron</b>. El dato más impactante es la eficiencia: la captura de datos completa se realizó en apenas <b>25 minutos</b>, y el modelo 3D procesado estuvo listo en <b>2 horas</b>. Este caso demuestra cómo la combinación de drones y fotogrametría permite capturar entornos urbanos completos con una rapidez y coste que habrían sido impensables hace pocos años.</p>
+</div>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-herramientas">Herramientas y Software</h3>
+<p>Raúl menciona y utiliza las siguientes herramientas a lo largo de la charla:</p>
+<ul class="content-list">
+    <li><b>Unreal Engine:</b> Motor principal para la integración de fotogrametría y Gaussian Splatting en producción virtual. Receptor final de todos los assets procesados.</li>
+    <li><b>Reality Scan:</b> Software de procesamiento fotogramétrico que convierte las fotografías en modelos 3D con texturas PBR (Albedo, Normal, AO, Metallic, Roughness).</li>
+    <li><b>Polycam:</b> Aplicación móvil <b>gratuita</b> que permite realizar fotogrametría básica con el teléfono. Útil para capturas rápidas, pruebas de concepto y previsualización. Accesible para cualquier persona sin equipamiento profesional.</li>
+    <li><b>Blender:</b> Software de modelado 3D de código abierto utilizado para la limpieza, edición y optimización de modelos fotogramétricos. También se emplea para la decimación de polígonos y la preparación de assets antes de importarlos en Unreal.</li>
+    <li><b>LIDAR:</b> Tecnología de escaneo láser que complementa la fotogrametría. Proporciona medidas precisas y nubes de puntos que pueden combinarse con los datos fotogramétricos para mejorar la precisión geométrica.</li>
+    <li><b>Drones (mini dron):</b> Vehículos aéreos no tripulados equipados con cámaras para captura fotogramétrica aérea. Los mini drones son especialmente útiles para captura urbana por su facilidad de operación y regulación menos restrictiva.</li>
+    <li><b>Turntable (mesa giratoria):</b> Plataforma motorizada y programable para la captura fotogramétrica automatizada de objetos individuales. Garantiza cobertura angular uniforme y repetible.</li>
+    <li><b>Spray matificador:</b> Producto en aerosol que deposita una capa fina de micropartículas sobre superficies lisas o reflectantes, proporcionando textura temporal para la captura fotogramétrica. Se limpia fácilmente tras la sesión.</li>
+    <li><b>Polarización cruzada:</b> Técnica que utiliza filtros polarizadores en las luces y en la cámara (orientados perpendicularmente) para eliminar reflejos especulares durante la captura fotogramétrica.</li>
+    <li><b>Paneles polarizados:</b> Paneles de iluminación equipados con filtros polarizadores, utilizados especialmente en la captura de personajes para eliminar reflejos en piel, ropa y accesorios.</li>
+</ul>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>
+
+<h3 class="section-title" id="c41-glosario">Glosario Técnico</h3>
+<table class="glossary-table">
+    <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+    <tbody>
+        <tr><td><b>Fotogrametría</b></td><td>Técnica de reconstrucción de modelos 3D a partir de múltiples fotografías tomadas desde distintos ángulos. El software identifica puntos comunes entre imágenes y calcula la geometría tridimensional mediante triangulación.</td></tr>
+        <tr><td><b>Gaussian Splatting</b></td><td>Tecnología de representación 3D basada en la proyección de texels (puntos de color con forma gaussiana) en el espacio. No genera geometría real sino una representación visual interpolada mediante redes neuronales.</td></tr>
+        <tr><td><b>Albedo</b></td><td>Mapa de textura que contiene exclusivamente el color puro de una superficie, sin ninguna información de iluminación, sombras ni reflejos. Su aspecto plano es intencionado para permitir la re-iluminación en el motor de render.</td></tr>
+        <tr><td><b>Diffuse</b></td><td>Mapa de textura similar al Albedo pero que incluye información de iluminación ambiental integrada. A diferencia del Albedo puro, el Diffuse ya contiene cierta información lumínica horneada.</td></tr>
+        <tr><td><b>Normal Map</b></td><td>Mapa de textura codificado en RGB que simula relieve y detalle geométrico sobre una superficie sin añadir polígonos reales. Cada color representa una dirección de la normal de la superficie.</td></tr>
+        <tr><td><b>AO (Ambient Occlusion)</b></td><td>Mapa de oclusión ambiental que define las zonas donde la luz tiene dificultad para llegar: rincones, juntas, pliegues y cavidades. Añade profundidad visual mediante sombras de contacto suaves.</td></tr>
+        <tr><td><b>Metallic</b></td><td>Mapa que define qué partes de una superficie son metálicas (blanco) y cuáles no lo son (negro). Controla el comportamiento de los reflejos según el modelo de reflectancia PBR.</td></tr>
+        <tr><td><b>Roughness</b></td><td>Mapa que define la rugosidad de una superficie. Negro = superficie lisa y reflectante (espejo). Blanco = superficie completamente mate y rugosa. Controla la dispersión de la luz especular.</td></tr>
+        <tr><td><b>FBX</b></td><td>Formato de archivo de intercambio 3D propiedad de Autodesk. Almacena geometría, UVs, materiales y animaciones. Es el formato estándar de importación para Unreal Engine.</td></tr>
+        <tr><td><b>OBJ</b></td><td>Formato de archivo 3D abierto que almacena geometría y coordenadas de textura. Más simple que FBX pero ampliamente compatible. Se acompaña de archivos MTL para los materiales.</td></tr>
+        <tr><td><b>UVs</b></td><td>Coordenadas de mapeo bidimensional que determinan cómo se proyectan las texturas 2D sobre la geometría 3D. Un buen desplegado de UVs es esencial para evitar distorsiones y costuras en las texturas.</td></tr>
+        <tr><td><b>Displacement Map</b></td><td>Mapa en escala de grises que deforma la geometría real de una superficie según sus valores de brillo. A diferencia del Normal Map, el Displacement Map modifica la malla poligonal, creando relieve geométrico real.</td></tr>
+        <tr><td><b>Texel</b></td><td>Unidad mínima de información de color en una textura 3D. En el contexto del Gaussian Splatting, cada texel es una proyección gaussiana oval con información de color y forma variable según el ángulo de visualización.</td></tr>
+        <tr><td><b>Decimación de polígonos</b></td><td>Proceso de reducción controlada del número de polígonos de una malla 3D, manteniendo la silueta y formas generales mientras se eliminan triángulos innecesarios. Esencial para la optimización de modelos fotogramétricos para tiempo real.</td></tr>
+        <tr><td><b>Set Extension</b></td><td>Técnica que extiende digitalmente un decorado físico más allá de sus límites reales. Rellena con contenido virtual las zonas donde la cámara desafora más allá del set construido.</td></tr>
+        <tr><td><b>Doble digital</b></td><td>Réplica digital de una localización, objeto o persona real, creada mediante fotogrametría u otras técnicas de captura de realidad. Permite rodar en estudio escenas que corresponden a la localización original.</td></tr>
+        <tr><td><b>Props</b></td><td>Objetos físicos de atrezo con los que los actores interactúan directamente en escena. En producción virtual, los props físicos son imprescindibles para la credibilidad de la actuación, aunque el fondo sea digital.</td></tr>
+        <tr><td><b>Polarización cruzada</b></td><td>Técnica de captura que utiliza filtros polarizadores perpendiculares en las luces y la cámara para eliminar completamente los reflejos especulares. Permite obtener mapas de Albedo limpios de superficies brillantes.</td></tr>
+        <tr><td><b>Spray matificador</b></td><td>Producto en aerosol que deposita micropartículas sobre superficies lisas, transparentes o reflectantes, proporcionando textura temporal detectable por el software de fotogrametría. Se limpia fácilmente tras la captura.</td></tr>
+        <tr><td><b>Turntable</b></td><td>Mesa giratoria motorizada y programable utilizada para la captura fotogramétrica automatizada de objetos individuales. Rota el objeto en incrementos precisos mientras la cámara dispara automáticamente.</td></tr>
+        <tr><td><b>Noche americana</b></td><td>Técnica cinematográfica que simula la noche mediante tonos azulados aplicados sobre una escena iluminada o rodada de día. En producción virtual se logra aplicando iluminación con dominante azul sobre el modelo neutro.</td></tr>
+        <tr><td><b>Raccord</b></td><td>Continuidad visual entre planos de una producción. En el contexto de fotogrametría, se refiere a la coherencia del modelo y sus texturas entre diferentes versiones y condiciones de iluminación.</td></tr>
+        <tr><td><b>LIDAR</b></td><td>Tecnología de escaneo láser que mide distancias emitiendo pulsos de luz. Genera nubes de puntos tridimensionales de alta precisión que complementan la fotogrametría con datos geométricos exactos.</td></tr>
+        <tr><td><b>Color Grading</b></td><td>Proceso de ajuste del color y la tonalidad de la imagen final. En producción virtual, se aplica tanto al contenido LED como a la imagen de cámara para unificar la apariencia visual.</td></tr>
+        <tr><td><b>Render</b></td><td>Proceso de generar la imagen final a partir de los datos 3D. En tiempo real (producción virtual) se ejecuta frame a frame a 60 fps; en postproducción se calcula offline sin restricciones de tiempo.</td></tr>
+        <tr><td><b>Máster</b></td><td>Versión de máxima calidad de un modelo fotogramétrico, con la mayor resolución poligonal y de textura. Es la fuente de verdad de la que derivan todas las versiones optimizadas.</td></tr>
+        <tr><td><b>Redes neuronales</b></td><td>Arquitecturas de inteligencia artificial que, en el contexto del Gaussian Splatting, aprenden a interpolar vistas intermedias entre las posiciones de cámara reales, generando puntos de vista que nunca fueron fotografiados.</td></tr>
+        <tr><td><b>Cáusticas</b></td><td>Patrones de luz concentrada que se producen cuando la luz atraviesa o rebota en superficies curvas transparentes o reflectantes (agua, cristal). Son difíciles de reproducir tanto en fotogrametría como en Gaussian Splatting.</td></tr>
+    </tbody>
+</table>
+
+<a href="#c41-top" class="back-top">&uarr; Volver al inicio de la charla</a>&nbsp;&nbsp;<a href="#top" class="back-top">&uarr; Volver arriba</a>&nbsp;&nbsp;<a href="javascript:goHome()" class="back-top" style="background:#007bff;">&#9776; Calendario</a>

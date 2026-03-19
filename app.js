@@ -56,7 +56,8 @@ async function showTalk(id) {
     if (btn) btn.classList.add('active');
 
     // Switch to correct day
-    const day = id.startsWith('charla03') ? 'día3' :
+    const day = id.startsWith('charla04') ? 'día4' :
+                id.startsWith('charla03') ? 'día3' :
                 id.startsWith('charla02') ? 'día2' : 'día1';
     switchDay(day, true);
 
@@ -75,18 +76,21 @@ function switchDay(day, skipTalkSwitch) {
         tab.classList.toggle('active',
             (day === 'día1' && i === 0) ||
             (day === 'día2' && i === 1) ||
-            (day === 'día3' && i === 2)
+            (day === 'día3' && i === 2) ||
+            (day === 'día4' && i === 3)
         );
     });
 
     document.getElementById('sidebar-día1').style.display = day === 'día1' ? 'block' : 'none';
     document.getElementById('sidebar-día2').style.display = day === 'día2' ? 'block' : 'none';
     document.getElementById('sidebar-día3').style.display = day === 'día3' ? 'block' : 'none';
+    document.getElementById('sidebar-día4').style.display = day === 'día4' ? 'block' : 'none';
 
     // Auto-select first talk of the day if not skipping
     if (!skipTalkSwitch) {
         const firstTalk = day === 'día1' ? 'charla01-1' :
-                          day === 'día2' ? 'charla02-1' : 'charla03-1';
+                          day === 'día2' ? 'charla02-1' :
+                          day === 'día3' ? 'charla03-1' : 'charla04-1';
         showTalk(firstTalk);
     }
 }
@@ -107,3 +111,4 @@ function toggleMobile(forceClose) {
 // === Initialize: home view visible, talks hidden ===
 document.getElementById('sidebar-día2').style.display = 'none';
 document.getElementById('sidebar-día3').style.display = 'none';
+document.getElementById('sidebar-día4').style.display = 'none';
